@@ -1,0 +1,82 @@
+
+
+
+/*window share*/
+
+
+/*=====================================*/
+.windowLian{ float:left; width:924px; padding:20px; background:#fff;  }
+.windowLian .title2 { float:left; width:100%; height:40px;  position:relative}
+.windowLian .title2 .ltext { float:left; padding:0px 0 0 10px;   color:#fff; font-size:16px; color:#333; font-family:"΢���ź�";}
+.windowLian .title2 .rtext { float:right; padding:4px 5px 0 0;}
+.windowLian .title2 .close { width:30px; height:30px; display:inline-block; border-radius:60px; cursor:pointer; font-size:30px; color:#fff; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2); position:absolute; top:-30px; right:-30px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #F60 center;  }
+
+.windowLian .title2 .ltext { float:left; width:920px; padding:0px 0 15px 0;} 
+.windowLian .title2 .ltext .titler { float:left; width:100%; height:41px; border-bottom:1px solid #E0E0E0; margin-bottom:15px;}
+.windowLian .title2 .ltext .titler li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:138px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px;}
+.windowLian .title2 .ltext .titler li.now { background:#fff; height:31px;border-top:1px solid #FF8000; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.windowLian .title2 .ltext .titler .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+
+.ulthree .contu2 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.ulthree .contu2 li { float:left; width:100%; padding:20px 0 0 0px;}
+.ulthree .contu2 li .lt {float:left; width:80px; text-align:left; color:#666; }
+.ulthree .contu2 li .rt {float:left; padding:0 0 0 10px; }
+.ulthree .contu2 li .rt .pic { width:120px; height:60px; border:1px solid #ccc; background:#eee; display:inline-block; text-align:center; line-height:60px; font-weight:normal; color:#999}
+.ulthree .contu2 li .rt .input { width:220px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; position:relative; top:-5px;}
+.ulthree .contu2 li .rt .ben { position:relative; top:86px; margin-left:10px;}
+.ulthree .contu2 li .rt .pic { width:200px; height:200px; display:inline-block; line-height:200px; text-align:center;}
+.ulthree .contu2 li .rt .tx { color:#999; margin:0 0 0 10px; position:relative; top:-5px;}
+.ulthree .contu2 li .rt label { margin-right:10px; cursor:pointer;}
+.ulthree .contu2 li .rt .checkbox { position:relative; top:2px; margin-right:5px;}
+.ulthree .contu2 li .ti {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.ulthree .contu2 li .ti strong { float:left; padding:10px 0 10px 0; color:#666; font-weight:normal;}
+.ulthree .contu2 li .text {float:left; width:100%; padding:10px 0 0 0px;}
+
+.ulthree .contu3 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.ulthree .contu3 .optext1 {float:left; width:100%; padding:20px 0 0 0;}
+.ulthree .contu3 .optext1  span { float:left; padding:0 15px 0 0;}
+.ulthree .contu3 .optext1 .input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle; position:relative; top:-3px;}
+.ulthree .contu3 .optext1 .select { width:130px; margin:0 0 0 10px; vertical-align:middle}
+.ulthree .contu3 .optext1  .t { color:#00F; margin:0 10px;}
+.ulthree .contu3 .optext1  .ben { padding:0 15px;}
+.ulthree .contu3 .optext1  a { vertical-align:middle; position:relative; top:-4px;}
+.ulthree .contu3 .optext1 .lebr { float:right; padding:2px 0 0 0; font-weight:normal;}
+.ulthree .contu3 .optext1 .lebr label { cursor:pointer; margin:0 10px 0 5px;}
+.ulthree .contu3 .optext1 .lebr .checkbox { position:relative; top:2px; margin-right:5px;}
+
+
+
+.ulthree .contu3 .optext2 {float:left; width:100%; margin:15px 0 0 0;}
+.ulthree .contu3 .optext2 a { color:#00F; text-decoration:underline; margin-right:10px;}
+.ulthree .contu3 .optext2 table { border-top:1px solid #ddd}
+.ulthree .contu3 .optext2 th,.ulthree .contu3 .optext2 td { height:30px; border-bottom:1px solid #ddd}
+.ulthree .contu3 .optext2 th { background:#F5F5F5; font-weight:normal; color:#000;}
+.ulthree .contu3 .optext2 td { color:#666;}
+.ulthree .contu3 .optext2 tr:hover { background:#F9F1E2; }
+.ulthree .contu3 .optext2 tr:hover td {color:#000;}
+.ulthree .contu3 .optext2 td span { color:#F00}
+.ulthree .contu3 .optext2 span.f1 { margin-left:20px;}
+.ulthree .contu3 .optext2  b.f2 { font-weight:normal; color:#999; margin:4px 0; display:inline-block;}
+.ulthree .contu3 .optext2 td span.f1 { color:#333;}
+.ulthree .contu3 .optext2 td .admin_icon1 { position:relative; top:4px;}
+.ulthree .contu3 .optext2 .checkbox { position:relative; top:3px; margin:0 20px 0 15px;}
+.ulthree .contu3 .optext2 .pic { width:100px; height:60px; display:inline-block; overflow:hidden; padding:5px; border:1px solid #ddd; margin:10px 0 10px 0;}
+.ulthree .contu3 .optext2 .pic img { width:100px; height:60px;}
+
+
+.ulthree .contu4 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.ulthree .contu4 .tit { float:left; width:100%; padding:20px 0 10px 0px; border-bottom:1px dashed #ccc;}
+.ulthree .contu4 .tit strong { float:left;}
+.ulthree .contu4 .tit span { float:right;}
+.ulthree .contu4 .bankli { float:left; width:100%; padding:20px 0 0 0px;}
+.ulthree .contu4 .bankli li { float:left; border:1px solid #8AA6CA; text-align:center;  margin-right:10px; background:#F6F6F6; box-shadow:1px 1px 4px rgba(0, 0, 0, 0.2);}
+.ulthree .contu4 .bankli li:hover {  background:#8AA6CA; color:#fff;}
+.ulthree .contu4 .bankli li:hover a{  color:#fff;}
+.ulthree .contu4 .bankli li a { float:left; width:100px; padding:5px 0 5px 0; text-align:center; height:24px; line-height:24px;}
+/*=====================================*/
+
+.ulthree .contu2 .bankli2{ float:left; width:100%; padding:20px 0 0 0px;}
+.ulthree .contu2 .bankli2 li { float:left; border:1px solid #8AA6CA; text-align:center;  margin-right:10px; background:#F6F6F6; box-shadow:1px 1px 4px rgba(0, 0, 0, 0.2); width: 15%;}
+.ulthree .contu2 .bankli2 li:hover {  background:#8AA6CA; color:#fff;}
+.ulthree .contu2 .bankli2 li:hover a{  color:#fff;}
+.ulthree .contu2 .bankli2 li a { float:left; width:100px; padding:5px 0 5px 0; text-align:center; height:24px; line-height:24px;}

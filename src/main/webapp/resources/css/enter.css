@@ -1,0 +1,36 @@
+body {background:url(../images/bg_r1.jpg) center  -220px no-repeat; overflow-y:hidden}
+
+.enterpar { margin:112px auto 0 auto; width:531px; height:389px;}
+.enterpar .tr1 { float:left; width:531px; height:100px;}
+.enterpar .contern { float:left; width:410px; padding:27px 0 0 112px }  
+.contern .text1 { float:left; width:310px; height:60px;}
+.contern .text1 input { width:258px;border:0px; padding:12px 0 12px 10px; margin:3px 0 0 5px; font-size:14px;}
+.contern .text2 { float:left; width:310px; height:60px;}
+.contern .text2 input { width:258px; border:0px; padding:12px 0 12px 10px; margin:3px 0 0 5px; font-size:14px;}
+.contern .text3 { float:left; width:310px; height:98px;}
+.contern .text3 .lt { float:left; width:212px; }
+.contern .text3 .lt input { width:188px; height:38px; border:0px; padding:0 0 0 10px; margin:3px 0 0 5px; font-size:14px;}
+.contern .text3 .rt { float:left; width:98px; text-align:center; height:35px; padding-top:8px; line-height:43px;}
+.contern .text4 { float:left; width:310px; height:60px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+﻿
+
+/*=======================================*/
+.tuptltle { float:left; width:100%; padding:10px 0 0 0; }
+.tuptltle .for1,.tuptltle .for2 { float:left; width:480px; height:34px; background:url(../images/title_po1.png) no-repeat; }
+.tuptltle .for1 { background-position:0px 0px; }
+.tuptltle .for1 p { float:left; width:240px; padding:4px 0 0 0; text-align:center; color:#BEBEBE; margin:0px; font-size:18px; }
+.tuptltle .for1 p.left { color:#fff;}
+.tuptltle .for1 p span { position:relative; top:3px; margin-right:5px;}
+.tuptltle .for1 p.left span { position:relative; top:3px; margin-right:15px;}
+
+
+.tuptltle .for2 { background-position:0px -34px; }
+.tuptltle .for2 p { float:left; width:240px; padding:4px 0 0 0; text-align:center; color:#fff; margin:0px; font-size:18px; }
+.tuptltle .for2 p.left {color:#BEBEBE;}
+.tuptltle .for2 p span { position:relative; top:3px; margin-right:5px;}
+.tuptltle .for2 p.left span { position:relative; top:3px; margin-right:15px;}
+
+
+
+/*=======================================*/
+.selection_box {  float:left; width:100%; padding:15px 0 0 0; }
+.selection_box ul { float:left;}
+.selection_box ul div{float:left;width:257px;margin: 0 5px 5px 0;}
+.selection_box ul div b{margin-bottom:5px;}
+.selection_box ul li { overflow-x:hidden;overflow-y:auto;width:255px; height:180px; border:1px solid #E5E5E5; background:url(../images/icon_r3.png) no-repeat -340px -210px; margin:0 10px 0 0;}
+.selection_box ul li p { float:left; width:198px; height:20px; margin:4px 0px; cursor:pointer; padding:2px 0 0 22px;}
+.selection_box ul li p.on,.selection_box ul li p:hover { float:left; width:233px; height:20px; padding:2px 0 0 22px; background:url(../images/icon_r3.png) no-repeat 0px -250px;}
+.selection_box ul li .searchtext { float:left; width:208px; height:25px; padding:6px 0 0 6px;}
+.selection_box ul li .searchtext input { float:left; width:184px; height:23px; color:#ccc; background: #fff url(../images/icon_r3.png) no-repeat -438px -57px; border:1px solid #E5E5E5; padding:0 0 0 22px;}
+/*=======================================*/
+
+
+
+
+
+/*=======================================*/
+.contben {  float:left; width:100%; padding:15px 0 0 0; }
+.contben .text {  float:left; width:100%; background:#F4F4F4; padding:15px 0 15px 15px;}
+.contben .text a {  padding:0px 10px; margin-right:10px; text-align:center;}
+
+/*==================titleNoText 用于框架页面内嵌页面=====================*/
+.conttext1 { float:left; width:100%; padding:10px 0 0 0; }
+.conttext1 .titleNoText { float:left; width:100%; }
+.conttext1 .titleNoText strong { font-size:14px; padding:5px 0 0 0; display:inline-block;}
+
+/*=======================================*/
+.conttext1 { float:left; width:100%; padding:10px 0 0 0; }
+.conttext1 .title { float:left; width:100%; height:30px; background:url(../images/cont_title.png) no-repeat left bottom; }
+.conttext1 .title strong { font-size:14px; padding:5px 0 0 0; display:inline-block;}
+.conttext1 .title span { font-size:14px; font-weight:bold; padding:5px 0 0 10px; display:inline-block; color:#ec5099;}
+.conttext1 .title .little { margin:0 0 0 30px;}
+.conttext1 .title .little input { position:relative; top:3px; margin-right:10px;}
+.conttext1 ul { float:left; padding:10px 0; width:100%; }
+.conttext1 ul li{ float:left; width:100%; padding:10px 0 0 0; }
+.conttext1 ul li .leftt{ float:left; width:140px; padding:3px 10px 0 0; text-align:right; }
+.conttext1 ul li .leftt span{ color:red; }
+.conttext1 ul li .rightt{ float:left;width: 700px;}
+.conttext1 ul li .rightt input { width:387px; height:24px; border-top:1px solid #aaa; border-left:1px solid #aaa; border-bottom:1px solid #E5E5E5; border-right:1px solid #E5E5E5; padding:0 5px;}
+.conttext1 ul li .rightt input[type=radio]{vertical-align: middle;}
+.conttext1 ul li .rightt .checkbox { width:auto; height:auto; position:relative; top:2px; margin-right:5px;}
+.conttext1 ul li .rightt label { margin:3px 20px 5px 0; display:inline-block;width: 130px;}
+.conttext1 ul li .rightt span { color:black; display:inline-block; margin:0px 0 0 20px; text-align:center;vertical-align:middle;}
+.conttext1 ul li .rightt .menuContent span { margin:0 0 0 0;}
+.conttext1 ul li .rightt b {  margin:0px 0 0 10px; font-weight:normal; font-size:14px;}
+.conttext1 .text { float:left; width:100%; padding:10px 0; overflow-x: hidden;overflow-y: auto; }
+.conttext1 .text2 { float:left; width:100%; padding:10px 0; }
+.conttext1 .text2 a { margin-right:10px; }
+.conttext1 .text2 label { margin-right:10px;}
+.conttext1 .text2 input { position:relative; top:3px; margin-right:5px;}
+.conttext1 .textReview { float:left; width:100%; padding:10px 0;height: 50px; }
+/*=======================================*/

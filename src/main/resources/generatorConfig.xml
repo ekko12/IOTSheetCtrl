@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+<classPathEntry location="C:\Users\ChinaUnicom\git\cudcos_admin\src\main\resources\mysql-connector-java-5.1.34.jar"/>
+
+  <context id="my" targetRuntime="MyBatis3Simple">
+   
+   	<commentGenerator> 
+    	<!-- 是否去除自动生成的注释 true：是 ： false:否 --> 
+    	<property name="suppressAllComments" value="true" /> 
+  	</commentGenerator> 
+   
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://127.0.0.1:3306/iotoperation" userId="root"
+                        password="root"/>
+   
+    <!-- 
+    	targetProject:生成PO类的位置 
+    	实体类
+    -->                      
+    <javaModelGenerator targetPackage="com.chinauicom.research.iotoperation.customUserLable.entity" 
+    	targetProject="iot-operation\src\main\java\" >
+    		<!-- enableSubPackages:是否让schema作为包的后缀 -->  
+    		<property name="enableSubPackages" value="true" />
+    		<!-- 从数据库返回的值被清理前后的空格 -->  
+            <property name="trimStrings" value="true" ></property>
+    </javaModelGenerator>
+    
+    <!-- 
+    	targetProject:mapper映射文件生成的位置
+    	xml 
+    -->  
+    <sqlMapGenerator targetPackage="com.chinauicom.research.iotoperation.customUserLable" 
+    	targetProject="iot-operation\src\main\java\" >
+    		<!-- enableSubPackages:是否让schema作为包的后缀 -->  
+    		<property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    
+    <!-- 
+    	targetPackage：mapper接口生成的位置 
+    	接口
+    -->  
+    <javaClientGenerator targetPackage="com.chinauicom.research.iotoperation.customUserLable.service" 
+    	targetProject="iot-operation\src\main\java\" 
+    		type="XMLMAPPER" >
+     			<!-- enableSubPackages:是否让schema作为包的后缀 -->  
+            	<property name="enableSubPackages" value="false" />  
+    </javaClientGenerator>  
+    
+    <table tableName="custom_user_label">
+    </table>
+    
+  </context>
+</generatorConfiguration>

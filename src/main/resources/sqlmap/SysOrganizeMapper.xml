@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_ORGANIZE">
+
+	<resultMap type="SysOrganize" id="sysOrganizeResultMap">
+		<id property="orgCode" column="ORG_CODE"/>   
+		<result property="orgName" column="ORG_NAME"/>
+		<result property="parentOrgCode" column="PARENT_ORG_CODE"/>
+		<result property="status" column="STATUS"/>
+		<result property="orgDesc" column="ORG_DESC"/>
+		<result property="creater" column="CREATER"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="modifier" column="MODIFIER"/>
+		<result property="modifyTime" column="MODIFY_TIME"/>
+		<result property="remark" column="REMARK"/>
+	</resultMap>
+
+	<resultMap type="SysOrganize" id="childOrganizeMap" extends="sysOrganizeResultMap">
+
+		<collection property="childOrganize"  column="ORG_CODE " ofType="SysOrganize"
+					select="findMenuByparentId"></collection>
+	</resultMap>
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams"> 
+		<if test="parentOrgCode != null"><![CDATA[ AND t.PARENT_ORG_CODE = #{parentOrgCode} ]]></if>
+		<if test="parentOrgCodeLike != null"><![CDATA[ AND t.PARENT_ORG_CODE LIKE '%' || #{parentOrgCodeLike} || '%' ]]></if>
+		<if test="parentOrgCodeIn != null"><![CDATA[ AND t.PARENT_ORG_CODE IN ]]><foreach item="item" index="index" collection="parentOrgCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="orgCode != null"><![CDATA[ AND t.ORG_CODE = #{orgCode} ]]></if>
+		<if test="orgCodeLike != null"><![CDATA[ AND t.ORG_CODE LIKE '%' || #{orgCodeLike} || '%' ]]></if>
+		<if test="orgCodeIn != null"><![CDATA[ AND t.ORG_CODE IN ]]><foreach item="item" index="index" collection="orgCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="orgName != null"><![CDATA[ AND t.ORG_NAME = #{orgName} ]]></if>
+		<if test="orgNameLike != null"><![CDATA[ AND t.ORG_NAME LIKE '%' || #{orgNameLike} || '%' ]]></if>
+		<if test="orgNameIn != null"><![CDATA[ AND t.ORG_NAME IN ]]><foreach item="item" index="index" collection="orgNameIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="statusIn != null"><![CDATA[ AND t.STATUS IN ]]><foreach item="item" index="index" collection="statusIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="orgDescLike != null"><![CDATA[ AND t.ORG_DESC LIKE '%' || #{orgDescLike} || '%' ]]></if>
+		
+		<!-- start with 放到sql最后 
+		<if test="parentOrgCodeStartWith != null"><![CDATA[ START WITH t.ORG_CODE = #{parentOrgCodeStartWith} CONNECT BY PRIOR t.ORG_CODE = t.PARENT_ORG_CODE  ]]></if>
+		-->
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="orgCode != null"><![CDATA[ AND t.ORG_CODE = #{orgCode} ]]></if>
+		<if test="orgName != null"><![CDATA[ AND t.ORG_NAME = #{orgName} ]]></if>
+		<if test="parentOrgCode != null"><![CDATA[ AND t.PARENT_ORG_CODE = #{parentOrgCode} ]]></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND t.MODIFIER = #{modifier} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND t.MODIFY_TIME = #{modifyTime} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+  			<if test="item == 'orgCodeAsc'"><![CDATA[ t.ORG_CODE asc ]]></if>
+  			<if test="item == 'orgCodeDesc'"><![CDATA[ t.ORG_CODE desc ]]></if>
+  			<if test="item == 'parentOrgCodeAsc'"><![CDATA[ t.PARENT_ORG_CODE asc ]]></if>
+  			<if test="item == 'parentOrgCodeDesc'"><![CDATA[ t.PARENT_ORG_CODE desc ]]></if>
+  			<if test="item == 'statusAsc'"><![CDATA[ t.STATUS asc ]]></if>
+  			<if test="item == 'statusDesc'"><![CDATA[ t.STATUS desc ]]></if>
+  			<if test="item == 'createTimeAsc'"><![CDATA[ t.CREATE_TIME asc ]]></if>
+  			<if test="item == 'createTimeDesc'"><![CDATA[ t.CREATE_TIME desc ]]></if>
+  			<if test="item == 'modifyTimeAsc'"><![CDATA[ t.MODIFY_TIME asc ]]></if>
+  			<if test="item == 'modifyTimeDesc'"><![CDATA[ t.MODIFY_TIME desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysOrganizeResultMap">
+		<![CDATA[ SELECT * FROM SYS_ORGANIZE t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_ORGANIZE t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  	<select id="selectByParams" parameterType="map" resultMap="childOrganizeMap">
+  		
+  		<if test="parentOrgCodeStartWith != null">
+				SELECT * FROM SYS_ORGANIZE WHERE ORG_CODE = #{parentOrgCodeStartWith}
+  		</if>
+  		<if test="parentOrgCodeStartWith == null">
+			<![CDATA[
+				 SELECT * FROM SYS_ORGANIZE t
+			]]>
+		</if>
+  	
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+  	</select>
+    
+  	<!-- (2-2)============================= selectByParamsCount =================================== -->
+  	<select id="selectByParamsCount" parameterType="map" resultType="int">
+   		<if test="parentOrgCodeStartWith != null">
+				SELECT COUNT(*) FROM SYS_ORGANIZE WHERE ORG_CODE = #{parentOrgCodeStartWith}
+  		</if>
+  		<if test="parentOrgCodeStartWith == null">
+			<![CDATA[
+				 SELECT COUNT(*) FROM SYS_ORGANIZE t
+			]]>
+		</if>
+   		
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysOrganize" resultMap="sysOrganizeResultMap">
+   	<![CDATA[ SELECT * FROM SYS_ORGANIZE t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  	<!-- (3-2)============================= selectByVOCount =================================== -->
+  	<select id="selectByVOCount" parameterType="SysOrganize" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_ORGANIZE t ]]>   
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+  	<!-- (3-3)============================= selectByPk =================================== -->
+  	<select id="selectByPk" parameterType="java.lang.String" resultMap="sysOrganizeResultMap">
+    	<![CDATA[ SELECT * FROM SYS_ORGANIZE WHERE ORG_CODE = #{orgCode} ]]>
+	</select>
+	
+	<!-- select organize information by parent org code -->
+	<select id="selectByParentOrgCode" parameterType="java.lang.String" resultMap="sysOrganizeResultMap">
+    	<![CDATA[ 
+    		WITH RECURSIVE r AS ( 
+					SELECT * FROM SYS_ORGANIZE WHERE  PARENT_ORG_CODE = #{parentOrgCode}
+			     union   ALL 
+			       SELECT SYS_ORGANIZE.* FROM SYS_ORGANIZE, r WHERE SYS_ORGANIZE.PARENT_ORG_CODE = r.ORG_CODE 
+			     ) 
+			SELECT * FROM r
+    	]]>
+	</select>
+  	
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysOrganize">
+		<![CDATA[
+		    INSERT INTO SYS_ORGANIZE
+		      (
+		      ORG_CODE,
+		      ORG_NAME,
+		      PARENT_ORG_CODE,
+		      STATUS,
+		      ORG_DESC,
+		      CREATER,
+		      CREATE_TIME,
+		      MODIFIER,
+		      MODIFY_TIME,
+		      REMARK
+		      )
+		    VALUES
+		      (			  
+				#{orgCode,jdbcType=VARCHAR},
+				#{orgName,jdbcType=VARCHAR},
+				#{parentOrgCode,jdbcType=VARCHAR},
+				#{status,jdbcType=VARCHAR},
+				#{orgDesc,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP},
+				#{modifier,jdbcType=VARCHAR},
+				#{modifyTime,jdbcType=TIMESTAMP},
+				#{remark,jdbcType=VARCHAR}
+		      )
+      	]]>
+  </insert>
+    
+  <!-- (5-1)============================= updateByVO =================================== -->
+  <update id="updateByVO" parameterType="SysOrganize">
+    <![CDATA[ UPDATE SYS_ORGANIZE ]]>
+	    <set>  		
+    		<![CDATA[ ORG_NAME = #{orgName,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ PARENT_ORG_CODE = #{parentOrgCode,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ STATUS = #{status,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ ORG_DESC = #{orgDesc,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ CREATER = #{creater,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}, ]]>
+    		<![CDATA[ MODIFIER = #{modifier,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}, ]]>
+    		<![CDATA[ REMARK = #{remark,jdbcType=VARCHAR} ]]>
+	    </set>  
+			WHERE ORG_CODE=#{orgCode}
+  	</update>
+  
+  	<!-- (5-2)============================= updateByVO2 =================================== -->
+  	<update id="updateByVoNotNull" parameterType="SysOrganize">
+    <![CDATA[ UPDATE SYS_ORGANIZE ]]>
+	    <set>  		
+    		<if test="orgName != null"><![CDATA[ ORG_NAME = #{orgName}, ]]></if>
+    		<if test="parentOrgCode != null"><![CDATA[ PARENT_ORG_CODE = #{parentOrgCode}, ]]></if>
+    		<if test="status != null"><![CDATA[ STATUS = #{status}, ]]></if>
+    		<if test="orgDesc != null"><![CDATA[ ORG_DESC = #{orgDesc}, ]]></if>
+    		<if test="creater != null"><![CDATA[ CREATER = #{creater}, ]]></if>
+    		<if test="createTime != null"><![CDATA[ CREATE_TIME = #{createTime}, ]]></if>
+    		<if test="modifier != null"><![CDATA[ MODIFIER = #{modifier}, ]]></if>
+    		<if test="modifyTime != null"><![CDATA[ MODIFY_TIME = #{modifyTime}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark} ]]></if>
+	    </set>  
+			WHERE ORG_CODE=#{orgCode}
+  </update>
+  
+  <!-- (5-3)============================= updateStatus =================================== -->
+  <update id="updateStatus" parameterType="map">
+    <![CDATA[ UPDATE SYS_ORGANIZE ]]>
+	    <set>
+		<![CDATA[  
+			STATUS = #{status,jdbcType=VARCHAR},
+			MODIFIER = #{modifier,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		]]>
+	    </set>  
+			WHERE ORG_CODE IN <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach>
+  </update>
+    
+  <!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    <![CDATA[ DELETE FROM SYS_ORGANIZE  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysOrganize">
+   <![CDATA[ DELETE FROM SYS_ORGANIZE WHERE 1=1  ]]>    			
+		<if test="orgCode != null"><![CDATA[ AND ORG_CODE = #{orgCode} ]]></if>
+		<if test="orgName != null"><![CDATA[ AND ORG_NAME = #{orgName} ]]></if>
+		<if test="parentOrgCode != null"><![CDATA[ AND PARENT_ORG_CODE = #{parentOrgCode} ]]></if>
+		<if test="status != null"><![CDATA[ AND STATUS = #{status} ]]></if>
+		<if test="orgDesc != null"><![CDATA[ AND ORG_DESC = #{orgDesc} ]]></if>
+		<if test="creater != null"><![CDATA[ AND CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND CREATE_TIME = #{createTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND MODIFIER = #{modifier} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="remark != null"><![CDATA[ AND REMARK = #{remark} ]]></if>
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_ORGANIZE WHERE ORG_CODE = #{orgCode} ]]>
+	</delete>
+	
+	<!-- (8)============================= deleteByPks =================================== -->
+	<delete id="deleteByPks" parameterType="java.util.List">
+   		<![CDATA[ DELETE FROM SYS_ORGANIZE WHERE ORG_CODE in ]]>
+   		<foreach collection="list" item = "model" open="(" separator="," close=")">#{model}  
+  
+    	</foreach>  
+	</delete>
+	
+		<!-- 根据主键去查询 -->
+	<select id="findMenuByparentId" parameterType="String" resultMap="childOrganizeMap">
+		select * from SYS_ORGANIZE where PARENT_ORG_CODE=#{parentOrgCode}
+	</select>
+		<!-- 查询菜单列表 -->
+	<select id="selectByMap" parameterType="map" resultMap="childOrganizeMap">
+	     <![CDATA[select * from 	SYS_ORGANIZE t WHERE 1=1]]>
+		<if test="OnorgCode != null"><![CDATA[ AND t.ORG_CODE IN ]]><foreach item="item" index="index" collection="OnorgCode" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="orgName !=null"> <![CDATA[ AND t.ORG_NAME =#{orgName} ]]></if>
+		<if test="orgCode !=null"> <![CDATA[ AND t.ORG_CODE =#{orgCode} ]]></if>
+		
+	</select>
+	
+	<select id="selectByMapCount" parameterType="map" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_ORGANIZE t where 1=1]]>
+		<if test="OnorgCode != null"><![CDATA[ AND t.ORG_CODE IN ]]><foreach item="item" index="index" collection="OnorgCode" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="orgName !=null"> <![CDATA[ AND t.ORG_NAME =#{orgName} ]]></if>
+		<if test="orgCode !=null"> <![CDATA[ AND t.ORG_CODE =#{orgCode} ]]></if>
+	</select>
+  
+</mapper>

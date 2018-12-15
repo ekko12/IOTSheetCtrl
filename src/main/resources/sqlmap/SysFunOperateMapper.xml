@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_FUN_OPERATE">
+	<resultMap type="SysFunOperate" id="sysFunOperateResultMap">
+		<id property="operateCode" column="OPERATE_CODE"/>   
+		<result property="menuCode" column="MENU_CODE"/>
+		<result property="operateType" column="OPERATE_TYPE"/>
+		<result property="operateDesc" column="OPERATE_DESC"/>
+		<result property="creater" column="CREATER"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="remark" column="REMARK"/>
+	</resultMap>
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams">  
+		<if test="operateCode != null"><![CDATA[ AND t.OPERATE_CODE = #{operateCode} ]]></if>
+		<if test="operateCodeGt != null"><![CDATA[ AND t.OPERATE_CODE > #{operateCodeGt} ]]></if>
+		<if test="operateCodeGte != null"><![CDATA[ AND t.OPERATE_CODE >= #{operateCodeGte} ]]></if>
+		<if test="operateCodeLt != null"><![CDATA[ AND t.OPERATE_CODE < #{operateCodeLt} ]]></if>
+		<if test="operateCodeLte != null"><![CDATA[ AND t.OPERATE_CODE <= #{operateCodeLte} ]]></if>
+		<if test="operateCodeIn != null"><![CDATA[ AND t.OPERATE_CODE IN ]]><foreach item="item" index="index" collection="operateCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="menuCodeLike != null"><![CDATA[ AND t.MENU_CODE LIKE '%' || #{menuCodeLike} || '%' ]]></if>
+		<if test="menuCodeStart != null"><![CDATA[ AND t.MENU_CODE LIKE #{menuCodeStart} || '%' ]]></if>
+		<if test="menuCodeEnd != null"><![CDATA[ AND t.MENU_CODE LIKE '%' || #{menuCodeEnd} ]]></if>
+		<if test="menuCodeIn != null"><![CDATA[ AND t.MENU_CODE IN ]]><foreach item="item" index="index" collection="menuCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="operateType != null"><![CDATA[ AND t.OPERATE_TYPE = #{operateType} ]]></if>
+		<if test="operateTypeLike != null"><![CDATA[ AND t.OPERATE_TYPE LIKE '%' || #{operateTypeLike} || '%' ]]></if>
+		<if test="operateTypeStart != null"><![CDATA[ AND t.OPERATE_TYPE LIKE #{operateTypeStart} || '%' ]]></if>
+		<if test="operateTypeEnd != null"><![CDATA[ AND t.OPERATE_TYPE LIKE '%' || #{operateTypeEnd} ]]></if>
+		<if test="operateTypeIn != null"><![CDATA[ AND t.OPERATE_TYPE IN ]]><foreach item="item" index="index" collection="operateTypeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="operateDesc != null"><![CDATA[ AND t.OPERATE_DESC = #{operateDesc} ]]></if>
+		<if test="operateDescLike != null"><![CDATA[ AND t.OPERATE_DESC LIKE '%' || #{operateDescLike} || '%' ]]></if>
+		<if test="operateDescStart != null"><![CDATA[ AND t.OPERATE_DESC LIKE #{operateDescStart} || '%' ]]></if>
+		<if test="operateDescEnd != null"><![CDATA[ AND t.OPERATE_DESC LIKE '%' || #{operateDescEnd} ]]></if>
+		<if test="operateDescIn != null"><![CDATA[ AND t.OPERATE_DESC IN ]]><foreach item="item" index="index" collection="operateDescIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="createrLike != null"><![CDATA[ AND t.CREATER LIKE '%' || #{createrLike} || '%' ]]></if>
+		<if test="createrStart != null"><![CDATA[ AND t.CREATER LIKE #{createrStart} || '%' ]]></if>
+		<if test="createrEnd != null"><![CDATA[ AND t.CREATER LIKE '%' || #{createrEnd} ]]></if>
+		<if test="createrIn != null"><![CDATA[ AND t.CREATER IN ]]><foreach item="item" index="index" collection="createrIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+		<if test="createTimeLike != null"><![CDATA[ AND t.CREATE_TIME LIKE '%' || #{createTimeLike} || '%' ]]></if>
+		<if test="createTimeStart != null"><![CDATA[ AND t.CREATE_TIME LIKE #{createTimeStart} || '%' ]]></if>
+		<if test="createTimeEnd != null"><![CDATA[ AND t.CREATE_TIME LIKE '%' || #{createTimeEnd} ]]></if>
+		<if test="createTimeIn != null"><![CDATA[ AND t.CREATE_TIME IN ]]><foreach item="item" index="index" collection="createTimeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+		<if test="remarkLike != null"><![CDATA[ AND t.REMARK LIKE '%' || #{remarkLike} || '%' ]]></if>
+		<if test="remarkStart != null"><![CDATA[ AND t.REMARK LIKE #{remarkStart} || '%' ]]></if>
+		<if test="remarkEnd != null"><![CDATA[ AND t.REMARK LIKE '%' || #{remarkEnd} ]]></if>
+		<if test="remarkIn != null"><![CDATA[ AND t.REMARK IN ]]><foreach item="item" index="index" collection="remarkIn" open="(" separator="," close=")">#{item}</foreach></if>
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="operateCode != null"><![CDATA[ AND t.OPERATE_CODE = #{operateCode} ]]></if>
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="operateType != null"><![CDATA[ AND t.OPERATE_TYPE = #{operateType} ]]></if>
+		<if test="operateDesc != null"><![CDATA[ AND t.OPERATE_DESC = #{operateDesc} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+  			<if test="item == 'operateCodeAsc'"><![CDATA[ t.OPERATE_CODE asc ]]></if>
+  			<if test="item == 'operateCodeDesc'"><![CDATA[ t.OPERATE_CODE desc ]]></if>
+  			<if test="item == 'menuCodeAsc'"><![CDATA[ t.MENU_CODE asc ]]></if>
+  			<if test="item == 'menuCodeDesc'"><![CDATA[ t.MENU_CODE desc ]]></if>
+  			<if test="item == 'operateTypeAsc'"><![CDATA[ t.OPERATE_TYPE asc ]]></if>
+  			<if test="item == 'operateTypeDesc'"><![CDATA[ t.OPERATE_TYPE desc ]]></if>
+  			<if test="item == 'operateDescAsc'"><![CDATA[ t.OPERATE_DESC asc ]]></if>
+  			<if test="item == 'operateDescDesc'"><![CDATA[ t.OPERATE_DESC desc ]]></if>
+  			<if test="item == 'createrAsc'"><![CDATA[ t.CREATER asc ]]></if>
+  			<if test="item == 'createrDesc'"><![CDATA[ t.CREATER desc ]]></if>
+  			<if test="item == 'createTimeAsc'"><![CDATA[ t.CREATE_TIME asc ]]></if>
+  			<if test="item == 'createTimeDesc'"><![CDATA[ t.CREATE_TIME desc ]]></if>
+  			<if test="item == 'remarkAsc'"><![CDATA[ t.REMARK asc ]]></if>
+  			<if test="item == 'remarkDesc'"><![CDATA[ t.REMARK desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysFunOperateResultMap">
+		<![CDATA[ SELECT * FROM SYS_FUN_OPERATE t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_FUN_OPERATE t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  <select id="selectByParams" parameterType="map" resultMap="sysFunOperateResultMap">
+		<![CDATA[ SELECT * FROM SYS_FUN_OPERATE t ]]>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+  </select>
+    
+  <!-- (2-2)============================= selectByParamsCount =================================== -->
+  <select id="selectByParamsCount" parameterType="map" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_FUN_OPERATE t ]]> 
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysFunOperate" resultMap="sysFunOperateResultMap">
+   	<![CDATA[ SELECT * FROM SYS_FUN_OPERATE t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  <!-- (3-2)============================= selectByVOCount =================================== -->
+  <select id="selectByVOCount" parameterType="SysFunOperate" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_FUN_OPERATE t ]]>   
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+  	
+  	<!-- (3-3)============================= selectByPk =================================== -->
+  	<select id="selectByPk" parameterType="java.lang.String" resultMap="sysFunOperateResultMap">
+    	<![CDATA[ SELECT * FROM SYS_FUN_OPERATE WHERE OPERATE_CODE=#{operateCode} ]]>
+	</select>
+	
+	<select id="selectByMenuCode" parameterType="java.lang.String" resultMap="sysFunOperateResultMap">
+    	<![CDATA[ SELECT * FROM SYS_FUN_OPERATE WHERE MENU_CODE = #{menuCode} ]]>
+	</select>
+	
+	<!-- select funOperate data by operId and menuCode -->
+	<select id="selectHasAuthFunOperateByMenuCodeAndOperId" parameterType="map" resultMap="sysFunOperateResultMap">
+    	<![CDATA[ 
+    		SELECT DISTINCT SFO.*
+			FROM SYS_FUN_OPERATE SFO,
+			SYS_ROLE_OPERATE SRO,
+			SYS_OPER_ROLE SOR
+		]]>
+		<where>
+			<![CDATA[
+				SFO.OPERATE_CODE = SRO.OPERATE_CODE 
+				AND SRO.ROLE_CODE = SOR.ROLE_CODE
+			   ]]>
+			<if test="menuCode != null"><![CDATA[  AND SFO.MENU_CODE = #{menuCode } ]]></if>
+			<if test="operId != null"><![CDATA[ AND SOR.OPER_ID = #{operId } ]]></if>
+		</where>
+	</select>
+  	
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysFunOperate">
+		<![CDATA[
+		    INSERT INTO SYS_FUN_OPERATE
+		      (
+		      OPERATE_CODE,
+		      MENU_CODE,
+		      OPERATE_TYPE,
+		      OPERATE_DESC,
+		      CREATER,
+		      CREATE_TIME,
+		      REMARK
+		      )
+		    VALUES
+		      (			  
+				#{operateCode,jdbcType=VARCHAR},
+				#{menuCode,jdbcType=VARCHAR},
+				#{operateType,jdbcType=VARCHAR},
+				#{operateDesc,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=VARCHAR},
+				#{remark,jdbcType=VARCHAR}
+		      )
+      	]]>
+  </insert>
+    
+  <!-- (5-1)============================= updateByVO =================================== -->
+  <update id="updateByVO" parameterType="SysFunOperate">
+    <![CDATA[ UPDATE SYS_FUN_OPERATE ]]>
+	    <set>  		
+    		<![CDATA[  
+					MENU_CODE = #{menuCode,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPERATE_TYPE = #{operateType,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPERATE_DESC = #{operateDesc,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					CREATER = #{creater,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					REMARK = #{remark,jdbcType=VARCHAR}
+    		]]>
+	    </set>  
+			WHERE OPERATE_CODE=#{operateCode}
+  </update>
+  
+  <!-- (5-2)============================= updateByVO2 =================================== -->
+  <update id="updateByVoNotNull" parameterType="SysFunOperate">
+    <![CDATA[ UPDATE SYS_FUN_OPERATE ]]>
+	    <set>  		
+    		<if test="menuCode != null"><![CDATA[ MENU_CODE = #{menuCode}, ]]></if>
+    		<if test="operateType != null"><![CDATA[ OPERATE_TYPE = #{operateType}, ]]></if>
+    		<if test="operateDesc != null"><![CDATA[ OPERATE_DESC = #{operateDesc}, ]]></if>
+    		<if test="creater != null"><![CDATA[ CREATER = #{creater}, ]]></if>
+    		<if test="createTime != null"><![CDATA[ CREATE_TIME = #{createTime}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark} ]]></if>
+	    </set>  
+			WHERE OPERATE_CODE=#{operateCode}
+  </update>
+    
+  	<!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    <![CDATA[ DELETE FROM SYS_FUN_OPERATE  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysFunOperate">
+   <![CDATA[ DELETE FROM SYS_FUN_OPERATE WHERE 1=1  ]]>    			
+		<if test="operateCode != null"><![CDATA[ AND OPERATE_CODE = #{operateCode} ]]></if>
+		<if test="menuCode != null"><![CDATA[ AND MENU_CODE = #{menuCode} ]]></if>
+		<if test="operateType != null"><![CDATA[ AND OPERATE_TYPE = #{operateType} ]]></if>
+		<if test="operateDesc != null"><![CDATA[ AND OPERATE_DESC = #{operateDesc} ]]></if>
+		<if test="creater != null"><![CDATA[ AND CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND CREATE_TIME = #{createTime} ]]></if>
+		<if test="remark != null"><![CDATA[ AND REMARK = #{remark} ]]></if>
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="java.lang.String">
+ 		<![CDATA[ DELETE FROM SYS_FUN_OPERATE WHERE OPERATE_CODE = #{operateCode} ]]>
+	</delete>
+	
+	<delete id="deleteByMenuCode" parameterType="java.lang.String">
+		<![CDATA[
+			DELETE FROM SYS_ROLE_OPERATE WHERE ROLE_OPE_REL_ID IN (
+			SELECT ROLE_OPE_REL_ID FROM SYS_FUN_OPERATE WHERE MENU_CODE = #{menuCode}
+			)
+		]]>
+	</delete>
+	<delete id="deleteByMenuCode2" parameterType="java.lang.String">
+		<![CDATA[
+			DELETE FROM SYS_FUN_OPERATE WHERE MENU_CODE = #{menuCode}
+		]]>
+	</delete>
+  
+	<!-- (9-1)============================= deleteByRoleCode =================================== -->
+	<delete id="deleteByRoleCode" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_ROLE_OPERATE WHERE ROLE_CODE = #{operId} ]]>
+	</delete>
+	
+	<!-- (9-2)============================= insertByVoRoleCode =================================== -->
+	<insert id="insertByVoRoleCode" parameterType="SysFunOperate">
+		<![CDATA[
+		    INSERT INTO SYS_ROLE_OPERATE
+		      (
+		      ROLE_CODE,
+		      OPERATE_CODE,
+		      CREATER,
+		      CREATE_TIME
+		      )
+		    VALUES
+		      (
+				#{operateDesc,jdbcType=VARCHAR},
+				#{operateCode,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP}
+		      )
+      	]]>
+  	</insert>
+</mapper>

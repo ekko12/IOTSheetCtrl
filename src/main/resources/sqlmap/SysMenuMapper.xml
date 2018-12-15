@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_MENU">
+	<resultMap type="SysMenu" id="sysMenuResultMap">
+		<id property="menuCode" column="MENU_CODE"/>   
+		<result property="menuName" column="MENU_NAME"/>
+		<result property="parentMenuCode" column="PARENT_MENU_CODE"/>
+		<result property="status" column="STATUS"/>
+		<result property="menuUri" column="MENU_URI"/>
+		<result property="menuDesc" column="MENU_DESC"/>
+		<result property="menuLayer" column="MENU_LAYER"/>
+		<result property="creater" column="CREATER"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="modifier" column="MODIFIER"/>
+		<result property="modifyTime" column="MODIFY_TIME"/>
+		<result property="reorder" column="REORDER"/>
+		<result property="remark" column="REMARK"/>
+	</resultMap>
+	
+	<resultMap type="SysMenu" id="menuResultMap" extends="sysMenuResultMap">
+		<result property="parentMenuName" column="PARENT_MENU_NAME"/>
+	</resultMap>
+
+	<resultMap type="SysMenu" id="childMenuMap" extends="sysMenuResultMap">
+		<result property="parentMenuName" column="PARENT_MENU_NAME"/>
+		<collection property="childMenus"  column="MENU_CODE " ofType="SysMenu"
+					select="findMenuByparentId"></collection>
+	</resultMap>
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams">  
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="menuCodeLike != null"><![CDATA[ AND t.MENU_CODE LIKE '%' || #{menuCodeLike} || '%' ]]></if>
+		<if test="menuCodeIn != null"><![CDATA[ AND t.MENU_CODE IN ]]><foreach item="item" index="index" collection="menuCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="menuName != null"><![CDATA[ AND t.MENU_NAME = #{menuName} ]]></if>
+		<if test="menuNameLike != null"><![CDATA[ AND t.MENU_NAME LIKE CONCAT(CONCAT('%', #{menuNameLike}), '%') ]]></if>
+		<if test="parentMenuCode != null"><![CDATA[ AND t.PARENT_MENU_CODE = #{parentMenuCode} ]]></if>
+		<if test="parentMenuCodeNot != null"><![CDATA[ AND t.PARENT_MENU_CODE != #{parentMenuCodeNot} ]]></if>
+		<if test="parentMenuCodeLike != null"><![CDATA[ AND t.PARENT_MENU_CODE LIKE '%' || #{parentMenuCodeLike} || '%' ]]></if>
+		<if test="parentMenuCodeIn != null"><![CDATA[ AND t.PARENT_MENU_CODE IN ]]><foreach item="item" index="index" collection="parentMenuCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="menuUri != null"><![CDATA[ AND t.MENU_URI = #{menuUri} ]]></if>
+		<if test="menuUriLike != null"><![CDATA[ AND t.MENU_URI LIKE '%' || #{menuUriLike} || '%' ]]></if>
+		<if test="menuLayer != null"><![CDATA[ AND t.MENU_LAYER = #{menuLayer} ]]></if>
+		<if test="createTimeGt != null"><![CDATA[ AND t.CREATE_TIME > #{createTimeGt} ]]></if>
+		<if test="createTimeGte != null"><![CDATA[ AND t.CREATE_TIME >= #{createTimeGte} ]]></if>
+		<if test="createTimeLt != null"><![CDATA[ AND t.CREATE_TIME < #{createTimeLt} ]]></if>
+		<if test="createTimeLte != null"><![CDATA[ AND t.CREATE_TIME <= #{createTimeLte} ]]></if>
+		<if test="modifyTimeGt != null"><![CDATA[ AND t.MODIFY_TIME > #{modifyTimeGt} ]]></if>
+		<if test="modifyTimeGte != null"><![CDATA[ AND t.MODIFY_TIME >= #{modifyTimeGte} ]]></if>
+		<if test="modifyTimeLt != null"><![CDATA[ AND t.MODIFY_TIME < #{modifyTimeLt} ]]></if>
+		<if test="modifyTimeLte != null"><![CDATA[ AND t.MODIFY_TIME <= #{modifyTimeLte} ]]></if>
+		<if test="reorder != null"><![CDATA[ AND t.REORDER = #{reorder} ]]></if>
+		<if test="roleCode != null">
+			<![CDATA[ AND EXISTS (SELECT ra.MENU_CODE FROM SYS_ROLE_AUTH ra WHERE ra.ROLE_CODE = #{roleCode} ) ]]>
+		</if>
+	</sql>
+	
+	<sql id="queryMenusByParams">  
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="menuCodeLike != null"><![CDATA[ AND t.MENU_CODE LIKE '%' || #{menuCodeLike} || '%' ]]></if>
+		<if test="menuName != null"><![CDATA[ AND t.MENU_NAME = #{menuName} ]]></if>
+		<if test="menuNameLike != null"><![CDATA[ AND t.MENU_NAME LIKE '%' || #{menuNameLike} || '%' ]]></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<!-- parentMenuCode last
+		<if test="parentMenuCode != null"><![CDATA[ START WITH t.PARENT_MENU_CODE = #{parentMenuCode} CONNECT BY PRIOR t.MENU_CODE = t.PARENT_MENU_CODE ]]></if> -->
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="menuName != null"><![CDATA[ AND t.MENU_NAME = #{menuName} ]]></if>
+		<if test="parentMenuCode != null"><![CDATA[ AND t.PARENT_MENU_CODE = #{parentMenuCode} ]]></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="menuUri != null"><![CDATA[ AND t.MENU_URI = #{menuUri} ]]></if>
+		<if test="menuDesc != null"><![CDATA[ AND t.MENU_DESC = #{menuDesc} ]]></if>
+		<if test="menuLayer != null"><![CDATA[ AND t.MENU_LAYER = #{menuLayer} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND t.MODIFIER = #{modifier} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND t.MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="reorder != null"><![CDATA[ AND t.REORDER = #{reorder} ]]></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+  			<if test="item == 'menuCodeAsc'"><![CDATA[ t.MENU_CODE asc ]]></if>
+  			<if test="item == 'menuCodeDesc'"><![CDATA[ t.MENU_CODE desc ]]></if>
+  			<if test="item == 'menuNameAsc'"><![CDATA[ t.MENU_NAME asc ]]></if>
+  			<if test="item == 'menuNameDesc'"><![CDATA[ t.MENU_NAME desc ]]></if>
+  			<if test="item == 'parentMenuCodeAsc'"><![CDATA[ t.PARENT_MENU_CODE asc ]]></if>
+  			<if test="item == 'parentMenuCodeDesc'"><![CDATA[ t.PARENT_MENU_CODE desc ]]></if>
+  			<if test="item == 'statusAsc'"><![CDATA[ t.STATUS asc ]]></if>
+  			<if test="item == 'statusDesc'"><![CDATA[ t.STATUS desc ]]></if>
+  			<if test="item == 'menuUriAsc'"><![CDATA[ t.MENU_URI asc ]]></if>
+  			<if test="item == 'menuUriDesc'"><![CDATA[ t.MENU_URI desc ]]></if>
+  			<if test="item == 'menuDescAsc'"><![CDATA[ t.MENU_DESC asc ]]></if>
+  			<if test="item == 'menuDescDesc'"><![CDATA[ t.MENU_DESC desc ]]></if>
+  			<if test="item == 'menuLayerAsc'"><![CDATA[ t.MENU_LAYER asc ]]></if>
+  			<if test="item == 'menuLayerDesc'"><![CDATA[ t.MENU_LAYER desc ]]></if>
+  			<if test="item == 'createrAsc'"><![CDATA[ t.CREATER asc ]]></if>
+  			<if test="item == 'createrDesc'"><![CDATA[ t.CREATER desc ]]></if>
+  			<if test="item == 'createTimeAsc'"><![CDATA[ t.CREATE_TIME asc ]]></if>
+  			<if test="item == 'createTimeDesc'"><![CDATA[ t.CREATE_TIME desc ]]></if>
+  			<if test="item == 'modifierAsc'"><![CDATA[ t.MODIFIER asc ]]></if>
+  			<if test="item == 'modifierDesc'"><![CDATA[ t.MODIFIER desc ]]></if>
+  			<if test="item == 'modifyTimeAsc'"><![CDATA[ t.MODIFY_TIME asc ]]></if>
+  			<if test="item == 'modifyTimeDesc'"><![CDATA[ t.MODIFY_TIME desc ]]></if>
+  			<if test="item == 'reorderAsc'"><![CDATA[ t.REORDER asc ]]></if>
+  			<if test="item == 'reorderDesc'"><![CDATA[ t.REORDER desc ]]></if>
+  			<if test="item == 'remarkAsc'"><![CDATA[ t.REMARK asc ]]></if>
+  			<if test="item == 'remarkDesc'"><![CDATA[ t.REMARK desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysMenuResultMap">
+		<![CDATA[ SELECT * FROM SYS_MENU t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_MENU t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  	<select id="selectByParams" parameterType="map" resultMap="menuResultMap">
+		<![CDATA[ SELECT t.*, (SELECT m.MENU_NAME FROM SYS_MENU m 
+			WHERE t.PARENT_MENU_CODE=m.MENU_CODE) PARENT_MENU_NAME FROM SYS_MENU t
+		]]>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+  	</select>
+  	<!-- (2-2)============================= selectByParamsCount =================================== -->
+  	<select id="selectByParamsCount" parameterType="map" resultType="int">
+   		<![CDATA[ SELECT COUNT(*) FROM SYS_MENU t ]]> 
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+	
+	
+	<!-- (2-1-1)============================= selectMenusByParams =================================== -->
+  	<select id="selectMenusByParams" parameterType="map" resultMap="menuResultMap">
+  		
+  		<if test="parentMenuCode != null">
+			select * from (select * from SYS_MENU where PARENT_MENU_CODE =  #{parentMenuCode}) t
+		</if>
+  		<if test="parentMenuCode == null">
+			<![CDATA[
+				SELECT t.*, (SELECT m.MENU_NAME FROM SYS_MENU m
+				WHERE t.PARENT_MENU_CODE=m.MENU_CODE) PARENT_MENU_NAME FROM SYS_MENU t
+			]]>
+		</if>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="queryMenusByParams" />
+		</where>
+  	</select>
+  	<!-- (2-1-2)============================= selectMenusByParamsCount =================================== -->
+  	<select id="selectMenusByParamsCount" parameterType="map" resultType="int"> 
+   		<if test="parentMenuCode != null">
+
+			select count(1) from ( select * from SYS_MENU where PARENT_MENU_CODE =  #{parentMenuCode} ) t
+
+  		</if>
+		<if test="parentMenuCode == null">
+		<![CDATA[
+				SELECT COUNT(*) FROM SYS_MENU t
+		]]>
+		</if>
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="queryMenusByParams" />
+		</where>
+	</select>
+	
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysMenu" resultMap="sysMenuResultMap">
+   	<![CDATA[ SELECT * FROM SYS_MENU t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  <!-- (3-2)============================= selectByVOCount =================================== -->
+  <select id="selectByVOCount" parameterType="SysMenu" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_MENU t ]]>   
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+  	
+  	<!-- (3-3)============================= selectByPk =================================== -->
+  	<select id="selectByPk" parameterType="java.lang.String" resultMap="menuResultMap">
+   		<![CDATA[ 
+   			SELECT t.*, (SELECT m.MENU_NAME FROM SYS_MENU m 
+			WHERE t.PARENT_MENU_CODE = m.MENU_CODE) PARENT_MENU_NAME
+			FROM SYS_MENU t WHERE MENU_CODE=#{menuCode}
+   		]]>
+	</select>
+	
+	<!-- select menu information by parentMenuCode -->
+	<select id="selectByParentMenuCode" parameterType="java.lang.String" resultMap="childMenuMap">
+   		<![CDATA[
+   			select * from SYS_MENU where PARENT_MENU_CODE =  #{parentMenuCode}
+   		]]>
+	</select>
+	
+	<!-- select menu information by operator id -->
+	<select id="selectByOperId" parameterType="map" resultMap="sysMenuResultMap">
+		
+		<![CDATA[
+			SELECT * FROM SYS_MENU  t JOIN (
+			SELECT DISTINCT SRM.MENU_CODE
+			FROM SYS_OPER_ROLE SOR,
+			SYS_ROLE_MENU SRM
+			WHERE SOR.ROLE_CODE = SRM.ROLE_CODE
+	   ]]>
+	   
+		<if test="operId != null"><![CDATA[ AND SOR.OPER_ID = #{operId} ]]></if>
+		<![CDATA[
+			) P ON t.MENU_CODE = P.MENU_CODE
+		    WHERE 1=1 
+		]]>  
+		
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="parentMenuCode != null"><![CDATA[ AND t.PARENT_MENU_CODE = #{parentMenuCode} ]]></if>
+		<include refid="orderByFragment" />
+	</select>
+  	
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysMenu">
+		<![CDATA[
+		    INSERT INTO SYS_MENU
+		      (
+		      MENU_CODE,
+		      MENU_NAME,
+		      PARENT_MENU_CODE,
+		      STATUS,
+		      MENU_URI,
+		      MENU_DESC,
+		      MENU_LAYER,
+		      CREATER,
+		      CREATE_TIME,
+		      MODIFIER,
+		      MODIFY_TIME,
+		      REORDER,
+		      REMARK
+		      )
+		    VALUES
+		      (	#{menuCode,jdbcType=VARCHAR},
+				#{menuName,jdbcType=VARCHAR},
+				#{parentMenuCode,jdbcType=VARCHAR},
+				#{status,jdbcType=CHAR},
+				#{menuUri,jdbcType=VARCHAR},
+				#{menuDesc,jdbcType=VARCHAR},
+				#{menuLayer,jdbcType=DECIMAL},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP},
+				#{modifier,jdbcType=VARCHAR},
+				#{modifyTime,jdbcType=TIMESTAMP},
+				#{reorder,jdbcType=DECIMAL},
+				#{remark,jdbcType=VARCHAR}
+		      )
+      	]]>
+  	</insert>
+    
+  	<!-- (5-1)============================= updateByVO =================================== -->
+  	<update id="updateByVO" parameterType="SysMenu">
+    	<![CDATA[ UPDATE SYS_MENU ]]>
+	    <set>  		
+    		<![CDATA[  
+					MENU_NAME = #{menuName,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					PARENT_MENU_CODE = #{parentMenuCode,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					STATUS = #{status,jdbcType=CHAR},
+    		]]>
+    		<![CDATA[  
+					MENU_URI = #{menuUri,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					MENU_DESC = #{menuDesc,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					MENU_LAYER = #{menuLayer,jdbcType=DECIMAL},
+    		]]>
+    		<![CDATA[  
+					CREATER = #{creater,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					MODIFIER = #{modifier,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					REORDER = #{reorder,jdbcType=DECIMAL},
+    		]]>
+    		<![CDATA[  
+					REMARK = #{remark,jdbcType=VARCHAR}
+    		]]>
+	    </set>  
+			WHERE MENU_CODE=#{menuCode}
+  	</update>
+  
+  	<!-- (5-2)============================= updateByVO2 =================================== -->
+  	<update id="updateByVoNotNull" parameterType="SysMenu">
+    	<![CDATA[ UPDATE SYS_MENU ]]>
+	    <set>  		
+    		<if test="menuName != null"><![CDATA[ MENU_NAME = #{menuName}, ]]></if>
+    		<if test="parentMenuCode != null"><![CDATA[ PARENT_MENU_CODE = #{parentMenuCode}, ]]></if>
+    		<if test="status != null"><![CDATA[ STATUS = #{status}, ]]></if>
+    		<if test="menuUri != null"><![CDATA[ MENU_URI = #{menuUri}, ]]></if>
+    		<if test="menuDesc != null"><![CDATA[ MENU_DESC = #{menuDesc}, ]]></if>
+    		<if test="menuLayer != null"><![CDATA[ MENU_LAYER = #{menuLayer}, ]]></if>
+    		<if test="creater != null"><![CDATA[ CREATER = #{creater}, ]]></if>
+    		<if test="createTime != null"><![CDATA[ CREATE_TIME = #{createTime}, ]]></if>
+    		<if test="modifier != null"><![CDATA[ MODIFIER = #{modifier}, ]]></if>
+    		<if test="modifyTime != null"><![CDATA[ MODIFY_TIME = #{modifyTime}, ]]></if>
+    		<if test="reorder != null"><![CDATA[ REORDER = #{reorder}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark} ]]></if>
+	    </set>  
+			WHERE MENU_CODE=#{menuCode}
+  	</update>
+  
+  	<!-- (5-3)============================= updateStatus =================================== -->
+  	<update id="updateStatus" parameterType="map">
+    	<![CDATA[ UPDATE SYS_MENU ]]>
+	    <set>
+		<![CDATA[  
+			STATUS = #{status,jdbcType=VARCHAR},
+			MODIFIER = #{modifier,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		]]>
+	    </set>  
+			WHERE MENU_CODE IN <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach>
+  	</update>
+  	
+  	<!-- update menu status by parentMenuCode -->
+  	<update id="updateStatusByParentMenuCode" parameterType="map">
+    	<![CDATA[ UPDATE SYS_MENU ]]>
+	    <set>
+		<![CDATA[  
+			STATUS = #{status,jdbcType=VARCHAR},
+			MODIFIER = #{modifier,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP} 
+		]]>
+	    </set> 
+	    	WHERE MENU_CODE IN 
+	       (
+	       
+	        WITH  r (MENU_CODE,MENU_NAME,PARENT_MENU_CODE) AS (
+					SELECT MENU_CODE,MENU_NAME,PARENT_MENU_CODE FROM SYS_MENU WHERE PARENT_MENU_CODE IN <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach>
+			     union   ALL 
+			       SELECT SYS_MENU.MENU_CODE,SYS_MENU.MENU_NAME,SYS_MENU.PARENT_MENU_CODE FROM SYS_MENU, r WHERE SYS_MENU.PARENT_MENU_CODE = r.MENU_CODE
+			     ) 
+			SELECT r.MENU_CODE FROM r
+	        )
+  	</update>
+    
+  	<!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    	<![CDATA[ DELETE FROM SYS_MENU  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysMenu">
+   		<![CDATA[ DELETE FROM SYS_MENU WHERE 1=1  ]]>    			
+		<if test="menuCode != null"><![CDATA[ AND MENU_CODE = #{menuCode} ]]></if>
+		<if test="menuName != null"><![CDATA[ AND MENU_NAME = #{menuName} ]]></if>
+		<if test="parentMenuCode != null"><![CDATA[ AND PARENT_MENU_CODE = #{parentMenuCode} ]]></if>
+		<if test="status != null"><![CDATA[ AND STATUS = #{status} ]]></if>
+		<if test="menuUri != null"><![CDATA[ AND MENU_URI = #{menuUri} ]]></if>
+		<if test="menuDesc != null"><![CDATA[ AND MENU_DESC = #{menuDesc} ]]></if>
+		<if test="menuLayer != null"><![CDATA[ AND MENU_LAYER = #{menuLayer} ]]></if>
+		<if test="creater != null"><![CDATA[ AND CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND CREATE_TIME = #{createTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND MODIFIER = #{modifier} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="reorder != null"><![CDATA[ AND REORDER = #{reorder} ]]></if>
+		<if test="remark != null"><![CDATA[ AND REMARK = #{remark} ]]></if>
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_MENU WHERE MENU_CODE = #{menuCode} ]]>
+	</delete>
+	
+	<!-- select system menu information by roleCode -->
+	<select id="selectByRoleCode" parameterType="java.lang.String" resultMap="sysMenuResultMap">
+		<![CDATA[
+			SELECT DISTINCT t.* FROM SYS_MENU t, SYS_ROLE_MENU srm
+			WHERE t.MENU_CODE = srm.MENU_CODE
+			AND srm.ROLE_CODE = #{roleCode}
+   		]]>
+	</select>
+
+	<select id="findMenuAll" resultMap="childMenuMap">
+		select * from SYS_MENU where PARENT_MENU_CODE='-1'
+	</select>
+
+	<!-- 根据组件去查询 -->
+	<select id="findMenuByparentId" parameterType="String" resultMap="childMenuMap">
+		select * from SYS_MENU where PARENT_MENU_CODE=#{menuCode}
+	</select>
+
+	<!-- 查询菜单列表 -->
+	<select id="selectByMap" parameterType="map" resultMap="childMenuMap">
+		<![CDATA[select t.*,(SELECT m.MENU_NAME FROM SYS_MENU m
+			WHERE t.PARENT_MENU_CODE=m.MENU_CODE) PARENT_MENU_NAME from SYS_MENU t where 1=1]]>
+		<if test="menuName !=null"> <![CDATA[ AND t.MENU_NAME =#{menuName} ]]></if>
+		<if test="menuCode !=null"> <![CDATA[ AND t.PARENT_MENU_CODE=#{menuCode} OR t.MENU_CODE=#{menuCode}]]></if>
+	</select>
+
+	<select id="selectByMapCount" parameterType="map" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_MENU t where 1=1]]>
+		<if test="menuName !=null"> <![CDATA[ AND t.MENU_NAME =#{menuName} ]]></if>
+		<if test="menuCode !=null"> <![CDATA[ AND t.PARENT_MENU_CODE=#{menuCode} OR t.MENU_CODE=#{menuCode} ]]></if>
+	</select>
+</mapper>

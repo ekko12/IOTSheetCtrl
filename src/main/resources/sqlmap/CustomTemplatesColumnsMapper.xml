@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CUSTOM_TEMPLATES_COLUMNS">
+	
+	<!-- 批量插入多个自定义模板列信息对象 -->
+	<insert id="insertBatchCustomTemplatesColumns" parameterType="java.util.List" >
+		
+		    INSERT INTO CUSTOM_TEMPLATES_COLUMNS
+			(
+				TEMPLATE_ID,
+				COLUMN_CODE,
+				CREATER,
+				CREATE_TIME,
+				MODIFIER,
+				MODIFY_TIME,
+				REMARK
+			)
+		    VALUES
+		    <foreach collection="list" item="item" index="index" separator=",">
+				(
+					#{item.templateId,jdbcType=VARCHAR},	  
+					#{item.columnCode,jdbcType=VARCHAR},
+					#{item.creater,jdbcType=VARCHAR},
+					#{item.createTime,jdbcType=TIMESTAMP},
+					#{item.modifier,jdbcType=VARCHAR},
+					#{item.modifyTime,jdbcType=TIMESTAMP},
+					#{item.remark,jdbcType=VARCHAR}
+				)
+			</foreach>
+      	
+	</insert>
+  
+ 	<!-- 插入一个自定义模板列信息对象 -->
+	<insert id="insertCustomTemplatesColumns" parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplatesColumns" >
+		<![CDATA[
+		    INSERT INTO CUSTOM_TEMPLATES_COLUMNS
+			(
+				TEMPLATE_ID,
+				TABLE_CODE,
+				COLUMN_CODE,
+				CREATER,
+				CREATE_TIME,
+				MODIFIER,
+				MODIFY_TIME,
+				REMARK
+			)
+		    VALUES
+			(
+				#{templateId,jdbcType=VARCHAR},	  
+				#{tableCode,jdbcType=VARCHAR},
+				#{columnCode,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP},
+				#{modifier,jdbcType=VARCHAR},
+				#{modifyTime,jdbcType=TIMESTAMP},
+				#{remark,jdbcType=VARCHAR}
+			)
+		]]>
+	</insert>
+	
+	<!-- 根据自定义模板编号删除自定义模板与列关系信息 -->
+	<delete id="deleteCustomTemplatesColumnsByTemplateId" parameterType="java.lang.String" >
+		<![CDATA[
+		    DELETE FROM 
+		    	CUSTOM_TEMPLATES_COLUMNS 
+		    WHERE 
+		    	TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
+		]]>
+	</delete>
+	
+</mapper>

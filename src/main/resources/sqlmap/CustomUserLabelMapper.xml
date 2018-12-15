@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CUSTOM_USER_LABLE">
+  <resultMap id="CustomUserLableInfo" type="com.chinauicom.research.iotoperation.customUserLable.entity.CustomUserLabel">
+    <result column="LABEL_TYPE" jdbcType="VARCHAR" property="labelType" />
+    <result column="LABEL_score" jdbcType="VARCHAR" property="labelScore" />
+    <result column="LABEL_name" jdbcType="VARCHAR" property="labelName" />
+    <result column="suggestion" jdbcType="VARCHAR" property="suggestion" />
+  </resultMap>
+  <insert id="insert" parameterType="com.chinauicom.research.iotoperation.customUserLable.entity.CustomUserLabel">
+    insert into custom_user_label (LABEL_TYPE, LABEL_score, LABEL_name, 
+      suggestion)
+    values (#{labelType,jdbcType=VARCHAR}, #{labelScore,jdbcType=VARCHAR}, #{labelName,jdbcType=VARCHAR}, 
+      #{suggestion,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="CustomUserLableInfo">
+    select LABEL_TYPE, LABEL_score, LABEL_name, suggestion
+    from custom_user_label
+  </select>
+</mapper>

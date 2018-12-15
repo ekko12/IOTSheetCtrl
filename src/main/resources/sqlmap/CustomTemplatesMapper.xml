@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CUSTOM_TEMPLATES">
+		
+	<!-- 根据用户ID查询自定义模板信息列表 -->
+	<select id="selectByOperId" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates">
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_TEMPLATES 
+			WHERE 
+				OPER_ID = #{operId,jdbcType=VARCHAR}
+		]]>
+				<if test="keywordTemplateName != null and keywordTemplateName != '' "> 
+					<![CDATA[ AND TEMPLATE_NAME LIKE CONCAT(CONCAT('%', #{keywordTemplateName, jdbcType=VARCHAR}),'%') ]]>
+	        	</if>  
+	        	<if test="keywordStatus != null and keywordStatus != '' ">  
+	            	<![CDATA[ AND STATUS = #{keywordStatus, jdbcType=VARCHAR} ]]>
+	        	</if> 
+	        	<if test="keywordTableCode != null and keywordTableCode != '' ">  
+	            	<![CDATA[ AND TABLE_CODE = #{keywordTableCode, jdbcType=VARCHAR} ]]>
+	        	</if> 
+	    <![CDATA[ 
+			ORDER BY 
+				CREATE_TIME DESC
+		]]>
+	</select>
+	
+	<!-- 根据用户ID查询自定义模板信息列表Count -->
+	<select id="selectByOperIdCount" resultType="int" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates">
+		<![CDATA[ 
+			SELECT 
+				count(0) 
+			FROM 
+				CUSTOM_TEMPLATES 
+			WHERE 
+				OPER_ID = #{operId,jdbcType=VARCHAR}
+		]]>
+				<if test="keywordTemplateName != null and keywordTemplateName != '' "> 
+					<![CDATA[ AND TEMPLATE_NAME LIKE CONCAT(CONCAT('%', #{keywordTemplateName, jdbcType=VARCHAR}),'%') ]]>
+	        	</if>  
+	        	<if test="keywordStatus != null and keywordStatus != '' ">  
+	            	<![CDATA[ AND STATUS = #{keywordStatus, jdbcType=VARCHAR} ]]>
+	        	</if> 
+	        	<if test="keywordTableCode != null and keywordTableCode != '' ">  
+	            	<![CDATA[ AND TABLE_CODE = #{keywordTableCode, jdbcType=VARCHAR} ]]>
+	        	</if> 
+	    <![CDATA[ 
+			ORDER BY 
+				CREATE_TIME DESC
+		]]>
+	</select>
+	
+	<!-- 根据主键查询自定义模板信息 -->
+	<select id="selectByPk" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" 
+			parameterType="java.lang.String">
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_TEMPLATES 
+			WHERE 
+				TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
+		]]>
+	</select>
+	
+	<!-- 插入一条自定义模板信息对象 -->
+	<insert id="insertCustomTemplates" parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" >
+		<![CDATA[
+		    INSERT INTO CUSTOM_TEMPLATES
+			(
+				TEMPLATE_ID,
+				TEMPLATE_NAME,
+				STATUS,
+				TABLE_CODE,
+				TEMPLATE_DESC,
+				OPER_ID,
+				CREATER,
+				CREATE_TIME,
+				MODIFIER,
+				MODIFY_TIME,
+				REORDER,
+				REMARK
+			)
+		    VALUES
+			(
+				#{templateId,jdbcType=VARCHAR},	  
+				#{templateName,jdbcType=VARCHAR},
+				#{status,jdbcType=VARCHAR},
+				#{tableCode,jdbcType=VARCHAR},
+				#{templateDesc,jdbcType=VARCHAR},
+				#{operId,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP},
+				#{modifier,jdbcType=VARCHAR},
+				#{modifyTime,jdbcType=TIMESTAMP},
+				0,
+				#{remark,jdbcType=VARCHAR}
+			)
+      	]]>
+	</insert>
+
+	<!-- 修改一条用户自定义模板信息 -->
+	<update id="updateCustomTemplates" parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" >
+		<![CDATA[
+		    UPDATE CUSTOM_TEMPLATES SET 
+		    	TEMPLATE_NAME = #{templateName,jdbcType=VARCHAR},
+		    	STATUS = #{status,jdbcType=VARCHAR},
+		    	TEMPLATE_DESC = #{templateDesc,jdbcType=VARCHAR},
+		    	MODIFIER = #{operId,jdbcType=VARCHAR},
+		    	MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP} 
+		    WHERE 
+		    	TEMPLATE_ID = #{templateId,jdbcType=VARCHAR} 
+		    AND 
+		    	OPER_ID = #{operId,jdbcType=VARCHAR}
+      	]]>
+	</update>
+	
+	<!-- 累加一条用户自定义模板使用次数 -->
+	<update id="addUpTemplateUseCount" parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" >
+		<![CDATA[
+		
+			UPDATE CUSTOM_TEMPLATES SET 
+		    	REORDER = REORDER + 1 
+		    WHERE 
+		    	TEMPLATE_ID = #{templateId,jdbcType=VARCHAR} 
+		    AND 
+		    	OPER_ID = #{operId,jdbcType=VARCHAR} 
+      	]]>
+	</update>
+	
+	<!-- 删除一条用户自定义模板信息 -->
+	<delete id="deleteCustomTemplates" parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" >
+		<![CDATA[
+		    DELETE FROM 
+		    	CUSTOM_TEMPLATES 
+		    WHERE 
+		    	TEMPLATE_ID = #{templateId,jdbcType=VARCHAR} 
+		    AND 
+		    	OPER_ID = #{operId,jdbcType=VARCHAR}
+      	]]>
+	</delete>	
+	
+	<!-- 根据用户ID查询有效自定义模板信息列表 -->
+	<select id="selectValidCustomTemplatesListByOperId" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates">
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_TEMPLATES 
+			WHERE 
+				OPER_ID = #{operId,jdbcType=VARCHAR}
+			AND 
+				TABLE_CODE = #{tableCode,jdbcType=VARCHAR}
+			AND 
+				STATUS = '1'
+			ORDER BY 
+				REORDER DESC
+		]]>
+	</select>
+	
+	<!-- 根据模板编号查询用户有效自定义列信息列表,注：这里只取非父节点列 -->
+	<select id="selectUserValidCustomColumnsListByTemplateId" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates">
+		<![CDATA[ ./.
+			SELECT 
+				COLUMN_CODE,
+				COLUMN_NAME
+			FROM (
+				SELECT
+					c.COLUMN_CODE AS COLUMN_CODE,
+					c.COLUMN_NAME AS COLUMN_NAME,
+					c.REORDER AS REORDER
+				FROM 
+					custom_templates a
+				LEFT JOIN 
+					custom_templates_columns b
+				ON 
+					a.TEMPLATE_ID = b.TEMPLATE_ID
+				LEFT JOIN 
+					custom_columns c
+				ON 
+					b.COLUMN_CODE = c.COLUMN_CODE AND c.PARENT_COLUMN_CODE <> '-1' 
+				WHERE 
+					a.TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
+				AND 
+					a.STATUS = '1' 
+				AND 
+					a.OPER_ID = #{operId,jdbcType=VARCHAR}) d 
+			WHERE 
+				d.COLUMN_CODE IS NOT NULL 
+			ORDER BY REORDER
+		]]>
+	</select>
+	
+	<!-- 根据模板编号查询用户指定有效自定义模板的目标列信息列表 -->
+	<select id="selectUserCustomTemplateTargetColumnListByTemplateId" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomTemplates">
+		<![CDATA[ 
+				SELECT DISTINCT 
+					c.COLUMN_CODE AS COLUMN_CODE,
+					c.COLUMN_NAME AS COLUMN_NAME
+				FROM 
+					custom_templates a
+				LEFT JOIN 
+					custom_templates_columns b
+				ON 
+					a.TEMPLATE_ID = b.TEMPLATE_ID
+				AND 
+					a.TABLE_CODE = b.TABLE_CODE
+				LEFT JOIN 
+					custom_columns c
+				ON 
+					b.COLUMN_CODE = c.COLUMN_CODE 
+				WHERE 
+					a.TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
+				AND 
+					a.STATUS = '1' 
+				AND 
+					a.OPER_ID = #{operId,jdbcType=VARCHAR}
+				AND 
+					c.FLAG = '0'
+				ORDER BY c.REORDER;
+		]]>
+	</select>
+</mapper>

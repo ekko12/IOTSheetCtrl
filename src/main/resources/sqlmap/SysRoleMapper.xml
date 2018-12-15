@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_ROLE">
+	<resultMap type="SysRole" id="sysRoleResultMap">
+		<id property="roleCode" column="ROLE_CODE"/>   
+		<result property="roleName" column="ROLE_NAME"/>
+		<result property="status" column="STATUS"/>
+		<result property="roleDesc" column="ROLE_DESC"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="creater" column="CREATER"/>
+		<result property="modifyTime" column="MODIFY_TIME"/>
+		<result property="modifier" column="MODIFIER"/>
+		<result property="remark" column="REMARK"/>
+		<result property="roleType" column="ROLE_TYPE"/>
+	</resultMap>
+	<resultMap id="sysOperRoleMap" type="SysOperRole">
+		<id property="operRoleRelId" column="OPER_ROLE_REL_ID"></id>
+		<result property="operId" column="OPER_ID"></result>
+		<result property="roleCode" column="ROLE_CODE"></result>
+		<result property="creater" column="CREATER"></result>
+		<result property="createTime" column="CREATE_TIME"></result>
+		<result property="remark" column="REMARK"></result>
+		<result property="roleName" column="ROLE_NAME"></result>
+	</resultMap>
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams">  
+		<if test="roleCode != null"><![CDATA[ AND t.ROLE_CODE = #{roleCode} ]]></if>
+		<if test="roleCodeLike != null"><![CDATA[ AND t.ROLE_CODE LIKE CONCAT(CONCAT('%', #{roleCodeLike}), '%') ]]></if>
+		<if test="roleCodeIn != null"><![CDATA[ AND t.ROLE_CODE IN ]]><foreach item="item" index="index" collection="roleCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="roleCodeNotIn != null"><![CDATA[ AND t.ROLE_CODE NOT IN ]]><foreach item="item" index="index" collection="roleCodeNotIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="roleName != null"><![CDATA[ AND t.ROLE_NAME = #{roleName} ]]></if>
+		<if test="roleNameLike != null"><![CDATA[ AND t.ROLE_NAME LIKE CONCAT(CONCAT('%', #{roleNameLike}), '%') ]]></if>
+		<if test="roleNameIn != null"><![CDATA[ AND t.ROLE_NAME IN ]]><foreach item="item" index="index" collection="roleNameIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="roleType != null"><![CDATA[ AND t.ROLE_TYPE = #{roleType} ]]></if>
+		<if test="roleTypeLike != null"><![CDATA[ AND t.ROLE_TYPE LIKE '%' || #{roleTypeLike} || '%' ]]></if>
+		<if test="roleTypeIn != null"><![CDATA[ AND t.ROLE_TYPE IN ]]><foreach item="item" index="index" collection="roleTypeIn" open="(" separator="," close=")">#{item}</foreach></if>
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="roleCode != null"><![CDATA[ AND t.ROLE_CODE = #{roleCode} ]]></if>
+		<if test="roleName != null"><![CDATA[ AND t.ROLE_NAME = #{roleName} ]]></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="roleDesc != null"><![CDATA[ AND t.ROLE_DESC = #{roleDesc} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND t.MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND t.MODIFIER = #{modifier} ]]></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+		<if test="roleType != null"><![CDATA[ AND t.ROLE_TYPE = #{roleType} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+	  			<if test="item == 'roleCodeAsc'"><![CDATA[ t.ROLE_CODE asc ]]></if>
+	  			<if test="item == 'roleCodeDesc'"><![CDATA[ t.ROLE_CODE desc ]]></if>
+	  			<if test="item == 'roleNameAsc'"><![CDATA[ t.ROLE_NAME asc ]]></if>
+	  			<if test="item == 'roleNameDesc'"><![CDATA[ t.ROLE_NAME desc ]]></if>
+	  			<if test="item == 'statusAsc'"><![CDATA[ t.STATUS asc ]]></if>
+	  			<if test="item == 'statusDesc'"><![CDATA[ t.STATUS desc ]]></if>
+	  			<if test="item == 'roleDescAsc'"><![CDATA[ t.ROLE_DESC asc ]]></if>
+	  			<if test="item == 'roleDescDesc'"><![CDATA[ t.ROLE_DESC desc ]]></if>
+	  			<if test="item == 'createTimeAsc'"><![CDATA[ t.CREATE_TIME asc ]]></if>
+	  			<if test="item == 'createTimeDesc'"><![CDATA[ t.CREATE_TIME desc ]]></if>
+	  			<if test="item == 'createrAsc'"><![CDATA[ t.CREATER asc ]]></if>
+	  			<if test="item == 'createrDesc'"><![CDATA[ t.CREATER desc ]]></if>
+	  			<if test="item == 'modifyTimeAsc'"><![CDATA[ t.MODIFY_TIME asc ]]></if>
+	  			<if test="item == 'modifyTimeDesc'"><![CDATA[ t.MODIFY_TIME desc ]]></if>
+	  			<if test="item == 'modifierAsc'"><![CDATA[ t.MODIFIER asc ]]></if>
+	  			<if test="item == 'modifierDesc'"><![CDATA[ t.MODIFIER desc ]]></if>
+	  			<if test="item == 'remarkAsc'"><![CDATA[ t.REMARK asc ]]></if>
+	  			<if test="item == 'remarkDesc'"><![CDATA[ t.REMARK desc ]]></if>
+	  			<if test="item == 'roleTypeAsc'"><![CDATA[ t.ROLE_TYPE asc ]]></if>
+	  			<if test="item == 'roleTypeDesc'"><![CDATA[ t.ROLE_TYPE desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysRoleResultMap">
+		<![CDATA[ SELECT * FROM SYS_ROLE t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  	<select id="selectByParams" parameterType="map" resultMap="sysRoleResultMap">
+		<![CDATA[ SELECT * FROM SYS_ROLE t ]]>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+  	</select>
+    
+  	<!-- (2-2)============================= selectByParamsCount =================================== -->
+  	<select id="selectByParamsCount" parameterType="map" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE t ]]> 
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysRole" resultMap="sysRoleResultMap">
+   	<![CDATA[ SELECT * FROM SYS_ROLE t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  	<!-- (3-2)============================= selectByVOCount =================================== -->
+  	<select id="selectByVOCount" parameterType="SysRole" resultType="int">
+   		<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE t ]]>   
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+  	<!-- (3-3)============================= selectByPk =================================== -->
+  	<select id="selectByPk" parameterType="java.lang.String" resultMap="sysRoleResultMap">
+    	<![CDATA[ SELECT * FROM SYS_ROLE WHERE ROLE_CODE=#{roleCode} ]]>
+	</select>
+  	
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysRole">
+		<![CDATA[
+		    INSERT INTO SYS_ROLE
+		      (
+		      ROLE_CODE,
+		      ROLE_NAME,
+		      STATUS,
+		      ROLE_DESC,
+		      CREATE_TIME,
+		      CREATER,
+		      MODIFY_TIME,
+		      MODIFIER,
+		      REMARK,
+		      ROLE_TYPE
+		      )
+		    VALUES
+		      (			  
+				#{roleCode,jdbcType=VARCHAR},
+				#{roleName,jdbcType=VARCHAR},
+				#{status,jdbcType=VARCHAR},
+				#{roleDesc,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP},
+				#{creater,jdbcType=VARCHAR},
+				#{modifyTime,jdbcType=TIMESTAMP},
+				#{modifier,jdbcType=VARCHAR},
+				#{remark,jdbcType=VARCHAR},
+				#{roleType,jdbcType=VARCHAR}
+		      )
+      	]]>
+  	</insert>
+    
+  	<!-- (5-1)============================= updateByVO =================================== -->
+  	<update id="updateByVO" parameterType="SysRole">
+    	<![CDATA[ UPDATE SYS_ROLE ]]>
+	    <set>  		
+    		<![CDATA[  
+					ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					STATUS = #{status,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					ROLE_DESC = #{roleDesc,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					CREATER = #{creater,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					MODIFIER = #{modifier,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					REMARK = #{remark,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					ROLE_TYPE = #{roleType,jdbcType=VARCHAR}
+    		]]>
+	    </set>  
+			WHERE ROLE_CODE=#{roleCode}
+  	</update>
+  
+  	<!-- (5-2)============================= updateByVO2 =================================== -->
+  	<update id="updateByVoNotNull" parameterType="SysRole">
+    	<![CDATA[ UPDATE SYS_ROLE ]]>
+	    <set>  		
+    		<if test="roleName != null"><![CDATA[ ROLE_NAME = #{roleName}, ]]></if>
+    		<if test="status != null"><![CDATA[ STATUS = #{status}, ]]></if>
+    		<if test="roleDesc != null"><![CDATA[ ROLE_DESC = #{roleDesc}, ]]></if>
+    		<if test="createTime != null"><![CDATA[ CREATE_TIME = #{createTime}, ]]></if>
+    		<if test="creater != null"><![CDATA[ CREATER = #{creater}, ]]></if>
+    		<if test="modifyTime != null"><![CDATA[ MODIFY_TIME = #{modifyTime}, ]]></if>
+    		<if test="modifier != null"><![CDATA[ MODIFIER = #{modifier}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark}, ]]></if>
+    		<if test="roleType != null"><![CDATA[ ROLE_TYPE = #{roleType} ]]></if>
+	    </set>  
+			WHERE ROLE_CODE=#{roleCode}
+  	</update>
+  
+  	<!-- (5-3)============================= updateStatus =================================== -->
+  	<update id="updateStatus" parameterType="map">
+    	<![CDATA[ UPDATE SYS_ROLE ]]>
+	    <set>
+		<![CDATA[  
+			STATUS = #{status,jdbcType=VARCHAR},
+			MODIFIER = #{modifier,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		]]>
+	    </set>  
+			WHERE ROLE_CODE IN <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach>
+  	</update>
+    
+  	<!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    	<![CDATA[ DELETE FROM SYS_ROLE  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysRole">
+   		<![CDATA[ DELETE FROM SYS_ROLE WHERE 1=1  ]]>    			
+		<if test="roleCode != null"><![CDATA[ AND ROLE_CODE = #{roleCode} ]]></if>
+		<if test="roleName != null"><![CDATA[ AND ROLE_NAME = #{roleName} ]]></if>
+		<if test="status != null"><![CDATA[ AND STATUS = #{status} ]]></if>
+		<if test="roleDesc != null"><![CDATA[ AND ROLE_DESC = #{roleDesc} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND CREATE_TIME = #{createTime} ]]></if>
+		<if test="creater != null"><![CDATA[ AND CREATER = #{creater} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND MODIFIER = #{modifier} ]]></if>
+		<if test="remark != null"><![CDATA[ AND REMARK = #{remark} ]]></if>
+		<if test="roleType != null"><![CDATA[ AND ROLE_TYPE = #{roleType} ]]></if>
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_ROLE WHERE ROLE_CODE = #{roleCode} ]]>
+	</delete>
+  
+	<!-- (9-1)============================= deleteByOperId =================================== -->
+	<delete id="deleteByOperId" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_OPER_ROLE WHERE OPER_ID = #{operId} ]]>
+	</delete>
+	
+	<!-- (9-2)============================= insertByVoOperId =================================== -->
+	<insert id="insertByVoOperId" parameterType="SysRole"  useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+		    INSERT INTO SYS_OPER_ROLE
+		      (
+		      OPER_ID,
+		      ROLE_CODE,
+		      CREATER,
+		      CREATE_TIME
+		      )
+		    VALUES
+		      (			  
+				#{roleDesc,jdbcType=VARCHAR},
+				#{roleCode,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR},
+				#{createTime,jdbcType=TIMESTAMP}
+		      )
+      	]]>
+  	</insert>
+  	
+	<!-- (9-3)============================= deleteByRoleCode =================================== -->
+	<delete id="deleteByRoleCode" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_OPER_ROLE WHERE ROLE_CODE = #{roleCode} ]]>
+	</delete>
+
+	<select id="selectOperRole" parameterType="java.lang.String" resultMap="sysOperRoleMap">
+		<![CDATA[ SELECT SRO.*,SR.ROLE_NAME FROM SYS_OPER_ROLE SRO LEFT JOIN SYS_ROLE SR ON SRO.ROLE_CODE =SR.ROLE_CODE WHERE SRO.OPER_ID=#{operId}]]>
+	</select>
+</mapper>

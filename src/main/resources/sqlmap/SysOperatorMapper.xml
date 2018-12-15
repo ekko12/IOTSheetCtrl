@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_OPERATOR">
+	
+	<resultMap type="SysOperator" id="sysOperatorResultMap">
+		<id property="operId" column="OPER_ID"/>
+		<result property="operAccount" column="OPER_ACCOUNT"/>
+		<result property="operPwd" column="OPER_PWD"/>
+		<result property="operName" column="OPER_NAME"/>
+		<result property="orgCode" column="ORG_CODE"/>
+		<result property="operSex" column="OPER_SEX"/>
+		<result property="operCardNo" column="OPER_CARD_NO"/>
+		<result property="operMobile" column="OPER_MOBILE"/>
+		<result property="operTeleNo" column="OPER_TELE_NO"/>
+		<result property="operAddr" column="OPER_ADDR"/>
+		<result property="operEmail" column="OPER_EMAIL"/>
+		<result property="position" column="POSITION"/>
+		<result property="errorCount" column="ERROR_COUNT"/>
+		<result property="status" column="STATUS"/>
+		<result property="lastLoginTime" column="LAST_LOGIN_TIME"/>
+		<result property="operDesc" column="OPER_DESC"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="creater" column="CREATER"/>
+		<result property="modifyTime" column="MODIFY_TIME"/>
+		<result property="modifier" column="MODIFIER"/>
+		<result property="remark" column="REMARK"/>
+	</resultMap>
+	
+	<resultMap type="SysOperator" id="operatorResultMap" extends="sysOperatorResultMap">
+		<!-- <result property="groName" column="GRO_NAME"/> -->
+		<result property="orgName" column="ORG_NAME"/>
+	</resultMap>
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams">  
+		<if test="operId != null"><![CDATA[ AND t.OPER_ID = #{operId} ]]></if>
+		<if test="operIdLike != null"><![CDATA[ AND t.OPER_ID LIKE '%' || #{operIdLike} || '%' ]]></if>
+		<if test="operIdIn != null"><![CDATA[ AND t.OPER_ID IN ]]><foreach item="item" index="index" collection="operIdIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="operAccount != null"><![CDATA[ AND t.OPER_ACCOUNT = #{operAccount} ]]></if>
+		<if test="operAccountLike != null"><![CDATA[ AND t.OPER_ACCOUNT LIKE '%' || #{operAccountLike} || '%' ]]></if>
+		<if test="operAccountIn != null"><![CDATA[ AND t.OPER_ACCOUNT IN ]]><foreach item="item" index="index" collection="operAccountIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="orgCode != null"><![CDATA[ AND t.ORG_CODE = #{orgCode} ]]></if>
+		<if test="orgCodeLike != null"><![CDATA[ AND t.ORG_CODE LIKE '%' || #{orgCodeLike} || '%' ]]></if>
+		<if test="orgCodeIn != null"><![CDATA[ AND t.ORG_CODE IN ]]><foreach item="item" index="index" collection="orgCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="operName != null"><![CDATA[ AND t.OPER_NAME = #{operName} ]]></if>
+		<if test="operNameLike != null"><![CDATA[ AND t.OPER_NAME LIKE CONCAT(CONCAT('%', #{operNameLike}), '%')  ]]></if>
+		<if test="operNameIn != null"><![CDATA[ AND t.OPER_NAME IN ]]><foreach item="item" index="index" collection="operNameIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="mobile != null"><![CDATA[ AND t.OPER_MOBILE = #{mobile} ]]></if>
+		<if test="mobileLike != null"><![CDATA[ AND t.OPER_MOBILE LIKE '%' || #{mobileLike} || '%' ]]></if>
+		<if test="mobileIn != null"><![CDATA[ AND t.OPER_MOBILE IN ]]><foreach item="item" index="index" collection="mobileIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="email != null"><![CDATA[ AND t.OPER_EMAIL = #{email} ]]></if>
+		<if test="emailLike != null"><![CDATA[ AND t.OPER_EMAIL LIKE '%' || #{emailLike} || '%' ]]></if>
+		<if test="cardNo != null"><![CDATA[ AND t.OPER_CARD_NO = #{cardNo} ]]></if>
+		<if test="cardNoLike != null"><![CDATA[ AND t.OPER_CARD_NO LIKE '%' || #{cardNoLike} || '%' ]]></if>
+		<if test="position != null"><![CDATA[ AND t.POSITION = #{position} ]]></if>
+		<if test="positionLike != null"><![CDATA[ AND t.POSITION LIKE '%' || #{positionLike} || '%' ]]></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="lastLoginTime != null"><![CDATA[ AND t.LAST_LOGIN_TIME = #{lastLoginTime} ]]></if>
+		<if test="lastLoginTimeGt != null"><![CDATA[ AND t.LAST_LOGIN_TIME > #{lastLoginTimeGt} ]]></if>
+		<if test="lastLoginTimeGte != null"><![CDATA[ AND t.LAST_LOGIN_TIME >= #{lastLoginTimeGte} ]]></if>
+		<if test="lastLoginTimeLt != null"><![CDATA[ AND t.LAST_LOGIN_TIME < #{lastLoginTimeLt} ]]></if>
+		<if test="lastLoginTimeLte != null"><![CDATA[ AND t.LAST_LOGIN_TIME <= #{lastLoginTimeLte} ]]></if>
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="operId != null"><![CDATA[ AND t.OPER_ID = #{operId} ]]></if>
+		<if test="operAccount != null"><![CDATA[ AND t.OPER_ACCOUNT = #{operAccount} ]]></if>
+		<if test="orgCode != null"><![CDATA[ AND t.ORG_CODE = #{orgCode} ]]></if>
+		<if test="operPwd != null"><![CDATA[ AND t.OPER_PWD = #{operPwd} ]]></if>
+		<if test="operName != null"><![CDATA[ AND t.OPER_NAME = #{operName} ]]></if>
+		<if test="operSex != null"><![CDATA[ AND t.OPER_SEX = #{sex} ]]></if>
+		<if test="operMobile != null"><![CDATA[ AND t.OPER_MOBILE = #{mobile} ]]></if>
+		<if test="operTeleNo != null"><![CDATA[ AND t.OPER_TELE_NO = #{telephone} ]]></if>
+		<if test="operAddr != null"><![CDATA[ AND t.OPER_ADDR = #{address} ]]></if>
+		<if test="operEmail != null"><![CDATA[ AND t.OPER_EMAIL = #{email} ]]></if>
+		<if test="operCardNo != null"><![CDATA[ AND t.OPER_CARD_NO = #{cardNo} ]]></if>
+		<if test="position != null"><![CDATA[ AND t.POSITION = #{position} ]]></if>
+		<if test="errorCount != null"><![CDATA[ AND t.ERROR_COUNT = #{errorCount} ]]></if>
+		<if test="status != null"><![CDATA[ AND t.STATUS = #{status} ]]></if>
+		<if test="lastLoginTime != null"><![CDATA[ AND t.LAST_LOGIN_TIME = #{lastLoginTime} ]]></if>
+		<if test="operDesc != null"><![CDATA[ AND t.OPER_DESC = #{operDesc} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND t.MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND t.MODIFIER = #{modifier} ]]></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+  			<if test="item == 'operIdAsc'"><![CDATA[ t.OPER_ID asc ]]></if>
+  			<if test="item == 'operIdDesc'"><![CDATA[ t.OPER_ID desc ]]></if>
+			<if test="item == 'operAccountAsc'"><![CDATA[ t.OPER_ACCOUNT asc ]]></if>
+			<if test="item == 'operAccountDesc'"><![CDATA[ t.OPER_ACCOUNT desc ]]></if>
+  			<if test="item == 'orgCodeAsc'"><![CDATA[ t.ORG_CODE asc ]]></if>
+  			<if test="item == 'orgCodeDesc'"><![CDATA[ t.ORG_CODE desc ]]></if>
+  			<if test="item == 'operNameAsc'"><![CDATA[ t.OPER_NAME asc ]]></if>
+  			<if test="item == 'operNameDesc'"><![CDATA[ t.OPER_NAME desc ]]></if>
+  			<if test="item == 'sexAsc'"><![CDATA[ t.OPER_SEX asc ]]></if>
+  			<if test="item == 'sexDesc'"><![CDATA[ t.OPER_SEX desc ]]></if>
+  			<if test="item == 'statusAsc'"><![CDATA[ t.STATUS asc ]]></if>
+  			<if test="item == 'statusDesc'"><![CDATA[ t.STATUS desc ]]></if>
+  			<if test="item == 'lastLoginTimeAsc'"><![CDATA[ t.LAST_LOGIN_TIME asc ]]></if>
+  			<if test="item == 'lastLoginTimeDesc'"><![CDATA[ t.LAST_LOGIN_TIME desc ]]></if>
+  			<if test="item == 'createTimeAsc'"><![CDATA[ t.CREATE_TIME asc ]]></if>
+  			<if test="item == 'createTimeDesc'"><![CDATA[ t.CREATE_TIME desc ]]></if>
+  			<if test="item == 'modifyTimeAsc'"><![CDATA[ t.MODIFY_TIME asc ]]></if>
+  			<if test="item == 'modifyTimeDesc'"><![CDATA[ t.MODIFY_TIME desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysOperatorResultMap">
+		<![CDATA[ SELECT * FROM SYS_OPERATOR t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_OPERATOR t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  	<select id="selectByParams" parameterType="map" resultMap="operatorResultMap">
+		<![CDATA[ 
+			SELECT t.*, O.ORG_NAME FROM SYS_OPERATOR t
+			LEFT JOIN SYS_ORGANIZE O ON O.ORG_CODE = t.ORG_CODE
+		]]>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+ 	</select>
+    
+  	<!-- (2-2)============================= selectByParamsCount =================================== -->
+  	<select id="selectByParamsCount" parameterType="map" resultType="int">
+   		<![CDATA[ SELECT COUNT(*) FROM SYS_OPERATOR t ]]> 
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysOperator" resultMap="sysOperatorResultMap">
+   	<![CDATA[ SELECT * FROM SYS_OPERATOR t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  	<!-- (3-2)============================= selectByVOCount =================================== -->
+  	<select id="selectByVOCount" parameterType="SysOperator" resultType="int">
+   		<![CDATA[ SELECT COUNT(*) FROM SYS_OPERATOR t ]]>   
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+ 	<!-- (3-3)============================= selectByPK =================================== -->
+  	<select id="selectByPK" parameterType="java.lang.String" resultMap="sysOperatorResultMap">
+    	<![CDATA[ SELECT * FROM SYS_OPERATOR WHERE OPER_ID=#{operId} ]]>
+	</select>
+
+ 	<!-- (3-4)============================= selectByAccount =================================== -->
+  	<select id="selectByAccount" parameterType="java.lang.String" resultMap="sysOperatorResultMap">
+    	<![CDATA[ SELECT * FROM SYS_OPERATOR WHERE OPER_ACCOUNT=#{operAccount} ]]>
+	</select>
+
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysOperator" >
+		<![CDATA[
+		    INSERT INTO SYS_OPERATOR
+		      (
+		      OPER_ID,
+		      OPER_ACCOUNT,
+		      OPER_PWD,
+		      OPER_NAME,
+		      ORG_CODE,
+		      OPER_SEX,
+		      OPER_CARD_NO,
+		      OPER_MOBILE,
+		      OPER_TELE_NO,
+		      OPER_ADDR,
+		      OPER_EMAIL,
+		      POSITION,
+		      ERROR_COUNT,
+		      STATUS,
+		      LAST_LOGIN_TIME,
+		      OPER_DESC,
+		      CREATE_TIME,
+		      CREATER,
+		      MODIFY_TIME,
+		      MODIFIER,
+		      REMARK
+		      )
+		    VALUES
+		      (			  
+					#{operId,jdbcType=VARCHAR}
+				,
+					#{operAccount,jdbcType=VARCHAR}
+				,
+					#{operPwd,jdbcType=VARCHAR}
+				,
+					#{operName,jdbcType=VARCHAR}
+				,
+					#{orgCode,jdbcType=VARCHAR}
+				,
+					#{operSex,jdbcType=VARCHAR}
+				,
+					#{operCardNo,jdbcType=VARCHAR}
+				,
+					#{operMobile,jdbcType=VARCHAR}
+				,
+					#{operTeleNo,jdbcType=VARCHAR}
+				,
+					#{operAddr,jdbcType=VARCHAR}
+				,
+					#{operEmail,jdbcType=VARCHAR}
+				,
+					#{position,jdbcType=VARCHAR}
+				,
+					#{errorCount,jdbcType=DECIMAL}
+				,
+					#{status,jdbcType=VARCHAR}
+				,
+					#{lastLoginTime,jdbcType=TIMESTAMP}
+				,
+					#{operDesc,jdbcType=VARCHAR}
+				,
+					#{createTime,jdbcType=TIMESTAMP}
+				,
+					#{creater,jdbcType=VARCHAR}
+				,
+					#{modifyTime,jdbcType=TIMESTAMP}
+				,
+					#{modifier,jdbcType=VARCHAR}
+				,
+					#{remark,jdbcType=VARCHAR}
+		      )
+      	]]>
+  </insert>
+    
+  	<!-- (5-1)============================= updateByVO =================================== -->
+  	<update id="updateByVO" parameterType="SysOperator">
+    	<![CDATA[ UPDATE SYS_OPERATOR ]]>
+	    <set>  	
+    		<![CDATA[  
+					OPER_PWD = #{operPwd,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_NAME = #{operName,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_SEX = #{operSex,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_CARD_NO = #{operCardNo,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_MOBILE = #{operMobile,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_TELE_NO = #{operTeleNo,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_ADDR = #{operAddr,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					OPER_EMAIL = #{operEmail,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					POSITION = #{position,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					ERROR_COUNT = #{errorCount,jdbcType=DECIMAL},
+    		]]>
+    		<![CDATA[  
+					STATUS = #{status,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					OPER_DESC = #{operDesc,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					CREATER = #{creater,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					MODIFIER = #{modifier,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					REMARK = #{remark,jdbcType=VARCHAR} 
+    		]]>
+	    </set>  
+			WHERE OPER_ID=#{operId}
+  	</update>
+  
+  	<!-- (5-2)============================= updateByVO2 =================================== -->
+  	<update id="updateByVoNotNull" parameterType="SysOperator">
+    	<![CDATA[ UPDATE SYS_OPERATOR ]]>
+	    <set>  		
+    		<if test="orgCode != null"><![CDATA[ ORG_CODE = #{orgCode}, ]]></if>
+			<if test="operAccount != null"><![CDATA[ OPER_ACCOUNT = #{operAccount}, ]]></if>
+    		<if test="operPwd != null"><![CDATA[ OPER_PWD = #{operPwd}, ]]></if>
+    		<if test="operName != null"><![CDATA[ OPER_NAME = #{operName}, ]]></if>
+    		<if test="operSex != null"><![CDATA[ OPER_SEX = #{operSex}, ]]></if>
+    		<if test="operCardNo != null"><![CDATA[ OPER_CARD_NO = #{operCardNo}, ]]></if>
+    		<if test="operMobile != null"><![CDATA[ OPER_MOBILE = #{operMobile}, ]]></if>
+    		<if test="operTeleNo != null"><![CDATA[ OPER_TELE_NO = #{operTeleNo}, ]]></if>
+    		<if test="operAddr != null"><![CDATA[ OPER_ADDR = #{operAddr}, ]]></if>
+    		<if test="operEmail != null"><![CDATA[ OPER_EMAIL = #{operEmail}, ]]></if>
+    		<if test="position != null"><![CDATA[ POSITION = #{position}, ]]></if>
+    		<if test="errorCount != null"><![CDATA[ ERROR_COUNT = #{errorCount}, ]]></if>
+    		<if test="status != null"><![CDATA[ STATUS = #{status}, ]]></if>
+    		<if test="lastLoginTime != null"><![CDATA[ LAST_LOGIN_TIME = #{lastLoginTime}, ]]></if>
+    		<if test="operDesc != null"><![CDATA[ OPER_DESC = #{operDesc}, ]]></if>
+    		<if test="createTime != null"><![CDATA[ CREATE_TIME = #{createTime}, ]]></if>
+    		<if test="creater != null"><![CDATA[ CREATER = #{creater}, ]]></if>
+    		<if test="modifyTime != null"><![CDATA[ MODIFY_TIME = #{modifyTime}, ]]></if>
+    		<if test="modifier != null"><![CDATA[ MODIFIER = #{modifier}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark}, ]]></if>
+    		
+    		<if test="operId != null"><![CDATA[ OPER_ID=#{operId} ]]></if>
+	    </set>  
+			WHERE OPER_ID=#{operId}
+  	</update>
+  
+  	<!-- (5-3)============================= updateStatus =================================== -->
+  	<update id="updateStatus" parameterType="map">
+    	<![CDATA[ UPDATE SYS_OPERATOR ]]>
+	    <set>
+		<![CDATA[  
+			STATUS = #{status,jdbcType=VARCHAR},
+			MODIFIER = #{modifier,jdbcType=VARCHAR},
+			MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		]]>
+	    </set>  
+			WHERE OPER_ID IN <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach>
+  	</update>
+    
+  	<!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    	<![CDATA[ DELETE FROM SYS_OPERATOR  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysOperator">
+   	<![CDATA[ DELETE FROM SYS_OPERATOR WHERE 1=1  ]]>    			
+		<if test="operId != null"><![CDATA[ AND OPER_ID = #{operId} ]]></if>
+		<if test="operAccount != null"><![CDATA[ AND OPER_ACCOUNT = #{operAccount} ]]></if>
+		<if test="orgCode != null"><![CDATA[ AND ORG_CODE = #{orgCode} ]]></if>
+		<if test="operPwd != null"><![CDATA[ AND OPER_PWD = #{operPwd} ]]></if>
+		<if test="operName != null"><![CDATA[ AND OPER_NAME = #{operName} ]]></if>
+		<if test="operSex != null"><![CDATA[ AND OPER_SEX = #{operSex} ]]></if>
+		<if test="operCardNo != null"><![CDATA[ AND OPER_CARD_NO = #{operCardNo} ]]></if>
+		<if test="operMobile != null"><![CDATA[ AND OPER_MOBILE = #{operMobile} ]]></if>
+		<if test="operTeleNo != null"><![CDATA[ AND OPER_TELE_NO = #{operTeleNo} ]]></if>
+		<if test="operAddr != null"><![CDATA[ AND OPER_ADDR = #{operAddr} ]]></if>
+		<if test="operEmail != null"><![CDATA[ AND OPER_EMAIL = #{operEmail} ]]></if>
+		<if test="position != null"><![CDATA[ AND POSITION = #{position} ]]></if>
+		<if test="errorCount != null"><![CDATA[ AND ERROR_COUNT = #{errorCount} ]]></if>
+		<if test="status != null"><![CDATA[ AND STATUS = #{status} ]]></if>
+		<if test="lastLoginTime != null"><![CDATA[ AND LAST_LOGIN_TIME = #{lastLoginTime} ]]></if>
+		<if test="operDesc != null"><![CDATA[ AND OPER_DESC = #{operDesc} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND CREATE_TIME = #{createTime} ]]></if>
+		<if test="creater != null"><![CDATA[ AND CREATER = #{creater} ]]></if>
+		<if test="modifyTime != null"><![CDATA[ AND MODIFY_TIME = #{modifyTime} ]]></if>
+		<if test="modifier != null"><![CDATA[ AND MODIFIER = #{modifier} ]]></if>
+		<if test="remark != null"><![CDATA[ AND REMARK = #{remark} ]]></if>
+		
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_OPERATOR WHERE OPER_ID IN =#{operId} ]]>
+	</delete>
+	
+	<!-- select opeartor information by channelId -->
+	<!-- <select id="selectByChannelId" parameterType="map" resultMap="sysOperatorResultMap">
+		<![CDATA[
+			SELECT t.* FROM SYS_OPERATOR t, SYS_CHAN_OPER_REL r ]]>
+			<where>
+				<![CDATA[ t.OPER_ID = r.OPER_ID ]]>
+			</where>
+			<include refid="conditionByParams" />
+	</select>
+	<select id="selectByChannelIdCount" parameterType="map" resultType="int">
+		<![CDATA[
+			SELECT COUNT(t.OPER_ID) FROM SYS_OPERATOR t, SYS_CHAN_OPER_REL r ]]>
+			<where>
+				<![CDATA[ t.OPER_ID = r.OPER_ID ]]>
+			</where>
+			<include refid="conditionByParams" />
+	</select> -->
+	
+	<!-- 可根据多个渠道查询操作员 -->
+	<!-- <select id="selectOperatorByChannelId" parameterType="map" resultMap="sysOperatorResultMap">
+		<![CDATA[
+			select t.* from sys_operator t ]]>
+			<where>
+				<![CDATA[ 1=1 ]]>
+				<include refid="conditionByParams" />
+			</where>
+			<include refid="orderByFragment" />
+	</select>
+	
+	<select id="selectOperatorByChannelIdCount" parameterType="map" resultType="int">
+		<![CDATA[
+			select count(t.*) from sys_operator t ]]>
+			<where>
+				<![CDATA[ 1=1 ]]>
+				<include refid="conditionByParams" />
+			</where>
+	</select> -->
+
+  
+</mapper>

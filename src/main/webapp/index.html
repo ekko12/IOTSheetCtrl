@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<!--<meta http-equiv="refresh" content="86400"><!-- 1天定时刷新 -->
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<link rel="stylesheet" type="text/css" href="./css/base.css">
+	<script type="text/javascript" src="./js/jquery-2.1.4.js"></script> 
+	<script type="text/javascript" src="./js/echarts.min.js"></script>
+	<script type="text/javascript" src="js/echarts-worldCloud.js"></script>
+	<script type="text/javascript" src="js/echarts-worldCloud.js"></script>
+	<script type="text/javascript" src="js/china.js"></script>
+	<script type="text/javascript">
+	var param = {};
+	//获取当前日期功能
+	$(document).ready(function() {
+		var date=new Date;
+		param["monthDay"] = date.toLocaleDateString().replace("/", "-").replace("/", "-");
+		param["monthDay"] = "2018-05-26";//为了有数值暂定为5月26日
+		getCustom2Compare();
+		getCustomARPU();
+		getHomePgFourChart();
+		getPlatformIncome();
+		getIncomeByDetailIndustry();
+	});
+	//应收账款
+	 function getPlatformIncome(){//平台收入分省情况
+		var getOrderTrend =[];
+  		$.ajax({
+  			type: "POST",
+  			url: "piechart/getPlatformIncome.do",//getPlatformIncome.do",
+  			data: param,
+  			datatype: "json",
+  			success: function(data){
+  				if (data.datas.length>0) {
+  					console.log(data);
+  					if(data.code==200){
+  						datas = data.datas;  
+  	  					var float1 = 0;
+  	  					var forecast = 0;
+  	  					var allcount = 0;
+  	  					for(var d in datas){
+  	  						allcount= allcount+1;
+  	  						if (datas[d].isForecastFlag==1) forecast=forecast+1;
+  	  						var fvalue = datas[d].value; 
+  	  						float1 = (parseFloat(fvalue)/10000).toFixed(2);
+  	  					    getOrderTrend.push([
+  	  	  				            datas[d].name.trim(),
+  	  	  				        	float1
+  	  	  				        ]);  						
+  	  					}     	  					 
+  				            option4 = { 
+  				            	    title : {
+  				            	        //text: '各省上账期应收账款（万元）',
+  				            	        x:'center',
+  		  					            y:'top',
+  		  					            textStyle:{
+  		  					              color:'white'
+  		  					            } 		  					            
+  				            	    },
+  				            	  legend: {
+				  			        	left:'right',
+				  			        	itemWidth: 20,
+				  			            itemHeight: 10,
+				  			            itemGap: 3,
+				  			          	data:['连接数(万)'],
+				  			            textStyle: {
+				  			            	fontSize:12,
+				  			            	color:'#b6bcff'
+				  			         	}
+				  	  		        },
+  				            	    tooltip : {
+  				            	        trigger: 'axis',
+  				        		        formatter: "{a} <br/>{b} : {c}"
+  				            	    },  
+  				            	  grid:{
+        			                	top:40,//距上边距
+        			                  	left:50,//距离左边距
+	        			               	right:25,//距离右边距
+	        			               	bottom:60,//距离下边距
+	        			                },  
+  				            	    calculable : true,
+  				            	    xAxis : [
+  				            	        {
+  				            	        	//name:'省份',
+  				            	            type : 'category',  				            	     
+  				            	            data : getOrderTrend.map(function (item) {
+  				            	                return item[0];  				            	                
+  				            	            }),
+			            	                axisLine:{
+			            	                	lineStyle:{
+			            	                		color:"#b6bcff"
+			            	                	}
+			            	                },
+ 				                            axisLabel:{ 
+ 				                            	show:true,
+ 				                            	formatter:function(value)  
+ 				                               {  
+ 				                                   return value.split("").join("\n");  
+ 				                               },
+ 				                            	interval:0,
+			            	                	textStyle:{ 
+			            	                		 color:"#b6bcff"
+			            	                	}	            	            
+			            	                }, 
+  				            	        }
+  				            	    ],
+  				            	    yAxis : [
+  				            	        {	
+  				            	        	name:'金额',
+  				            	            type : 'value',
+  				            	            axisLabel:{
+  			            	                	textStyle:{ 
+  			            	                		 color:"#b6bcff"
+  			            	                	}
+  				            	            },
+			            	                axisLine:{
+			            	                	lineStyle:{
+			            	                		color:"#b6bcff"
+			            	                	}
+			            	                },
+  				            	        }
+  				            	    ],
+  				            	  series : [
+  							          //柱一
+  							            {
+  							            	name:'应收账款',
+  							                type:'bar', 
+  							                barWidth: 5,
+  							                color:'#fff',
+  							              data:getOrderTrend.map(function (item) {
+				            	                return item[1];
+				            	            }), 
+  							                itemStyle: {
+  							                	emphasis: {
+  						                            barBorderRadius:[5, 5, 0, 0],
+  						                        },
+  							                  normal: {
+  							                	  barBorderRadius:[5, 5, 0, 0],
+  							                    color: new echarts.graphic.LinearGradient(
+  							                      0, 0, 0, 1,
+  							                    [
+  							                    	{offset: 1, color: '#ffe897'}, 
+  							                    	{offset: 0, color: '#ffc000'}, 
+  							                     
+  							                    ]
+  							                 )
+  							            },
+  							            emphasis: {
+  							              color: new echarts.graphic.LinearGradient(
+  							                    0, 0, 0, 1,
+  							                   [
+  							                	   {offset: 1, color: '#ffe897'}, 
+  							                    	{offset: 0, color: '#ffc000'},
+  							                   ]
+  							              )
+  							             }
+  							         }
+  							     },
+  						],
+  				            	
+  				            	}; 
+  				      		echarts.dispose(document.getElementById("main4"));
+  			  	  	        var myChart4 = echarts.init(document.getElementById('main4'));
+  	  			        	myChart4.setOption(option4);  
+  	  	  	  			    $("#nodata4").css("display","none"); 
+  	    					$("#main4").css("display","block"); 
+  					}else{ 
+  						$("#main4").html("<br/><br/><img src=\"img/codeerror.gif\" />");				
+  					}
+  					
+  				}else{
+  					$("#nodata4").css("display","block");
+  					$("#main4").css("display","none");
+  				}
+  			},
+			error : function () {
+				$("#year").innerHTML="<img src=\"img/login_bg.jpg\" height=\"300px\" width=\"400px\" />";
+				return false;
+			}
+  		});
+	}
+	//大数字接口
+	function getHomePgFourChart() {                           		
+		$.ajax({
+  			type: "POST",
+  			url: "piechart/getHomePgFourTb.do",
+  			data: param,
+  			datatype: "json",
+  			success: function(data){
+  				console.log(data.datas[0].accountNumRate);  
+  				
+  				var accountNumValue=(Number(data.datas[0].accountNumRate)).toFixed(2)*100;//add in 2018-09-26 
+  				var customerNumValue=(Number(data.datas[0].customerNumRate)).toFixed(2)*100;//add in 2018-09-26 
+  				console.log(accountNumValue); 
+				var customNumString ="<p>环比</p>";
+				var accountNumString ="<p>环比</p>";
+				if(accountNumValue>0){
+					accountNumString +="<!-- 上涨 --><span style=\"color:#ff4e00\" id=\"#\">"+accountNumValue+"%⇡</span>";
+				}else{
+					accountNumString +="<!-- 下降 --><span style=\"color:#06ff00\"  id=\"#\">"+accountNumValue+"%⇣</span>";
+				}
+				if(customerNumValue>0){
+					customNumString +="<!-- 上涨 --><span style=\"color:#ff4e00\" id=\"#\">"+customerNumValue+"%⇡</span>";
+				}else{
+					customNumString +="<!-- 下降 --><span style=\"color:#06ff00\"  id=\"#\">"+customerNumValue+"%⇣</span>";
+				}
+    			$("#customNum").html(data.datas[0].customerNumber);
+    			$("#accountNum").html(data.datas[0].accountNum);
+    			$("#accountNumBi").html(accountNumString);
+    			$("#customNumBi").html(customNumString);
+
+  				console.log(customNumString);
+    			var countryNumval = Number(data.datas[0].connectNum);
+  			  var countryMoneyval = Number(data.datas[0].incomeTrend); 
+  			  $("#countryNumHidden").val(countryNumval);
+  			  $("#countryMoneyHidden").val(countryMoneyval);
+  			  var countryNumString = valToString(countryNumval);
+  			  var countryMoneyString = valToString(countryMoneyval);   
+  			  $("#countryMoney").html(countryMoneyString);
+  			  $("#countryNum").html(countryNumString); 	
+  			},
+			error : function () {
+				$("#year").innerHTML="<img src=\"img/login_bg.jpg\" height=\"300px\" width=\"400px\" />";
+				return false;
+			}
+  		});
+	}
+	//列表接口
+	function getCustom2Compare() {  
+		$.ajax({
+  			type: "POST",
+  			url: "piechart/getCustom2Compare.do",
+  			data: param,
+  			datatype: "json",
+  			success: function(data){ 
+  				var listString = "";
+  				for(var d in data){
+  					listString += "<tr>";
+  					var incomeqoqImgUrl=data[d].incomeQoqFlag>0?"img/arr-up.png":"img/arr-down.png"; 
+  					var incomedutyImgUrl=data[d].incomeDutyFlag>0?"img/arr-up.png":"img/arr-down.png"; 
+  					listString += "<td>"+data[d].provinceName+"</td>"; 
+  					listString += "<td>"+(Number(data[d].incomeQoq)*100).toFixed(2)+"%<img src='"+incomeqoqImgUrl+"' style=\"height:20px;width:15px;\"/>"+"</td>"; 
+  					listString += "<td>"+(Number(data[d].incomeDuty)*100).toFixed(2)+"%<img src='"+incomedutyImgUrl+"' style=\"height:20px;width:15px;\"/>"+"</td>"; 
+  					var actiNumQoqImgUrl=data[d].actiNumQoqFlag>0?"img/arr-up.png":"img/arr-down.png"; 
+  					var actiActualDutyImgUrl=data[d].actiActualDutyFlag>0?"img/arr-up.png":"img/arr-down.png"; 
+  					listString += "<td>"+(Number(data[d].actiNumQoq)*100).toFixed(2)+"%<img src='"+actiNumQoqImgUrl+"' style=\"height:20px;width:15px;\"/>"+"</td>"; 
+  					listString += "<td>"+(Number(data[d].actiActualDuty)*100).toFixed(2)+"%<img src='"+actiActualDutyImgUrl+"' style=\"height:20px;width:15px;\"/>"+"</td>"; 
+  					listString += "</tr>";	
+					}     
+  				$("#customListCompare3").html(listString); 				
+  			},
+			error : function () {
+				$("#year").innerHTML="<img src=\"img/login_bg.jpg\" height=\"300px\" width=\"400px\" />";
+				return false;
+			}
+  		});
+	}
+	//arpu柱状图接口
+	function getCustomARPU(){//全国连接数趋势
+		var xDate = [];
+		var yData = [];
+  		$.ajax({
+  			type: "POST",
+  			url: "piechart/getCustomARPU.do",
+  			data: param,
+  			datatype: "json",
+  			success: function(data){
+  				if (data.length>0) {
+  				//	if(data.code==200){
+  	  					for(var d in data){
+  	  						xDate.push(data[d].arpu); 
+  	  						yData.push(data[d].chargConnectNum/10000);   
+  	  					}    
+ 				           var option5 = {
+ 				        		    title: {
+ 				        		       // text: '全国每连接收入分布(万)',
+ 				        		       //	subtext: '横坐标是ARPU，纵坐标是相同ARPU值的个数'
+ 				        		    },
+ 				        		    tooltip: {},
+ 				        		   
+ 				        		   grid:{
+        			                	top:40,//距上边距
+        			                  	left:50,//距离左边距
+	        			               	right:50,//距离右边距
+	        			               	bottom:20,//距离下边距
+	        			                },
+ 				        		    xAxis: {
+ 				        		    	name:'个数',
+ 				        		        data: xDate,
+ 				        		        silent: false,
+ 				        		        splitLine: {
+ 				        		            show: false
+ 				        		        },
+ 				        		       axisLine:{
+		            	                	lineStyle:{
+		            	                		color:"#b6bcff"
+		            	                	}
+		            	                },
+ 				        		    },
+ 				        		    yAxis: {
+ 				        		    	name:'ARPU',
+ 				        		    	axisLabel: {
+		  	  		                    	formatter: '{value} '
+		  	  		                	},
+		  	  		                axisLine:{
+	            	                	lineStyle:{
+	            	                		color:"#b6bcff"
+	            	                	}
+	            	                },
+
+ 				        		    },
+ 				        		   series : [
+   							          //柱一
+   							            {
+   							            	//name:'应收账款',
+   							                type:'bar', 
+   							                barWidth: 5,
+   							                color:'#fff',
+   							             	data: yData  ,
+   							                itemStyle: {
+   							                	emphasis: {
+   						                            barBorderRadius:[5, 5, 0, 0],
+   						                        },
+   							                  normal: {
+   							                	  barBorderRadius:[5, 5, 0, 0],
+   							                    color: new echarts.graphic.LinearGradient(
+   							                      0, 0, 0, 1,
+   							                    [
+   							                    	{offset: 1, color: '#ffe897'}, 
+   							                    	{offset: 0, color: '#ffc000'}, 
+   							                     
+   							                    ]
+   							                 )
+   							            },
+   							            emphasis: {
+   							              color: new echarts.graphic.LinearGradient(
+   							                    0, 0, 0, 1,
+   							                   [
+   							                	   {offset: 1, color: '#ffe897'}, 
+   							                    	{offset: 0, color: '#ffc000'},
+   							                   ]
+   							              )
+   							             }
+   							         }
+   							     },
+   						],
+ 	  	  	  				 };
+ 				      		echarts.dispose(document.getElementById("main5")); 
+ 			  	  	        var myChart5 = echarts.init(document.getElementById('main5'));
+ 	  			        	myChart5.setOption(option5);   
+ 	  	  			    	$("#nodata5").css("display","none"); 
+ 	  						$("#main5").css("display","block"); 
+ 	  						xDate.splice(0,xDate.length); 
+ 	  						yDate.splice(0,yDate.length);
+  					/* }else{ 
+  						$("#main5").html("<br/><br/><img src=\"img/codeerror.gif\" />");						
+  					} */
+  					
+  				}else{
+  					$("#nodata5").css("display","block");
+  					$("#main5").css("display","none");
+  				}
+  			},
+			error : function () {  
+				$("#year").innerHTML="<img src=\"img/login_bg.jpg\" height=\"300px\" width=\"400px\" />";
+				return false;
+			}
+  		});
+	}
+	var createRandomItemStyle1 = function (params) {　　　　//此方法与下方配置中的第一个textStle下的color等同
+	    var colors = ['#fda67e', '#81cacc', '#cca8ba', "#88cc81", "#82a0c5", '#fddb7e', '#735ba1', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
+	    return colors[parseInt(Math.random() * 10)];
+	}
+	//全国应收按细分行业
+	function getIncomeByDetailIndustry(){
+		var industryName=[];
+		var industryValue=[];
+		
+		$.ajax({
+  			type: "POST",
+  			url: "piechart/getIncomeByDetailIndustry.do",
+  			data: param,
+  			datatype: "json",
+  			success: function(data){
+  	  				console.log(data);
+  	  				var echartData=new Array();
+  	  			if (data.datas.length>0) {	
+  	  			   if(data.code==200){  
+					datas = data.datas;
+   	  			for(var d in datas){
+	  			    	industryName.push(datas[d].name);
+	  			        industryValue.push(datas[d].value);	}
+  	  			for(var i=0;i<industryName.length;i++){
+	  					var obj=new Object();
+	  					obj.value=industryValue[i];
+	  					obj.name=industryName[i];
+	  					//obj.label=content[i].labelCode;
+	  					//obj.itemStyle=wordCloudColor();
+	  					echartData[i]=obj;
+	  				}
+  				showWordCloud(echartData);
+  
+					
+  	  		  }else{ 
+					$("#main8").html("<br/><br/><img src=\"img/codeerror.gif\" />");						
+				}
+				
+			}else{
+				//$("#nodata8").css("display","block");
+				//$("#main8").css("display","none");
+				showFixWordCloud();
+			}		
+  	  			
+  	 
+			},	
+					
+  			error : function () {
+  					$("#year").innerHTML="<img src=\"img/login_bg.jpg\" height=\"300px\" width=\"400px\" />";
+  					return false;
+  				}
+		});
+	}
+
+  			function showWordCloud(echartData){
+  				//var myChart=echarts.init(document.getElementById("wordCloud"));	
+  		
+	  	  			option = {
+	  	  				  title: {
+	  	  			       // text: "词云图",
+	  	  			       // link: 'https://github.com/ecomfe/echarts-wordcloud',
+	  	  			       // subtext: 'data-visual.cn',
+	  	  			       // sublink: 'http://data-visual.cn',
+	  	  			      },
+	  	  			    tooltip: {},
+	  	  			series: [{
+	  	  	        type: 'wordCloud',
+	  	  	        gridSize: 20,
+	  	  	        sizeRange: [12, 50],
+	  	  	        rotationRange: [0, 0],
+	  	  	        shape: 'circle',
+	  	  	        textStyle: {
+	  	  	            normal: {
+	  	  	                color: 
+	  	  	                	//createRandomItemStyle1()
+	  	  	                	/*function () {
+	                            var colors = ['#fda67e', '#81cacc', '#cca8ba', "#88cc81", "#82a0c5", '#fddb7e', '#735ba1', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
+	                            return colors[parseInt(Math.random() * 10)];
+	                        }*/
+	  	  	                	function() {
+	  	  	                    return 'rgb(' + [
+	  	  	                        Math.round(Math.random() * 160),
+	  	  	                        Math.round(Math.random() * 160),
+	  	  	                        Math.round(Math.random() * 160)
+	  	  	                    ].join(',') + ')';
+	  	  	                }
+	  	  	            },
+	  	  	            emphasis: {
+	  	  	                shadowBlur: 10,
+	  	  	                shadowColor: '#333'
+	  	  	            }
+	  	  	        },
+	  	  	        data:echartData
+	  	  	  
+	  	  	    }]	};
+	  	  			echarts.dispose(document.getElementById("main8"));
+  	  					var myChart8 = echarts.init(document.getElementById('main8'));
+  	  			        myChart8.setOption(option);   
+  	  			    	$("#nodata8").css("display","none"); 
+  						$("#main8").css("display","block");
+  			}
+  			
+  
+
+  			function showFixWordCloud(){
+	  	  			option = {
+	  	  				  title: {
+	  	  			        //text: "词云图",
+
+	  	  			      },
+	  	  			    tooltip: {},
+	  	  			series: [{
+	  	  	        type: 'wordCloud',
+	  	  	        gridSize: 20,
+	  	  	        sizeRange: [12, 50],
+	  	  	        rotationRange: [0, 0],
+	  	  	        shape: 'circle',
+	  	  	        textStyle: {
+	  	  	            normal: {
+	  	  	                color: function() {
+	  	  	                    return 'rgb(' + [
+	  	  	                        Math.round(Math.random() * 160),
+	  	  	                        Math.round(Math.random() * 160),
+	  	  	                        Math.round(Math.random() * 160)
+	  	  	                    ].join(',') + ')';
+	  	  	                }
+	  	  	            },
+	  	  	            emphasis: {
+	  	  	                shadowBlur: 10,
+	  	  	                shadowColor: '#333'
+	  	  	            }
+	  	  	        },
+	  	  	    data: [
+	  	            {
+	  	                name: '后装-汽车车载电子设备',
+	  	                value: 34212328
+	  	            }, {
+	  	                name: '车厂及车厂推动的后装产品',
+	  	                value: 20754416
+	  	            }, {
+	  	                name: '自动售货机、自动售票机等',
+	  	                value: 11386012
+	  	            }, {
+	  	                name: '智能热表',
+	  	                value: 9270083
+	  	            }, {
+	  	                name: 'PAD类',
+	  	                value: 7941959
+	  	            }, {
+	  	                name: '视频监控',
+	  	                value: 6603574
+	  	            }, {
+	  	                name: '各类传感器',
+	  	                value: 3762761
+	  	            }, {
+	  	                name: '手环、项圈等',
+	  	                value: 3505946
+	  	            }, {
+	  	                name: '智能电梯',
+	  	                value: 1453679
+	  	            }, {
+	  	                name: '家电类',
+	  	                value: 1389293
+	  	            }, {
+	  	                name: '电动自行车',
+	  	                value: 1123774
+	  	            }, {
+	  	                name: '其他',
+	  	                value: 778180
+	  	            }, {
+	  	                name: '医疗类设备',
+	  	                value: 681778
+	  	            }, {
+	  	                name: '数字对讲机',
+	  	                value: 637845
+	  	            }, {
+	  	                name: '物流巴枪',
+	  	                value: 316826.9549
+	  	            }, {
+	  	                name: '智慧环保',
+	  	                value: 100021.9029
+	  	            }, {
+	  	                name: '农机监控',
+	  	                value: 81308.64379999999
+	  	            }, {
+	  	                name: '消防单兵',
+	  	                value: 23475.7285
+	  	            }]
+	
+	  	  	    }]	};
+	  	  			echarts.dispose(document.getElementById("main8"));
+  	  					var myChart8 = echarts.init(document.getElementById('main8'));
+  	  			        myChart8.setOption(option);   
+  	  			    	$("#nodata8").css("display","none"); 
+  						$("#main8").css("display","block");
+  			}
+  			
+	
+	</script>
+	
+</head>
+<body style="overflow:hidden">
+	<img src="./img/index-bg.png" class="index-bg">
+<div class="index-box">
+	<ul>
+		<li class="child ch-01"></li>
+		<li class="child ch-02"></li>
+		<li class="child ch-03"></li>
+		<li class="child ch-04"></li>
+		<li class="sm">
+			<div class="lt lt-01">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<h2><span>全国再往客户数</span></h2>
+				<div class="sm-box-data">
+					<ul>
+						<li>
+							<div class="bt">出账客户数（个）</div>
+							<div class="da" >
+								<p>客户数</p>
+								<span id="accountNum"></span>
+							</div>
+							<div class="da"  id="accountNumBi">
+							</div>
+						</li>
+						<li>
+							<div  class="bt">商用计费账户数（个）</div>
+							<div class="da">
+								<p>账户数</p>
+								<span id="customNum"></span>
+							</div>
+							<div class="da"   id="customNumBi">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="lt lt-02">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<h2><span>全国各省发卡连接数情况</span></h2>
+				<div id="main2" class="sm-box-data"></div>
+			</div>
+			<div class="lt lt-03">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<h2><span>全国各省上账期应收账款</span></h2>
+				<div id="main4" class="sm-box-data"></div>
+			</div>
+		</li>
+		<li class="lg">
+			<div class="cr-01">
+				<div class="top">
+					<h1>中国联通物联网客户运营系统</h1>
+					<div id="show" class="time"></div>
+					<div class="top-01"></div>
+					<div class="top-02"></div>
+					<div class="top-03"></div>
+				</div>
+				<div class="bottom">
+					<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+					<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+					<div class="bt-01"></div>
+					<div class="bt-02"></div>
+					<div class="bt-03"></div>
+					<div class="bt-04">
+						<div class="nu number-top">
+							<h3><span>全国物联网-连接数（个）</span></h3>
+							<ul id="countryNum"> 
+							</ul>
+							<input id="countryNumHidden" type="hidden" value="" />
+						</div>
+						<div class="nu number-bottom">
+							<h3><span>全国物联网-出账收入（元）</span></h3>
+							<ul id="countryMoney"> 
+							</ul>							
+							<input id="countryMoneyHidden" type="hidden" value="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cr-02">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<h2><span>南京物联网连接数图</span></h2>
+				<div id="mapContainer" class="lg-box-data">map</div>
+			</div>
+		</li>
+		<li class="sm">
+			<div class="rt rt-01">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<h2><span>全国应收按行业分布</span></h2>
+				<div id="main8" class="sm-box-data">
+				</div>
+			</div>
+			<div class="rt rt-02">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<h2><span>全国每连接收入分布</span></h2>
+				<div id="main5" class="sm-box-data">
+				</div>
+			</div>
+			<div class="rt rt-03">
+				<img src="./img/lin-lt-top.png" class="line-lt-top">
+				<img src="./img/lin-rt-bottom.png" class="line-rt-bottom">
+				<img src="./img/lin-rt-top.png" class="line-rt-top">
+				<img src="./img/lin-lt-bottom.png" class="line-lt-bottom">
+				<!-- <h2><span>缺个名字</span></h2> -->
+ 
+				<div class="sm-box-data" style="padding:10px 10px 10px 10px;overflow:hidden">
+					<div class="data"> 
+				       <table class="table table-primary mt-4">
+							<thead  class="fixedThead">
+								<tr>
+									<th style="width:10% ! important">省分</th>
+									<th style="width:22% ! important">应收环比</th> 
+									<th style="width:22% ! important">应收占比</th>
+									<th style="width:23% ! important">激活数环比</th> 
+									<th style="width:23% ! important">激活数占比</th> 
+								</tr>
+							</thead>
+								<tbody id="customListCompare3"  class="scrollTbody">
+								</tbody> 
+						</table>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+</body>
+<style type="text/css"> 
+    .table{
+         width: 100%; 
+         heigh:100%;
+         border-collapse:collapse; 
+         border-spacing:0;
+         color:#b6bcff;
+     }
+     .table tr{ 
+     	 width:100%;
+     } 
+     .table tr th {
+     	 height:33px;
+         line-height:33px;
+         border:1px solid #1f246a;
+         text-align: center;
+         background:#42489a;
+         font-weight:600;
+         font-size:13px;
+     }
+     .table td { 
+     	 
+         height:30px;
+         line-height:30px;
+         border:1px solid #42489a;
+         color:#b6bcff;
+         text-align: center;
+         font-size:13px;
+     }
+     .table td img { 
+     	 float:right;
+     	 margin:0 10px 0 0;
+     }
+</style>
+<script type="text/javascript"> 
+//页面时间控件
+window.onload = function() {  
+	var show = document.getElementById("show");  
+	setInterval(function() {   
+	var time = new Date();   // 程序计时的月从0开始取值后+1   
+	var m = time.getMonth() + 1;   
+	var t = time.getFullYear() + "-" + m + "-"     
+	+ time.getDate() + " " + time.getHours() + ":"     
+	+ time.getMinutes() + ":" + time.getSeconds();   
+	show.innerHTML = t;  
+	}, 1000); 
+};
+</script>
+<script type="text/javascript"> 
+//右下角，列表自动滚动功能
+   //先在table的最后增加一行，然后再把第一行中的数据填充到新增加的行中，最后再删除table的第一行
+   function change(table){
+      var row = table.insertRow(table.rows.length);//在table的最后增加一行,table.rows.length是表格的总行数
+      for(j=0;j<table.rows[0].cells.length;j++){//循环第一行的所有单元格的数据，让其加到最后新加的一行数据中（注意下标是从0开始的）
+         var cell = row.insertCell(j);//给新插入的行中添加单元格
+         cell.height = "24px";//一个单元格的高度，跟css样式中的line-height高度一样
+         cell.innerHTML = table.rows[0].cells[j].innerHTML;//设置新单元格的内容，这个根据需要，自己设置
+      }
+      table.deleteRow(0);//删除table的第一行
+   };
+   function tableInterval(){
+      var table = document.getElementById("customListCompare3");//获得表格
+      change(table);//执行表格change函数，删除第一行，最后增加一行，类似行滚动
+   };
+   setInterval("tableInterval()",2400);//每隔2秒执行一次change函数，相当于table在向上滚动一样
+</script>   
+
+
+<script type="text/javascript"> 
+  //定时刷新页面 或者用meta 两个都可以
+ $(function(){ 
+	  setInterval(function(){window.location.reload();}, 86400000);
+	 });  
+</script> 
+
+<script type="text/javascript"> 
+  //定时刷新大数字
+function RndNum(){ 
+    return Math.floor(Math.random()*10);;
+}
+  function addNum(){
+	  var countryNumval = parseInt($("#countryNumHidden").val());
+	  var countryMoneyval = parseInt($("#countryMoneyHidden").val());
+	  countryNumval = countryNumval + RndNum();
+	  countryMoneyval = countryMoneyval + RndNum();
+	  $("#countryNumHidden").val(countryNumval);
+	  $("#countryMoneyHidden").val(countryMoneyval);
+	  var countryNumString = valToString(countryNumval);
+	  var countryMoneyString = valToString(countryMoneyval);   
+	  $("#countryMoney").html(countryMoneyString);
+	  $("#countryNum").html(countryNumString);
+  }
+function valToString(countryNumval){
+	var countryNumString = ""; 
+	  var n=0;
+	  for(var i=1;countryNumval>1;i++){  
+		  var a =parseInt(countryNumval%10);
+		  countryNumval = countryNumval/10;
+		  countryNumString = "<li>"+a+"</li>" +countryNumString;
+		  if(i==3&&n<2) {
+			  countryNumString = "<li>,</li>" +countryNumString;
+			  i=0;
+			  n++;
+		  }
+	  }
+	  return countryNumString;
+}
+$(function(){ 
+	  setInterval(function(){addNum();}, 3000);
+	 });  
+</script> 
+<script type="text/javascript" src="./js/index/map.js"></script>
+<script type="text/javascript" src="./js/index/connectNum.js"></script>
+</html>

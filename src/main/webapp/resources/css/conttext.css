@@ -1,0 +1,260 @@
+
+
+/*=======================================*/
+.conttext1 { float:left; width:100%; padding:10px 0 0 0; }
+.conttext1 .title { float:left; width:100%; height:30px; background:url(../images/cont_title.png) no-repeat left bottom; }
+.conttext1 .title strong { font-size:14px; padding:5px 0 0 0; display:inline-block;}
+.conttext1 .title span { font-size:14px; font-weight:bold; padding:5px 0 0 10px; display:inline-block; color:#FF8102;}
+.conttext1 ul { float:left; padding:10px 0 10px 0;  border-bottom:1px solid #F4F4F4; }
+.conttext1 .menuContent ul{ float:none; width:auto;}
+.conttext1 .menuContent ul li{ float:none; width:100%; padding:0 0 0 0; }
+.conttext1 ul li{ float:left; *float:none; width:100%; padding:10px 0 0 0; }
+.conttext1 ul li .leftt{ float:left; width:86px; padding:7px 10px 0 0; text-align:right; }
+.conttext1 ul li .leftt2{ float:left; width:62px;  text-align:left; }
+.conttext1 ul li .leftt2 .er { position:relative; top:5px;}
+.conttext1 ul li .leftt3 { float:left; width:86px;  text-align:left ;padding:7px 10px 0 0; text-align:right;}
+.conttext1 ul li .leftt4 { float:left; width:86px;  text-align:left ;padding:7px 10px 0 0; text-align:right;}
+.conttext1 ul li .rightt{ float:left; width:680px;}
+.conttext1 ul li .rightt input { width:387px; height:24px; border-top:1px solid #aaa; border-left:1px solid #aaa; border-bottom:1px solid #E5E5E5; border-right:1px solid #E5E5E5; padding:0 5px;}
+.conttext1 ul li .rightt select{ margin-right:10px;}
+.conttext1 ul li .rightt textarea.textarea { width:387px; height:100px; border-top:1px solid #aaa; border-left:1px solid #aaa; border-bottom:1px solid #E5E5E5; border-right:1px solid #E5E5E5; padding:0 5px;}
+.conttext1 ul li .rightt .checkbox { width:auto; height:auto; position:relative; top:2px; margin-right:5px;}
+.conttext1 ul li .rightt label { margin-right:20px; display:inline-block;}
+.conttext1 ul li .rightt span { color:#999; display:inline-block; margin:0px 0 0 20px;}
+.conttext1 ul li .rightt .menuContent span { margin:0 0 0 0;}
+.conttext1 ul li .rightt span.er { color:#999; display:inline-block; margin:0px 20px 0 20px;}
+.conttext1 ul li .rightt b {  margin:0px 0 0 10px; font-weight:normal; font-size:14px;}
+.conttext1 ul li .rightt a { color:#FF8000;}
+.conttext1 ul li .rightt .inputday { width:180px; height:23px; background:url(../images/icon_r4.png) 170px -57px no-repeat; cursor:pointer;}
+.conttext1 ul li .rightt .buttoner a { color:#fff; padding:0 15px; text-align:center; position:relative; top:-2px;}
+.conttext1 ul li .rightt .buttoner2 a { color:#00F; text-decoration:underline; position:relative; top:-80px;}
+.conttext1 ul li .rightt .buttoner3 { margin:0px; padding-bottom:10px;}
+.conttext1 ul li .rightt .buttoner3 a { color:#fff; padding:0 15px; text-align:center;}
+.conttext1 ul li .rightt .txt { margin:0px; padding:5px 0 5px 0; }
+.conttext1 ul li .rightt .txt i { font-style:normal; width:150px; display:inline-block; color:#333;}
+.conttext1 ul li .rightt .txt a { color:#00F; text-decoration:underline;}
+.conttext1 ul li .rightt .txt2 { margin:0px; padding:5px 0 5px 0; }
+.conttext1 ul li .rightt .txt2 i { font-style:normal;}
+.conttext1 ul li .rightt .txt2 i a { display:inline-block; width:100px; padding:8px 0; margin-left:10px; text-align:center; color:#333; background:#f6f6f6; border:1px solid #ccc; cursor:default}
+.conttext1 ul li .rightt .txt2 i a:hover { background: none repeat scroll 0 0 #DDDDDD; color: #fff; }
+.conttext1 ul li .rightt .txt2 span a {width:auto; padding:0px 10px; color:#fff;}
+
+
+.conttext1 ul li .rightt2{ float:left;}
+.conttext1 ul li .rightt2 span{ float:left; width:126px; height:126px; border:1px solid #D6D6D6; background:url(../images/photo/photo_br.png) no-repeat; position:relative; margin-right:20px; }
+.conttext1 ul li .rightt2 span img { width:126px; height:126px;}
+
+.conttext1 ul li .rightt3{ float:left; padding:10px; border:1px solid #ddd; border-bottom-color:#ddd; width:600px; background:#F6F6F6;}
+.conttext1 ul li .rightt3 .tx1 { float:left; width:100%; color:#666;}
+.conttext1 ul li .rightt3 .tx1 a { text-decoration:underline}
+.conttext1 ul li .rightt3 .tx2 { float:left; width:100%; padding:10px 0 0 0;}
+.conttext1 ul li .rightt3 .tx3 { float:left; width:100%; padding:10px 0 0 0; text-align:center}
+.he1 { height:0px;}
+.he2 {height: 550px;}
+.he2 .rightt3 { box-shadow:0px 0px 4px rgba(0, 0, 0, 0.1);}
+
+
+.conttext1 .text { float:left; width:100%; padding:10px 0; }
+.conttext1 .text2 { float:left; width:100%; padding:10px 0 0 0; }
+.conttext1 .text2 a { margin-right:10px; }
+.conttext1 .text2 label { margin-right:10px;}
+.conttext1 .text2 input { position:relative; top:3px; margin-right:5px;}
+.conttext1 .text3 { float:left; width:100%; padding:10px 0; }
+.conttext1 .text3 .little { margin:0 0 0 60px;}
+.conttext1 .text3 .little input { position:relative; top:3px; margin-right:10px;}
+.conttext1 .text4 { float:left; width:100%; padding:10px 0; }
+.conttext1 .text4 a { width:100px; text-align:center; padding:0px; margin-right:20px;}
+.conttext1 .text4 .ti { float:left; width:100%; font-weight:bold;}
+.conttext1 .text4 .ti .lt { float:left; width:225px; }
+.conttext1 .text4 .ti .rt { float:left;  }
+.conttext1 .text4 .ul { float:left; width:465px; height:170px; overflow:scroll; overflow-x:hidden }
+.conttext1 .text4 .ul li { float:left;  }
+.conttext1 .text4 .ul li .lt {float:left; width:225px;}
+.conttext1 .text4 .ul li .lt input { position:relative; top:2px; margin-right:5px;}
+.conttext1 .text4 .ul li .rt {float:left;}
+.conttext1 .text4 .ul li .rt input { width:202px; height:23px; border:1px solid #AAA; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#E5E5E5; position:relative; top:-3px;}
+.conttext1 .text4 .txt { float:left; width:100%; height:30px; background:#F6F6F6; margin:10px 0 0 0;}
+.conttext1 .text4 .txt strong { padding:7px 0 0 10px; display:inline-block;}
+
+.conttext1 .let { width:100%;}
+.conttext1 .let strong { }
+.conttext1 .let span { }
+
+.conttext1 .ds { }
+.conttext1 .ds table { border:1px solid #ccc; font-size:12px;}
+.conttext1 .ds table th { border-right:1px solid #ccc; background:#ddd; color:#333; }
+.conttext1 .ds table th,.conttext1 .ds table td  { padding:5px; }
+
+.conttext1 .ds2 {border:1px solid #ccc; font-size:12px; padding:0px; background:#ddd;}
+.conttext1 .ds2 .lt  { padding:2px 5px;  background:#ddd; text-align:center;  }
+.conttext1 .ds2 .lt label { font-weight:bold}
+.conttext1 .ds2 .rt { border-left:1px solid #ccc;color:#333; background:#fff; padding:5px; }
+.conttext1 .ds2 .rt label { margin:0 0 0 10px; color:#999}
+
+/*=======================================*/
+
+/*=======================================*/
+.conttext2 { float:left; width:100%; padding:10px 0 0 0; }
+.conttext2 .title { float:left; width:100%; height:30px; background:url(../images/cont_title.png) no-repeat left bottom; }
+.conttext2 .title strong { font-size:14px; padding:5px 0 0 0; display:inline-block;}
+.conttext2 .title span { font-size:14px; font-weight:bold; padding:5px 0 0 10px; display:inline-block; color:#FF8102;}
+.conttext2 .title .little { margin:0 0 0 30px;}
+.conttext2 .title .little input { position:relative; top:3px; margin-right:10px;}
+.conttext2 .text {float:left; width:100%; padding:20px 0 10px 0 ; color:#999;}
+.conttext2 ul { float:left; padding:10px 0 0 0; }
+.conttext2 ul li{ float:left; width:126px; height:126px; border:1px solid #D6D6D6; background:url(../images/photo/photo_br.png) no-repeat; position:relative; margin-right:20px; }
+.conttext2 ul li img { width:125px;height:125px;}
+.conttext2 ul li .ban {float:left; width:126px; height:126px; position:absolute; display:none}
+.conttext2 ul li .ban .delete { float:left; margin:2px 0 0 97px;}
+.conttext2 ul li .ban .leftrightben { float:left; width:126px; height:28px; padding:96px 0 0 0;}
+.conttext2 ul li .ban .leftrightben .forl,.conttext2 ul li .ban .leftrightben .forr,.conttext2 ul li .ban .leftrightben .forl2,.conttext2 ul li .ban .leftrightben .forr2 { float:left; width:62px; height:28px; background:url(../images/icon_r3.png) no-repeat no-repeat;}
+.conttext2 ul li .ban .leftrightben .forl { background-position:0px -187px; margin-right:2px;}
+.conttext2 ul li .ban .leftrightben .forr { background-position:-63px -187px;}
+.conttext2 ul li .ban .leftrightben .forl2 { background-position:-140px -187px; margin-right:2px;}
+.conttext2 ul li .ban .leftrightben .forr2 { background-position:-203px -187px;}
+
+.conttext2 ul li .ban .leftrightben .aSetDefault,.conttext2 ul li .ban .leftrightben .aDelete { float:left; width:62px; height:28px; }
+.conttext2 ul li .ban .leftrightben .aSetDefault { background-position:0px -187px; margin-right:2px;}
+.conttext2 ul li .ban .leftrightben .aDelete { background-position:-63px -187px;}
+
+.conttext2 ul.other { float:left; height:160px; padding:10px 0 0 0; }
+.conttext2 ul.other li{ float:left; width:128px; margin-right:20px; border:0px; }
+.conttext2 ul.other li span{ float:left; width:126px; height:126px; border:1px solid #D6D6D6; background:url(../images/photo/photo_br2.png) no-repeat; overflow:hidden; }
+.conttext2 ul.other li a { float:left; width:128px; padding:0px; text-align:center; margin:4px 0 0 0;}
+/*=======================================*/
+
+/*=======================================*/
+.conttext3 { float:left; width:100%; padding:10px 0 0 0; }
+.conttext3 .title { float:left; width:100%; height:30px; padding:0 10px 0 0; background:url(../images/cont_title.png) no-repeat left bottom; }
+.conttext3 .title strong { font-size:14px; padding:5px 0 0 0; display:inline-block;}
+.conttext3 .title span { font-size:14px; font-weight:bold; padding:5px 0 0 10px; display:inline-block; color:#FF8102;}
+.conttext3 .title .little { margin:0 0 0 30px;}
+.conttext3 .title .little input { position:relative; top:3px; margin-right:10px;}
+.conttext3 .text1 {float:left; width:100%; height:22px; padding:8px 0 0 10px ; background:#F6F6F6; margin:10px 0 0 0;}
+.conttext3 .text1 strong { padding:0 50px 0 0;}
+.conttext3 .text1 a { color:#00F; }
+.conttext3 .text1b {float:left; width:100%; height:22px; padding:8px 0 0 10px ; margin:10px 0 0 0;}
+.conttext3 .text1b strong { font-weight:normal; padding:0 50px 0 0;}
+.conttext3 .text1b a { color:#00F; }
+.conttext3 .text2 {float:left; width:100%; height:32px; padding:8px 0 0 10px ; background:#F6F6F6; margin:10px 0 0 0;}
+.conttext3 .text2 .ltext { float:left; line-height:40px;}
+.conttext3 .text2 .ltext input { position:relative; top:-8px; margin-right:8px;}
+.conttext3 .text2 .ltext a { position:relative; top:-8px;  color:#00F}
+.conttext3 .text2 .ltext a.button_search { position:relative; top:-2px; text-decoration:underline; margin-right:10px;}
+.conttext3 .text2 .ltext span { padding-left:20px; position:relative; top:-7px; }
+.conttext3 .text2 .ltext label { margin:0 10px; cursor:pointer}
+.conttext3 .text2 .ltext span input { position:relative; top:3px; margin-right:8px;}
+.conttext3 .text2 .rtext {float:right;}
+.conttext3 .text2 .rtext a { width:100px; text-align:center; padding:0px; margin:0 10px 0 0}
+.conttext3 .text3 {float:left; width:100%;margin:10px 0 0 0;}
+.conttext3 .text3 .itxt { width:73px; height:20px; border:1px solid #E5E5E5; border-top:1px solid #B7B7B7; border-left:1px solid #B7B7B7; background:#E5E5E5; padding:0 10px;}
+.conttext3 .text3 a { color:#0100FE; margin-right:8px;}
+.conttext3 .text3 .checkbox { margin:0px 5px 0 20px; position:relative; top:2px;}
+.conttext3 .text3 .checkboxall { margin:0px 5px 0 6px; position:relative; top:2px;}
+.conttext3 .text3 td { padding:8px 0 0 0;}
+.conttext3 .text3 th { color:#ccc; font-weight:normal;}
+.conttext3 .text3 .ding_icon1 { float:left; margin-right:10px}
+.conttext3 .text3 .delete_icon2 { float:left;}
+.conttext3 .text4 {float:left; width:100%;margin:10px 0 0 0; padding-right:14px; border:1px solid #E5E5E5; border-top:0px;}
+.conttext3 .text4 .text {float:left;  width:100%;}
+.conttext3 .text4 .text strong { float:left; padding:2px 0 6px 10px}
+.conttext3 .text4 .brtext { float:left;  width:100%; background:url(../images/text_line.jpg) repeat-y #EFEFEF; margin:0 7px 7px 7px; padding:5px 0;}
+.conttext3 .text4 .brtext p { margin:6px 0px;}
+.conttext3 .text4 .brtext span { width:80px; text-align:center; display:inline-block;}
+.conttext3 .text4 .brtext strong { margin:0 20px 0 17px;}
+/*=======================================*/
+/*=======================================*/
+
+.conttext4 { float:left; width:100%; padding:10px 0 0 0;}
+.conttext4 .checkbox { position:relative; top:2px; margin-right:5px}
+.conttext4 .title1 { float:left; width:100%; margin:5px 0 0 0; padding:5px 0 5px 0;}
+.conttext4 .title2 { float:left; width:100%; border:1px solid #ccc; background:#E6E6E6;}
+.conttext4 .title2 .lt { float:left; padding:5px 5px;}
+.conttext4 .title2 .rt { float:right; padding:5px 5px; margin-top:5px;}
+.conttext4 .title2 .rt label { margin:0 5px;}
+.conttext4 .text { float:left; width:100%; border:1px solid #ccc; border-top:0px; padding:0 0 10px 0;}
+.conttext4 .text p { float:left; padding:6px 0; margin:0px;}
+.conttext4 .text b { font-weight:normal}
+.conttext4 .lebr span a { width:11px; height:11px; overflow:hidden; text-align:center;  display:inline-block; border-radius:60px; font-size:12px; margin-right:4px; position:relative; top:2px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #CCC center;}
+.conttext4 .lebr span a { background-size:11px;}
+.conttext4 .lebr p a:hover { background:url(../images/close.png) no-repeat #D90000 center; background-size:11px;}
+.conttext4 .lebr  p:hover { background:#F3F4F8}
+/*=======================================*/
+
+.conttext1 .ulfour { float:left; width:100%; }
+.conttext1 .ulfour .contul .ti span a { color:#FF0; text-decoration:underline}
+.conttext1 .ulfour .contul .ti span { float:right; padding:5px 10px 0 0;}
+
+.conttext1 .ulfour .contul .ttext3 { float:left; width:100%}
+.conttext1 .ulfour .contul .ttext3 .tx1 { float:left; width:100%}
+.conttext1 .ulfour .contul .ttext3 .tx1 input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle; position:relative; top:-3px;}
+.conttext1 .ulfour .contul .ttext3 .tx1 span { position:relative; top:8px; margin-left:10px;}
+.conttext1 .ulfour .contul .ttext3 .tx2 { float:left; width:100%; padding:0px 0 10px 0; border-bottom:1px dashed #ccc; }
+.conttext1 .ulfour .contul .ttext3 .tx2 b { font-weight:normal; float:left; padding:10px 20px 0 10px;}
+.conttext1 .ulfour .contul .ttext3 .tx2 span { color:#F30; font-family:Arial; font-size:14px; font-weight:bold;}
+.conttext1 .ulfour .contul .ttext3 .tx3 { float:left; width:100%; padding:10px 0 0 0;}
+.conttext1 .ulfour .contul .ttext3 .tx3 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:0 10px 10px 0;}
+.conttext1 .ulfour .contul { float:left; width:100%; padding:0 0 20px 0;}
+.conttext1 .ulfour .contul .ti {float:left; width:100%; padding:0 0 0 0px; background:#F6F6F6; border-bottom:1px dashed #ccc; }
+.conttext1 .ulfour .contul .ti strong { float:left; padding:6px 0 6px 10px; color:#666; font-size:12px;}
+.conttext1 .ulfour .contul .ti span a { color:#09C}
+.conttext1 .ulfour .contul .ttext {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.conttext1 .ulfour .contul .ttext li { float:left; width:30%; margin:0 10px 20px 10px;}
+.conttext1 .ulfour .contul .ttext li .lr { float:left; width:100%; height:26px; background:#EAEAEA; border-radius:5px; margin:10px 0 0 0; }
+.conttext1 .ulfour .contul .ttext li .lr span { float:left; padding:6px 0 0 10px;}
+.conttext1 .ulfour .contul .ttext li .rr { float:left; width:100%; height:26px; color:#666 }
+.conttext1 .ulfour .contul .ttext li .rr span { float:left; padding:6px 0 0 20px;}
+
+.conttext1 .ulfour .contul .ttext2 {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.conttext1 .ulfour .contul .ttext2 li { float:left; width:21%; margin:0 10px 20px 10px;}
+.conttext1 .ulfour .contul .ttext2 li .lr { float:left; width:100%; height:26px; background:#EAEAEA; border-radius:5px; margin:10px 0 0 0; }
+.conttext1 .ulfour .contul .ttext2 li .lr span { float:left; padding:6px 0 0 10px;}
+.conttext1 .ulfour .contul .ttext2 li .rr { float:left; width:100%; height:26px; color:#666 }
+.conttext1 .ulfour .contul .ttext2 li .rr span { float:left; padding:6px 0 0 20px;}
+
+
+/*============================*/
+#sidebar {}
+#portamento_container {float:right; position:relative;} 
+#portamento_container #sidebar {float:none; position:absolute;} 
+#portamento_container #sidebar.fixed {width:976px; background:#F6F6F6; position:fixed; border:1px solid #ccc; padding-right:0px; padding-left:9px; margin-left:21px; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2);}
+
+.conttextFixed {  padding:10px 0 0 0; position:relative; overflow:hidden;}
+.conttextFixed .rotText { position:absolute; top:100px;   z-index:9999; background:#F6F6F6; padding:10px 0;  }
+.conttextFixed .rotText ul {   }
+.conttextFixed .rotText li { float:left; width:100%; padding:0px;}
+.conttextFixed .rotText li .lefttext { float:left; width:10%; text-align:right; padding:10px 20px 0 0; font-weight:bold; color:#666;}
+.conttextFixed .rotText li .righttext { float:left; width:86%;}
+.conttextFixed .rotText li .righttext span { float:left; width:120px; height:20px;  background:#28a7e1; color:#fff; padding:2px 5px; margin:2px; border-radius:6px;}
+.conttextFixed .rotText li .righttext span label {float:left; width:120px; height:20px; cursor:pointer}
+.conttextFixed .rotText li .righttext span:hover,.conttextFixed .rotText li .righttext span.on { background:#F48B4C; color:#FF0}
+.conttextFixed .rotText li .righttext span:active { background:#28a7e1; color:#fff}
+
+.conttextFixed .sidebar { background:#F6F6F6; padding:10px 0;  }
+.conttextFixed .sidebar ul {   }
+.conttextFixed .sidebar li { float:left; width:100%; padding:0px;}
+.conttextFixed .sidebar li .lefttext { float:left; width:10%; text-align:right; padding:10px 20px 0 0; font-weight:bold; color:#666;}
+.conttextFixed .sidebar li .righttext { float:left; width:86%;}
+.conttextFixed .sidebar li .righttext span { float:left; width:140px; height:20px;  background:#28a7e1; color:#fff; padding:2px 5px; margin:2px; border-radius:6px;}
+.conttextFixed .sidebar li .righttext span label {float:left; width:140px; height:20px; line-height:20px; overflow:hidden; cursor:pointer}
+.conttextFixed .sidebar li .righttext .contract {float:left; width:210px; height:20px; line-height:20px; overflow:hidden; cursor:pointer}
+.conttextFixed .sidebar li .righttext span .contract {float:left; width:210px; height:20px; line-height:20px; overflow:hidden; cursor:pointer}
+.conttextFixed .sidebar li .righttext span:hover,.conttextFixed .sidebar li .righttext span.on { background:#F48B4C; color:#FF0}
+.conttextFixed .sidebar li .righttext span:active { background:#28a7e1; color:#fff}
+
+.conttextFixed .contText { margin:0 0 20px 0;}
+.conttextFixed .contText .ttit {  position:relative; border-bottom:1px dashed #ccc; margin:10px 0px; padding:0 0 10px 0}
+.conttextFixed .contText .ttit strong { font-size:14px; color:#28a7e1}
+.conttextFixed .contText .ttit .benCloss { width:15px; height:15px;  background:url(../images/icon_r5.png) no-repeat; position:absolute; right:0px; bottom:0px; margin-bottom:5px;}
+
+.conttextFixed .contTextAll .contText { margin:0 0 20px 0;}
+.conttextFixed .contTextAll .contText .ttit {float:left; width:100%; position:relative; border-bottom:1px dashed #ccc; margin:10px 0px; padding:0 0 10px 0}
+.conttextFixed .contTextAll .contText .ttit strong { font-size:14px; color:#28a7e1}
+.conttextFixed .contTextAll .contText .ttit .expandCloss { font-size:14px; color:#28a7e1; width:100px; height:15px; position:absolute; right:70px; bottom:0px; margin-bottom:5px;}
+.conttextFixed .contTextAll .contText .ttit .deleteCloss { font-size:14px; color:#28a7e1; width:50px; height:15px; position:absolute; right:0px; bottom:0px; margin-bottom:5px;}
+/*============================*/
+
+.menuContent { z-index:3000;}
+
+
+

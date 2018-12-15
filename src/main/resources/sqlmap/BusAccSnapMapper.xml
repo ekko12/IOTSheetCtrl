@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BUS_ACC_SNAP">
+	
+	<resultMap type="BusAccSnapInfo" id="busAccSnapInfoMap">
+		<result property="busAccYear" column="bus_acc_year"/>
+		<result property="busAccMonth" column="bus_acc_month"/>
+		<result property="busAccDay" column="bus_acc_day"/>
+		<result property="provinceCode" column="province_code"/>
+		<result property="provinceName" column="province_name"/>
+		<result property="cityCode" column="city_code"/>
+		<result property="cityName" column="city_name"/>
+		<result property="companyCode" column="company_code"/>
+		<result property="companyName" column="company_name"/>
+		<result property="isForecastFlag" column="is_forecast_flag"/>
+		<result property="totalCharge" column="total_charge"/>
+		<result property="connections" column="connections"/>
+		<result property="activeNumber" column="active_number"/>
+		<result property="bus_time" column="busTime"/>
+	</resultMap>
+	
+	<sql id="conditionByParams">  
+		<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+		<if test="busAccMonth != null"><![CDATA[ AND b.bus_acc_month = #{busAccMonth} ]]></if>
+		<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+		<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+		<if test="companyCode != null"><![CDATA[ AND b.company_code = #{companyCode} ]]></if>
+	</sql>
+	
+	
+	<!--============================= selectByPieChart =================================== -->
+	<select id="selectByAllPieChart" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT b.`province_name` as name,SUM(b.`connections`) as value 
+                  FROM bus_acc_snap b  ]]>
+		        <where>  
+					  1 = 1
+					<include refid="conditionByParams" />
+				</where>
+        <![CDATA[ GROUP BY b.`province_code` 
+                  order by value desc]]>
+	</select>
+	
+    <!--============================= selectByPieChart =================================== -->
+	<select id="selectByCityPieChart" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT b.`city_name` as name,SUM(b.`connections`) as value 
+                  FROM bus_acc_snap b  ]]>
+		        <where>  
+					1 =1 
+					<include refid="conditionByParams" />
+				</where>
+          <![CDATA[ GROUP BY b.`city_code` 
+                    order by value desc]]>
+	</select>
+	
+	<!--============================= selectByPieChart =================================== -->
+	<select id="selectByCompanyPieChart" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT SUM(b.`connections`) as value,b.`company_name` as name 
+                  FROM bus_acc_snap b  ]]>
+		        <where>  
+					1=1
+					<include refid="conditionByParams" />
+				</where>
+          <![CDATA[ GROUP BY b.`company_code` 
+                  order by value desc]]>
+	</select>
+	
+	
+	<!--============================= selectByAllLineChart =================================== -->
+	<select id="selectByAllLineChart" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(connections) AS VALUE, b.is_forecast_flag AS isForecastFlag
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME
+                  ORDER BY b.bus_time ]]>
+	</select>
+	
+	<!--============================= selectByAllLineChart =================================== -->
+	<select id="selectByCityLineChart"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(connections) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                   <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                  ORDER BY b.bus_time   ]]>
+	</select>
+	
+	<!--============================= selectByAllLineChart =================================== -->
+	<select id="selectByCompanyLineChart"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(connections) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                 ORDER BY b.bus_time  ]]>
+	</select>
+	
+	
+	<!--============================= selectByAllActiveRate =================================== -->
+	<select id="selectByAllActiveRate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,CONCAT(SUM(b.`active_number`)/SUM(connections)*100,'%') AS VALUE, b.is_forecast_flag AS isForecastFlag
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME
+                  ORDER BY b.bus_time ]]>
+	</select>
+	
+	<!--============================= selectByCityActiveRate =================================== -->
+	<select id="selectByCityActiveRate"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,CONCAT(SUM(b.`active_number`)/SUM(connections)*100,'%') AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                   <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                  ORDER BY b.bus_time   ]]>
+	</select>
+	
+	<!--============================= selectByCompanyActiveRate =================================== -->
+	<select id="selectByCompanyActiveRate"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,CONCAT(SUM(b.`active_number`)/SUM(connections)*100,'%') AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                 ORDER BY b.bus_time  ]]>
+	</select>
+	
+	
+	
+	<!--============================= selectByAllActive =================================== -->
+	<select id="selectByAllActive" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`active_number`) AS VALUE, b.is_forecast_flag AS isForecastFlag
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME
+                  ORDER BY b.bus_time ]]>
+	</select>
+	
+	<!--============================= selectByCityActive =================================== -->
+	<select id="selectByCityActive"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`active_number`) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                   <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                  ORDER BY b.bus_time   ]]>
+	</select>
+		<!--============================= selectTotalChargeTrend =================================== -->
+	<select id="selectChargeByAll" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`total_charge`)AS VALUE, b.is_forecast_flag AS isForecastFlag
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME
+                  ORDER BY b.bus_time ]]>
+	</select>
+	
+	<!--============================= selectTotalChargeTrend =================================== -->
+	<select id="selectChargeByCity"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`total_charge`) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                   <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                  ORDER BY b.bus_time   ]]>
+	</select>
+	
+	<!--============================= selectTotalChargeTrend =================================== -->
+	<select id="selectChargeByCompany"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`total_charge`) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                 ORDER BY b.bus_time  ]]>
+	</select>
+	
+		<!--============================= selectOrderByAll =================================== -->
+	<select id="selectOrderByAll" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`order_number`)AS VALUE, b.is_forecast_flag AS isForecastFlag
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME
+                  ORDER BY b.bus_time ]]>
+	</select>
+	
+	<!--============================= selectOrderByCity =================================== -->
+	<select id="selectOrderByCity"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`order_number`) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                   <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                  ORDER BY b.bus_time   ]]>
+	</select>
+	
+	<!--============================= selectOrderByCompany =================================== -->
+	<select id="selectOrderByCompany"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.bus_time,"%Y-%m") AS NAME,SUM(b.`order_number`) AS VALUE,is_forecast_flag AS isForecastFlag 
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") <= #{paramTime} ]]></if>
+                  			<if test="paramTime2 != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") > #{paramTime2} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+       <![CDATA[ GROUP BY NAME 
+                 ORDER BY b.bus_time  ]]>
+	</select>
+	
+	<!--============================= selectHomePg4TbAllByMonth =================================== -->
+	<select id="selectHomePg4TbAllByMonth" parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT COUNT(*) AS customerNumber ,SUM(b.`company_number`) as companyNumber,SUM(b.`connections`) as connections,SUM(b.`total_charge`) AS total_charge,b.bus_time
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") = #{paramTime} ]]></if>
+                  </where> 
+	</select>
+	
+	<!--============================= selectHomePg4TbCityByMonth =================================== -->
+	<select id="selectHomePg4TbCityByMonth"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo" 
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT  COUNT(*) AS customerNumber ,SUM(b.`company_number`) as companyNumber,SUM(b.`connections`) as connections,SUM(b.`total_charge`) AS total_charge,b.bus_time
+                  FROM bus_acc_snap b  ]]>
+                   <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") = #{paramTime} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  </where> 
+	</select>
+	
+	<!--============================= selectHomePg4TbCompByMonth =================================== -->
+	<select id="selectHomePg4TbCompByMonth"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT  COUNT(*) AS customerNumber ,SUM(b.`company_number`) as companyNumber,SUM(b.`connections`) as connections,SUM(b.`total_charge`) AS total_charge,b.bus_time
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                  			<if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") = #{paramTime} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+	</select>
+
+
+    <!--============================= selectHomePg4TbByFirFlag =================================== -->
+	<select id="selectHomePg4TbByFirFlag"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT COUNT(*) AS customerNumber ,SUM(b.`company_number`) AS companyNumber,SUM(b.`connections`) AS connections,SUM(b.`total_charge`) AS total_charge,b.`bus_acc_month` AS busMon,b.`bus_acc_year` AS busYear,b.`bus_time` 
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[b.bus_acc_month=(
+														SELECT MAX(t1.`bus_acc_month`) AS busMon 
+														  FROM bus_acc_snap t1 
+														  WHERE  1 = 1 
+							]]>
+														  <if test="busAccYear != null"><![CDATA[ AND t1.bus_acc_year = #{busAccYear} ]]></if>
+							                  			  <if test="provinceCode != null"><![CDATA[ AND t1.province_code = #{provinceCode} ]]></if>
+							                  			  <if test="cityCode != null"><![CDATA[ AND t1.city_code = #{cityCode} ]]></if>
+                            <![CDATA[ )  ]]>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+                 <![CDATA[GROUP BY b.`bus_acc_month`,b.`bus_acc_year`
+                          ORDER BY b.`bus_acc_year`  DESC ]]>
+	</select>
+	
+	<!--============================= selectHomePg4TbByFirFlag =================================== -->
+	<select id="selectHomePg4TbByLastFirFlag"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT  SUM(b.`company_number`) as companyNumber,SUM(b.`connections`) as connections 
+                  FROM bus_acc_snap b  ]]>
+                  <where>   <![CDATA[1 = 1]]>
+                            <if test="paramTime != null "><![CDATA[ AND DATE_FORMAT(b.bus_time,"%Y-%m") = #{paramTime} ]]></if>
+                  			<if test="busAccYear != null"><![CDATA[ AND b.bus_acc_year = #{busAccYear} ]]></if>
+                  			<if test="busAccMonth != null"><![CDATA[ AND b.bus_acc_month = #{busAccMonth} ]]></if>
+                  			<if test="provinceCode != null"><![CDATA[ AND b.province_code = #{provinceCode} ]]></if>
+                  			<if test="cityCode != null"><![CDATA[ AND b.city_code = #{cityCode} ]]></if>
+                  </where> 
+	</select>
+  
+</mapper>

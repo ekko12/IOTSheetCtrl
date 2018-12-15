@@ -1,0 +1,102 @@
+@charset "gb2312";
+/*重写浏览器默认样式 start */
+html { color:#333; font-size:12px; height:100%; font-family: "宋体";  } 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form, fieldset,input,textarea,blockquote,th,td {margin:0;  padding:0; } 
+
+fieldset,img { border:0; } 
+address,caption,cite,code,dfn,em,var { font-style:normal; font-weight:normal; } 
+ol,ul { list-style:none; } 
+caption,th { text-align:left; } 
+q:before,q:after { content:''; } 
+abbr,acronym { border:0; } 
+body{ height:100%;}
+/*重写浏览器默认样式 end */
+
+/*全局样式 start*/
+a { text-decoration:none; color:#333;}
+a.fontb{ color:#0c55a4; font-weight:bold; text-decoration:underline;}
+a.no_td{ text-decoration:none}
+
+.hidden{display:none;}
+.clear{clear:both; height:0; overflow:hidden;}
+/*全局样式 end*/
+
+.hidden{ display: none;!important }
+
+
+.datagrid-header{ font-weight:bold;}
+
+
+
+
+
+
+body{  }
+
+.wrapperbr {  width:100%; position:relative;  }
+.wrapper { padding-left:15px;  padding-right:20px;  }
+.fooder { float:left; height:30px; width:100%;}
+
+/*==icon对应该CSS名称===================================*/
+.seji,.xinfen {background:url(../images/icon_r1.jpg) no-repeat; display:inline-block;}
+/*设置*/
+.seji { width:16px; height:16px; background-position:0px 0px;}
+/*信封*/
+.xinfen { width:16px; height:12px; background-position:0px -40px;}
+
+
+/*导航相关图标*/
+.nav_icon1,.nav_icon2,.nav_icon3,.nav_icon4,.nav_icon5,.nav_icon6,.nav_icon7,.nav_icon8,.nav_icon9,.nav_icon10,.nav_icon11,.nav_icon12,.nav_icon13,.nav_icon14 { width:21px; height:21px; background:url(../images/icon_r2.png) no-repeat;display:inline-block;}
+.nav_icon1 { background-position:0px 0px;}
+.nav_icon2 { background-position:0px -50px;}
+.nav_icon3 { background-position:0px -100px;}
+.nav_icon4 { background-position:0px -150px;}
+.nav_icon5 { background-position:0px -200px;}
+.nav_icon6 { background-position:0px -250px;}
+.nav_icon7 { background-position:0px -300px;}
+.nav_icon8 { background-position:0px -350px;}
+.nav_icon9 { background-position:0px -400px;}
+.nav_icon10 { background-position:0px -450px;}
+.nav_icon11 { background-position:0px -500px;}
+.nav_icon12 { background-position:0px -550px;}
+.nav_icon13 { background-position:0px -600px;}
+.nav_icon14 { background-position:0px -650px;}
+
+
+
+/*商品配置12图标*/
+.tuptltle_icon1,.tuptltle_icon2 { width:20px; height:20px; display:inline-block; background:url(../images/title_po1.png) no-repeat;}
+.tuptltle_icon1 { background-position:0px -100px;}
+.tuptltle_icon2 { background-position:-40px -100px;}
+
+/*删除图标*/
+.delete_icon1{ width:26px; height:26px; display:inline-block; background:url(../images/icon_r3.png) no-repeat;}
+.delete_icon1 { background-position:0px -220px;}
+.delete_icon2{ width:16px; height:16px; display:inline-block; background:url(../images/icon_r3.png) no-repeat;}
+.delete_icon2 { background-position:-120px -280px;}
+
+
+/*置顶图标*/
+.ding_icon1{ width:16px; height:16px; display:inline-block; background:url(../images/icon_r3.png) no-repeat;}
+.ding_icon1 { background-position:-143px -280px;}
+
+
+
+
+/*==字体对应该颜色CSS名称===================================*/
+.cl_ccc { color:#ccc;}
+
+
+.cl_red { color:#FF3C04;}
+
+
+
+
+
+.crumb {   height:30px; padding:16px 0 0 15px; color:#666; border-bottom:1px solid #CCCCCC; background:#fff url(../images/icon_r3.png) no-repeat 0px 15px; font-family:"宋体"; }
+.crumb a { margin:0 8px; color:#666;}
+.crumb span { margin:0 8px; color:#28a7e1;}
+.crumb a:hover { color:#999;background-color:white }
+
+.crumb .leftben { float:right; position:relative; top:-2px;}
+.crumb .leftben a { color:#fff; padding:0 15px; margin:0 2px 0 3px;}

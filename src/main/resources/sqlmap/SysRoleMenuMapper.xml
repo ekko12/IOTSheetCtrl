@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_ROLE_MENU">
+	
+	<resultMap type="SysRoleMenu" id="sysRoleMenuResultMap">
+		<id property="roleMenuRelId" column="ROLE_MENU_REL_ID"/> 
+		<result property="roleCode" column="ROLE_CODE"/>   
+		<result property="menuCode" column="MENU_CODE"/>   
+		<result property="creater" column="CREATER"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="remark" column="REMARK"/>
+	</resultMap>
+	
+	<resultMap type="SysRoleMenu" id="roleAuthResultMap" extends="sysRoleMenuResultMap">
+		<result property="operateCode" column="OPERATE_CODE"/>
+	</resultMap>
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams">  
+		<if test="roleCode != null"><![CDATA[ AND t.ROLE_CODE = #{roleCode} ]]></if>
+		<if test="roleCodeLike != null"><![CDATA[ AND t.ROLE_CODE LIKE '%' || #{roleCodeLike} || '%' ]]></if>
+		<if test="roleCodeIn != null"><![CDATA[ AND t.ROLE_CODE IN ]]><foreach item="item" index="index" collection="roleCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="menuCodeLike != null"><![CDATA[ AND t.MENU_CODE LIKE '%' || #{menuCodeLike} || '%' ]]></if>
+		<if test="menuCodeIn != null"><![CDATA[ AND t.MENU_CODE IN ]]><foreach item="item" index="index" collection="menuCodeIn" open="(" separator="," close=")">#{item}</foreach></if>
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="roleCode != null"><![CDATA[ AND t.ROLE_CODE = #{roleCode} ]]></if>
+		<if test="menuCode != null"><![CDATA[ AND t.MENU_CODE = #{menuCode} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+	</sql>
+		
+	<sql id="conditionByVO2">  
+		<if test="roleCode != null"><![CDATA[ AND t.ROLE_CODE = #{roleCode} ]]></if>
+		<if test="operateCode != null"><![CDATA[ AND t.OPERATE_CODE = #{operateCode} ]]></if>
+		<if test="creater != null"><![CDATA[ AND t.CREATER = #{creater} ]]></if>
+		<if test="createTime != null"><![CDATA[ AND t.CREATE_TIME = #{createTime} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+  			<if test="item == 'roleCodeAsc'"><![CDATA[ t.ROLE_CODE asc ]]></if>
+  			<if test="item == 'roleCodeDesc'"><![CDATA[ t.ROLE_CODE desc ]]></if>
+  			<if test="item == 'menuCodeAsc'"><![CDATA[ t.MENU_CODE asc ]]></if>
+  			<if test="item == 'menuCodeDesc'"><![CDATA[ t.MENU_CODE desc ]]></if>
+  			<if test="item == 'createrAsc'"><![CDATA[ t.CREATER asc ]]></if>
+  			<if test="item == 'createrDesc'"><![CDATA[ t.CREATER desc ]]></if>
+  			<if test="item == 'createTimeAsc'"><![CDATA[ t.CREATE_TIME asc ]]></if>
+  			<if test="item == 'createTimeDesc'"><![CDATA[ t.CREATE_TIME desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysRoleMenuResultMap">
+		<![CDATA[ SELECT * FROM SYS_ROLE_MENU t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE_MENU t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  	<select id="selectByParams" parameterType="map" resultMap="sysRoleMenuResultMap">
+		<![CDATA[ SELECT * FROM SYS_ROLE_MENU t ]]>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+  	</select>
+    
+  	<!-- (2-2)============================= selectByParamsCount =================================== -->
+  	<select id="selectByParamsCount" parameterType="map" resultType="int">
+   		<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE_MENU t ]]> 
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysRoleMenu" resultMap="sysRoleMenuResultMap">
+   	<![CDATA[ SELECT * FROM SYS_ROLE_MENU t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  <!-- (3-2)============================= selectByVOCount =================================== -->
+  <select id="selectByVOCount" parameterType="SysRoleMenu" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE_MENU t ]]>
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+	<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+  	
+  	
+  	<!-- (3-3)============================= selectByPk =================================== -->
+  	<select id="selectByPk" parameterType="map" resultMap="sysRoleMenuResultMap">
+    	<![CDATA[ SELECT * FROM SYS_ROLE_MENU WHERE ROLE_CODE=#{roleCode} AND MENU_CODE=#{menuCode} AND OPERATE_CODE=#{operateCode} ]]>
+	</select>
+  	
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysRoleMenu">
+		<![CDATA[
+		    INSERT INTO SYS_ROLE_MENU
+		      ( ROLE_CODE, MENU_CODE, CREATER, CREATE_TIME, REMARK )
+		    VALUES
+		      (	#{roleCode,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR},
+				#{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR} )
+      	]]>
+  	</insert>
+  	
+  	<!-- batch add role and auth relation information -->
+  	<insert id="batchInsertRoleAuth" parameterType="map">
+		<![CDATA[
+		    INSERT INTO SYS_ROLE_MENU
+		      ( ROLE_CODE, MENU_CODE, CREATER, CREATE_TIME, REMARK )
+		]]>
+		<foreach collection="roleAuthArray" item="item" index="index" separator="union all">
+			<![CDATA[
+			   	SELECT 
+					#{item.roleCode,jdbcType=VARCHAR}, #{item.menuCode,jdbcType=VARCHAR}, 
+					#{item.creater,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.remark,jdbcType=VARCHAR} 
+			    FROM DUAL 
+			]]>
+		</foreach>
+  	</insert>
+    
+  	<!-- (5-1)============================= updateByVO =================================== -->
+  	<update id="updateByVO" parameterType="SysRoleMenu">
+    	<![CDATA[ UPDATE SYS_ROLE_MENU ]]>
+	    <set>  	
+    		<![CDATA[ CREATER = #{creater,jdbcType=VARCHAR}, ]]>
+    		<![CDATA[ CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}, ]]>
+    		<![CDATA[ REMARK = #{remark,jdbcType=VARCHAR} ]]>
+	    </set>  
+			WHERE ROLE_CODE=#{roleCode}
+			AND MENU_CODE=#{menuCode}
+  	</update>
+  
+  	<!-- (5-2)============================= updateByVO2 =================================== -->
+  	<update id="updateByVoNotNull" parameterType="SysRoleMenu">
+    	<![CDATA[ UPDATE SYS_ROLE_MENU ]]>
+	    <set>  
+    		<if test="creater != null"><![CDATA[ CREATER = #{creater}, ]]></if>
+    		<if test="createTime != null"><![CDATA[ CREATE_TIME = #{createTime}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark} ]]></if>
+	    </set>  
+			WHERE ROLE_CODE=#{roleCode}
+			AND MENU_CODE=#{menuCode}
+  	</update>
+  
+  	<!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    	<![CDATA[ DELETE FROM SYS_ROLE_MENU  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysRoleMenu">
+   		<![CDATA[ DELETE FROM SYS_ROLE_MENU WHERE 1=1  ]]>    			
+		<if test="roleCode != null"><![CDATA[ AND ROLE_CODE = #{roleCode} ]]></if>
+		<if test="menuCode != null"><![CDATA[ AND MENU_CODE = #{menuCode} ]]></if>
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="map">
+   		<![CDATA[ 
+			DELETE FROM SYS_ROLE_MENU WHERE ROLE_CODE = #{roleCode} AND MENU_CODE = #{menuCode} AND OPERATE_CODE = #{operateCode}
+		]]>
+	</delete>
+	
+	<!-- delete roleAuth relation information by roleCode -->
+	<delete id="deleteByRoleCode" parameterType="java.lang.String">
+   		<![CDATA[ DELETE FROM SYS_ROLE_MENU WHERE ROLE_CODE = #{roleCode} ]]>
+	</delete>
+	
+	<select id="selectDataFactorByParams" resultMap="roleAuthResultMap" parameterType="map">
+		<![CDATA[
+			SELECT ra.*, og.OPER_ID FROM SYS_ROLE_MENU ra, SYS_USER_GROUP_ROLE ugr, SYS_OPER_GROUP og
+			WHERE ra.ROLE_CODE = ugr.ROLE_CODE
+			AND ugr.GRO_CODE = og.GRO_CODE
+			AND og.OPER_ID = #{operId } 
+			AND ra.MENU_CODE = #{menuCode }
+		]]>
+	</select>
+	<!-- (3-1)============================= selectByVO2 =================================== -->
+	<select id="selectByVO2" parameterType="SysRoleMenu" resultMap="roleAuthResultMap">
+   	<![CDATA[ SELECT * FROM SYS_ROLE_OPERATE t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO2" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+    <!-- (3-2)============================= selectByVO2Count =================================== -->
+    <select id="selectByVO2Count" parameterType="SysRoleMenu" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_ROLE_OPERATE t ]]>
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO2" />
+		</where>
+	<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+</mapper>

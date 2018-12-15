@@ -1,0 +1,208 @@
+@media screen and (max-device-width: 1024px) {
+    #divMain {
+        float: none;
+        width: auto;
+    }
+    #divSidebar {
+        display: none;
+    }
+}
+
+@media screen and (max-device-width: 1366px) {
+    body{
+        overflow: hidden;
+    }
+    body.bg_one {
+        width: 1366px;
+        height: 768px;
+        background: url(../images/l_bg.png) no-repeat 0 0 #07061c;
+        background-size: cover;
+    }
+    body.bg_two {
+        width: 1366px;
+        height: 768px;
+        background: url(../images/l_bg2.png) no-repeat 0 0 #07061c;
+        background-size: cover;
+    }
+    .main {
+        min-height: 768px;
+        min-width: 1366px;
+    }
+    .ad{
+     width: 1366px;
+    height: 768px;
+}
+    .l_light {
+        width: 1366px;
+        height: 768px;
+    }
+    
+    /*lottery*/
+    
+    .l_title {
+        width: 900px;
+        height: 128px;
+        padding-top: 40px;
+    }
+    .l_title_5 {
+        background-size: 70%;
+    }
+    .l_title_4 {
+        background-size: 70%;
+    }
+    .l_title_3 {
+        background-size: 70%;
+    }
+    .l_title_2 {
+        background-size: 70%;
+    }
+    .l_title_1 {
+        background-size: 70%;
+    }
+    .l_stage {
+        width: 1360px;
+        height: 540px;
+        margin-left: -700px;
+        background-size: 99%;
+    }
+    .l_num_cont {
+        width: 900px;
+        height: 300px;
+        background-size: 85%;
+        margin-left: 230px;
+    }
+    .l_num_box {
+        height: 93px;
+        left: 50%;
+        margin-left: -320px;
+        top: 260px;
+        width: 900px;
+    }
+    .l_num {
+        background-size: 75%;
+        float: left;
+        height: 93px;
+        margin-right: 16px;
+        width: 93px;
+    }
+    .l_num_default {
+        background-size: 95%;
+        width: 93px;
+        height: 93px;
+    }
+    /*stars*/
+    
+    .l_stars {
+        margin: 0 auto;
+        display: block;
+        width: 900px;
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+        top: 150px;
+        z-index: 999999;
+    }
+    .l_stars span {
+        width: 20px;
+        height: 20px;
+        background-size: 8%;
+    }
+    /*btn_wrap*/
+    
+    .btn_wrap {
+        top: 260px;
+        right: 80px;
+        width: 150px;
+        height: 500px;
+    }
+    .btn_wrap .btn_start,
+    .btn_wrap .btn_stop,
+    .btn_wrap .btn_next {
+        width: 100px;
+        height: 100px;
+        background-size: 99%;
+    }
+    .btn_wrap .btn_start.disabled {
+        background-size: 99%;
+    }
+    .btn_wrap .btn_stop {
+        margin-top: 10px;
+        background-size: 99%;
+    }
+    .btn_wrap .btn_stop.disabled {
+        background-size: 99%;
+    }
+    .btn_wrap .btn_next {
+        margin-top: 80px;
+        background-size: 99%;
+    }
+    .btn_wrap .btn_next.disabled {
+        background-size: 99%;
+    }
+    /*l_result_lists_one*/
+    
+    .result_wrap {
+        top: 520px;
+        height: 180px;
+    }
+    .result_lists_one {
+        width: 530px;
+        height: 180px;
+    }
+    .result_lists_one li {
+        font-family: sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 1px;
+    }
+    /*result*/
+    
+    
+    .l_container {
+        width: 600px;
+        height: 500px;
+        top: 10px;
+        left: 50%;
+        margin-left: -420px;
+    }
+    .l_title_result {
+        width: 900px;
+        height: 50px;
+        background-size: 85%;
+        padding-top: 150px;
+        padding-left: 20px;
+    }
+    .l_container2 {
+        width: 1000px;
+        height: 800px;
+        background-size:90%;
+        margin-top: 20px;
+        margin-left: -30px;
+       
+    }
+    
+    .result_lists_two {
+        width: 640px;
+        height: 450px;
+        margin: 0 auto;
+        padding-top: 75px;
+        overflow: hidden;
+    }
+    .result_lists_two li {
+        color: #f9e486;
+        font-size: 35px;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+    .result_lists_two li .lottery_name {}
+    .result_lists_two li .lottery_num {
+        width: 300px;
+        float: right;
+    }
+    /*music*/
+    
+    .music {
+        right: 290px;
+        top: 120px;
+    }
+}

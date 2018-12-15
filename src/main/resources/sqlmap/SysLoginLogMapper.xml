@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_LOGIN_LOG">
+	<resultMap type="SysLoginLog" id="sysLoginLogResultMap">
+		<id property="logId" column="LOG_ID"/>   
+		<result property="operId" column="OPER_ID"/>
+		<result property="loginTime" column="LOGIN_TIME"/>
+		<result property="logoutTime" column="LOGOUT_TIME"/>
+		<result property="ipAddress" column="IP_ADDRESS"/>
+		<result property="macId" column="MAC_ID"/>
+		<result property="remark" column="REMARK"/>
+	</resultMap>
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams">  
+		<if test="logId != null"><![CDATA[ AND t.LOG_ID = #{logId} ]]></if>
+		<if test="logIdGt != null"><![CDATA[ AND t.LOG_ID > #{logIdGt} ]]></if>
+		<if test="logIdGte != null"><![CDATA[ AND t.LOG_ID >= #{logIdGte} ]]></if>
+		<if test="logIdLt != null"><![CDATA[ AND t.LOG_ID < #{logIdLt} ]]></if>
+		<if test="logIdLte != null"><![CDATA[ AND t.LOG_ID <= #{logIdLte} ]]></if>
+		<if test="logIdIn != null"><![CDATA[ AND t.LOG_ID IN ]]><foreach item="item" index="index" collection="logIdIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="operId != null"><![CDATA[ AND t.OPER_ID = #{operId} ]]></if>
+		<if test="operIdLike != null"><![CDATA[ AND t.OPER_ID LIKE '%' || #{operIdLike} || '%' ]]></if>
+		<if test="operIdStart != null"><![CDATA[ AND t.OPER_ID LIKE #{operIdStart} || '%' ]]></if>
+		<if test="operIdEnd != null"><![CDATA[ AND t.OPER_ID LIKE '%' || #{operIdEnd} ]]></if>
+		<if test="operIdIn != null"><![CDATA[ AND t.OPER_ID IN ]]><foreach item="item" index="index" collection="operIdIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="loginTime != null"><![CDATA[ AND t.LOGIN_TIME = #{loginTime} ]]></if>
+		<if test="loginTimeGt != null"><![CDATA[ AND t.LOGIN_TIME > #{loginTimeGt} ]]></if>
+		<if test="loginTimeGte != null"><![CDATA[ AND t.LOGIN_TIME >= #{loginTimeGte} ]]></if>
+		<if test="loginTimeLt != null"><![CDATA[ AND t.LOGIN_TIME < #{loginTimeLt} ]]></if>
+		<if test="loginTimeLte != null"><![CDATA[ AND t.LOGIN_TIME <= #{loginTimeLte} ]]></if>
+		<if test="logoutTime != null"><![CDATA[ AND t.LOGOUT_TIME = #{logoutTime} ]]></if>
+		<if test="logoutTimeGt != null"><![CDATA[ AND t.LOGOUT_TIME > #{logoutTimeGt} ]]></if>
+		<if test="logoutTimeGte != null"><![CDATA[ AND t.LOGOUT_TIME >= #{logoutTimeGte} ]]></if>
+		<if test="logoutTimeLt != null"><![CDATA[ AND t.LOGOUT_TIME < #{logoutTimeLt} ]]></if>
+		<if test="logoutTimeLte != null"><![CDATA[ AND t.LOGOUT_TIME <= #{logoutTimeLte} ]]></if>
+		<if test="ipAddress != null"><![CDATA[ AND t.IP_ADDRESS = #{ipAddress} ]]></if>
+		<if test="ipAddressLike != null"><![CDATA[ AND t.IP_ADDRESS LIKE '%' || #{ipAddressLike} || '%' ]]></if>
+		<if test="ipAddressStart != null"><![CDATA[ AND t.IP_ADDRESS LIKE #{ipAddressStart} || '%' ]]></if>
+		<if test="ipAddressEnd != null"><![CDATA[ AND t.IP_ADDRESS LIKE '%' || #{ipAddressEnd} ]]></if>
+		<if test="ipAddressIn != null"><![CDATA[ AND t.IP_ADDRESS IN ]]><foreach item="item" index="index" collection="ipAddressIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="macId != null"><![CDATA[ AND t.MAC_ID = #{macId} ]]></if>
+		<if test="macIdLike != null"><![CDATA[ AND t.MAC_ID LIKE '%' || #{macIdLike} || '%' ]]></if>
+		<if test="macIdStart != null"><![CDATA[ AND t.MAC_ID LIKE #{macIdStart} || '%' ]]></if>
+		<if test="macIdEnd != null"><![CDATA[ AND t.MAC_ID LIKE '%' || #{macIdEnd} ]]></if>
+		<if test="macIdIn != null"><![CDATA[ AND t.MAC_ID IN ]]><foreach item="item" index="index" collection="macIdIn" open="(" separator="," close=")">#{item}</foreach></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+		<if test="remarkLike != null"><![CDATA[ AND t.REMARK LIKE '%' || #{remarkLike} || '%' ]]></if>
+		<if test="remarkStart != null"><![CDATA[ AND t.REMARK LIKE #{remarkStart} || '%' ]]></if>
+		<if test="remarkEnd != null"><![CDATA[ AND t.REMARK LIKE '%' || #{remarkEnd} ]]></if>
+		<if test="remarkIn != null"><![CDATA[ AND t.REMARK IN ]]><foreach item="item" index="index" collection="remarkIn" open="(" separator="," close=")">#{item}</foreach></if>
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="logId != null"><![CDATA[ AND t.LOG_ID = #{logId} ]]></if>
+		<if test="operId != null"><![CDATA[ AND t.OPER_ID = #{operId} ]]></if>
+		<if test="loginTime != null"><![CDATA[ AND t.LOGIN_TIME = #{loginTime} ]]></if>
+		<if test="logoutTime != null"><![CDATA[ AND t.LOGOUT_TIME = #{logoutTime} ]]></if>
+		<if test="ipAddress != null"><![CDATA[ AND t.IP_ADDRESS = #{ipAddress} ]]></if>
+		<if test="macId != null"><![CDATA[ AND t.MAC_ID = #{macId} ]]></if>
+		<if test="remark != null"><![CDATA[ AND t.REMARK = #{remark} ]]></if>
+	</sql>
+	
+	<sql id="orderByFragment">
+	  <if test="orderBy!= null">
+	  	<foreach item="item" index="index" collection="convertedOrderBy" open="order by" separator="," close="">
+	  			<if test="item == 'logIdAsc'"><![CDATA[ t.LOG_ID asc ]]></if>
+	  			<if test="item == 'logIdDesc'"><![CDATA[ t.LOG_ID desc ]]></if>
+	  			<if test="item == 'operIdAsc'"><![CDATA[ t.OPER_ID asc ]]></if>
+	  			<if test="item == 'operIdDesc'"><![CDATA[ t.OPER_ID desc ]]></if>
+	  			<if test="item == 'loginTimeAsc'"><![CDATA[ t.LOGIN_TIME asc ]]></if>
+	  			<if test="item == 'loginTimeDesc'"><![CDATA[ t.LOGIN_TIME desc ]]></if>
+	  			<if test="item == 'logoutTimeAsc'"><![CDATA[ t.LOGOUT_TIME asc ]]></if>
+	  			<if test="item == 'logoutTimeDesc'"><![CDATA[ t.LOGOUT_TIME desc ]]></if>
+	  			<if test="item == 'ipAddressAsc'"><![CDATA[ t.IP_ADDRESS asc ]]></if>
+	  			<if test="item == 'ipAddressDesc'"><![CDATA[ t.IP_ADDRESS desc ]]></if>
+	  			<if test="item == 'macIdAsc'"><![CDATA[ t.MAC_ID asc ]]></if>
+	  			<if test="item == 'macIdDesc'"><![CDATA[ t.MAC_ID desc ]]></if>
+	  			<if test="item == 'remarkAsc'"><![CDATA[ t.REMARK asc ]]></if>
+	  			<if test="item == 'remarkDesc'"><![CDATA[ t.REMARK desc ]]></if>
+		</foreach>
+	  </if>
+	</sql>
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="sysLoginLogResultMap">
+		<![CDATA[ SELECT * FROM SYS_LOGIN_LOG t ]]>
+	</select>
+	
+	<!-- (1-2)============================= selectAllCount =================================== -->
+	<select id="selectAllCount" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM SYS_LOGIN_LOG t ]]>
+	</select>
+	
+	<!-- (2-1)============================= selectByParams =================================== -->
+  <select id="selectByParams" parameterType="map" resultMap="sysLoginLogResultMap">
+		<![CDATA[ SELECT * FROM SYS_LOGIN_LOG t ]]>
+		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<include refid="orderByFragment" />
+  </select>
+    
+  <!-- (2-2)============================= selectByParamsCount =================================== -->
+  <select id="selectByParamsCount" parameterType="map" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_LOGIN_LOG t ]]> 
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByParams" />
+		</where>
+		<!-- 	<include refid="orderByFragment" /> -->
+	</select>
+    
+	<!-- (3-1)============================= selectByVO =================================== -->
+	<select id="selectByVO" parameterType="SysLoginLog" resultMap="sysLoginLogResultMap">
+   	<![CDATA[ SELECT * FROM SYS_LOGIN_LOG t ]]>  
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<include refid="orderByFragment" />
+	</select>
+  	
+  <!-- (3-2)============================= selectByVOCount =================================== -->
+  <select id="selectByVOCount" parameterType="SysLoginLog" resultType="int">
+   	<![CDATA[ SELECT COUNT(*) FROM SYS_LOGIN_LOG t ]]>   
+   		<where>  
+			<![CDATA[ 1=1 ]]>
+			<include refid="conditionByVO" />
+		</where>
+		<!-- <include refid="orderByFragment" /> -->
+	</select>
+  	
+  	
+  <!-- (3-3)============================= selectByPk =================================== -->
+  <select id="selectByPk" parameterType="java.lang.Long" resultMap="sysLoginLogResultMap">
+    <![CDATA[ SELECT * FROM SYS_LOGIN_LOG WHERE  
+				LOG_ID=#{logId}
+		]]>
+	</select>
+  	
+	<!-- (4)============================= insertByVo =================================== -->
+	<insert id="insertByVo" parameterType="SysLoginLog" useGeneratedKeys="true" keyProperty="logId">
+
+		<![CDATA[
+		    INSERT INTO SYS_LOGIN_LOG
+		      (
+		      OPER_ID,
+		      LOGIN_TIME,
+		      LOGOUT_TIME,
+		      IP_ADDRESS,
+		      MAC_ID,
+		      REMARK
+		      )
+		    VALUES
+		      (
+					#{operId,jdbcType=VARCHAR}
+				,
+					#{loginTime,jdbcType=TIMESTAMP}
+				,
+					#{logoutTime,jdbcType=TIMESTAMP}
+				,
+					#{ipAddress,jdbcType=VARCHAR}
+				,
+					#{macId,jdbcType=VARCHAR}
+				,
+					#{remark,jdbcType=VARCHAR}
+				
+		      )
+      	]]>
+  </insert>
+    
+  <!-- (5-1)============================= updateByVO =================================== -->
+  <update id="updateByVO" parameterType="SysLoginLog">
+    <![CDATA[ UPDATE SYS_LOGIN_LOG ]]>
+	    <set>  		
+    		<![CDATA[  
+					OPER_ID = #{operId,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					LOGOUT_TIME = #{logoutTime,jdbcType=TIMESTAMP},
+    		]]>
+    		<![CDATA[  
+					IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					MAC_ID = #{macId,jdbcType=VARCHAR},
+    		]]>
+    		<![CDATA[  
+					REMARK = #{remark,jdbcType=VARCHAR}
+    		]]>
+	    </set>  
+			WHERE LOG_ID=#{logId}
+  </update>
+  
+  <!-- (5-2)============================= updateByVO2 =================================== -->
+  <update id="updateByVoNotNull" parameterType="SysLoginLog">
+    <![CDATA[ UPDATE SYS_LOGIN_LOG ]]>
+	    <set>  		
+    		<if test="operId != null"><![CDATA[ OPER_ID = #{operId}, ]]></if>
+    		<if test="loginTime != null"><![CDATA[ LOGIN_TIME = #{loginTime}, ]]></if>
+    		<if test="logoutTime != null"><![CDATA[ LOGOUT_TIME = #{logoutTime}, ]]></if>
+    		<if test="ipAddress != null"><![CDATA[ IP_ADDRESS = #{ipAddress}, ]]></if>
+    		<if test="macId != null"><![CDATA[ MAC_ID = #{macId}, ]]></if>
+    		<if test="remark != null"><![CDATA[ REMARK = #{remark} ]]></if>
+	    </set>  
+			WHERE LOG_ID=#{logId}
+  </update>
+    
+  <!-- (6)============================= deleteAll =================================== -->
+	<delete id="deleteAll">
+    <![CDATA[ DELETE FROM SYS_LOGIN_LOG  ]]>
+	</delete>
+    
+	<!-- (7)============================= deleteByVO =================================== -->
+	<delete id="deleteByVO" parameterType="SysLoginLog">
+   <![CDATA[ DELETE FROM SYS_LOGIN_LOG WHERE 1=1  ]]>    			
+		<if test="logId != null"><![CDATA[ AND LOG_ID = #{logId} ]]></if>
+		<if test="operId != null"><![CDATA[ AND OPER_ID = #{operId} ]]></if>
+		<if test="loginTime != null"><![CDATA[ AND LOGIN_TIME = #{loginTime} ]]></if>
+		<if test="logoutTime != null"><![CDATA[ AND LOGOUT_TIME = #{logoutTime} ]]></if>
+		<if test="ipAddress != null"><![CDATA[ AND IP_ADDRESS = #{ipAddress} ]]></if>
+		<if test="macId != null"><![CDATA[ AND MAC_ID = #{macId} ]]></if>
+		<if test="remark != null"><![CDATA[ AND REMARK = #{remark} ]]></if>
+	</delete>
+    
+	<!-- (8)============================= deleteByPk =================================== -->
+	<delete id="deleteByPk" parameterType="java.lang.Long">
+   <![CDATA[ 
+		DELETE FROM SYS_LOGIN_LOG WHERE 
+		LOG_ID IN (#{logId})
+		]]>
+	</delete>
+  
+</mapper>

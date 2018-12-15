@@ -1,0 +1,20 @@
+
+
+
+/*=======================================*/
+.select_hd { float:left; width:100%; padding:10px 0 0 0; }
+.select_hd ul { float:left; }
+.select_hd ul li { float:left; width:86px; height:32px; margin-right:20px; cursor:pointer; text-align:center; line-height:28px; font-size:14px; }
+.select_hd ul li input { position:relative; top:2px; left:-2px; }
+.select_hd ul li.on,.select_hd ul li:hover { background:url(../images/icon_r3.png) no-repeat 0px -50px; color:#fff; font-weight:bold; }
+.select_hd .title_tx { float:left; width:100%; height:30px; background:#F6F6F6; overflow:hidden; margin:10px 0 0 0; padding:0 0 0 10px; }
+.select_hd .title_tx strong { font-size:14px; background:url(../images/icon_r3.png) no-repeat 0px -101px; padding-left:20px;  margin:5px 50px 0 10px; display:inline-block;}
+/*=======================================*/
+
+
+
+
+/*=======================================*/
+.contben {  float:left; width:100%; padding:15px 0 0 0; }
+.contben .text {  float:left; width:100%; height:32px; background:#F4F4F4; padding:15px 0 0 15px;}
+.contben .text a { width:130px; padding:0px; margin-right:10px; text-align:center;}

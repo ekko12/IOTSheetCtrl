@@ -1,0 +1,137 @@
+
+
+/*========通用属性设置 start========*/
+.no_pd_br_mg_trbl { padding:0px; margin:0px; border:0px; left:0px; top:0px; right:0px; bottom:0px; position:relative;}
+.ovf_h { overflow:hidden;}
+/*----------------------*/
+.inputclass { height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle;}
+
+
+.fl { float:left;}
+.dp_ib { display:inline-block}
+
+.va_middle {  vertical-align: middle; position: relative; top: 4px;}
+.va_middleInput { position: relative; top: -3px; vertical-align: middle;}
+.va_middleSelect { position: relative; top: 2px; vertical-align: middle; margin:0 0 0 10px;}
+.va_middleBen {position: relative; top: -3px; vertical-align: middle;}
+.va_middleTextarea { position: relative; top: 2px; vertical-align: middle; margin:0 0 0 10px;}
+
+
+.pd_t{ padding-top:10px;}
+.pd_r{ padding-right:10px;}
+.pd_b{ padding-bottom:10px;}
+.pd_l{ padding-left:10px;}
+
+.mg_t{ margin-top:10px;}
+.mg_r{ margin-right:10px;}
+.mg_b{ margin-bottom:10px;}
+.mg_l{ margin-left:10px;}
+
+.pd_t0{ padding-top:0px;}
+.pd_r0{ padding-right:0px;}
+.pd_b0{ padding-bottom:0px;}
+.pd_l0{ padding-left:0px;}
+
+.mg_t0{ margin-top:0px;}
+.mg_r0{ margin-right:0px;}
+.mg_b0{ margin-bottom:0px;}
+.mg_l0{ margin-left:0px;}
+
+.pd_t5{ padding-top:5px;}
+.pd_r5{ padding-right:5px;}
+.pd_b5{ padding-bottom:5px;}
+.pd_l5{ padding-left:5px;}
+
+.mg_t5{ margin-top:5px;}
+.mg_r5{ margin-right:5px;}
+.mg_b5{ margin-bottom:5px;}
+.mg_l5{ margin-left:5px;}
+
+.w00 { width:auto;}
+.w40 { width:40px;}
+.w60 { width:60px;}
+.w80 { width:80px;}
+.w100 { width:100px;}
+.w120 { width:120px;}
+.w160 { width:160px;}
+.w200 { width:200px;}
+.w300 { width:300px;}
+.w400 { width:400px;}
+.w_100 { width:100%;}
+
+span.w00 { text-align:right}
+span.w40 { text-align:right}
+span.w60 { text-align:right;}
+span.w80 { text-align:right}
+span.w100 { text-align:right}
+span.w120 { text-align:right}
+span.w160 { text-align:right}
+span.w200 { text-align:right}
+span.w300 { text-align:right}
+span.w400 { text-align:right}
+
+.w00 { width:auto;}
+.w40 { width:40px;}
+.w60 { width:60px;}
+.w80 { width:80px;}
+.w100 { width:100px;}
+.w120 { width:120px;}
+.w160 { width:160px;}
+.w200 { width:200px;}
+.w300 { width:300px;}
+.w400 { width:400px;}
+.w+100 { width:100%;}
+
+
+
+.tableStyle1 table { border-top:1px solid #ddd}
+.tableStyle1 th,.tableStyle1 td { height:30px; border-bottom:1px solid #ddd}
+.tableStyle1 th { background:#F5F5F5; font-weight:normal; color:#000;}
+.tableStyle1 td { color:#666;}
+.tableStyle1 tr:hover { background:#F9F1E2; }
+.tableStyle1 tr:hover td {color:#000;}
+.tableStyle1 td span { color:#F00}
+.tableStyle1 span.f1 { margin-left:20px;}
+.tableStyle1 b.f2 { font-weight:normal; color:#999; margin:4px 0; display:inline-block;}
+.tableStyle1 td span.f1 { color:#333;}
+.tableStyle1 td .admin_icon1 { position:relative; top:4px;}
+.tableStyle1 .checkbox { position:relative; top:3px; margin:0 20px 0 15px;}
+.tableStyle1 .pic { width:100px; height:60px; display:inline-block; overflow:hidden; padding:5px; border:1px solid #ddd; margin:10px 0 10px 0;}
+.tableStyle1 .pic img { width:100px; height:60px;}
+.tableStyle1 a { color:#00F; text-decoration:underline; margin-right:10px;}
+
+
+
+.picStyle120 { width:122px; height:122px; border:1px solid #ccc; }
+.picStyle120 img { width:120px; height:120px; border:1px solid #fff;}
+
+/*========通用属性设置 end========*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

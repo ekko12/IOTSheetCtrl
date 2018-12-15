@@ -1,0 +1,122 @@
+
+
+/*=======================================*/
+.tuptltle { float:left; width:100%; padding:10px 0 0 0; }
+.tuptltle .for1,.tuptltle .for2 { float:left; width:480px; height:34px; background:url(../images/title_po1.png) no-repeat; }
+.tuptltle .for1 { background-position:0px 0px; }
+.tuptltle .for1 p { float:left; width:240px; padding:4px 0 0 0; text-align:center; color:#BEBEBE; margin:0px; font-size:18px; }
+.tuptltle .for1 p.left { color:#fff;}
+.tuptltle .for1 p span { position:relative; top:3px; margin-right:5px;}
+.tuptltle .for1 p.left span { position:relative; top:3px; margin-right:15px;}
+
+
+.tuptltle .for2 { background-position:0px -34px; }
+.tuptltle .for2 p { float:left; width:240px; padding:4px 0 0 0; text-align:center; color:#fff; margin:0px; font-size:18px; }
+.tuptltle .for2 p.left {color:#BEBEBE;}
+.tuptltle .for2 p span { position:relative; top:3px; margin-right:5px;}
+.tuptltle .for2 p.left span { position:relative; top:3px; margin-right:15px;}
+
+
+
+/*=======================================*/
+.select_hd { float:left; width:100%; padding:10px 0 0 0; }
+.select_hd ul { float:left; }
+.select_hd ul li { float:left; width:86px; height:32px; margin-right:20px; cursor:pointer; text-align:center; line-height:25px; font-size:14px; }
+.select_hd ul li input { position:relative; top:2px; left:-2px; }
+.select_hd ul li.on,.select_hd ul li:hover { background:url(../images/icon_r3.png) no-repeat 0px -50px; color:#fff; font-weight:bold; }
+.select_hd ul li.off { color:#ccc}
+.select_hd ul li.off:hover { background:none}
+.select_hd ul li.disabled { color:#ddd;background-color: #f5f5f5; height:25px;}
+.select_hd ul li.disabled:hover { background:none;background-color: #E5E5E5;}
+.select_hd .title_tx { float:left; width:100%; height:30px; background:#F6F6F6; overflow:hidden; margin:10px 0 0 0; }
+.select_hd .title_tx strong { font-size:14px; background:url(../images/icon_r3.png) no-repeat 0px -101px; padding-left:20px;  margin:5px 50px 0 10px; display:inline-block;}
+.select_hd .title_tx2 { float:left; width:100%; height:30px; border-bottom:1px dashed #ccc; padding:0 0 10px 0; overflow:hidden; margin:0; }
+.select_hd .title_tx2 strong { padding-left:20px;  margin:5px 10px 0 10px; font-weight:normal; display:inline-block;}
+
+/*=======================================*/
+
+
+
+/*=======================================*/
+.phonetable { float:left; width:100%; padding:0 0 0 0px; }
+.phonetable .title { float:left; height:40px; margin-left:60px; }
+.phonetable .title li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:198px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px;}
+.phonetable .title li.now { background:#fff; height:31px;border-top:1px solid #FF8000; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.phonetable .title .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+
+
+.phonetable .title2 { float:left; width:100%; height:42px; border-bottom:2px solid #FF8000; border-top:1px solid #E0E0E0; }
+.phonetable .title2 li { float:left; width:120px; height:33px; text-align:center; margin:9px 0px 0 50px; color:#ccc;}
+.phonetable .title2 li.on,.phonetable .title2 li:hover { background:#FFEEDD url(../images/icon_r3.png) no-repeat 60px -143px; font-weight:bold; color:#333; }
+.phonetable .title2 li label { margin:8px 0 0 0; display:inline-block; cursor:pointer;}
+.phonetable .title2 li input { margin-right:4px; position:relative; top:3px;}
+
+.phonetable .title2b { float:left; width:100%; height:42px; border-bottom:2px solid #FF8000; }
+.phonetable .title2b li { float:left; width:120px; height:33px; text-align:center; margin:9px 0px 0 50px;}
+.phonetable .title2b li.on,.phonetable .title2b li:hover { background:url(../images/icon_r3.png) no-repeat 60px -143px; font-weight:bold; color:#333; }
+.phonetable .title2b li label { margin:8px 0 0 0; display:inline-block; cursor:pointer;}
+.phonetable .title2b li input { margin-right:4px; position:relative; top:3px;}
+
+.phonetable .text { float:left; width:100%; }
+.phonetable .text table { border-top:1px solid #DDDDDD}
+.phonetable .text table input { position:relative; top:2px; margin-right:5px;}
+.phonetable .text table select { width:110px;}
+.phonetable .text table th,.phonetable .text table td { border-bottom:1px solid #DDDDDD; height:30px; padding:0 10px 0 20px; font-family:"����";}
+.phonetable .text table th { background:#EEEEEE; font-size:14px; font-weight:normal;}
+.phonetable .text table td { }
+.phonetable .text table tr:hover { background:#F2EADC;}
+.phonetable dl { margin-left:60px;}
+/*=======================================*/
+.phonetable .ul2 { float:left; padding:20px 10px 0 10px;}
+.phonetable .ul2 li { float:left; width:100%; padding:10px 0 5px 0;}
+.phonetable .ul2 li .lt { float:left; width:120px; text-align:right; padding-right:20px; font-weight:bold; color:#999;}
+.phonetable .ul2 li .rt { float:left;}
+.phonetable .ul2 li .rt label { margin-right:20px; cursor:pointer;}
+.phonetable .ul2 li .rt .checkbox { position:relative; top:3px; margin:0 5px 0 0px;}
+.phonetable .ul2 li .rt .lebr { float:left; border:1px solid #ccc; background:#fff; width:300px; height:80px; overflow:scroll; overflow-x:hidden;}
+.phonetable .ul2 li .rt .lebr p { float:left; width:283px;  padding:0px; margin:0px;}
+.phonetable .ul2 li .rt .lebr .rtext { float:right; position:relative; top:-4px;}
+.phonetable .ul2 li .rt .lebr .rtext select { width:120px;}
+.phonetable .ul2 li .rt .lebr span { float:left; height:20px; padding:6px 0 2px 5px;}
+.phonetable .ul2 li .rt .lebr span a { width:11px; height:11px; overflow:hidden; text-align:center;  display:inline-block; border-radius:60px; font-size:12px; margin-right:4px; position:relative; top:2px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #CCC center;}
+.phonetable .ul2 li .rt .lebr span a { background-size:11px;}
+.phonetable .ul2 li .rt .lebr p a:hover { background:url(../images/close.png) no-repeat #D90000 center; background-size:11px;}
+.phonetable .ul2 li .rt .lebr  p:hover { background:#F3F4F8}
+.phonetable .ul2 li .rt .ting { margin-left:10px;}
+.phonetable .ul2 li .rt .ting a:hover  { background:#A1C7EC; border:1px solid #66A3E0;}
+.phonetable .ul2 li .rt .ting a{ width:60px; height:22px; text-align:center; line-height:22px; border:1px solid #ccc; display:inline-block; color:#06C}
+.phonetable .ul2 li .rt .ting .inputBen:hover  { background:#A1C7EC; border:1px solid #66A3E0;}
+.phonetable .ul2 li .rt .ting .inputBen{ width:60px; height:22px; padding:0 0 3px 0; background:#fff; text-align:center;  border:1px solid #ccc; display:inline-block; color:#06C; cursor:pointer; font-size:1em; font-family:"Microsoft YaHei"}
+
+
+
+/*=======================================*/
+.contben {  float:none;   padding:15px 0 0 0;  clear:both;}
+.contben .text {  float:none;  background:#F4F4F4; padding:15px 0 15px 15px;text-align:center;}
+.contben .text a { padding:0px 10px; margin-right:10px; text-align:center;}
+
+
+/*===================地市====================*/
+.area{ position:relative;  height:28px; width:80px;  }
+.area .btn{ position:absolute; border:1px solid #aaa; height:12px; padding:7px 10px;  background:#fff; z-index:2010; cursor:pointer; }
+.area .city{  position:absolute; top:26px; left:0; background:#fff; border:1px solid #aaa; z-index:2000; padding:5px 10px 15px 10px; width:430px; display:none;}
+.area .city hr{  height:1px;border:none;border-top:1px dotted #aaa;}
+.area .city label{ width:80px;} 
+.conttext1 ul li .rightt  .city a{ padding:0 10px; color:#fff;}
+.on .city{ display:block;}
+.on .btn{  border-bottom:0;}
+
+/*===================授权框====================*/
+.s_area{ clear:both; }
+.s_area .s_box{ float:left; width:230px; border:1px solid #ddd; }
+.s_area .sm{ border-left:0;}
+.s_area .s_box h3{ height:25px; background:#f1f1f1; border-bottom:1px solid #ddd; line-height:25px; font-weight:bold; padding-left:10px; font-size:12px;}
+.s_area .s_box .s_bc{ height:400px; overflow:auto; padding:5px;}
+.s_area .s_btn{ float:left; width:50px; padding-top:100px;}
+.s_area .s_btn input{ display:block; margin:30px auto; padding:3px 10px;  }
+.s_area .s_box label{ display:block; position:relative; padding-bottom:3px;  }
+.s_area .s_box label input{ position:relative; top:3px;}
+
+.form_show{ font-size:12px; padding:10px 0; }
+.form_show .pname{ font-weight:bold; padding-right:5px; }
+

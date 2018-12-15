@@ -1,0 +1,338 @@
+
+
+
+/*window share*/
+
+.bgDiv { width:100%; height:100%; position: fixed;top: 0px;left: 0px; z-index:9000;right:0px;background-color: #000;opacity:.5;filter:progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=25, finishOpacity=75) opacity: 0.2;}
+.bgDiv2 { width:100%; height:100%; position: fixed;top: 0px;left: 0px; z-index:9002;right:0px;background-color: #fff;opacity:.5;filter:progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=25, finishOpacity=75) opacity: 0.2;}
+
+
+/*=======================*/
+.window{ float:left; width:650px; background:#EAEAEA; border:1px solid #D6D6D6;  position:fixed; left:220px;top:100px; z-index:9001 }
+.window .title { float:left; width:100%; height:29px; background:url(../images/jump_text_r1.jpg) repeat-x;}
+.window .title .ltext { float:left; padding:5px 0 0 10px; font-weight:bold; color:#fff;}
+.window .title .rtext { float:right; padding:4px 5px 0 0;}
+.window .title .close { width:18px; height:18px; background:url(../images/icon_r3.png) no-repeat -170px -280px; display:inline-block; cursor:pointer }
+
+.win_tree{ float:left; width:633px; height:372px; background:#fff;   border:1px solid #E7E7E7; margin:9px; }
+.win_tree .leftpart { float:left; width:364px;}
+.leftpart .text1 { float:left; width:352px; height:25px; margin:10px 0 0 12px; font-weight:bold; color:#00698D;}
+.leftpart .text2 { float:left; width:352px; height:37px; border-bottom:1px dashed #B3B3B3; margin:0 0 0 12px;}
+.leftpart .text2 select { width:100px; height:20px; margin:0 10px; }
+.leftpart .text2 a { width:50px; padding:0px; text-align:center;}
+.leftpart .text3 { float:left; width:364px; margin:8px 0 0 0;}
+.leftpart .text3 .eltxt { float:left; width:139px; height:258px; border:1px solid #D6D6D6; margin:0 0 0 10px;}
+.leftpart .text3 .eltxt .t1 { float:left; width:134px; height:23px; background:#E5E5E5; padding:7px 0 0 5px;}
+.leftpart .text3 .eltxt .t2 { float:left; width:134px; height:23px; padding:7px 0 0 5px;}
+.leftpart .text3 .eltxt .t3 { float:left; width:139px; height:198px;  overflow:scroll; overflow-x:hidden }
+.leftpart .text3 .eltxt .t3 dl { float:left; width:139px; padding:0 0 10px 0; }
+.leftpart .text3 .eltxt .t3 dt { background:url(../images/icon_r4.png) no-repeat 0px 3px; padding:0 0 0 18px; margin:0 0 0 6px;}
+.leftpart .text3 .eltxt .t3 dd {  padding:0 0 0 58px;}
+.leftpart .text3 .ertxt { float:left; width:212px; height:258px; border:1px solid #D6D6D6; border-left:0px;}
+.leftpart .text3 .ertxt .t1 { float:left; width:207px; height:30px; background:#E5E5E5; padding:0px 0 0 5px;}
+.leftpart .text3 .ertxt .t1 .checkbox { position:relative; top:3px; margin-right:5px;}
+.leftpart .text3 .ertxt .t1 .searcher { width:140px; height:23px; border:1px solid #CCC; position:relative; top:2px; margin:0 0 0 14px; background:url(../images/icon_r3.png) no-repeat -322px -57px #fff; padding:0 0 0 5px;}
+.leftpart .text3 .ertxt .t2 { float:left; width:212px; height:202px; overflow:scroll; overflow-x:hidden  }
+.leftpart .text3 .ertxt .t2 input { position:relative; top:3px; margin-right:5px;}
+.leftpart .text3 .ertxt .t2 p { float:left; width:180px; margin:0px; padding:0px; margin:8px 0 0 20px;}
+.leftpart .text3 .ertxt .t3 { float:left; width:207px; height:21px; background:#E5E5E5; padding:5px 0 0 5px;}
+.leftpart .text3 .ertxt .t3 input { position:relative; top:3px; margin:0 2px 0 10px;}
+.copart{ float:left; width:43px; height:330px; }
+.copart .leftben,.copart .rightben{ float:left; width:29px; height:29px; background:url(../images/icon_r3.png) no-repeat; }
+.copart .leftben { background-position:-214px -50px; margin:181px 0 0 7px;}
+.copart .rightben{ background-position:-257px -50px; margin:30px 0 0 7px;}
+.rightpart .text1 { float:left; width:216px; height:25px; margin:10px 0 0 0; font-weight:bold; color:#00698D;}
+.rightpart .text2 { float:left; width:216px; height:37px; border-bottom:1px dashed #B3B3B3;}
+.rightpart .text2 input { width:152px; height:27px; border:1px solid #CCC; background:#fff; position:relative; top:2px; margin-right:5px; color:#bbb; padding:0 0 0 5px;}
+.rightpart .text2 a { width:50px; padding:0px; text-align:center;}
+.rightpart .text3 { float:left; width:212px; height:258px; border:1px solid #D6D6D6; margin:8px 0 0 0;}
+.rightpart .text3 .t1 { float:left; width:203px; height:24px; background:#E5E5E5; padding:6px 0 0 9px;}
+.rightpart .text3 .t1 input { position:relative; top:3px; margin-right:4px;}
+.rightpart .text3 .t2 { float:left; width:212px;   }
+.rightpart .text3 .t2 input { position:relative; top:3px; margin-right:5px;}
+.rightpart .text3 .t2 p { float:left; width:176px; margin:0px; padding:0px; margin:8px 0 0 24px;}
+.benpart { float:left; width:97%; padding:5px 0 10px 0; text-align:right;}
+.benpart a { width:110px; text-align:center; padding:0px; margin-left:20px;}
+/*introduce*/
+
+
+
+
+.win_tree2{ float:left; width:428px; background:#fff;   border:1px solid #E7E7E7; margin:9px; padding-bottom:20px; color:#666666;}
+.win_tree2 .textpart1{ float:left; width:408px; height:49px; border-bottom:1px dashed #E7E7E7; margin:0 0 0 10px; }
+.win_tree2 .textpart1 input { width:165px; height:22px; border:1px solid #CCC; margin-left:10px; color:#B8B8B8; padding:0 0 0 5px;}
+.win_tree2 .textpart1 span { float:left; padding:12px 0 0 0px;}
+.win_tree2 .textpart2{ float:left; width:408px; height:47px; margin:0 0 0 10px; }
+.win_tree2 .textpart2 span { float:left; padding:23px 0 0 0px;}
+.win_tree2 .textpart3{ float:left; width:408px; margin:0 0 0 10px; }
+.win_tree2 .textpart3 .title2 {float:left; width:408px; height:26px; border-bottom:1px solid #D6D6D6;}
+.win_tree2 .textpart3 .title2 li { float:left; width:49px; height:25px; text-align:center; line-height:25px; cursor:pointer; color:#000;}
+.win_tree2 .textpart3 .title2 li.now { float:left; width:49px; height:26px; border:1px solid #D6D6D6; border-bottom:0px; background:#fff; position:relative; bottom:-0px;}
+.win_tree2 .textpart3 .textbr { float:left; float:left; width:386px; height:122px; border:1px solid #D6D6D6; border-top:0px; padding:0 10px;}
+.win_tree2 .textpart3 .textbr th { padding:10px 0 5px 0; color:#BABABA; font-weight:normal;}
+.win_tree2 .textpart3 .textbr td { padding:5px 0; color:#666666}
+.win_tree2 .textpart3 .textbr input { width:40px; height:16px; text-align:center; background:#fff; border:1px solid #B0CCE6;}
+.win_tree2 .textpart4{ float:left; width:408px; height:95px; border-bottom:1px dashed #B2B2B2; margin:16px 0 0 10px;}
+.win_tree2 .textpart4 .t1 { float:left; width:408px; font-weight:bold; color:#00678C; padding:8px 0 0 0;}
+.win_tree2 .textpart4 .t2 { float:left; width:408px; padding:8px 0 0 0;}
+.win_tree2 .textpart4 .t2 span { float:left; width:67px; height:44px; line-height:24px;}
+.win_tree2 .textpart4 .t2 span input { float:left; width:41px; height:23px; border:1px solid #D6D6D6; padding:0 0 0 4px;}
+
+.win_tree2 .textparta1{ float:left; width:408px; height:49px;  margin:0 0 0 10px; }
+.win_tree2 .textparta1 span { float:left; padding:21px 0 0 0px;}
+.win_tree2 .textparta1 b { float:left; padding:21px 0 0 10px; font-weight:normal; color:#B8B8B8;}
+.win_tree2 .textparta2{ float:left; width:408px; height:57px; border:1px solid #D6D6D6; margin:0 0 0 10px;}
+.win_tree2 .textparta2 a { float:left; width:110px; background:url(../images/icon_r4.png) no-repeat 90px -28px; margin:8px 10px 0 15px; }
+
+
+.win_tree3{ float:left; width:428px; background:#fff;   border:1px solid #E7E7E7; margin:9px; padding-bottom:20px; color:#666666;}
+.win_tree3 .text1part1 { float:left; width:408px; height:40px; margin:0 0 0 10px; }
+.win_tree3 .text1part1 select { width:200px;}
+.win_tree3 .text1part1 span { float:left; padding:10px 0 0 0;}
+.win_tree3 .text1part2 { float:left; width:408px; height:40px; border-bottom:1px dashed #E7E7E7; margin:0 0 0 10px; }
+.win_tree3 .text1part2 a { width:50px; text-align:center; padding:0px; margin:0 0 0 10px;}
+.win_tree3 .text1part2 input {width:195px; height:22px; border:1px solid #ccc; background:#fff; padding:0 0 0 5px; color:#B8B8B8;}
+.win_tree3 .text1part3 { float:left; width:408px; margin:20px 0 0 10px; }
+.win_tree3 .text1part3 span { float:left;}
+.win_tree3 .text1part3 b { float:right; font-weight:normal;}
+.win_tree3 .text1part3 b input { position:relative; top:2px; margin-right:5px;}
+.win_tree3 .text1part4 { float:left; width:396px; height:185px; padding:5px 10px 10px 0px; border:1px solid #D6D6D6; margin:5px 0 0 10px; overflow:scroll; overflow-x:hidden}
+.win_tree3 .text1part4 p {float:left; width:386px; padding:5px 0px 5px 10px; margin:0px; cursor:pointer}
+.win_tree3 .text1part4 p:hover { background:#E3E7F4; color:#333;}
+#vb4 .benpart { text-align:center;}
+
+
+
+.win_tree5{ float:left; width:428px; background:#fff;   border:1px solid #E7E7E7; margin:9px; padding-bottom:20px; color:#666666;}
+.win_tree5 .text2part1 { float:left; width:408px;  margin:0 0 0 10px; border-bottom:1px dashed #b3b3b3; font-weight:bold; color:#00698D;}
+.win_tree5 .text2part1 span { float:left; padding:10px 0 10px 0 }
+.win_tree5 .text2part2 { float:left; width:408px;  margin:5px 0 0 10px; }
+.win_tree5 .text2part2 li { float:left; width:408px; padding:5px 0 5px 0}
+.win_tree5 .text2part2 li .ltext { float:left; width:85px; text-align:right; padding:3px 15px 0 0 ;}
+.win_tree5 .text2part2 li .rtext { float:left; width:; }
+.win_tree5 .text2part2 li .rtext .inputtxt { width:65px; margin:0 22px 0 0; height:20px; background:#fff; border:1px solid #B0CCE6; padding:0 0 0 5px;}
+.win_tree5 .text2part2 li .rtext .span { width:70px; display:inline-block; margin:0 22px 0 0;}
+.win_tree5 .text2part2 li .rtext .select { width:260px;}
+.win_tree5 .text2part2 li .rtext a { color:#00F; margin-left:20px;}
+.win_tree5 .text2part2 li .rtext .checkbox { position:relative; top:2px; margin-right:5px;}
+.win_tree5 .text2part2 li .rtext .gr { margin:0 0 0 19px; color:#bbb}
+.win_tree5 .text2part2 li .rtext .rt { color:#fff; width:80px; padding:0px; text-align:center;}
+
+
+
+
+.win_tree6{ float:left; width:428px; background:#fff;   border:1px solid #E7E7E7; padding-bottom:20px; color:#666666;}
+
+.win_tree6 .text3part1 { float:left; width:380px; padding:30px 0 20px 20px;}
+.win_tree6 .text3part1 li { float:left; width:380px; padding:10px 0 0 0; }
+.win_tree6 .text3part1 li .lt{ float:left; width:120px; text-align:right; padding:5px 0 0 0;}
+.win_tree6 .text3part1 li .lt span { color:#F00}
+.win_tree6 .text3part1 li .rt{ float:left;}
+.win_tree6 .text3part1 li .rt input { border:1px solid #AAAAAA; border-bottom-color:#E5E5E5; border-right-color:#E5E5E5; padding:3px 5px; width:180px; background:#EEEEEE; color:#999} 
+ 
+
+.win_tree7{ float:left; width:480px; background:#fff;   border:1px solid #E7E7E7; margin:9px; padding-bottom:20px; color:#666666;}
+.win_tree7 .text3part1 { float:left; width:480px; padding:30px 0 20px 20px;}
+.win_tree7 .text3part1 li { float:left; width:480px; padding:10px 0 0 0; }
+.win_tree7 .text3part1 li .lt{ float:left; width:100px; text-align:right; padding:5px 0 0 0;}
+.win_tree7 .text3part1 li .lt span { color:#F00}
+.win_tree7 .text3part1 li .rt{ float:left; width:190px;}
+.win_tree7 .text3part1 li .rt label{display: inline-block;}
+.win_tree7 .text3part1 li .rt .input { border:1px solid #AAAAAA; border-bottom-color:#E5E5E5; border-right-color:#E5E5E5; padding:3px 5px; width:180px; color:#999} 
+.win_tree7 .text3part1 li .rt .pic{ float:left; width:100px; height:60px; text-align:center; line-height:60px; overflow:hidden; background:#eee; border:1px solid #ccc;}
+.win_tree7 .text3part1 li .rt .pic img { width:100px; height:60px;}
+.win_tree7 .text3part1 li .rt .inputben { padding:2px 5px; position:relative; top:39px; margin-left:10px; }
+.win_tree7 .text3part1 li .rt .textarea { padding:2px 5px; width:180px; height:100px; font-size:12px; color:#999; }
+
+
+
+.win_tree7b { float:left; width:428px; background:#fff;   border:1px solid #E7E7E7; margin:9px; padding-bottom:20px; color:#666666;}
+.win_tree7b .input { width:120px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; position:relative; top:-5px;}
+.win_tree7b .textpart1 { float:left; width:406px; padding:20px 0 10px 0; margin-left:10px;}
+.win_tree7b .textpart1 input { top:0px; }
+.win_tree7b .textpart2 { float:left; width:406px; padding:10px 0; margin-left:10px;}
+.win_tree7b .textpart2 table { border-left:1px solid #ccc; border-top:1px solid #ccc;}
+.win_tree7b .textpart2 table td,.win_tree7b .textpart2 table th { border-right:1px solid #ccc; border-bottom:1px solid #ccc; padding:5px; color:#666; text-align:center;}
+.win_tree7b .textpart2 table th { background:#E0E0E0; color:#000 }
+.win_tree7b .textpart2 table input {top:0px; text-align:center;}
+.win_tree7b .textpart2 table td a { color:#00F; text-decoration:underline;}
+.win_tree7b .textpart3 { float:left; width:406px; padding:10px 0 0 0; margin-left:10px;}
+.win_tree7b .textpart3 span { float:right;}
+.win_tree7b .textpart3 .ben { position:relative; top:-5px;}
+.win_tree7b .textpart4 { float:left; width:406px; padding:5px 0; height:120px; margin:0 0 0 10px; border:1px solid #ccc; overflow:scroll; overflow-x:hidden;}
+.win_tree7b .textpart4 p { float:left; padding:5px 0 5px 5px; margin:0px; width:100%; cursor:pointer;}
+.win_tree7b .textpart4 p:hover { background:#F9F1E2;}
+.win_tree7b .textpart4 .checkbox{ position:relative; top:2px; margin-right:5px;}
+.win_tree7b label { cursor:pointer;}
+.win_tree7b .textpart5 { float:left; width:406px; padding:15px 0 5px 0; margin-left:10px;}
+.win_tree7b .textpart5 strong { float:left; font-weight:normal;}
+.win_tree7b .textpart5 strong select { margin:0 0 0 10px; position:relative; top:-4px;}
+.win_tree7b .textpart5 span { float:right;}
+.win_tree7b .textpart5 .ben { position:relative; top:-5px;}
+
+.win_tree7b .textpart5 .menuContent span { float:none;}
+
+.win_tree7b .lebr span a { width:11px; height:11px; overflow:hidden; text-align:center;  display:inline-block; border-radius:60px; font-size:12px; margin-right:4px; position:relative; top:2px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #CCC center;}
+.win_tree7b .lebr span a { background-size:11px;}
+.win_tree7b .lebr p a:hover { background:url(../images/close.png) no-repeat #D90000 center; background-size:11px;}
+.win_tree7b .lebr  p:hover { background:#F3F4F8}
+
+
+/*-----------------------------*/
+.otherWin7 { width:96%; height:auto}
+.otherWin7 .text3part1 { width:96%; height:auto}
+.otherWin7 .checkbox { position:relative; top:2px; margin-right:5px;}
+
+.otherWin7 .text3part1 li .rt .input { width:150px;}
+.otherWin7 .text3part1 li .rt .textarea { width:240px; height:180px; }
+.otherWin7 .text3part1 li.width { width:600px;}
+.otherWin7 .textpart1 { width:95%;}
+.otherWin7 .textpart5 { width:95%; position:relative;}
+.otherWin7 .textpart5 .trbr { position:absolute; right:0px; top:16px;}
+.otherWin7 .textpart5 .trbr b { margin:0 5px 0 10px;}
+.win_tree7 .textpart5 { float:left;  padding:15px 0 5px 0; margin-left:10px;}
+.win_tree7 .textpart5 strong { float:left; font-weight:normal;}
+.win_tree7 .textpart5 strong select { margin:0 0 0 10px; position:relative; top:-4px;}
+.win_tree7 .textpart5 span { float:right;}
+.win_tree7 .textpart5 .ben { position:relative; top:-5px;}
+/*-----------------------------*/
+
+
+
+
+
+.win_tree8{ float:left; width:630px; height:372px; background:#fff;   border:1px solid #E7E7E7; margin:9px; overflow:hidden;}
+.win_tree8 .prtext { float:left; width:100%; }
+.win_tree8 .prtext .titler { float:left; width:100%; height:41px; border-bottom:1px solid #E0E0E0; margin-bottom:15px; padding-left:20px;}
+.win_tree8 .prtext .titler li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:100px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px;}
+.win_tree8 .prtext .titler li.now { background:#fff; height:31px;border-top:1px solid #FF8000; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.win_tree8 .prtext .titler .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+.win_tree8 .prtext .ul { float:left; padding:0 10px;}
+.win_tree8 .prtext .ul li { float:left; width:100%; padding:10px 0 5px 0;}
+.win_tree8 .prtext .ul li .lt { float:left; width:120px;}
+.win_tree8 .prtext .ul li .rt { float:left;}
+.win_tree8 .prtext .ul li .rt label { margin-right:20px; cursor:pointer;}
+.win_tree8 .prtext .ul li .rt .checkbox { position:relative; top:3px; margin:0 5px 0 0px;}
+.win_tree8 .prtext .ul li .rt .lebr { float:left; border:1px solid #ccc; background:#fff; width:300px; height:80px; overflow:scroll; overflow-x:hidden;}
+.win_tree8 .prtext .ul li .rt .lebr p { float:left; width:283px;  padding:0px; margin:0px;}
+.win_tree8 .prtext .ul li .rt .lebr .rtext { float:right; position:relative; top:-4px;}
+.win_tree8 .prtext .ul li .rt .lebr .rtext select { width:120px;}
+.win_tree8 .prtext .ul li .rt .lebr span { float:left; height:20px; padding:6px 0 2px 5px;}
+.win_tree8 .prtext .ul li .rt .lebr span a { width:11px; height:11px; overflow:hidden; text-align:center;  display:inline-block; border-radius:60px; font-size:12px; margin-right:4px; position:relative; top:2px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #CCC center;}
+.win_tree8 .prtext .ul li .rt .lebr span a { background-size:11px;}
+.win_tree8 .prtext .ul li .rt .lebr p a:hover { background:url(../images/close.png) no-repeat #D90000 center; background-size:11px;}
+.win_tree8 .prtext .ul li .rt .lebr  p:hover { background:#F3F4F8}
+.win_tree8 .prtext .ul li .rt .ting { margin-left:10px;}
+.win_tree8 .prtext .ul li .rt .ting a:hover  { background:#A1C7EC; border:1px solid #66A3E0;}
+.win_tree8 .prtext .ul li .rt .ting a{ width:60px; height:22px; text-align:center; line-height:22px; border:1px solid #ccc; display:inline-block; color:#06C}
+
+
+
+
+
+.win_tree9 { float:left; width:903px;  background:#fff;   border:1px solid #E7E7E7; margin:9px; overflow:hidden;}
+.win_tree9 label { cursor:pointer;}
+.win_tree9 .left_text { float:left; width:450px; height:400px; border:1px solid #ccc; }
+.win_tree9 .left_text .checkbox { position:relative; top:3px; margin-right:10px; margin-left:5px;}
+.win_tree9 .left_text .tp1 { float:left; width:440px; height:30px; padding:20px 0 0 10px;  background:#F4F4F4}
+.win_tree9 .left_text .tp1 label { margin:10px 20px 0 0; cursor:pointer;}
+.win_tree9 .left_text .tp2 { float:left; width:440px; padding:0 0 0 10px;  height:50px; line-height:40px; background:#F4F4F4; box-shadow:0px 3px 4px rgba(0, 0, 0, 0.1); }
+.win_tree9 .left_text .tp2 span { margin-right:20px;}
+.win_tree9 .left_text .tp2 input { width:110px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin-left:5px; position:relative; top:0px;}
+.win_tree9 .left_text .tp2 a { position:relative; top:8px; margin-left:0px;}
+.win_tree9 .left_text .tp3 { float:left; width:450px; height:260px; border-top:1px solid #ccc; padding:10px 0 0 0; overflow:scroll; overflow-x:hidden  }
+.win_tree9 .left_text .tp3 th { color:#999; font-weight:normal; background:#fff;}
+.win_tree9 .left_text .tp3 th span { margin-left:24px;}
+.win_tree9 .left_text .tp3 td,.win_tree9 .left_text .tp3 th { padding:5px 5px;}
+.win_tree9 .right_text { float:left; width:450px; height:400px; border:1px solid #ccc; border-left:0px; }
+.win_tree9 .left_text .tp3 tr:hover { background:#F9F1E2;}
+.win_tree9 .left_text .tp4 { float:left; width:450px; height:28px; background:#F5F5F5; border-top:1px solid #ccc;}
+.win_tree9 .left_text .tp4 .l { float:left; padding:5px 0 0 10px;}
+.win_tree9 .left_text .tp4 .r { float:right; padding:6px 10px 0 0;}
+.win_tree9 .left_text .tp4 .r a { color:#06C;}
+
+.win_tree9 .right_text .checkbox { position:relative; top:3px; margin-right:10px; margin-left:5px;}
+.win_tree9 .right_text .tp1 { float:left; width:440px; height:30px; padding:20px 0 0 10px; border-bottom:1px solid #ccc; background:#F4F4F4; box-shadow:0px 2px 3px rgba(0, 0, 0, 0.1) }
+.win_tree9 .right_text .tp1 .l { float:left; font-size:14px;}
+.win_tree9 .right_text .tp1 .l b{ color:#F00; display:inline-block; margin-left:10px; font-family:Arial;}
+.win_tree9 .right_text .tp1 .r { float:right; padding:0 10px 0 0; position:relative; top:-8px;}
+.win_tree9 .right_text .tp1 .r input {width:110px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin-left:5px; position:relative; top:-6px;}
+.win_tree9 .right_text .tp1 .r a { margin-left:10px;}
+.win_tree9 .right_text .tp2 { float:left; width:440px; padding:0 0 0 10px; height:320px; overflow:scroll; overflow-x:hidden; }
+.win_tree9 .right_text .tp2 .tx2 { float:left; width:100%; padding:0px 0 10px 0; border-bottom:1px dashed #ccc; }
+.win_tree9 .right_text .tp2 .tx2 b { font-weight:normal; float:left; padding:10px 20px 0 10px;}
+.win_tree9 .right_text .tp2 .tx2 span { color:#F30; font-family:Arial; font-size:14px; font-weight:bold;}
+.win_tree9 .right_text .tp2 .tx3 { float:left; width:100%; padding:10px 0 0 0;}
+.win_tree9 .right_text .tp2 .tx3 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:0 20px 10px 10px;}
+.win_tree9 .right_text .tp2 .tx3 li input { margin-left:5px; position:relative; top:1px;}
+.win_tree9 .right_text .tp3 { float:left; width:450px; height:28px; background:#F5F5F5; border-top:1px solid #ccc;}
+.win_tree9 .right_text .tp3 .l { float:left; padding:5px 0 0 10px;}
+.win_tree9 .right_text .tp3 .r { float:right; padding:6px 10px 0 0;}
+.win_tree9 .right_text .tp3 .r a { color:#06C;}
+
+
+
+.win_tree10{ float:left; width:854px; height:400px; background:#fff;   border:1px solid #E7E7E7; margin:9px; }
+.win_tree10 label { cursor:pointer;}
+.win_tree10 .leftpart_10 { float:left; width:385px; padding:10px;}
+.leftpart_10 .text2 { float:left; width:385px; height:37px; border-bottom:1px dashed #B3B3B3;}
+.leftpart_10 .text2 input { width:140px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin-left:10px; position:relative; top:1px;}
+.leftpart_10 .text2 a { width:auto; padding:0 10px; margin-left:10px;}
+.leftpart_10 .text3 { float:left; width:385px; margin:8px 0 0 0; border:1px solid #D6D6D6}
+.leftpart_10 .text3 .t1 { float:left; width:380px; min-height:34px; background:#E5E5E5; padding:3px 0 0 5px;}
+.leftpart_10 .text3 .t1 .checkbox { position:relative; top:3px; margin-right:5px;}
+.leftpart_10 .text3 .t1 .searcher { width:100px; height:23px; border:1px solid #CCC; position:relative; top:2px; margin:0 0 0 14px; background:url(../images/icon_r3.png) no-repeat -322px -57px #fff; padding:0 0 0 5px;}
+.leftpart_10 .text3 .t1 .input { width:100px; height:23px; border:1px solid #CCC; position:relative; top:2px; margin:0 0 0 14px; background:#fff; padding:0 0 0 5px;}
+.leftpart_10 .text3 .t1 a { width:auto; padding:0 10px; margin-left:10px;}
+.leftpart_10 .text3 .t2 { float:left; width:380px; height:262px; padding:7px 0 0 5px; overflow:scroll; overflow-x:hidden;}
+.leftpart_10 .text3 .t2 li { float:left; width:100px; font-family:Arial; color:#333; text-align:center; border:1px solid #c1c1c1; padding:4px; margin:0 5px 10px 5px;}
+.leftpart_10 .text3 .t2 li input { margin-left:5px; position:relative; top:1px;}
+.leftpart_10 .text3 .t2 p { float:left; width:180px; margin:0px; padding:0px; margin:8px 0 0 20px;}
+.leftpart_10 .text3 .t3 { float:left; width:385px; height:21px; background:#E5E5E5; padding:5px 0 0 0px;}
+.leftpart_10 .text3 .t3 input { position:relative; top:3px; margin:0 5px 0 10px;}
+.leftpart_10 .text3 .t3 span { float:right; padding:0 10px 0 0;}
+/*-----------------------------*/
+.otherWin { width:96%; height:auto}
+.otherWin .leftpart_10 { width:96%;}
+.otherWin .leftpart_10 .text2 { width:100%; position:relative;}
+.otherWin .leftpart_10 .text2 input {}
+.otherWin .leftpart_10 .text2 a { }
+.otherWin .leftpart_10 .text2 .trbr { position:absolute; right:0px; top:0px; color:#999; }
+.otherWin .leftpart_10 .text2 .trbr input { background:#EEEEEE;}
+.otherWin .leftpart_10 .text3 {  width:100%; height:auto}
+.otherWin .leftpart_10 .text3 .t1 { width:99%; border-left:1px solid #EEEEEE;}
+.otherWin .leftpart_10 .text3 .t1 .checkbox { }
+.otherWin .leftpart_10 .text3 .t1 .searcher { }
+.otherWin .leftpart_10 .text3 .t1 .input { width:80px;}
+.otherWin .leftpart_10 .text3 .t1 a { }
+.otherWin .leftpart_10 .text3 .t2 {  width:99%; border-left:1px solid #fff; height:auto}
+.otherWin .leftpart_10 .text3 .t2 li {}
+.otherWin .leftpart_10 .text3 .t2 li input { }
+.otherWin .leftpart_10 .text3 .t2 p { }
+.otherWin .leftpart_10 .text3 .t3 {  width:100%;}
+.otherWin .leftpart_10 .text3 .t3 input {}
+.otherWin .leftpart_10 .text3 .t3 span {}
+/*-----------------------------*/
+.copart_10{ float:left; width:43px; height:330px; }
+.copart_10 .leftben,.copart_10 .rightben{ float:left; width:29px; height:29px; background:url(../images/icon_r3.png) no-repeat; }
+.copart_10 .leftben { background-position:-214px -50px; margin:181px 0 0 7px;}
+.copart_10 .rightben{ background-position:-257px -50px; margin:30px 0 0 7px;}
+
+.win_tree10 .rightpart_10 { float:left; width:385px; padding:10px;}
+.rightpart_10 .text2 { float:left; width:385px; height:37px; border-bottom:1px dashed #B3B3B3;}
+.rightpart_10 .text2 input { width:140px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin-left:10px; position:relative; top:1px;}
+.rightpart_10 .text2 a { width:auto; padding:0 10px; margin-left:10px;}
+.rightpart_10 .text3 { float:left; width:385px; margin:8px 0 0 0; border:1px solid #D6D6D6}
+.rightpart_10 .text3 .t1 { float:left; width:380px; height:34px; background:#E5E5E5; padding:3px 0 0 5px;}
+.rightpart_10 .text3 .t1 .checkbox { position:relative; top:3px; margin-right:5px;}
+.rightpart_10 .text3 .t1 .searcher { width:100px; height:23px; border:1px solid #CCC; position:relative; top:2px; margin:0 0 0 14px; background:url(../images/icon_r3.png) no-repeat -322px -57px #fff; padding:0 0 0 5px;}
+.rightpart_10 .text3 .t1 .input { width:100px; height:23px; border:1px solid #CCC; position:relative; top:2px; margin:0 0 0 14px; background:#fff; padding:0 0 0 5px;}
+.rightpart_10 .text3 .t1 a { width:auto; padding:0 10px; margin-left:10px;}
+.rightpart_10 .text3 .t2 { float:left; width:380px; height:262px; padding:7px 0 0 5px; overflow:scroll; overflow-x:hidden;}
+.rightpart_10 .text3 .t2 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:0 5px 10px 5px;}
+.rightpart_10 .text3 .t2 li input { margin-left:5px; position:relative; top:1px;}
+.rightpart_10 .text3 .t2 p { float:left; width:180px; margin:0px; padding:0px; margin:8px 0 0 20px;}
+.rightpart_10 .text3 .t3 { float:left; width:385px; height:21px; background:#E5E5E5; padding:5px 0 0 0px;}
+.rightpart_10 .text3 .t3 input { position:relative; top:3px; margin:0 5px 0 10px;}
+.rightpart_10 .text3 .t3 span { float:right; padding:0 10px 0 0;}
+

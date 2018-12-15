@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="IOT_INDUSTRY_STATE_RF">
+
+	<resultMap type="Industry" id="industryResultMap">
+
+		<result property="industryCode" column="INDUSTRY_CODE"/>
+		<result property="industryType" column="INDUSTRY_TYPE"/>
+		<result property="industryName" column="INDUSTRY_NAME"/>
+		<result property="industryGtp" column="INDUSTRY_GTP"/>
+	</resultMap>
+
+	
+	<!-- conditionByParams:
+		like: name+Like
+		less than : name+Lt or name+Lte
+		greater than : name+Gt or name+Gte
+		in:	name+In
+	 -->
+	<sql id="conditionByParams"> 
+		<if test="industryCode != null"><![CDATA[ AND t.INDUSTRY_CODE = #{industryCode} ]]></if>
+		
+		<!-- start with 放到sql最后 
+		<if test="parentOrgCodeStartWith != null"><![CDATA[ START WITH t.ORG_CODE = #{parentOrgCodeStartWith} CONNECT BY PRIOR t.ORG_CODE = t.PARENT_ORG_CODE  ]]></if>
+		-->
+	</sql>
+	
+	<sql id="conditionByVO">  
+		<if test="industryCode != null"><![CDATA[ AND t.INDUSTRY_CODE = #{industryCode} ]]></if>
+	</sql>
+	
+  
+  	<sql id="orderByFragment2">
+	  <if test="orderBy!= null">
+		<![CDATA[ order by ${orderBy}  ]]>
+	  </if>
+	</sql>
+	
+	
+	<!-- (1-1)============================= selectAll =================================== -->
+	<select id="selectAll" resultMap="industryResultMap">
+		<![CDATA[ SELECT * FROM IOT_INDUSTRY_STATE_RF t where t.INDUSTRY_TYPE = '1']]>
+	</select>
+  	
+  	<!-- (3-3)============================= selectByPk =================================== -->
+  	<select id="selectByPk" parameterType="java.lang.String" resultMap="industryResultMap">
+    	<![CDATA[ SELECT * FROM IOT_INDUSTRY_STATE_RF WHERE INDUSTRY_CODE = #{industryCode} ]]>
+	</select>
+	
+  	
+</mapper>

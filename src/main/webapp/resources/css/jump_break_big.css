@@ -1,0 +1,336 @@
+﻿
+
+
+/*window share*/
+
+.bgDiv { width:100%; height:100%; position: fixed;top: 0px;left: 0px; z-index:9000;right:0px;background-color: #000;opacity:.5;filter:progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=25, finishOpacity=75) opacity: 0.2;}
+.bgDiv2 { width:100%; height:100%; position: fixed;top: 0px;left: 0px; z-index:900002;right:0px;background-color: #fff;opacity:.5;filter:progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=25, finishOpacity=75) opacity: 0.2;}
+.scrolly { width:100%; height:100%; overflow:scroll; overflow-x:hidden; position:absolute; top:0px; z-index:99999}
+
+/* 新弹层信息*/
+.wintit{ border-bottom:1px solid #ccc; padding:10px; font-weight:bold; font-size:18px; color:#333; }
+.kform{  padding:15px 10px;}
+.contit{ border-bottom:1px dotted #ccc; background:#fafafa; padding:10px 5px; margin:0  0 10px 0; font-weight:bold; }
+.winbox{ border:1px solid #ccc ; margin:10px 0;} 
+
+
+.window{ float:left; width:924px; padding:50px; background:#fff; border:1px solid #D6D6D6;  position:absolute; left:120px;top:50px; z-index:9001 }
+.window .title { float:left; width:100%; height:40px; border-bottom:1px solid #ccc; position:relative}
+.window .title .ltext { float:left; padding:0px 0 0 10px; font-weight:bold; color:#fff; font-size:18px; color:#333;}
+.window .title .rtext { float:right; padding:4px 5px 0 0;}
+.window .title .close { width:30px; height:30px; background:#F60; display:inline-block; border-radius:60px; cursor:pointer; font-size:30px;color:#fff; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2); position:absolute; top:-30px; right:-30px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #F60 center;}
+
+.win_tree{ float:left;  width:924px; padding:20px 0 0 0; }
+
+
+.win_tree .ulone { float:left; width:920px;} 
+.ulone .tit { float:left; width:100%; height:40px; border-bottom:1px dashed #ccc; margin-bottom:20px;}
+.ulone .tit span { float:left; padding:15px 0 0 0;}
+.ulone li { float:left; width:920px; padding:0px 0 8px 0;} 
+.ulone li input { border:1px solid #AAAAAA; border-bottom-color:#E5E5E5; border-right-color:#E5E5E5; padding:3px 5px;} 
+.ulone li .text { float:left; width:400px;}
+.ulone li .text .le { float:left; width:120px; text-align:right; color:#999;}
+.ulone li .text .le span { position:relative; top:5px;}
+.ulone li .text .re { float:left; padding-left:10px;}
+.ulone li .text .re input { width:240px; background:#EEEEEE;}
+.ulone li .text .re select { width:250px; padding:3px 5px; }
+
+.ulone li .text2 { float:left; width:800px;}
+.ulone li .text2 .le { float:left; width:120px; text-align:right; color:#999;}
+.ulone li .text2 .re { float:left; padding-left:10px;}
+.ulone li .text2 .re textarea {  background:#EEEEEE; border:1px solid #AAAAAA;border-bottom-color:#E5E5E5;border-right-color:#E5E5E5;}
+
+.ultwo {   padding:0px 20px 15px 20px;} 
+
+.ultwo .tit {   height:40px; color:#999;font-weight:bold;  }
+.ultwo .tit span { float:left; padding:15px 0 0 0;}
+.ultwo .text { float:none;   }
+.ultwo .text2 { float:none;  padding:0; }
+
+.ultwo .text2 th { display:none;}
+.ultwo .text2 .tdTitle { background:#F5FAFE; text-align:right; color:#333;}
+.ultwo .text2 table { border-top:1px dotted #ccc;  }
+.ultwo .text2 td{ border-bottom:1px dotted #ccc;   padding:5px; background:#fff; color:#666}
+
+
+.ultwo .text3 { float:left; width:100%; padding:20px 0 0 0; }
+.ultwo .text3 span { float:left; width:130px; height:100px; padding:10px 20px 10px 0;}
+.ultwo .text3 span img { width:130px; height:100px;}
+
+.ultwo .text4 { float:left; width:100%; padding:20px 0 0 0; }
+.ultwo .text4 table { border-bottom:1px solid #ccc; border-right:1px solid #ccc;}
+.ultwo .text4 th,.ultwo .text4 td { border-top:1px solid #ccc; border-left:1px solid #ccc; padding:5px; text-align:center;}
+.ultwo .text4 th { background:#28a7e1; color:#fff; font-weight:normal;}
+.ultwo .text4 td { line-height:20px; color:#666}
+
+.ultwo .title { float:left; width:100%; height:41px; border-bottom:1px solid #E0E0E0; margin-bottom:15px;}
+.ultwo .title li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:198px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px; font-size:16px; font-family:"΢���ź�";}
+.ultwo .title li.now { background:#fff; height:31px;border-top:1px solid #FF8000; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.ultwo .title .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+.ultwo .text { float:left; width:100%;}
+
+
+/*=====================================*/
+
+.window2{ float:left; width:924px; padding:50px; background:#fff; border:20px solid #EAEAEA;  position:absolute; left:120px;top:50px; z-index:9001 }
+.window2 .title2 { float:left; width:100%; height:40px;  position:relative}
+.window2 .title2 .ltext { float:left; padding:0px 0 0 10px;   color:#fff; font-size:16px; color:#333; font-family:"΢���ź�";}
+.window2 .title2 .rtext { float:right; padding:4px 5px 0 0;}
+.window2 .title2 .close { width:30px; height:30px; display:inline-block; border-radius:60px; cursor:pointer; font-size:30px; color:#fff; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2); position:absolute; top:-30px; right:-30px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #F60 center;  }
+
+
+
+
+.window2 .title2 .ltext { float:left; width:920px; padding:0px 0 15px 0;} 
+.window2 .title2 .ltext .titler { float:left; width:100%; height:41px; border-bottom:1px solid #E0E0E0; margin-bottom:15px;}
+.window2 .title2 .ltext .titler li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:138px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px;}
+.window2 .title2 .ltext .titler li.now { background:#fff; height:31px;border-top:1px solid #FF8000; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.window2 .title2 .ltext .titler .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+
+
+
+.wrap2{  padding:15px; }
+.wrap2 .title2 {   height:31px;   }
+.wrap2 .title2 .ltext {   color:#fff; font-size:16px; color:#333; font-family:"΢���ź�";}
+.wrap2 .title2 .rtext { float:right; padding:4px 5px 0 0;}
+.wrap2 .title2 .close { width:30px; height:30px; display:inline-block; border-radius:60px; cursor:pointer; font-size:30px; color:#fff; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2); position:absolute; top:-30px; right:-30px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #F60 center;  }
+ 
+.wrap2 .title2 .ltext .titler { float:left; width:100%; height:32px; border-bottom:1px solid #E0E0E0; margin-bottom:15px;}
+.wrap2 .title2 .ltext .titler li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:170px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0;  }
+.wrap2 .title2 .ltext .titler li.now { background:#fff; height:31px;border-top:1px solid #29a7e1; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.wrap2 .title2 .ltext .titler .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0;  position:relative; bottom:0px;}
+
+.wrap2 .contu2 .lt { float:left; clear:both; width:70px; text-align:left; padding-bottom:8px;}
+.wrap2 .contu2 .rt{ margin-left:75px; display:block;padding-bottom:8px;}
+/*=20140508=*/
+.wrap2 .contu2 .lt2   { float:left; clear:both;  padding-bottom:8px;  padding-top:6px;}
+.wrap2 .contu2 .mag-left { margin-left:90px; }
+/*==*/
+
+.wrap2 .contu2  .pic { width:200px; height:200px; display:inline-block; overflow:hidden; padding:0px; border:1px solid #ddd; margin:0 0 10px 0; background:#f1f1f1;}
+.wrap2 .contu2  .pic img { width:200px; height:200px;}
+.in_file{ border:1px solid #ddd; background:#eee; width:160px;}
+
+
+.ulthree .contu2 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.ulthree .contu2 li { float:left; width:100%; padding:20px 0 0 0px;}
+.ulthree .contu2 li .lt {float:left; width:80px; text-align:left; color:#666; }
+.ulthree .contu2 li .rt {float:left; padding:0 0 0 10px; }
+.ulthree .contu2 li .rt .pic { width:120px; height:60px; border:1px solid #ccc; background:#eee; display:inline-block; text-align:center; line-height:60px; font-weight:normal; color:#999}
+.ulthree .contu2 li .rt .input { width:220px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; position:relative; top:-5px;}
+.ulthree .contu2 li .rt .ben { position:relative; top:86px; margin-left:10px;}
+.ulthree .contu2 li .rt .pic { width:200px; height:200px; display:inline-block; line-height:200px; text-align:center;}
+.ulthree .contu2 li .rt .tx { color:#999; margin:0 0 0 10px; position:relative; top:-5px;}
+.ulthree .contu2 li .rt label { margin-right:10px; cursor:pointer;}
+.ulthree .contu2 li .rt .checkbox { position:relative; top:2px; margin-right:5px;}
+.ulthree .contu2 li .ti {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.ulthree .contu2 li .ti strong { float:left; padding:10px 0 10px 0; color:#666; font-weight:normal;}
+.ulthree .contu2 li .text {float:left; width:100%; padding:10px 0 0 0px;}
+
+.ulthree .contu3 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.ulthree .contu3 .optext1 {float:left; width:100%; }
+.ulthree .contu3 .optext1  span { float:left; padding:0 15px 0 0;}
+.ulthree .contu3 .optext1 .input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle; position:relative; top:-3px;}
+.ulthree .contu3 .optext1 .select { width:130px; margin:0 0 0 10px; vertical-align:middle}
+.ulthree .contu3 .optext1  .t { color:#00F; margin:0 10px;}
+.ulthree .contu3 .optext1  .ben { padding:0 15px;}
+.ulthree .contu3 .optext1  a { vertical-align:middle; position:relative; top:-4px;}
+.ulthree .contu3 .optext1 .lebr { float:right; padding:2px 0 0 0; font-weight:normal;}
+.ulthree .contu3 .optext1 .lebr label { cursor:pointer; margin:0 10px 0 5px;}
+.ulthree .contu3 .optext1 .lebr .checkbox { position:relative; top:2px; margin-right:5px;}
+
+
+
+.ulthree .contu3 .optext2 {float:left; width:100%; margin:15px 0 0 0;}
+.ulthree .contu3 .optext2 a { color:#00F; text-decoration:underline; margin-right:10px;}
+.ulthree .contu3 .optext2 table { border-top:1px solid #ddd}
+.ulthree .contu3 .optext2 th,.ulthree .contu3 .optext2 td { height:30px; border-bottom:1px solid #ddd}
+.ulthree .contu3 .optext2 th { background:#F5F5F5; font-weight:normal; color:#000;}
+.ulthree .contu3 .optext2 td { color:#666;}
+.ulthree .contu3 .optext2 tr:hover { background:#F9F1E2; }
+.ulthree .contu3 .optext2 tr:hover td {color:#000;}
+.ulthree .contu3 .optext2 td span { color:#F00}
+.ulthree .contu3 .optext2 span.f1 { margin-left:20px;}
+.ulthree .contu3 .optext2  b.f2 { font-weight:normal; color:#999; margin:4px 0; display:inline-block;}
+.ulthree .contu3 .optext2 td span.f1 { color:#333;}
+.ulthree .contu3 .optext2 td .admin_icon1 { position:relative; top:4px;}
+.ulthree .contu3 .optext2 .checkbox { position:relative; top:3px; margin:0 20px 0 15px;}
+.ulthree .contu3 .optext2 .pic { width:100px; height:60px; display:inline-block; overflow:hidden; padding:5px; border:1px solid #ddd; margin:10px 0 10px 0;}
+.ulthree .contu3 .optext2 .pic img { width:100px; height:60px;}
+
+
+.ulthree .contu4 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.ulthree .contu4 .tit { float:left; width:100%; padding:20px 0 10px 0px; border-bottom:1px dashed #ccc;}
+.ulthree .contu4 .tit strong { float:left;}
+.ulthree .contu4 .tit span { float:right;}
+.ulthree .contu4 .bankli { float:left; width:100%; padding:20px 0 0 0px;}
+.ulthree .contu4 .bankli li { float:left; border:1px solid #8AA6CA; text-align:center;  margin-right:10px; background:#F6F6F6; box-shadow:1px 1px 4px rgba(0, 0, 0, 0.2);}
+.ulthree .contu4 .bankli li:hover {  background:#8AA6CA; color:#fff;}
+.ulthree .contu4 .bankli li:hover a{  color:#fff;}
+.ulthree .contu4 .bankli li a { float:left; width:100px; padding:5px 0 5px 0; text-align:center; height:24px; line-height:24px;}
+/*=====================================*/
+
+.window2{ float:left; width:924px; padding:50px; background:#fff; border:20px solid #EAEAEA;  position:absolute; left:120px;top:50px; z-index:9001 }
+.window2 .title3 { float:left; width:100%; height:40px; background:#F6F6F6;  position:relative}
+.window2 .title3 .ltext { float:left; padding:0px 0 0 10px;   color:#fff; font-size:16px; color:#333; font-family:"΢���ź�";}
+.window2 .title3 .ltext .lt { float:left; width:400px; padding:10px 0 0 10px ;}
+.window2 .title3 .ltext .lt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.window2 .title3 .ltext .rt { float:left; width:480px; padding:10px 0 0 10px ; position:relative;}
+.window2 .title3 .ltext .rt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.window2 .title3 .ltext .rt span { font-size:12px; font-family:"����"; position:relative; top:-4px; margin-left:10px;}
+.window2 .title3 .ltext .rt .ben { position:absolute; top:-20px; right:0px;}
+
+/*---------------------------*/
+.window2 .title3 .ltext2 .lt { float:left; padding:10px 0 0 10px;}
+.window2 .title3 .ltext2 .lt strong { color:#F60; display:inline-block}
+.window2 .title3 .ltext2 .rt { float:right; width:220px; padding:10px 20px 0 10px ; position:relative;}
+.window2 .title3 .ltext2 .rt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.window2 .title3 .ltext2 .rt span { font-size:12px; font-family:"����"; position:relative; top:-4px; margin-left:10px;}
+.window2 .title3 .ltext2 .rt .ben { position:absolute; top:-20px; right:0px;}
+/*---------------------------*/
+.window2 .title3 .rtext { float:right; padding:4px 5px 0 0;}
+.window2 .title3 .close { width:30px; height:30px; background:#F60; display:inline-block; border-radius:60px; cursor:pointer; font-size:30px;  color:#fff; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2); position:absolute; top:-30px; right:-30px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #F60 center;}
+.window2 .title3 .input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle; position:relative; top:-3px;}
+.window2 .title3 .select { width:170px; height:22px;}
+.ulfour .contul { float:left; width:100%; padding:0 0 20px 0;}
+.ulfour .contul .ti {float:left; width:100%; padding:0 0 0 0px; background:#29a7e1; border-bottom:1px dashed #ccc; }
+.ulfour .contul .ti strong { float:left; padding:6px 0 6px 10px; color:#fff; font-size:12px;}
+.ulfour .contul .ti a.ra{ padding:6px 10px 6px 10px; float:right; color:#fff; text-decoration:none; }
+
+.ulfour .contul .ti2 {float:left; width:100%; padding:0 0 0 0px; background:#DBDBDB; border-bottom:1px dashed #ccc; }
+.ulfour .contul .ti2 strong { float:left; padding:6px 0 6px 10px; color:#F60; font-size:12px;}
+.ulfour .contul .ti2 span {float:left; padding:6px 0 0 10px; color:#666 }
+
+.ulfour .contul .ttext {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.ulfour .contul .ttext li { float:left; width:30%; margin:0 10px 20px 10px;}
+.ulfour .contul .ttext li .lr { float:left; width:100%; height:26px; background:#EAEAEA; border-radius:5px; margin:10px 0 0 0; }
+.ulfour .contul .ttext li .lr span { float:left; padding:6px 0 0 10px;}
+.ulfour .contul .ttext li .rr { float:left; width:100%; height:26px; color:#666 }
+.ulfour .contul .ttext li .rr span { float:left; padding:6px 0 0 20px;}
+.ulfour .contul .ttext2 {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.ulfour .contul .ttext2 li { float:left; width:100%; padding:10px 0 10px 0;}
+.ulfour .contul .ttext2 li .txt{ float:left; width:400px; padding:0 0 0 0px;}
+.ulfour .contul .ttext2 li .txt .lt{ float:left; width:100px; height:22px; line-height:22px;   text-align:right; background:#f6f6f6;}
+.ulfour .contul .ttext2 li .txt .rt{ float:left; color:#999; height:22px; line-height:22px; padding:0 0 0 5px;}
+.ulfour .contul .ttexta3 {float:left; width:922px; height:200px; padding:10px 0 10px 0px; border:1px solid #ccc; border-top:0px; overflow:scroll; overflow-x:hidden }
+.ulfour .contul .ttexta3 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:5px 8px 5px 10px}
+.ulfour .contul .ttexta3 li.off { background:#E5E5E5; color:#ccc; border-color:#ccc;}
+.ulfour .contul .ttexta3 li .txt{ float:left; width:400px; padding:0 0 0 0px;}
+.ulfour .contul .ttexta3 li .txt .lt{ float:left; width:100px; height:22px; line-height:22px;   text-align:right; background:#f6f6f6;}
+.ulfour .contul .ttexta3 li .txt .rt{ float:left; color:#999; height:22px; line-height:22px; padding:0 0 0 5px;}
+.ulfour .contnotext { float:left; width:100%; padding:0 0 15px 0; border-bottom:1px dashed #ccc;}
+.ulfour .contnotext a { color:#06C; text-decoration:underline}
+
+
+
+.win_tree .prtext { float:left; width:100%; overflow:hidden}
+.win_tree .prtext .prttit {float:left; width:100%; padding:0 0 0 0px; background:#28a7e1; border-bottom:1px dashed #ccc;}
+.win_tree .prtext .prttit strong { float:left; padding:6px 0 6px 10px; color:#fff; font-size:12px;}
+.win_tree .prtext .titler { float:left; width:100%; height:41px; border-bottom:1px solid #E0E0E0; margin-bottom:15px; padding-left:20px;}
+.win_tree .prtext .titler li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:100px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px;}
+.win_tree .prtext .titler li.now { background:#fff; height:31px;border-top:1px solid #FF8000; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.win_tree .prtext .titler .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+.win_tree .prtext .ul { float:left; padding:0 10px;}
+.win_tree .prtext .ul li { float:left; width:100%; padding:10px 0 5px 0;}
+.win_tree .prtext .ul li .lt { float:left; width:120px;}
+.win_tree .prtext .ul li .rt { float:left;}
+.win_tree .prtext .ul li .rt label { margin-right:20px; cursor:pointer;}
+.win_tree .prtext .ul li .rt .checkbox { position:relative; top:3px; margin:0 5px 0 0px;}
+.win_tree .prtext .ul li .rt .lebr { float:left; border:1px solid #ccc; background:#fff; width:300px; height:80px; overflow:scroll; overflow-x:hidden;}
+.win_tree .prtext .ul li .rt .lebr p { float:left; width:283px;  padding:0px; margin:0px;}
+.win_tree .prtext .ul li .rt .lebr .rtext { float:right; position:relative; top:-4px;}
+.win_tree .prtext .ul li .rt .lebr .rtext select { width:120px;}
+.win_tree .prtext .ul li .rt .lebr span { float:left; height:20px; padding:6px 0 2px 5px;}
+.win_tree .prtext .ul li .rt .lebr span a { width:11px; height:11px; overflow:hidden; text-align:center;  display:inline-block; border-radius:60px; font-size:12px; margin-right:4px; position:relative; top:2px; text-indent:-9999px; overflow:hidden; background:url(../images/close.png) no-repeat #CCC center;}
+.win_tree .prtext .ul li .rt .lebr span a { background-size:11px;}
+.win_tree .prtext .ul li .rt .lebr p a:hover { background:url(../images/close.png) no-repeat #D90000 center; background-size:11px;}
+.win_tree .prtext .ul li .rt .lebr  p:hover { background:#F3F4F8}
+.win_tree .prtext .ul li .rt .ting { margin-left:10px;}
+.win_tree .prtext .ul li .rt .ting a:hover  { background:#A1C7EC; border:1px solid #66A3E0;}
+.win_tree .prtext .ul li .rt .ting a{ width:60px; height:22px; text-align:center; line-height:22px; border:1px solid #ccc; display:inline-block; color:#06C}
+
+
+
+
+.win_tree .prtext2 {  float:left; width:100%; padding:20px 0 0 0;}
+.win_tree .prtext2 .prttit {float:left; width:100%; padding:0 0 0 0px; background:#F60; border-bottom:1px dashed #ccc;}
+.win_tree .prtext2 .prttit strong { float:left; padding:6px 0 6px 10px; color:#fff; font-size:12px;}
+.win_tree .prtext2 label { cursor:pointer;}
+.win_tree .prtext2 .prttx { float:left; width:903px;  background:#fff;   border:1px solid #E7E7E7; margin:9px; overflow:hidden;}
+.win_tree .prtext2 .prttx .left_text { float:left; width:450px; height:400px; border:1px solid #ccc; }
+.win_tree .prtext2 .prttx .left_text .checkbox { position:relative; top:3px; margin-right:10px; margin-left:5px;}
+.win_tree .prtext2 .prttx .left_text .tp1 { float:left; width:440px; height:30px; padding:20px 0 0 10px;  background:#F4F4F4}
+.win_tree .prtext2 .prttx .left_text .tp1 label { margin:10px 20px 0 0; cursor:pointer;}
+.win_tree .prtext2 .prttx .left_text .tp2 { float:left; width:440px; padding:0 0 0 10px;  height:50px; line-height:40px; background:#F4F4F4; box-shadow:0px 3px 4px rgba(0, 0, 0, 0.1); }
+.win_tree .prtext2 .prttx .left_text .tp2 span { margin-right:20px;}
+.win_tree .prtext2 .prttx .left_text .tp2 input { width:110px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin-left:5px; position:relative; top:0px;}
+.win_tree .prtext2 .prttx .left_text .tp2 a { position:relative; top:8px; margin-left:0px;}
+.win_tree .prtext2 .prttx .left_text .tp3 { float:left; width:450px; height:260px; border-top:1px solid #ccc; padding:10px 0 0 0; overflow:scroll; overflow-x:hidden  }
+.win_tree .prtext2 .prttx .left_text .tp3 th { color:#999; font-weight:normal; background:#fff;}
+.win_tree .prtext2 .prttx .left_text .tp3 th span { margin-left:24px;}
+.win_tree .prtext2 .prttx .left_text .tp3 td,.win_tree .prtext2 .prttx .left_text .tp3 th { padding:5px 5px;}
+.win_tree .prtext2 .prttx .right_text { float:left; width:450px; height:400px; border:1px solid #ccc; border-left:0px; }
+.win_tree .prtext2 .prttx .left_text .tp3 tr:hover { background:#F9F1E2;}
+.win_tree .prtext2 .prttx .left_text .tp4 { float:left; width:450px; height:28px; background:#F5F5F5; border-top:1px solid #ccc;}
+.win_tree .prtext2 .prttx .left_text .tp4 .l { float:left; padding:5px 0 0 10px;}
+.win_tree .prtext2 .prttx .left_text .tp4 .r { float:right; padding:6px 10px 0 0;}
+.win_tree .prtext2 .prttx .left_text .tp4 .r a { color:#06C;}
+
+.win_tree .prtext2 .prttx .right_text .checkbox { position:relative; top:3px; margin-right:10px; margin-left:5px;}
+.win_tree .prtext2 .prttx .right_text .tp1 { float:left; width:440px; height:30px; padding:20px 0 0 10px; border-bottom:1px solid #ccc; background:#F4F4F4; box-shadow:0px 2px 3px rgba(0, 0, 0, 0.1) }
+.win_tree .prtext2 .prttx .right_text .tp1 .l { float:left; font-size:14px;}
+.win_tree .prtext2 .prttx .right_text .tp1 .l b{ color:#F00; display:inline-block; margin-left:10px; font-family:Arial;}
+.win_tree .prtext2 .prttx .right_text .tp1 .r { float:right; padding:0 10px 0 0; position:relative; top:-8px;}
+.win_tree .prtext2 .prttx .right_text .tp1 .r input {width:110px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin-left:5px; position:relative; top:-6px;}
+.win_tree .prtext2 .prttx .right_text .tp1 .r a { margin-left:10px;}
+.win_tree .prtext2 .prttx .right_text .tp2 { float:left; width:440px; padding:0 0 0 10px; height:320px; overflow:scroll; overflow-x:hidden; }
+.win_tree .prtext2 .prttx .right_text .tp2 .tx2 { float:left; width:100%; padding:0px 0 10px 0; border-bottom:1px dashed #ccc; }
+.win_tree .prtext2 .prttx .right_text .tp2 .tx2 b { font-weight:normal; float:left; padding:10px 20px 0 10px;}
+.win_tree .prtext2 .prttx .right_text .tp2 .tx2 span { color:#F30; font-family:Arial; font-size:14px; font-weight:bold;}
+.win_tree .prtext2 .prttx .right_text .tp2 .tx3 { float:left; width:100%; padding:10px 0 0 0;}
+.win_tree .prtext2 .prttx .right_text .tp2 .tx3 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:0 20px 10px 10px;}
+.win_tree .prtext2 .prttx .right_text .tp2 .tx3 li input { margin-left:5px; position:relative; top:1px;}
+.win_tree .prtext2 .prttx .right_text .tp3 { float:left; width:450px; height:28px; background:#F5F5F5; border-top:1px solid #ccc;}
+.win_tree .prtext2 .prttx .right_text .tp3 .l { float:left; padding:5px 0 0 10px;}
+.win_tree .prtext2 .prttx .right_text .tp3 .r { float:right; padding:6px 10px 0 0;}
+.win_tree .prtext2 .prttx .right_text .tp3 .r a { color:#06C;}
+
+
+
+
+
+.ulfive { float:left; width:920px; padding:0px 0 15px 0; border-top:1px dashed #ccc;} 
+
+.ulfive .ul { float:left;}
+.ulfive .ul li { float:left; width:200px; margin:0 15px;}
+.ulfive .ul li .tx1 { float:left; width:200px; padding:10px 0 0 0; font-weight:bold; font-size:14px;}
+.ulfive .ul li .tx2 { float:left; width:198px; height:200px; overflow:scroll; overflow-x:hidden; border:1px solid #ccc; margin:10px 0 0 0;}
+.ulfive .ul li .tx2 label { cursor:pointer;}
+.ulfive .ul li .tx2 input { position:relative; top:2px; margin:0px 5px;}
+.ulfive .ul li .tx2 p{ padding:5px 0px; margin:0px; color:#999;}
+.ulfive .ul li .tx2 p:hover { background:#F9F1E2; }
+/*=====================================*/
+
+.window2 .ulsix { float:left; width:920px; padding:0px 0 15px 0; border-top:1px dashed #ccc;}
+.ulsix .text1 { float:left; width:920px; padding:10px 0 10px 0; }
+.ulsix .text1 .t1 { padding:0 10px 0 10px;}
+.ulsix .text1 .t2 { color:#00F; padding:0 50px 0 0;}
+.ulsix .text1 .t4 { color:#090}
+.ulsix .text1 .t5 { float:right; padding:0 20px 0 0;}
+
+.ulsix .text2 {float:left; width:940px; padding:5px 0 5px 0; background:#EAEFF2; margin:10px 0;}
+.ulsix .text2 strong { float:left; padding:0 0 0 10px;}
+
+.ulsix .text3 {float:left; width:910px; padding:5px 0 5px 10px;}
+.ulsix .text3 .litxt { float:left; width:80px; text-align:center; margin:0 5px; padding:5px 20px; border:1px solid #F90; }
+.ulsix .text3 .litxt:hover,.ulsix .text3 .on  { background:#FFDCA8; color:#fff; color:#333}
+.win_tree .benpart { display:inline-block; width:940px; text-align:center; padding:30px 0 20px 0; margin:20px 0 0 0; border-top:1px dashed #ccc}
+.win_tree .benpart a { margin:0 10px; padding:0 40px;}
+
+.window2 .title2 .ltext2 { background:#EAEAEA; padding:5px 0 5px 20px; font-weight:bold; font-family:"Microsoft YaHei"}
+/*=====================================*/
+
+
+
+
+

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CUSTOM_COLUMNS">
+		
+	<!-- 查询全部自定义列信息列表 -->
+	<select id="selectAllCustomColumnList" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" >
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_COLUMNS
+			WHERE 
+				STATUS = '0'
+			ORDER BY 
+				REORDER  
+		]]>
+	</select>
+	
+	<!-- 查询全部固定列和自定义列信息列表 -->
+	<select id="selectAllFixedAndCustomColumnList" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" >
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_COLUMNS 
+			ORDER BY 
+				REORDER  
+		]]>
+	</select>
+	
+	<!-- 查询全部固定列信息列表，注：这里只取非父节点列，目前只支持二级层级结构 -->
+	<select id="selectAllFixedColumnList" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" >
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_COLUMNS
+			WHERE 
+				STATUS = '1'
+			AND 
+				PARENT_COLUMN_CODE <> '-1' 
+			ORDER BY 
+				REORDER  
+		]]>
+	</select>
+	
+	<!-- 查询根据列编号集合查询自定义列信息列表 -->
+	<select id="selectCustomColumnsByColumnCodes" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" 
+			parameterType="java.util.List">
+			SELECT DISTINCT 
+				COLUMN_CODE,
+				COLUMN_NAME 
+			FROM 
+				CUSTOM_COLUMNS
+			WHERE 
+			<choose>
+				<when test="list != null and list.size > 0">
+					COLUMN_CODE IN 
+					<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+	               		#{item.columnCode}
+					</foreach>
+				</when> 
+				<otherwise>
+                    COLUMN_CODE IN ('') 
+                </otherwise>
+			</choose>
+			AND 
+				FLAG = '0' 
+			ORDER BY 
+				REORDER   
+	</select>
+	
+	<!-- 根据模板编号查询模板的自定义列信息列表 -->
+	<select id="selectCustomColumnsByTemplateId" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" 
+			parameterType="java.lang.String">
+		<![CDATA[ 
+				SELECT 
+					b.ID AS id,
+					b.COLUMN_CODE AS columnCode,
+					b.COLUMN_NAME AS columnName,
+					b.PARENT_COLUMN_CODE AS parentColumnCode,
+					b.STATUS AS status,
+					b.AUTHORITY AS authority,
+					b.FLAG AS flag,
+					b.COLUMN_DESC AS columnDesc,
+					b.CREATER AS creater,
+					b.CREATE_TIME AS createTime,
+					b.MODIFIER AS modifier,
+					b.MODIFY_TIME AS modifyTime,
+					b.REORDER AS reorder,
+					b.REMARK AS remark 
+				FROM 
+					custom_templates_columns a
+				LEFT JOIN 
+					CUSTOM_COLUMNS b
+				ON 
+					a.COLUMN_CODE = b.COLUMN_CODE 
+				WHERE 
+					a.TEMPLATE_ID = #{templateId,jdbcType=VARCHAR} 
+				ORDER BY 
+					b.REORDER 
+		]]>
+	</select>
+
+	<!-- 查询全部一级自定义列信息列表（即所有表编码信息列表） -->
+	<select id="selectLevelOneCustomColumnList" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" >
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				CUSTOM_COLUMNS 
+			WHERE 
+				PARENT_COLUMN_CODE='-1' 
+			AND 
+				FLAG='1'
+		]]>
+	</select>
+	
+	<!-- 根据列编码递归查询子节点自定义列信息列表  -->
+	<select id="selectChildrenCustomColumnListByColumnCode" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" 
+			parameterType="java.lang.String">
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				custom_columns 
+			WHERE 
+				FIND_IN_SET(COLUMN_CODE, getChildrenList(#{columnCode,jdbcType=VARCHAR})) 
+			ORDER BY 
+				REORDER 
+		]]>
+	</select>
+	
+	<!-- 根据列编码递归查询子节点字段类型的自定义列信息列表  -->
+	<select id="selectChildrenColumnListByColumnCode" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomColumns" 
+			parameterType="java.lang.String">
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				custom_columns 
+			WHERE 
+				FIND_IN_SET(COLUMN_CODE, getChildrenList(#{columnCode,jdbcType=VARCHAR}))
+			AND 
+				FLAG='0'
+			ORDER BY 
+				REORDER 
+		]]>
+	</select>
+	
+</mapper>

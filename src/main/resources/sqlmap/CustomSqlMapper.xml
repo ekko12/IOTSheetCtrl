@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CUSTOM_SQL">
+		
+	<!-- 根据自定义SQL对象查询 -->
+	<select id="selectByCustomSql" resultType="java.util.HashMap" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomSql">
+			SELECT 
+				0
+				<if test="targetColumnExpressionList != null and targetColumnExpressionList.size > 0">
+					<foreach collection="targetColumnExpressionList" index="index" item="item" open="," separator="," close="">
+	               		${item.columnExpression} 
+	               		<if test="item.isAs != false and item.asName != null">
+	               		AS ${item.asName} 
+	               		</if>
+					</foreach>
+				</if>  
+			FROM 
+				${tableName}
+			WHERE 
+				1 = 1
+				<if test="conditionalExpressionList != null and conditionalExpressionList.size > 0">
+					<foreach collection="conditionalExpressionList" index="index" item="item" separator="">
+	               		${item.multipleCondition} ${item.name} ${item.predicate} #{item.value} 
+					</foreach>
+				</if>
+				<if test="group != null">
+					GROUP BY 
+					<if test="group.byNameList != null and group.byNameList.size > 0">
+						<foreach collection="group.byNameList" index="index" item="item" separator=",">
+	               			${item}
+						</foreach>
+					</if>
+					<if test="group.conditionalExpressionList != null and group.conditionalExpressionList.size > 0">
+						HAVING 
+							1=1
+							<foreach collection="group.conditionalExpressionList" index="index" item="item" separator="">
+		               			${item.multipleCondition} ${item.name} ${item.predicate} #{item.value} 
+							</foreach>
+					</if>
+				</if>
+				<if test="orderList != null and orderList.size > 0">
+					ORDER BY 
+					<foreach collection="orderList" index="index" item="item" separator=",">
+	               		${item.byName} ${item.order} 
+					</foreach>
+				</if>
+	</select>
+	
+	<!-- 根据自定义SQL对象查询Count -->
+	<select id="selectByCustomSqlCount" resultType="int" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomSql">
+			SELECT 
+				count(0) 
+			FROM 
+				${tableName}
+			WHERE 
+				1 = 1
+				<if test="conditionalExpressionList != null and conditionalExpressionList.size > 0">
+					<foreach collection="conditionalExpressionList" index="index" item="item" separator="">
+	               		${item.multipleCondition} ${item.name} ${item.predicate} #{item.value} 
+					</foreach>
+				</if>
+				<if test="group != null">
+					GROUP BY 
+					<if test="group.byNameList != null and group.byNameList.size > 0">
+						<foreach collection="group.byNameList" index="index" item="item" separator=",">
+	               			${item}
+						</foreach>
+					</if>
+					<if test="group.conditionalExpressionList != null and group.conditionalExpressionList.size > 0">
+						HAVING 
+							1=1
+							<foreach collection="group.conditionalExpressionList" index="index" item="item" separator="">
+		               			${item.multipleCondition} ${item.name} ${item.predicate} #{item.value} 
+							</foreach>
+					</if>
+				</if>
+				<if test="orderList != null and orderList.size > 0">
+					ORDER BY 
+					<foreach collection="orderList" index="index" item="item" separator=",">
+	               		${item.byName} ${item.order} 
+					</foreach>
+				</if>
+	</select>
+	
+	
+	
+</mapper>

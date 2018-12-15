@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_DICT">
+	<resultMap type="SysDict" id="sysDictResultMap">
+		<id property="dictCode" column="DICT_CODE"/>   
+		<result property="dictName" column="DICT_NAME"/>
+		<result property="dictKey" column="DICT_KEY"/>
+		<result property="dictValue" column="DICT_VALUE"/>
+		<result property="reorder" column="REORDER"/>
+	</resultMap>
+	
+	<select id="selectAll" resultMap="sysDictResultMap">
+		<![CDATA[ SELECT * FROM SYS_DICT  ]]>
+	</select>
+	
+	
+</mapper>

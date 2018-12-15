@@ -1,0 +1,416 @@
+@charset "utf-8";
+/*
+  展示页面css样式
+  作者：zzm
+  时间：2018-10-18
+*/
+.index-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+.index-box{
+  width: 100%;
+  min-width: 1200px;
+  height: 100%;
+}
+/* 小标题 */
+.index-box h2 {
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  height:40px;
+  width: 100%;
+  border-bottom:2px solid #42489a;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  text-align: center;
+  background:rgba(66,72,154,.5)
+}
+.index-box h2 span{
+  color:#b6bcff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 37px;
+  font-weight: 600;
+}
+.index-box ul{
+  position: relative;
+  float:left;
+  width:calc(100% - 40px);
+  width:-webkit-calc(100% - 40px);
+  width:-moz-calc(100% - 40px);
+  height:calc(100% - 40px);
+  height:-webkit-calc(100% - 40px);
+  height:-moz-calc(100% - 40px);
+  margin: 20px;
+  border-radius: 10px;
+  border:2px solid #42489a;
+}
+
+/* 发光的线*/
+.index-box .child{
+  position: absolute;
+  width: 50px;
+  height:50px;
+  border:4px solid #b6bcff;
+}
+.index-box .ch-01{
+  top:-3px;
+  left:-3px;
+  border:4px solid #b6bcff;
+  border-top-left-radius: 10px;
+  border-right:0;
+  border-bottom:0;
+}
+.index-box .ch-02{
+  top:-3px;
+  right: -3px;
+  border:4px solid #b6bcff;
+  border-top-right-radius: 10px;
+  border-left:0;
+  border-bottom:0;
+}
+.index-box .ch-03{
+  left:-3px;
+  bottom:-3px;
+  border:4px solid #b6bcff;
+  border-bottom-left-radius: 10px;
+  border-right:0;
+  border-top:0;
+}
+.index-box .ch-04{
+  right:-3px;
+  bottom:-3px;
+  border:4px solid #b6bcff;
+  border-bottom-right-radius: 10px;
+  border-left:0;
+  border-top:0;
+}
+
+/* 左右两侧内容*/
+.index-box .sm{
+  float:left;
+  width:30%;
+  height: 100%;
+}
+.index-box .sm .lt{
+  width:calc(100% - 40px);
+  width:-webkit-calc(100% - 40px);
+  width:-moz-calc(100% - 40px);
+  height:calc(33.333% - 30px);
+  height:-webkit-calc(33.333% - 30px);
+  height:-moz-calc(33.333% - 30px);
+  border:2px solid #42489a;
+  margin: 13px 10px 30px 30px;
+  border-radius: 6px;
+  background: url(../img/lt-bg.png) no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+.index-box .sm .rt{
+  width:calc(100% - 40px);
+  width:-webkit-calc(100% - 40px);
+  width:-moz-calc(100% - 40px);
+  height:calc(33.333% - 30px);
+  height:-webkit-calc(33.333% - 30px);
+  height:-moz-calc(33.333% - 30px);
+  border:2px solid #42489a;
+  margin: 13px 30px 30px 10px;
+  border-radius: 6px;
+  background: url(../img/lt-bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+.index-box .sm .lt-01{
+  position: relative;
+  margin: 30px 0 0 30px;
+}
+.index-box .sm .lt-02{
+  position: relative;
+  margin: 13px 0 0 30px;
+}
+.index-box .sm .lt-03{
+  position: relative;
+  margin: 13px 0 0 30px;
+}
+.index-box .sm .rt-01{
+  position: relative;
+  margin: 30px 30px 0 10px;
+}
+.index-box .sm .rt-02{
+  position: relative;
+  margin: 13px 30px 0 10px;
+}
+.index-box .sm .rt-03{
+  position: relative;
+  margin: 13px 30px 0 10px;
+}
+.sm-box-data{
+  position: absolute;
+  top:0;
+  width: 100%;
+  height:100%;
+  padding:50px 10px 10px 10px;
+}
+.sm-box-data ul {
+  width: 100%;
+  height: 100%;
+  padding:0;
+  margin:0;
+  border:1px solid #42489a;
+  border-radius: 0;
+}
+.sm-box-data ul li{
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding:0;
+  margin:0 0 0 -1px;
+  border-left:1px solid #42489a;
+  border-radius: 0;
+}
+.sm-box-data ul li .bt{
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color:#b6bcff;
+  border-bottom:1px solid #42489a;
+}
+.sm-box-data ul li .da{
+  position: relative;
+  float: left;
+  width: 50%;
+  margin:0 0 0 -1px;
+  height:calc(100% - 35px);
+  height:-webkit-calc(100% - 35px);
+  height:-moz-calc(100% - 35px);
+  line-height: 40px;
+  text-align: center;
+  border-left:1px solid #42489a;
+}
+.sm-box-data ul li .da p{
+  position: absolute;
+  display:block;
+  top:40%;
+  margin:-15px 0 0 0;
+  width: 100%;
+  text-align: center;
+  color:#b6bcff;
+  font-size: 13px;
+}
+.sm-box-data ul li .da span{
+  position: absolute;
+  display:block;
+  width: 100%;
+  top:40%;
+  margin:10px 0 0 0;
+  text-align: center;
+  color:#ffcc00;
+  font-size: 20px;
+  font-weight: 800;
+}
+.lg-box-data{
+  position: absolute;
+  top:40px;
+  width: 100%;
+  height:calc(100% - 40px);
+  height:-webkit-calc(100% - 40px);
+  height:-moz-calc(100% - 40px);
+  padding:10px 10px 10px 10px;
+}
+
+/* 中间内容 */
+.index-box .lg{
+  position: relative;
+  float:left;
+  width:40%;
+  height: 100%;
+}
+.index-box .lg .cr-01{
+  position: relative;
+  width:100%;
+  height: 45%;
+}
+.index-box .lg .cr-01 .top{
+  position: relative;
+  width:100%;
+  height: 116px;
+  margin-top:-2px;
+}
+/* 大标题  中国联通物联网客户运营系统*/
+.index-box .lg .cr-01 .top h1{
+  position: absolute;
+  top:0;
+  display: block;
+  height:90px;
+  line-height:90px;
+  width: 100%;
+  color:#fff;
+  font-weight: 800;
+  font-size: 25px;
+  text-align: center;
+}
+.index-box .lg .cr-01 .top .time{
+  position: absolute;
+  display: block;
+  left:90px;
+  right:90px;
+  height:33px;
+  text-align: center;
+  color:#5057c0;
+  top:70px;
+  font-size: 18px;
+}
+.index-box .lg .cr-01 .top .top-01{
+  position: absolute;
+  left: 0;
+  width: 105px;
+  height:105px;
+  background: url(../img/top-01.png) no-repeat;
+  background-size: 105px;
+}
+.index-box .lg .cr-01 .top .top-02{
+  position: absolute;
+  left: 105px;
+  right:105px;
+  height:101px;
+  background: url(../img/top-02.png) repeat;
+  background-size:1px 101px;
+}
+.index-box .lg .cr-01 .top .top-03{
+  position: absolute;
+  top:-2px;
+  right: 0;
+  width: 105px;
+  height:105px;
+  background: url(../img/top-03.png) no-repeat right;
+  background-size: 105px;
+}
+.index-box .lg .cr-02{
+  position: absolute;
+  bottom:35px;
+  top:385px;
+  width:100%;
+  border:2px solid #42489a;
+  border-radius: 10px;
+  background: url(../img/lg-bg.png) no-repeat bottom;
+  background-size: 100%;
+}
+
+.index-box .lg .cr-01 .bottom{
+  position: absolute;
+  top:33px;
+  width:100%;
+  height: 345px;
+  background: url(../img/lt-bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+  border:2px solid #42489a;
+  border-top:0;
+   border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.index-box .lg .cr-01 .bottom .bt-01{
+  position: absolute;
+  left: -2px;
+  top:-2px;
+  width: 95px;
+  height:90px;
+  background: url(../img/bottom-01.png) no-repeat;
+  background-size: 95px;
+}
+.index-box .lg .cr-01 .bottom .bt-02{
+  position: absolute;
+  right: -2px;
+  top:-2px;
+  width: 95px;
+  height:90px;
+  background: url(../img/bottom-03.png) no-repeat;
+  background-size: 95px;
+}
+.index-box .lg .cr-01 .bottom .bt-03{
+  position: absolute;
+  left:90px;
+  right:90px;
+  height:89px;
+  border-bottom:2px solid #42489a;
+}
+.index-box .lg .cr-01 .bottom .bt-04{
+  position: absolute;
+  left:30px;
+  right: 30px;
+  height:100%;
+  background: url(../img/bottom-04.png) no-repeat bottom;
+  background-size: 100%;
+}
+.index-box .lg .cr-01 .bottom .bt-04 .nu{
+  position: relative;
+  width: 100%;
+  height:100px;
+}
+.index-box h3 {
+  display: block;
+  width: 100%;
+  height:30px;
+  text-align: center;
+  margin-top:10px;
+}
+.index-box h3 span{
+  position: relative;
+  color:#b6bcff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: 600;
+}
+.index-box .lg .cr-01 .bottom .bt-04 .number-top{
+  margin-top:100px;
+}
+.index-box .lg .cr-01 .bottom .bt-04 .number-bottom{
+  margin-top:0px;
+}
+.index-box .lg .cr-01 .bottom .bt-04 .nu ul{
+  width: 90%;
+  height:55px;
+  border:0;
+  margin:10px 5% 0 5%;
+}
+.index-box .lg .cr-01 .bottom .bt-04 .nu ul li{
+  width: 6.66666667%;
+  float: left;
+  height:55px;
+  margin:0 0.8333333%;
+  border:2px solid #7879d9;
+  border-radius: 6px;
+  background: url(../img/number-bg.png) no-repeat bottom;
+  background-size: 110% 100%;
+}
+.index-box .lg .cr-01 .bottom .bt-04 .nu ul li{
+  color:#ffdd22;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 800;
+  line-height: 50px;
+}
+.line-lt-top{
+  margin:-2px 0 0 -2px;
+}
+.line-rt-bottom{
+  position: absolute;
+  bottom:-2px;
+  right:-2px;
+}
+.line-rt-top{
+  position: absolute;
+  top:-2px;
+  right:-2px;
+}
+.line-lt-bottom{
+  position: absolute;
+  bottom:-2px;
+  left:-2px;
+}

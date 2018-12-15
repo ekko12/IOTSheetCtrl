@@ -1,0 +1,304 @@
+
+.admin { float:left; width:100%;}
+
+.admin .titlePa { float:left; width:100%; height:30px; background:url(../images/cont_title.png) no-repeat left bottom; }
+.admin .titlePa strong { font-size:14px; padding:5px 0 0 0; display:inline-block;}
+.admin .titlePa span { font-size:14px; font-weight:bold; padding:5px 0 0 10px; display:inline-block; color:#FF8102;}
+
+.admin .part_y1 {float:left; width:100%; font-size:14px; margin:10px 0;}
+.admin .part_y1 span { display:inline-block;  padding-bottom:6px;margin:0 5px 0 0;}
+.admin .part_y1 a { display:inline-block; height:21px;  padding:5px 20px 0 20px;  }
+.admin .part_y1 span:hover,.admin .part_y1 span.on{ background:url(../images/admin_br1.png) no-repeat center bottom;}
+.admin .part_y1 a:hover,.admin .part_y1 span.on a {background:#29a7e1; color:#fff;border-radius:4px;}
+
+.admin .part_y2 {float:left; width:100%;}
+.admin .part_y2 span { float:left; height:22px; padding:0 15px 6px 0;}
+.admin .part_y2 input { border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:1px 1px 1px 5px; margin:0 0 0 10px; vertical-align:middle; }
+.admin .fewS span { width:auto;}
+.admin .part_y2 select { margin:0 0 0 10px; vertical-align:middle}
+.admin .part_y2 .t { color:#00F; margin:0 10px;}
+.admin .part_y2 .ben { padding:0 15px;}
+.admin .part_y2 a { vertical-align:middle; position:relative; top:-4px;}
+
+
+.admin .s_part {float:left; width:100%;}
+.admin .s_part span.cell { float:left; height:22px; padding:0 15px 6px 0;}
+.admin .s_part input { border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:1px 1px 1px 5px; margin:0 0 0 10px; vertical-align:middle; }
+.admin .fewS span.cell { width:auto;}
+.admin .s_part select { margin:0 0 0 10px; vertical-align:middle}
+.admin .s_part .t { color:#00F; margin:0 10px;}
+.admin .s_part .ben { padding:0 15px;}
+.admin .s_part a { vertical-align:middle;  } 
+
+
+.admin .part_y3 {float:left; width:100%; margin:15px 0 0 0;}
+.admin .part_y3 a { color:#00F; text-decoration:underline; margin-right:10px;}
+.admin .part_y3 a img { padding:0px 0px 0px 0px;}
+.admin .part_y3 table { border-top:1px solid #ddd}
+.admin .part_y3 th,.admin .part_y3 td { height:30px; border-bottom:1px solid #ddd}
+.admin .part_y3 th { background:#F5F5F5; font-weight:normal; color:#000;}
+.admin .part_y3 td { color:#666;}
+.admin .part_y3 tr:hover { background:#F9F1E2; }
+.admin .part_y3 tr:hover td {color:#000;}
+.admin .part_y3 td span {}
+.admin .part_y3 span.f1 { margin-left:20px;}
+.admin .part_y3 b.f2 { font-weight:normal; color:#999; margin:4px 0; display:inline-block;}
+.admin .part_y3 td span.f1 { color:#333;}
+.admin .part_y3 td .admin_icon1 { position:relative; top:4px;}
+.admin .part_y3 .checkbox { position:relative; top:3px; margin:0 20px 0 15px;}
+.admin .part_y3 .pic { width:100px; height:60px; display:inline-block; overflow:hidden; padding:5px; border:1px solid #ddd; margin:10px 0 10px 0;}
+.admin .part_y3 .pic img { width:100px; height:60px;}
+
+
+.admin .part_y3 .input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle; position:relative; top:-3px;}
+.admin .part_y3 .title3 { float:left; width:100%; height:40px; background:#F6F6F6;  position:relative; margin-bottom:15px;}
+.admin .part_y3 .title3 .ltext { float:left; width:100%; padding:0px 0 0 10px;   color:#fff; font-size:16px; color:#333; font-family:"΢���ź�";}
+.admin .part_y3 .title3 .ltext .lt { float:left; width:400px; padding:10px 0 0 10px ;}
+.admin .part_y3 .title3 .ltext .lt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.admin .part_y3 .title3 .ltext .rt { float:right; width:480px; padding:6px 10px 0 10px ; text-align:right }
+.admin .part_y3 .title3 .ltext .rt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.admin .part_y3 .title3 .ltext .rt span { display:inline-block; font-size:12px; font-family:"����";}
+.admin .part_y3 .title3 .ltext .rt span input { position:relative; top:-10px; margin-right:10px;}
+.admin .part_y3 .ttext3 { float:left; width:100%}
+.admin .part_y3 .ttext3 .tx1 { float:left; width:100%; color:#666; border-bottom:1px dashed #ccc; padding:0 0 10px 0;}
+.admin .part_y3 .ttext3 .tx1 b { float:left; padding:10px 0 0 10px;}
+.admin .part_y3 .ttext3 .tx1 span { color:#F30}
+.admin .part_y3 .ttext3 .tx2 { float:left; width:100%; padding:0px 0 10px 0; border-bottom:1px dashed #ccc; }
+.admin .part_y3 .ttext3 .tx2 b { font-weight:normal; float:left; padding:10px 20px 0 10px;}
+.admin .part_y3 .ttext3 .tx2 span { color:#F30; font-family:Arial; font-size:14px; font-weight:bold;}
+.admin .part_y3 .ttext3 .tx3 { float:left; width:100%; padding:10px 0 0 0;}
+.admin .part_y3 .ttext3 .tx3 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:0 10px 10px 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.admin .part_y4 {float:left; width:100%; margin:10px 0 0 0;}
+.admin .part_y4 table { border-top:1px solid #ddd; border-right:1px solid #ddd;}
+.admin .part_y4 th,.admin .part_y4 td  { border-bottom:1px solid #ddd; border-left:1px solid #ddd; color:#666; text-align:center; padding:5px;}
+.admin .part_y4 th { background:#F5F5F5; font-weight:normal; color:#000;}
+.admin .part_y4 td span { color:#F00}
+
+
+
+.admin .part_y4 .title { float:left; width:100%; height:41px; border-bottom:1px solid #E0E0E0; margin-bottom:15px;}
+.admin .part_y4 .title li { float:left; background:#F5F5F5; line-height:30px; height:30px; text-align:center; cursor:pointer; width:198px; border-left:1px solid #E0E0E0; border-top:1px solid #E0E0E0; margin-top:9px;}
+.admin .part_y4 .title li.now { background:#fff; height:31px;border-top:1px solid #29a7e1; border-bottom:1px solid #fff; position:relative; bottom:0px; }
+.admin .part_y4 .title .br {float:left;height:31px;  background:#fff; border-left:1px solid #E0E0E0; margin-top:9px;position:relative; bottom:0px;}
+.admin .part_y4 .text { float:left; width:100%;}
+
+
+
+.admin .part_y5 {float:left; width:100%; margin:10px 0 0 0;}
+
+.admin .part_y5 .tit {float:left; width:100%; height:40px; }
+.admin .part_y5 .tit h4 { float:left; font-size:18px; font-family:"΢���ź�"; color:#999}
+.admin .part_y5 .tit strong { color:#333;}
+.admin .part_y5 .tit span { float:right; padding:0 10px 0 0 }
+.admin .part_y5 .tit span a { margin-left:10px;}
+.admin .part_y5 .contu1 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.admin .part_y5 .contu1 .ti {float:left; height:35px; width:100%; background:#eee;}
+.admin .part_y5 .contu1 .ti strong { float:left; padding:10px 0 0 10px;}
+.admin .part_y5 .contu1 .ti span { float:right; padding:4px 10px 0 0}
+.admin .part_y5 .contu1 .ultext {float:left; width:100%;}
+.admin .part_y5 .contu1 .ultext li {float:left; width:840px; padding:20px 0 0 70px;}
+.admin .part_y5 .contu1 .ultext .text {float:left; width:420px;}
+.admin .part_y5 .contu1 .ultext .text .lt {float:left; width:120px; text-align:right; color:#666; }
+.admin .part_y5 .contu1 .ultext .text .rt {float:left; padding:0 0 0 10px; }
+.admin .part_y5 .contu1 .ultext .text .rt .pic { width:120px; height:60px; border:1px solid #ccc; background:#eee; display:inline-block; text-align:center; line-height:60px; font-weight:normal; color:#999}
+.admin .part_y5 .contu1 .ultext .text .rt .input { width:220px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; position:relative; top:-5px;}
+.admin .part_y5 .contu1 .ultext .text .rt .ben { padding:2px 5px; position:relative; top:20px; margin-left:10px;}
+.admin .part_y5 .contu1 .ultext2 {float:left; width:100%; padding:15px 0 0 0;}
+.admin .part_y5 .contu1 .ultext2 table { border-bottom:1px solid #ccc; border-left:1px solid #ccc;}
+.admin .part_y5 .contu1 .ultext2 table td,.admin .part_y5 .contu1 .ultext2 table th { border-top:1px solid #ddd; border-right:1px solid #ddd; padding:8px 5px; color:#666}
+.admin .part_y5 .contu1 .ultext2 table th { background:#F5F5F5; font-weight:normal; color:#000;}
+.admin .part_y5 .contu1 .ultext2 td a { color:#00F; text-decoration:underline; margin-right:10px;}
+.admin .part_y5 .contu1 .ultext2 span { float:left; padding:10px 0 0 0;}
+.admin .part_y5 .contu1 .ultext2 span a { padding:8px 15px; border:1px solid #ccc; background:#f6f6f6; color:#06C}
+.admin .part_y5 .contu1 .ultext2 span a:hover { border:1px solid #ABCCED; background:#DCE7F2; color:#06C}
+.admin .part_y5 .contu1 .ultext2 .input { width:120px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px;}
+.admin .part_y5 .contu1 .ultext2 .select { width:120px;  height:23px;}
+.admin .part_y5 .contu1 .ultext3 {float:left; width:500px;}
+.admin .part_y5 .contu1 .ultext3 .optext1 { float:left; width:100%; padding:20px 0 10px 0;}
+.admin .part_y5 .contu1 .ultext3 .optext2 { float:left; width:502px; padding:10px 0;}
+.admin .part_y5 .contu1 .ultext3 .optext2 table { border-left:1px solid #ccc; border-top:1px solid #ccc;}
+.admin .part_y5 .contu1 .ultext3 .optext2 table td,.admin .part_y5 .contu1 .ultext3 .optext2 table th { border-right:1px solid #ccc; border-bottom:1px solid #ccc; padding:5px; color:#666}
+.admin .part_y5 .contu1 .ultext3 .optext2 table th { background:#E0E0E0; color:#000 }
+.admin .part_y5 .contu1 .ultext3 .optext3 { float:left; width:500px; padding:10px 0 0 0;}
+.admin .part_y5 .contu1 .ultext3 .optext3 span { float:right;}
+.admin .part_y5 .contu1 .ultext3 .optext3 .input { width:120px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; position:relative; top:-5px;}
+.admin .part_y5 .contu1 .ultext3 .optext4 { float:left; width:500px; padding:5px 0; height:200px; margin:0 0 10px 0; border:1px solid #ccc; overflow:scroll; overflow-x:hidden;}
+.admin .part_y5 .contu1 .ultext3 .optext4 p { float:left; padding:5px 0 5px 5px; margin:0px; width:100%; cursor:pointer;}
+.admin .part_y5 .contu1 .ultext3 .optext4 p:hover { background:#F9F1E2;}
+
+.admin .part_y5 .contu2 {float:left; width:100%; border-bottom:1px dashed #ccc; padding:0 0 20px 0; margin-bottom:20px;}
+.admin .part_y5 .contu2 li { float:left; width:100%; padding:20px 0 0 0px;}
+.admin .part_y5 .contu2 li .lt {float:left; width:80px; text-align:left; color:#666; }
+.admin .part_y5 .contu2 li .rt {float:left; padding:0 0 0 10px; }
+.admin .part_y5 .contu2 li .rt .pic { width:120px; height:60px; border:1px solid #ccc; background:#eee; display:inline-block; text-align:center; line-height:60px; font-weight:normal; color:#999}
+.admin .part_y5 .contu2 li .rt .input { width:220px;  height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; position:relative; top:-5px;}
+.admin .part_y5 .contu2 li .rt .ben { position:relative; top:86px; margin-left:10px;}
+.admin .part_y5 .contu2 li .rt .pic { width:200px; height:200px; display:inline-block; line-height:200px; text-align:center;}
+.admin .part_y5 .contu2 li .rt .tx { color:#999; margin:0 0 0 10px; position:relative; top:-5px;}
+.admin .part_y5 .contu2 li .ti {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.admin .part_y5 .contu2 li .ti strong { float:left; padding:10px 0 10px 0; color:#666; font-weight:normal;}
+.admin .part_y5 .contu2 li .text {float:left; width:100%; padding:10px 0 0 0px;}
+.admin .part_y5 .title_t2 { float:left; width:100%; background:#EEEEEE; padding:5px 0;}
+.admin .part_y5 .title_t2 b {  padding:0 0 0 10px; color:#999;}
+.admin .part_y5 .litext1 { float:left; width:100%; padding:10px 0;}
+.admin .part_y5 .litext1 li { float:left; padding:0 0 0 10px;}
+.admin .part_y5 .litext1 li strong { font-weight:normal}
+.admin .part_y5 .litext2 { float:left; width:100%; padding:10px 0;}
+.admin .part_y5 .litext2 li strong { font-weight:normal;min-height:15px;}
+.admin .part_y5 .litext2 li { float:left; padding:0 0 0 10px;}
+.admin .part_y5 .litext3 li { float:left; width:100%; padding:10px 0;}
+
+
+
+
+
+
+
+.admin .part_y6 {float:left; width:100%; margin:0 0 0 0;}
+
+.admin .part_y6 .title3 { float:left; width:100%; height:40px; background:#F6F6F6;  position:relative; margin-bottom:15px;}
+.admin .part_y6 .title3 .ltext { float:left; padding:0px 0 0 10px;   color:#fff; font-size:16px; color:#333; font-family:"΢���ź�";}
+.admin .part_y6 .title3 .ltext .lt { float:left; width:400px; padding:10px 0 0 10px ;}
+.admin .part_y6 .title3 .ltext .lt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.admin .part_y6 .title3 .ltext .rt { float:left; width:480px; padding:10px 0 0 10px ; }
+.admin .part_y6 .title3 .ltext .rt strong { color:#F60; margin:0 0 0 10px; display:inline-block}
+.admin .part_y6 .title3 .ltext .rt span { font-size:12px; font-family:"����"; position:relative; top:-4px; margin-left:10px; position:absolute; top:7px; right:10px;}
+.admin .part_y6 .title3 .ltext .rt span.one { right:110px;}
+.admin .part_y6 .title3 .ltext .rt span .off { cursor:text}
+.admin .part_y6 .title3 .ltext .rt .ben { position:absolute; top:-20px; right:0px;}
+.admin .part_y6 .title3 .rtext { float:right; padding:4px 5px 0 0;}
+.admin .part_y6 .title3 .close { width:30px; height:30px; background:#F60; display:inline-block; border-radius:60px; cursor:pointer; font-size:30px; line-height:30px; color:#fff; box-shadow:2px 2px 4px rgba(0, 0, 0, 0.2); position:absolute; top:-30px; right:-30px;}
+.admin .part_y6 .win_treenew { float:left; width:100%;}
+.admin .part_y6 .win_treenew .ulfour { float:left; width:100%; }
+.admin .part_y6 .win_treenew .ulfour .contul .ti span a { color:#FF0; text-decoration:underline}
+.admin .part_y6 .win_treenew .ulfour .contul .ti span { float:right; padding:5px 10px 0 0;}
+
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 { float:left; width:100%}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx1 { float:left; width:100%}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx1 input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; margin:0 0 0 10px; vertical-align:middle; position:relative; top:-3px;}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx1 span { position:relative; top:8px; margin-left:10px;}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx2 { float:left; width:100%; padding:0px 0 10px 0; border-bottom:1px dashed #ccc; }
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx2 b { font-weight:normal; float:left; padding:10px 20px 0 10px;}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx2 span { color:#F30; font-family:Arial; font-size:14px; font-weight:bold;}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx3 { float:left; width:100%; padding:10px 0 0 0;}
+.admin .part_y6 .win_treenew .ulfour .contul .ttext3 .tx3 li { float:left; width:100px; font-family:Arial; color:#F30; text-align:center; border:1px solid #F60; padding:4px; margin:0 10px 10px 0;}
+.admin .part_y6 .win_treenew  .ulfour .contul { float:left; width:100%; padding:0 0 20px 0;}
+.admin .part_y6 .win_treenew  .ulfour .contul .ti {float:left; width:100%; padding:0 0 0 0px; background:#F60; border-bottom:1px dashed #ccc; }
+.admin .part_y6 .win_treenew  .ulfour .contul .ti strong { float:left; padding:6px 0 6px 10px; color:#fff; font-size:12px;}
+.admin .part_y6 .win_treenew  .ulfour .contul .ttext {float:left; width:100%; padding:0 0 0 0px; border-bottom:1px dashed #ccc; }
+.admin .part_y6 .win_treenew  .ulfour .contul .ttext li { float:left; width:30%; margin:0 10px 20px 10px;}
+.admin .part_y6 .win_treenew  .ulfour .contul .ttext li .lr { float:left; width:100%; height:26px; background:#EAEAEA; border-radius:5px; margin:10px 0 0 0; }
+.admin .part_y6 .win_treenew  .ulfour .contul .ttext li .lr span { float:left; padding:6px 0 0 10px;}
+.admin .part_y6 .win_treenew  .ulfour .contul .ttext li .rr { float:left; width:100%; height:26px; color:#666 }
+.admin .part_y6 .win_treenew  .ulfour .contul .ttext li .rr span { float:left; padding:6px 0 0 20px;}
+/*=======================================*/
+/*----------*/
+.nav_epa .searchinput {  width:170px; border-bottom:1px dashed #F6F6F6; padding:0 0 10px 0; background:#E9E9E9;}
+.nav_epa .searchinput select { width:154px;}
+.nav_epa .searchinput input { width:100px; font-size:12px; color:#666}
+.nav_epa .searchinput a {  padding:0px 10px; margin:0 0 0 5px; position:relative; top:6px;}
+/*----------*/
+/*=======================================*/
+.admin .part_Title_t {float:left; width:100%; padding:0 0 10px 0; margin:10px 0 0 0; border-bottom:1px dashed #ccc;}
+.admin .part_Title_t b { font-size:14px;}
+.admin .part_Title_t b span { color:#666; font-weight:normal;}
+.admin .part_Styletext {float:left; width:100%; margin:0 0 0 0; padding:0 0 20px 0; border-bottom:1px dashed #ccc;}
+.admin .part_Styletext .title {float:left; width:100%; padding:10px 0 5px;}
+.admin .part_Styletext .title b { font-size:14px;  }
+.admin .part_Styletext .text1 {float:left; width:100%; }
+.admin .part_Styletext .text1 span { float:left; line-height:26px; padding:0 20px; height:26px; background:#E1E1E1; border-radius:4px; margin-right:10px; color:#999}
+.admin .part_Styletext .text1 span.on { background:#F60; color:#fff;}
+.admin .part_Styletext .text2 {float:left; width:100%; padding:5px 0 0 0 }
+.admin .part_Styletext .text2 table th { background:#F6F6F6; padding:5px;}
+.admin .part_Styletext .text2 table td { padding:5px;}
+
+
+/*=======================================*/
+.admin2 { float:left; width:100%; background:url(../images/nav2_line.png) repeat-y; height:100%;}
+.admin2 .nav_epa { float:left; width:170px; padding:0 0 20px 0; background:#F6F6F6;}
+/*----------*/
+.admin2 .nav_epa .searchinput { float:left; width:170px; border-bottom:1px dashed #F6F6F6; padding:0 0 10px 0; background:#E9E9E9;}
+.admin2 .nav_epa .searchinput select { width:154px;}
+.admin2 .nav_epa .searchinput input { width:90px; font-size:12px; color:#666}
+.admin2 .nav_epa .searchinput a {  padding:0px 5px; margin:0 0 0 5px; position:relative; top:6px;}
+/*----------*/
+.admin2 .nav_epa .ul { float:left; padding:5px 0 0 0;}
+.admin2 .nav_epa .ul li { float:left; width:170px; overflow:hidden; }
+.admin2 .nav_epa .ul li .chen1,.admin2 .nav_epa .ul li .chen2,.admin2 .nav_epa .ul li .chen3 {float:left; width:170px; margin:3px 0 2px 0;}
+.admin2 .nav_epa .ul li b { margin-right:5px;}
+.admin2 .nav_epa .ul li b.on,.admin2 .nav_epa .ul li b.on1  { display:inline-block; width:9px; height:9px; background:url(../images/icon_r4.png) no-repeat; overflow:hidden; cursor:pointer;}
+.admin2 .nav_epa .ul li b.on1 { background-position:0px -91px;}
+.admin2 .nav_epa .ul li b.off { display:inline-block; width:9px; height:9px; overflow:hidden; background:url(../images/icon_r4.png) no-repeat 0px -120px;}
+.admin2 .nav_epa .ul li .chen1 { padding:5px 0 4px 10px;}
+.admin2 .nav_epa .ul li .chen2 {  padding:5px 0 4px 24px }
+.admin2 .nav_epa .ul li .chen3 { padding:5px 0 4px 38px;}
+
+.admin2 .patext1 { float:left; width:80%; padding:10px 0 0 10px; }
+.admin2 .patext1 table { border-left:1px solid #ccc; border-bottom:1px solid #ccc;}
+.admin2 .patext1 th,.admin2 .patext1 td { padding:10px; border-top:1px solid #ccc; border-right:1px solid #ccc;}
+.admin2 .patext1 th{ background:#e4e4e4}
+.admin2 .patext1 .txt1{ float:left; border-bottom:1px dashed #E5E5E5; padding:10px 0;}
+.admin2 .patext1 .txt1 textarea { font-size:12px; line-height:20px; padding:5px; }
+
+#n_1_0,#n_1_1,#n_1_2 { display:none}
+.admin2 .patext2 { float:left; width:80%; padding:10px 0 0 10px; }
+/*=======================================*/
+.contben {  float:left; width:100%; padding:15px 0 0 0; }
+.contben .text {  float:left; width:100%; background:#F4F4F4; padding:15px 0 15px 15px;}
+.contben .text a {padding:0px 10px; margin-right:10px; text-align:center;}/*=======================================*/
+
+
+/*========= GL left_Tree start ==============================*/
+.left_Tree { float:left; margin-right:8px; background:url(../images/nav2_line.png) repeat-y right; }
+.left_Tree .contText { width:168px;min-height:520px; border-top:1px solid #fff; border-right:1px solid #fff; margin:1px 1px 0 0; overflow:scroll;}
+.left_TreeCont { float:right; width:81%;}
+
+/*========= GL left_Tree end ==============================*/
+
+.grid_div{ margin-top:15px;}
+
+/*========= order product table ==============================*/
+.product_table{ width:100%;}
+* .product_table td{ text-align:left; padding:4px;}
+.admin .part_y4 table.product_table td{ text-align:left;}
+.product_table td dl{}
+.product_table td dt{ clear:both; float:left; padding:3px 2px;}
+.product_table td dd{padding:3px 2px;min-height:15px; }
+
+.nform{}
+.nform dl{}
+.nform dt{ clear:both; float:left; width:80px; text-align:right; padding:5px 2px;}
+.nform dt span{color:red;}
+.nform dd{padding:5px 2px; margin-left:75px; }
+.dt100{}
+.dt100 dt{width:100px;}
+
+.pleft20 { padding-left:20px;}
+
+
+/*========= 20140506修改 ==============================*/
+.Treebr { background:url(../images/br_inp.png) repeat-y left; }
+
+/*========= GL left_Tree end ==============================*/
+
+.laytable{ border-collapse:collapse; margin:10px 40px;width: 80%;}
+.laytable th,.laytable td{ border:1px solid #eee; padding:6px 10px; color:#666; }
+
+.manyshowlist{ color:#666; margin:10px 0 10px 30px; }
+.manyshowlist li{ float:left; padding:0 0 10px 10px; }
+.li30p li{ width:30%;}
+

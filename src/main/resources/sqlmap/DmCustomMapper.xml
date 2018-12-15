@@ -1,0 +1,2828 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DM_CUSTOM">
+
+	<!--8.7.2 全国商机数和出账客户数趋势（个） 新增 -->
+	<select id="getPlatformBusinessCust" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[   SELECT CZ.ACCT_CYCLE AS NAME,CZ.CUSTOMER_NUM AS VALUE,SJ.BUSINESSCHANCE_NUMBER AS value1
+					FROM 
+					(SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}01' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0126', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}02' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0226', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}03' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0326', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}04' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0426', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}05' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0526', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}06' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0626', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}07' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0726', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}08' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0826', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}09' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0926', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}10' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}1026', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}11' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}1126', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}12' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}1226', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					) CZ,
+					(SELECT LEFT(ACCT_CYCLE,6) AS ACCT_CYCLE,
+					SUM(BUSINESSCHANCE_NUMBER) AS BUSINESSCHANCE_NUMBER 
+					FROM DM_BUSINESSCHANCE
+					WHERE RIGHT(ACCT_CYCLE,2)='26'
+					GROUP BY ACCT_CYCLE)  SJ
+					WHERE CZ.ACCT_CYCLE = SJ.ACCT_CYCLE
+               ]]>
+	</select>
+
+<!--8.7.2 -省份的-全国商机数和出账客户数趋势（个） 新增 -->
+	<select id="getPlatformBusinessCustCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[   SELECT CZ.ACCT_CYCLE AS NAME,CZ.CUSTOMER_NUM AS VALUE,SJ.BUSINESSCHANCE_NUMBER AS value1
+					FROM 
+					(SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}01' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0126', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}02' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0226', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}03' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0326', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}04' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0426', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}05' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0526', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}06' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0626', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}07' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0726', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}08' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0826', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}09' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}0926', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}10' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}1026', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}11' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}1126', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					UNION ALL
+					SELECT B.ACCT_CYCLE,COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM 
+					FROM ${tableNameM} B , ${tableName} A
+					WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+					AND B.ACCT_CYCLE='${busAccYear}12' 
+					AND A.ACCT_CYCLE= STR_TO_DATE('${busAccYear}1226', '%Y%m%d')
+					AND A.CUSTOM_STATE_TYPE = '03'
+					AND a.PROVINCE='${provinceCode}'
+					AND B.JPO_ACCT_BILL_AMOUNT>0
+					) CZ,
+					(SELECT LEFT(ACCT_CYCLE,6) AS ACCT_CYCLE,
+					SUM(BUSINESSCHANCE_NUMBER) AS BUSINESSCHANCE_NUMBER 
+					FROM DM_BUSINESSCHANCE
+					WHERE RIGHT(ACCT_CYCLE,2)='26'
+					GROUP BY ACCT_CYCLE)  SJ
+					WHERE CZ.ACCT_CYCLE = SJ.ACCT_CYCLE
+               ]]>
+	</select>
+<!-- 8.6.4图表2——应收（元）-->
+<select id="selectSumAccuList" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo"
+	>
+		SELECT RR.NAME,RR.NAME1,IFNULL(RL.VALUE,0)AS VALUE ,IFNULL(RL.VALUE1,0)AS VALUE1,IFNULL(RL.VALUE2,0)AS VALUE2
+		FROM 
+		(SELECT N.PROVINCE_NAME AS NAME,N.INDUSTRY_DETAIL_PRODUCT_NAME AS NAME1,N.LAST_MONTH_INCOME AS VALUE,
+		N.LAST_MONTH_INCOME /NS.LAST_MONTH_INCOME  AS VALUE1,
+		(N.LAST_MONTH_INCOME -L.LAST_MONTH_INCOME )/L.LAST_MONTH_INCOME  AS VALUE2
+		FROM
+		(SELECT A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+		FROM  ${tableName} A   
+		WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+		AND CUSTOM_STATE_TYPE = '03' 
+		GROUP BY  A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME)N, -- 按省份按行业激活总连接数
+		
+		(SELECT A.PROVINCE_NAME,SUM(LAST_MONTH_INCOME ) AS LAST_MONTH_INCOME 
+		FROM  ${tableName} A   
+		WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+		AND CUSTOM_STATE_TYPE = '03' 
+		GROUP BY PROVINCE_NAME) NS, -- 按省份激活总连接数
+		
+		(SELECT A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+		FROM  ${tableName} A   
+		WHERE A.ACCT_CYCLE= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+		AND CUSTOM_STATE_TYPE = '03' 
+		GROUP BY  A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME) L -- 按省份按行业激活总连接数
+		WHERE N.INDUSTRY_DETAIL_PRODUCT_NAME=L.INDUSTRY_DETAIL_PRODUCT_NAME
+		AND N.PROVINCE_NAME=L.PROVINCE_NAME
+		AND NS.PROVINCE_NAME=L.PROVINCE_NAME
+		) RL RIGHT JOIN
+		(SELECT province.province_name AS NAME,industry.industry_name  AS NAME1
+		FROM (SELECT DISTINCT( province_name) FROM  `city` ) province,
+		(SELECT DISTINCT( industry_name) FROM  iot_industry_state_rf WHERE industry_type='2') industry) RR
+		ON RR.NAME=RL.NAME AND RR.NAME1=RL.NAME1
+		ORDER BY RR.NAME,RR.NAME1,RL.VALUE  DESC
+</select>
+<!-- 8.6.4-省份的-图表2——应收（元）-->
+<select id="selectSumAccuListCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo"
+	>
+		SELECT RR.NAME,RR.NAME1,IFNULL(RL.VALUE,0)AS VALUE ,IFNULL(RL.VALUE1,0)AS VALUE1,IFNULL(RL.VALUE2,0)AS VALUE2
+FROM 
+(SELECT N.CITY_NAME AS NAME,N.INDUSTRY_DETAIL_PRODUCT_NAME AS NAME1,N.LAST_MONTH_INCOME AS VALUE,
+N.LAST_MONTH_INCOME /NS.LAST_MONTH_INCOME  AS VALUE1,
+(N.LAST_MONTH_INCOME -L.LAST_MONTH_INCOME )/L.LAST_MONTH_INCOME  AS VALUE2
+FROM
+(SELECT A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE = '03' 
+and province='${provinceCode}'
+GROUP BY  A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME)N, -- 按省份按行业激活总连接数
+
+(SELECT A.CITY_NAME,SUM(LAST_MONTH_INCOME ) AS LAST_MONTH_INCOME 
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE = '03'
+and province='${provinceCode}'
+GROUP BY CITY_NAME) NS, -- 按省份激活总连接数
+
+(SELECT A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+AND CUSTOM_STATE_TYPE = '03' 
+and province='${provinceCode}'
+GROUP BY  A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME) L -- 按省份按行业激活总连接数
+WHERE N.INDUSTRY_DETAIL_PRODUCT_NAME=L.INDUSTRY_DETAIL_PRODUCT_NAME
+AND N.CITY_NAME=L.CITY_NAME
+AND NS.CITY_NAME=L.CITY_NAME
+) RL RIGHT JOIN
+(SELECT province.CITY_NAME AS NAME,industry.industry_name  AS NAME1
+from (SELECT DISTINCT( CITY_NAME) FROM  `city`  
+where province_code=concat('0','${provinceCode}') ) province,
+(SELECT DISTINCT( industry_name) FROM  iot_industry_state_rf WHERE industry_type='2') industry) RR
+ON RR.NAME=RL.NAME AND RR.NAME1=RL.NAME1
+ORDER BY RR.NAME,RR.NAME1,RL.VALUE  DESC 
+</select>
+
+
+<!-- 8.6.3激活连接（个） 
+	-->
+	<select id="selectDmCustomIndustryProvince" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomIndustryProvince" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomIndustryProvince">
+
+SELECT RR.PROVINCE_NAME,RR.INDUSTRY_DETAIL_PRODUCT_NAME,
+IFNULL(RL.CURRENT_ACTI_NUM,0) AS CURRENT_ACTI_NUM,
+IFNULL(RL.CURRENT_ACTI_CUTY,0) AS CURRENT_ACTI_CUTY,
+IFNULL(RL.CURRENT_ACTI_YOY,0) AS CURRENT_ACTI_YOY
+FROM 
+(SELECT N.PROVINCE_NAME,N.INDUSTRY_DETAIL_PRODUCT_NAME,N.CURRENT_ACTI_NUM ,
+N.CURRENT_ACTI_NUM /NS.CURRENT_ACTI_NUM  AS CURRENT_ACTI_CUTY,
+(N.CURRENT_ACTI_NUM -L.CURRENT_ACTI_NUM )/L.CURRENT_ACTI_NUM  AS CURRENT_ACTI_YOY
+FROM
+(SELECT A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE = '03' 
+GROUP BY  A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME)N, -- 按省份按行业激活总连接数
+(SELECT A.PROVINCE_NAME,SUM(CURRENT_ACTI_NUM ) AS CURRENT_ACTI_NUM 
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE = '03' 
+GROUP BY PROVINCE_NAME) NS, -- 按省份激活总连接数
+(SELECT A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+AND CUSTOM_STATE_TYPE = '03' 
+GROUP BY  A.PROVINCE_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME) L -- 按省份按行业激活总连接数
+WHERE N.INDUSTRY_DETAIL_PRODUCT_NAME=L.INDUSTRY_DETAIL_PRODUCT_NAME
+AND N.PROVINCE_NAME=L.PROVINCE_NAME
+AND NS.PROVINCE_NAME=L.PROVINCE_NAME) RL RIGHT JOIN
+(SELECT province.province_name AS PROVINCE_NAME,industry.industry_name  AS INDUSTRY_DETAIL_PRODUCT_NAME
+FROM (SELECT DISTINCT( province_name) FROM  `city` ) province,
+(SELECT DISTINCT( industry_name) FROM  iot_industry_state_rf WHERE industry_type='2') industry) RR
+ON RR.PROVINCE_NAME=RL.PROVINCE_NAME AND RR.INDUSTRY_DETAIL_PRODUCT_NAME=RL.INDUSTRY_DETAIL_PRODUCT_NAME
+ORDER BY RR.INDUSTRY_DETAIL_PRODUCT_NAME, RR.PROVINCE_NAME
+	</select>
+	
+	<!-- 8.6.3-省份的-激活连接（个） 
+	-->
+	<select id="selectDmCustomIndustryProvinceCity" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomIndustryProvince" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomIndustryProvince">
+
+SELECT RR.CITY_NAME as province_name,RR.INDUSTRY_DETAIL_PRODUCT_NAME,
+IFNULL(RL.CURRENT_ACTI_NUM,0) AS CURRENT_ACTI_NUM,
+IFNULL(RL.CURRENT_ACTI_CUTY,0) AS CURRENT_ACTI_CUTY,
+IFNULL(RL.CURRENT_ACTI_YOY,0) AS CURRENT_ACTI_YOY
+FROM 
+(SELECT N.CITY_NAME,N.INDUSTRY_DETAIL_PRODUCT_NAME,N.CURRENT_ACTI_NUM ,
+N.CURRENT_ACTI_NUM /NS.CURRENT_ACTI_NUM  AS CURRENT_ACTI_CUTY,
+(N.CURRENT_ACTI_NUM -L.CURRENT_ACTI_NUM )/L.CURRENT_ACTI_NUM  AS CURRENT_ACTI_YOY
+FROM
+(SELECT A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE = '03' 
+AND PROVINCE='${pro}'
+GROUP BY  A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME)N, -- 按省份按行业激活总连接数
+(SELECT A.CITY_NAME,SUM(CURRENT_ACTI_NUM ) AS CURRENT_ACTI_NUM 
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE = '03' 
+AND PROVINCE='${pro}'
+GROUP BY CITY_NAME) NS, -- 按省份激活总连接数
+(SELECT A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME,SUM(A.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM
+FROM  ${tableName} A   
+WHERE A.ACCT_CYCLE= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+AND CUSTOM_STATE_TYPE = '03' 
+AND PROVINCE='${pro}'
+GROUP BY  A.CITY_NAME,A.INDUSTRY_DETAIL_PRODUCT_NAME) L -- 按省份按行业激活总连接数
+WHERE N.INDUSTRY_DETAIL_PRODUCT_NAME=L.INDUSTRY_DETAIL_PRODUCT_NAME
+AND N.CITY_NAME=L.CITY_NAME
+AND NS.CITY_NAME=L.CITY_NAME) RL RIGHT JOIN
+(SELECT province.CITY_NAME AS CITY_NAME,industry.industry_name  AS INDUSTRY_DETAIL_PRODUCT_NAME
+FROM (SELECT DISTINCT( CITY_NAME) FROM  `city`  
+where province_code=concat('0','${pro}')) province,
+(SELECT DISTINCT( industry_name) FROM  iot_industry_state_rf WHERE industry_type='2') industry) RR
+ON RR.CITY_NAME=RL.CITY_NAME AND RR.INDUSTRY_DETAIL_PRODUCT_NAME=RL.INDUSTRY_DETAIL_PRODUCT_NAME
+ORDER BY RR.CITY_NAME,RR.INDUSTRY_DETAIL_PRODUCT_NAME
+
+	</select>
+
+<!-- 8.5.11各省已激活及新增激活连接数（万个）
+	-->
+	<select id="selectDmCustomNewAndCurrent" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomNewAndCurrent" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomNewAndCurrent">
+			 
+ SELECT T.ACCT_CYCLE,T.PROVINCE_NAME, SUM(T.NEW_CONNECT_NUM) AS NEW_CONNECT_NUM, SUM(CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM
+,(SUM(CURRENT_ACTI_NUM)-SUM(T.NEW_CONNECT_NUM)) as cha
+FROM ${tableName} T
+WHERE CUSTOM_STATE_TYPE = '03' 
+AND  ACCT_CYCLE = STR_TO_DATE('${monthDay}', '%Y%m%d')
+GROUP BY T.ACCT_CYCLE,T.PROVINCE_NAME
+	</select>
+	
+<!-- 8.5.11-省份的-各省已激活及新增激活连接数（万个）
+	-->
+	<select id="selectDmCustomNewAndCurrentCity" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomNewAndCurrent" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomNewAndCurrent">
+ 
+SELECT T.ACCT_CYCLE,T.CITY_NAME as PROVINCE_NAME, SUM(T.NEW_CONNECT_NUM) AS NEW_CONNECT_NUM, SUM(CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM
+,(SUM(CURRENT_ACTI_NUM)-SUM(T.NEW_CONNECT_NUM)) as cha
+FROM ${tableName} T
+WHERE CUSTOM_STATE_TYPE = '03' 
+AND  ACCT_CYCLE = STR_TO_DATE('${monthDay}', '%Y%m%d')
+and province='${pro}'
+GROUP BY T.ACCT_CYCLE,T.CITY_NAME
+
+	</select>
+
+<!-- 8.6.5全国各行业平均每连接流量（M）
+	-->
+	<select id="selectDmCustomAvagData" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomAvagData" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomAvagData">
+			 
+ 
+ 
+ SELECT a.INDUSTRY_MAIN_PRODUCT_NAME,
+ IFNULL(SUM(b.jpo_acct_data_amount)/SUM(b.charg_connect_num),0) AS avg_data
+FROM ${tableNameMonth}  b , ${tableName}  a
+ WHERE a.ACCOUNT_ID = b.ACCOUNT_ID 
+ AND b.acct_cycle='${month}' 
+ AND a.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d')
+ AND a.CUSTOM_STATE_TYPE = '03' 
+ AND a.INDUSTRY_MAIN_PRODUCT_NAME IS NOT NULL
+ GROUP BY a.INDUSTRY_MAIN_PRODUCT_NAME
+	</select>
+	
+	<!-- 8.6.5-省份的-全国各行业平均每连接流量（M）
+	-->
+	<select id="selectDmCustomAvagDataCity" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomAvagData" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomAvagData">
+SELECT a.industry_detail_product_name as INDUSTRY_MAIN_PRODUCT_NAME,
+ IFNULL(SUM(b.jpo_acct_data_amount)/SUM(b.charg_connect_num),0) AS avg_data
+FROM ${tableNameMonth} b , ${tableName} a
+ WHERE a.ACCOUNT_ID = b.ACCOUNT_ID 
+ AND b.acct_cycle='${month}' 
+ AND a.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d')
+ AND a.CUSTOM_STATE_TYPE = '03' 
+ and a.province = '${pro}' 
+ AND a.industry_detail_product_name IS NOT NULL
+ GROUP BY a.industry_detail_product_name
+
+	</select>
+
+<!-- 8.7.4全国每连接收入分布 新增，横坐标是ARPU，纵坐标是相同ARPU值的个数  
+	 ARPU | CHARG_CONNECT_NUM 
+	-->
+	<select id="selectDmCustomARPU" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomARPU" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomARPU">
+			 
+SELECT ELT(INTERVAL(d.ARPU,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,8,9,10,20,30,40,50,60,70,80,90,100), 
+'0.1','0.2','0.3','0.4','0.5','0.6','0.7','0.8','0.9',1,'1.1','1.2','1.3','1.4','1.5','1.6','1.7','1.8','1.9',2,'2.1','2.2','2.3','2.4','2.5','2.6','2.7','2.8','2.9',3,'3.1','3.2','3.3','3.4','3.5','3.6','3.7','3.8','3.9',4,'4.1','4.2','4.3','4.4','4.5','4.6','4.7','4.8','4.9',5,'5.1','5.2','5.3','5.4','5.5','5.6','5.7','5.8','5.9',6,'6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9',7,8,9,10,20,30,40,50,60,70,80,90,100,'100+')   AS ARPU,SUM(d.CHARG_CONNECT_NUM) AS CHARG_CONNECT_NUM
+FROM 
+(SELECT A.ACCT_CYCLE,A.ACCOUNT_ID,
+SUM(B.JPO_ACCT_BILL_AMOUNT) AS JPO_ACCT_BILL_AMOUNT, 
+SUM(B.CHARG_CONNECT_NUM) AS CHARG_CONNECT_NUM,
+SUM(B.JPO_ACCT_BILL_AMOUNT)/SUM(B.CHARG_CONNECT_NUM) AS ARPU
+ FROM ${tableNameMonth} B , ${tableName} A
+ WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+ AND B.ACCT_CYCLE='${month}' 
+ AND A.ACCT_CYCLE=STR_TO_DATE('${monthDay}', '%Y%m%d') 
+ AND A.CUSTOM_STATE_TYPE = '03'
+ GROUP BY A.ACCOUNT_ID ) D
+ GROUP BY ELT(INTERVAL(d.ARPU,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,8,9,10,20,30,40,50,60,70,80,90,100), 
+'0.1','0.2','0.3','0.4','0.5','0.6','0.7','0.8','0.9',1,'1.1','1.2','1.3','1.4','1.5','1.6','1.7','1.8','1.9',2,'2.1','2.2','2.3','2.4','2.5','2.6','2.7','2.8','2.9',3,'3.1','3.2','3.3','3.4','3.5','3.6','3.7','3.8','3.9',4,'4.1','4.2','4.3','4.4','4.5','4.6','4.7','4.8','4.9',5,'5.1','5.2','5.3','5.4','5.5','5.6','5.7','5.8','5.9',6,'6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9',7,8,9,10,20,30,40,50,60,70,80,90,100,'100+') 
+HAVING arpu IS NOT NULL
+
+	</select>
+		
+		
+		<!-- 8.7.4-省份的-全国每连接收入分布 新增，横坐标是ARPU，纵坐标是相同ARPU值的个数  
+	 ARPU | CHARG_CONNECT_NUM 
+	-->
+	<select id="selectDmCustomARPUCity" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomARPU" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomARPU">
+			 
+SELECT ELT(INTERVAL(d.ARPU,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,8,9,10,20,30,40,50,60,70,80,90,100), 
+'0.1','0.2','0.3','0.4','0.5','0.6','0.7','0.8','0.9',1,'1.1','1.2','1.3','1.4','1.5','1.6','1.7','1.8','1.9',2,'2.1','2.2','2.3','2.4','2.5','2.6','2.7','2.8','2.9',3,'3.1','3.2','3.3','3.4','3.5','3.6','3.7','3.8','3.9',4,'4.1','4.2','4.3','4.4','4.5','4.6','4.7','4.8','4.9',5,'5.1','5.2','5.3','5.4','5.5','5.6','5.7','5.8','5.9',6,'6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9',7,8,9,10,20,30,40,50,60,70,80,90,100,'100+')   AS ARPU,SUM(d.CHARG_CONNECT_NUM) AS CHARG_CONNECT_NUM
+FROM 
+(SELECT A.ACCT_CYCLE,A.ACCOUNT_ID,
+SUM(B.JPO_ACCT_BILL_AMOUNT) AS JPO_ACCT_BILL_AMOUNT, 
+SUM(B.CHARG_CONNECT_NUM) AS CHARG_CONNECT_NUM,
+SUM(B.JPO_ACCT_BILL_AMOUNT)/SUM(B.CHARG_CONNECT_NUM) AS ARPU
+ FROM ${tableNameMonth} B , ${tableName} A
+ WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+ AND B.ACCT_CYCLE='${month}' 
+ AND A.ACCT_CYCLE=STR_TO_DATE('${monthDay}', '%Y%m%d') 
+ AND A.CUSTOM_STATE_TYPE = '03'
+ and a.province='${pro}'
+ GROUP BY A.ACCOUNT_ID ) D
+ GROUP BY ELT(INTERVAL(d.ARPU,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,8,9,10,20,30,40,50,60,70,80,90,100), 
+'0.1','0.2','0.3','0.4','0.5','0.6','0.7','0.8','0.9',1,'1.1','1.2','1.3','1.4','1.5','1.6','1.7','1.8','1.9',2,'2.1','2.2','2.3','2.4','2.5','2.6','2.7','2.8','2.9',3,'3.1','3.2','3.3','3.4','3.5','3.6','3.7','3.8','3.9',4,'4.1','4.2','4.3','4.4','4.5','4.6','4.7','4.8','4.9',5,'5.1','5.2','5.3','5.4','5.5','5.6','5.7','5.8','5.9',6,'6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9',7,8,9,10,20,30,40,50,60,70,80,90,100,'100+') 
+HAVING arpu IS NOT NULL 
+	</select>
+		
+
+	<!-- 8.5.13应收环比：各省当月的应收账款减去上月的应收账款值，增长则用向上箭头表示，反之用向下箭头表示 
+	 PROVINCE_NAME  INCOME_QOQ  INCOME_QOQ_FLAG  INCOME_DUTY  INCOME_DUTY_FLAG 
+	-->
+	<select id="selectDmCustomListForCompareByDate" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomListCompare" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomListCompare">
+			 
+SELECT C.province_name,(c.LAST_MONTH_INCOME-d.LAST_MONTH_INCOME)/d.LAST_MONTH_INCOME AS income_qoq,
+IF ((c.LAST_MONTH_INCOME-d.LAST_MONTH_INCOME) > 0,1,0) AS income_qoq_flag,
+c.LAST_MONTH_INCOME/e.LAST_MONTH_INCOME AS income_duty,
+IF ((c.LAST_MONTH_INCOME/e.LAST_MONTH_INCOME-d.LAST_MONTH_INCOME/f.LAST_MONTH_INCOME) > 0,1,0) AS income_duty_flag
+FROM 
+(SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,A.PROVINCE_NAME
+FROM ${tableName} a
+ WHERE a.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d') AND a.CUSTOM_STATE_TYPE = '03'
+ GROUP BY A.PROVINCE_NAME  ) c,
+ (SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,A.PROVINCE_NAME
+FROM ${tableName} a
+ WHERE a.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) AND a.CUSTOM_STATE_TYPE = '03'
+ GROUP BY A.PROVINCE_NAME) d,
+(SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+FROM ${tableName} a
+ WHERE a.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d') AND a.CUSTOM_STATE_TYPE = '03' ) e,
+ (SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+FROM ${tableName} a
+ WHERE a.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) AND a.CUSTOM_STATE_TYPE = '03' ) f
+ WHERE C.PROVINCE_NAME=D.PROVINCE_NAME
+ ORDER BY INCOME_QOQ DESC;
+	</select>
+	
+	<!-- 8.5.13-省份的-应收环比：各省当月的应收账款减去上月的应收账款值，增长则用向上箭头表示，反之用向下箭头表示 
+	 PROVINCE_NAME  INCOME_QOQ  INCOME_QOQ_FLAG  INCOME_DUTY  INCOME_DUTY_FLAG 
+	-->
+	<select id="selectDmCustomListForCompareByDateCity" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomListCompare" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomListCompare">
+			 
+SELECT C.city_name as province_name,(c.LAST_MONTH_INCOME-d.LAST_MONTH_INCOME)/d.LAST_MONTH_INCOME AS INCOME_QOQ,
+IF ((c.LAST_MONTH_INCOME-d.LAST_MONTH_INCOME) > 0,1,0) AS INCOME_QOQ_FLAG,
+c.LAST_MONTH_INCOME/e.LAST_MONTH_INCOME AS INCOME_DUTY,
+IF ((c.LAST_MONTH_INCOME/e.LAST_MONTH_INCOME-d.LAST_MONTH_INCOME/f.LAST_MONTH_INCOME) > 0,1,0) AS INCOME_DUTY_FLAG
+FROM 
+(SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,A.city_name
+FROM ${tableName} a
+ WHERE a.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d') AND a.CUSTOM_STATE_TYPE = '03'
+ AND PROVINCE='${pro}' 
+ GROUP BY A.city_name  ) c,
+ (SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,A.city_name
+FROM ${tableName} a
+ WHERE a.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) AND a.CUSTOM_STATE_TYPE = '03'
+ AND PROVINCE='${pro}'
+ GROUP BY A.city_name) d,
+(SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+FROM ${tableName} a
+ WHERE a.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d') AND a.CUSTOM_STATE_TYPE = '03'
+ AND PROVINCE='${pro}' ) e,
+ (SELECT SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME
+FROM ${tableName} a
+ WHERE a.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) AND a.CUSTOM_STATE_TYPE = '03' 
+ AND PROVINCE='${pro}') f
+ WHERE C.city_name=D.city_name
+ ORDER BY INCOME_QOQ DESC
+	</select>
+		
+		<!-- 8.5.14 激活连接数环比：本月当日激活连接数减去上月当日激活连接数
+	PROVINCE_NAME | ACTI_NUM_QOQ | ACTI_NUM_QOQ_FLAG | ACTI_ACTUAL_DUTY | 
+	ACTI_ACTUAL_DUTY_FLAG | ACTI_NUM_DUTY | ACTI_NUM_DUTY_FLAG | NEW_ACTI_DUTY | NEW_ACTI_DUTY_FLAG
+	-->
+	<select id="selectDmCustomActiForCompareByDate" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomActiCompare" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomActiCompare">
+			 
+SELECT 
+N.PROVINCE_NAME,
+((N.CURRENT_ACTI_NUM-L.CURRENT_ACTI_NUM)/L.CURRENT_ACTI_NUM) AS ACTI_NUM_QOQ, -- 激活连接数环比
+IF ((N.CURRENT_ACTI_NUM-L.CURRENT_ACTI_NUM) > 0,1,0) AS ACTI_NUM_QOQ_FLAG, -- 激活连接数环比 flag
+(N.CURRENT_ACTI_NUM/N.ACTUAL_CONNECT) AS ACTI_ACTUAL_DUTY,  -- 激活连接占发卡连接数占比
+IF ((N.CURRENT_ACTI_NUM/N.ACTUAL_CONNECT)-(L.CURRENT_ACTI_NUM/L.ACTUAL_CONNECT) > 0,1,0) AS ACTI_ACTUAL_DUTY_FLAG, -- 激活连接占发卡连接数占比flag
+N.CURRENT_ACTI_NUM/NS.CURRENT_ACTI_NUM AS  ACTI_NUM_DUTY, -- 本月激活各省占比
+IF ((N.CURRENT_ACTI_NUM/NS.CURRENT_ACTI_NUM)-(L.CURRENT_ACTI_NUM/LS.CURRENT_ACTI_NUM)> 0,1,0) AS ACTI_NUM_DUTY_FLAG,
+N.NEW_CONNECT_NUM/NS.NEW_CONNECT_NUM AS  NEW_ACTI_DUTY, -- 本月新激活各省占比
+IF ((N.NEW_CONNECT_NUM/NS.NEW_CONNECT_NUM)-(L.NEW_CONNECT_NUM/LS.NEW_CONNECT_NUM)> 0,1,0) AS NEW_ACTI_DUTY_FLAG
+FROM 
+(SELECT T.PROVINCE_NAME, SUM(T.NEW_CONNECT_NUM) AS NEW_CONNECT_NUM, SUM(CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM,SUM(ACTUAL_CONNECT) AS ACTUAL_CONNECT
+FROM ${tableName} T
+WHERE CUSTOM_STATE_TYPE = '03' 
+AND T.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d') 
+AND T.CUSTOM_STATE_TYPE = '03'
+GROUP BY T.PROVINCE_NAME) N -- 某省新增激活 某省激活连接数 某省连接数
+,
+(SELECT T.PROVINCE_NAME, SUM(T.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM ,SUM(NEW_CONNECT_NUM) AS NEW_CONNECT_NUM,SUM(ACTUAL_CONNECT) AS ACTUAL_CONNECT
+FROM ${tableName} T
+ WHERE T.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+ AND T.CUSTOM_STATE_TYPE = '03'
+ GROUP BY T.PROVINCE_NAME) L -- 上月 某省新增激活 某省激活连接数 某省连接数
+  ,
+   (SELECT SUM(T.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM ,SUM(NEW_CONNECT_NUM) AS NEW_CONNECT_NUM 
+FROM ${tableName} T
+ WHERE T.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d')
+ AND T.CUSTOM_STATE_TYPE = '03') NS -- 当月全国总数
+ ,
+ (SELECT SUM(T.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM ,SUM(NEW_CONNECT_NUM) AS NEW_CONNECT_NUM 
+FROM ${tableName} T
+ WHERE T.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+ AND T.CUSTOM_STATE_TYPE = '03') LS -- 上月全国总数
+ WHERE L.PROVINCE_NAME=N.PROVINCE_NAME
+ORDER BY  ACTI_NUM_QOQ_FLAG DESC;
+	</select>
+	
+	<!-- 8.5.14-省份的- 激活连接数环比：本月当日激活连接数减去上月当日激活连接数
+	PROVINCE_NAME | ACTI_NUM_QOQ | ACTI_NUM_QOQ_FLAG | ACTI_ACTUAL_DUTY | 
+	ACTI_ACTUAL_DUTY_FLAG | ACTI_NUM_DUTY | ACTI_NUM_DUTY_FLAG | NEW_ACTI_DUTY | NEW_ACTI_DUTY_FLAG
+	-->
+	<select id="selectDmCustomActiForCompareByDateCity" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomActiCompare" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.CustomActiCompare">
+			 
+SELECT 
+N.CITY_NAME as PROVINCE_NAME,
+((N.CURRENT_ACTI_NUM-L.CURRENT_ACTI_NUM)/L.CURRENT_ACTI_NUM) AS ACTI_NUM_QOQ, -- 激活连接数环比
+IF ((N.CURRENT_ACTI_NUM-L.CURRENT_ACTI_NUM) > 0,1,0) AS ACTI_NUM_QOQ_FLAG, -- 激活连接数环比 flag
+(N.CURRENT_ACTI_NUM/N.ACTUAL_CONNECT) AS ACTI_ACTUAL_DUTY,  -- 激活连接占发卡连接数占比
+IF ((N.CURRENT_ACTI_NUM/N.ACTUAL_CONNECT)-(L.CURRENT_ACTI_NUM/L.ACTUAL_CONNECT) > 0,1,0) AS ACTI_ACTUAL_DUTY_FLAG, -- 激活连接占发卡连接数占比flag
+N.CURRENT_ACTI_NUM/NS.CURRENT_ACTI_NUM AS  ACTI_NUM_DUTY, -- 本月激活各省占比
+IF ((N.CURRENT_ACTI_NUM/NS.CURRENT_ACTI_NUM)-(L.CURRENT_ACTI_NUM/LS.CURRENT_ACTI_NUM)> 0,1,0) AS ACTI_NUM_DUTY_FLAG,
+N.NEW_CONNECT_NUM/NS.NEW_CONNECT_NUM AS  NEW_ACTI_DUTY, -- 本月新激活各省占比
+IF ((N.NEW_CONNECT_NUM/NS.NEW_CONNECT_NUM)-(L.NEW_CONNECT_NUM/LS.NEW_CONNECT_NUM)> 0,1,0) AS NEW_ACTI_DUTY_FLAG
+FROM 
+(SELECT T.CITY_NAME, SUM(T.NEW_CONNECT_NUM) AS NEW_CONNECT_NUM, SUM(CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM,SUM(ACTUAL_CONNECT) AS ACTUAL_CONNECT
+FROM ${tableName} T
+WHERE CUSTOM_STATE_TYPE = '03' 
+AND T.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND T.CUSTOM_STATE_TYPE = '03'
+AND T.PROVINCE='${pro}'
+GROUP BY T.CITY_NAME) N -- 某省新增激活 某省激活连接数 某省连接数
+,
+(SELECT T.CITY_NAME, SUM(T.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM ,SUM(NEW_CONNECT_NUM) AS NEW_CONNECT_NUM,SUM(ACTUAL_CONNECT) AS ACTUAL_CONNECT
+FROM ${tableName} T
+ WHERE T.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH) 
+ AND T.CUSTOM_STATE_TYPE = '03'
+ AND T.PROVINCE='${pro}'
+ GROUP BY T.CITY_NAME) L -- 上月 某省新增激活 某省激活连接数 某省连接数
+  ,
+   (SELECT SUM(T.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM ,SUM(NEW_CONNECT_NUM) AS NEW_CONNECT_NUM 
+FROM ${tableName} T
+ WHERE T.acct_cycle= STR_TO_DATE('${monthDay}', '%Y%m%d')
+ AND T.PROVINCE='${pro}'
+ AND T.CUSTOM_STATE_TYPE = '03') NS -- 当月全国总数
+ ,
+ (SELECT SUM(T.CURRENT_ACTI_NUM) AS CURRENT_ACTI_NUM ,SUM(NEW_CONNECT_NUM) AS NEW_CONNECT_NUM 
+FROM ${tableName} T
+ WHERE T.acct_cycle= DATE_ADD(STR_TO_DATE('${monthDay}', '%Y%m%d'),INTERVAL -1 MONTH)
+ AND T.PROVINCE='${pro}' 
+ AND T.CUSTOM_STATE_TYPE = '03') LS -- 上月全国总数
+ WHERE L.CITY_NAME=N.CITY_NAME
+ORDER BY  ACTI_NUM_QOQ_FLAG DESC;
+
+	</select>
+<!--8.7.3全国各省商用计费、商用不计费、测试账户数（个）,1为测试账户数，2为商用不计费账户数，3为商用计费账户数
+============================= selectCustomAccountByType add in 20181107 =================================== -->
+	 <select id="selectCustomAccountByType"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">	<!-- HomePgFourTbInfo -->
+		SELECT province.province_name AS name,
+IFNULL(R1.测试用户,0) AS value,
+IFNULL(R2.商用不计费用户,0) AS value1,
+IFNULL(R3.商用计费用户,0) AS value2
+FROM 
+(SELECT DISTINCT( province_name) FROM  `city` 
+UNION ALL SELECT "未指定省份" AS province_name FROM DUAL) province
+  LEFT JOIN
+(SELECT IFNULL(PROVINCE_NAME,"未指定省份") AS PROVINCE_NAME,
+ COUNT(0) AS '测试用户' 
+FROM ${tableName}
+    <if test="monthDay != null and monthDay != '' "> 
+					WHERE ACCT_CYCLE = #{monthDay}
+        		  </if> 
+AND CUSTOM_STATE_TYPE ='01' 
+GROUP BY PROVINCE_NAME,CUSTOM_STATE_TYPE)R1
+ON province.province_name=R1.province_name
+  LEFT JOIN
+(SELECT IFNULL(PROVINCE_NAME,"未指定省份") AS PROVINCE_NAME,
+ COUNT(0) AS '商用不计费用户' 
+FROM ${tableName}
+    <if test="monthDay != null and monthDay != '' "> 
+					WHERE ACCT_CYCLE = #{monthDay}
+        		  </if> 
+AND CUSTOM_STATE_TYPE ='02' 
+GROUP BY PROVINCE_NAME,CUSTOM_STATE_TYPE)R2
+ON province.province_name=R2.province_name
+  LEFT JOIN
+(SELECT IFNULL(PROVINCE_NAME,"未指定省份") AS PROVINCE_NAME,
+ COUNT(0) AS '商用计费用户' 
+FROM ${tableName}
+    <if test="monthDay != null and monthDay != '' "> 
+					WHERE ACCT_CYCLE = #{monthDay}
+        		  </if> 
+AND CUSTOM_STATE_TYPE ='03' 
+GROUP BY PROVINCE_NAME,CUSTOM_STATE_TYPE) R3
+ON province.province_name=R3.province_name
+ORDER BY province.province_name 
+	</select>
+	
+	<!--8.7.3全国各省商用计费、商用不计费、测试账户数（个）,1为测试账户数，2为商用不计费账户数，3为商用计费账户数
+============================= selectCustomAccountByType add in 20181107 =================================== -->
+	 <select id="selectCustomAccountByTypeCity"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">	<!-- HomePgFourTbInfo -->
+	SELECT province.CITY_NAME as name,
+IFNULL(R1.测试用户,0) AS value,
+IFNULL(R2.商用不计费用户,0) AS value1,
+IFNULL(R3.商用计费用户,0) AS value2
+FROM 
+(SELECT DISTINCT( CITY_NAME) FROM  `city` where province_code=concat('0','${provinceCode}')
+UNION ALL SELECT "未指定省份" AS CITY_NAME FROM DUAL) province
+  LEFT JOIN
+(SELECT IFNULL(CITY_NAME,"未指定省份") AS CITY_NAME,
+ COUNT(0) AS '测试用户' 
+FROM  ${tableName}
+WHERE ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE ='01'
+and province='${provinceCode}'
+GROUP BY CITY_NAME,CUSTOM_STATE_TYPE)R1
+ON province.CITY_NAME=R1.CITY_NAME
+  LEFT JOIN
+(SELECT IFNULL(CITY_NAME,"未指定省份") AS CITY_NAME,
+ COUNT(0) AS '商用不计费用户' 
+FROM  ${tableName}
+WHERE ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE ='02'
+AND province='${provinceCode}'
+GROUP BY CITY_NAME,CUSTOM_STATE_TYPE)R2
+ON province.CITY_NAME=R2.CITY_NAME
+  LEFT JOIN
+(SELECT IFNULL(CITY_NAME,"未指定省份") AS CITY_NAME,
+ COUNT(0) AS '商用计费用户' 
+FROM  ${tableName}
+WHERE ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND CUSTOM_STATE_TYPE ='03'
+AND province='${provinceCode}'
+GROUP BY CITY_NAME,CUSTOM_STATE_TYPE) R3
+ON province.CITY_NAME=R3.CITY_NAME
+ORDER BY province.CITY_NAME
+
+	</select>
+
+	
+		
+	<!-- 根据条件查询自定义列的自定义报表信息列表 -->
+	<select id="selectDmCustomListForColumnsByParams" resultType="com.chinauicom.research.iotoperation.system.reportforms.entity.DmCustom" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.DmCustom">
+			SELECT 
+				0
+				<if test="fixedColumnsList != null and fixedColumnsList.size > 0">
+					<foreach collection="fixedColumnsList" index="index" item="item" open="," separator="," close="">
+	               		${item.columnCode}
+					</foreach>
+				</if> 
+				<if test="customColumnsList != null and customColumnsList.size > 0">
+					<foreach collection="customColumnsList" index="index" item="item" open="," separator="," close="">
+	               		${item.columnCode}
+					</foreach>
+				</if> 
+			FROM 
+				${tableName}
+			WHERE 
+				ACCT_CYCLE = #{acctCycle,jdbcType=VARCHAR} 
+			<if test="province != null and province != '' "> 
+				AND PROVINCE = #{province, jdbcType=VARCHAR} 
+        	</if>  
+        	<if test="city != null and city != '' ">  
+            	AND CITY = #{city, jdbcType=VARCHAR} 
+        	</if> 
+        	<if test="principleIndustry != null and principleIndustry != '' ">  
+            	AND PRINCIPLE_INDUSTRY = #{principleIndustry, jdbcType=VARCHAR} 
+        	</if> 
+        	<if test="industryDetailProduct != null and industryDetailProduct != '' ">  
+            	AND INDUSTRY_DETAIL_PRODUCT = #{industryDetailProduct, jdbcType=VARCHAR} 
+        	</if> 
+	</select>
+	
+	<!-- 根据条件查询自定义列的自定义报表信息列表 -->
+	<select id="selectDmCustomListForColumnsByParamsCount" resultType="int" 
+			parameterType="com.chinauicom.research.iotoperation.system.reportforms.entity.DmCustom">
+			SELECT 
+				count(0) 
+			FROM 
+				${tableName}
+			WHERE 
+				ACCT_CYCLE = #{acctCycle,jdbcType=VARCHAR}
+			<if test="province != null and province != '' "> 
+				AND PROVINCE = #{province, jdbcType=VARCHAR} 
+        	</if>  
+        	<if test="city != null and city != '' ">  
+            	AND CITY = #{city, jdbcType=VARCHAR} 
+        	</if> 
+        	<if test="principleIndustry != null and principleIndustry != '' ">  
+            	AND PRINCIPLE_INDUSTRY = #{principleIndustry, jdbcType=VARCHAR} 
+        	</if> 
+        	<if test="industryDetailProduct != null and industryDetailProduct != '' ">  
+            	AND INDUSTRY_DETAIL_PRODUCT = #{industryDetailProduct, jdbcType=VARCHAR} 
+        	</if> 
+	</select>
+	
+	
+	<!-- 根据条件查询自定义列的自定义报表信息列表 -->
+	<select id="selectUserInfoByVo" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+			SELECT 
+				*
+			FROM 
+				${tableName} d 
+			WHERE d.acct_cycle = 
+				( SELECT 
+				      MAX(acct_cycle) AS acct_cycle 
+				    FROM
+				      ${tableName}
+				    WHERE 1 = 1 
+				    <if test="virtureId != null and virtureId != '' "> 
+			    	AND (VIRTURE_ID = #{virtureId, jdbcType=VARCHAR} 
+			    	     OR CUSTOMER_NAME=#{virtureId, jdbcType=VARCHAR})
+			        </if>
+			     )
+			<if test="province != null and province != '' "> 
+				AND PROVINCE = #{province, jdbcType=VARCHAR} 
+        	</if>  
+        	<if test="city != null and city != '' ">  
+            	AND CITY = #{city, jdbcType=VARCHAR} 
+        	</if> 
+        	<if test="virtureId != null and virtureId != '' "> 
+				AND  (VIRTURE_ID = #{virtureId, jdbcType=VARCHAR} OR CUSTOMER_NAME=#{virtureId, jdbcType=VARCHAR})
+		    </if> 
+        	<![CDATA[ ORDER BY VIRTURE_Id  desc   LIMIT  1]]>    	 
+
+	</select>
+	
+		<!-- 用户画像统一柱图sql -->
+	<select id="selectBarChartByAll" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserRespSqlInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitResquest">
+			SELECT 
+				 a.acctYearMonth,a.accOrderNum, a.actualConnect, a.accActiConnectNum, a.lastMonthIncome 
+				 ,a.liveConnNum,a.apiCallNum,a.autoTrigNum,a.accOffConnNum
+			FROM 
+				(
+				 (SELECT DATE_FORMAT(acct_cycle,'%Y-%m') AS acctYearMonth, ACC_ORDER_NUM AS accOrderNum, ACTUAL_CONNECT AS actualConnect, ACC_ACTI_CONNECT_NUM AS accActiConnectNum, LAST_MONTH_INCOME AS lastMonthIncome 
+			      ,LIVE_CONNECT_NUM AS liveConnNum,API_CALL_NUM AS apiCallNum,ACCT_AUTORULE_TRIGGER_NUM  AS autoTrigNum,ACC_OFF_CONNECT_NUM AS accOffConnNum
+			      FROM ${tableName}
+			      WHERE DATE_FORMAT(acct_cycle,'%d') = ${acctCycleDay} 
+			      <if test="virtureId != null and virtureId != '' "> 
+						AND (VIRTURE_ID = #{virtureId, jdbcType=VARCHAR} OR CUSTOMER_NAME=#{virtureId, jdbcType=VARCHAR})
+		          </if> 
+			      ORDER BY acctYearMonth   
+			      LIMIT 12)
+			      UNION ALL
+			      (SELECT  DATE_FORMAT(acct_cycle,'%Y-%m') AS acctYearMonth, ACC_ORDER_NUM AS accOrderNum, ACTUAL_CONNECT AS actualConnect, ACC_ACTI_CONNECT_NUM AS accActiConnectNum, LAST_MONTH_INCOME AS lastMonthIncome 
+			          ,LIVE_CONNECT_NUM AS liveConnNum,API_CALL_NUM AS apiCallNum,ACCT_AUTORULE_TRIGGER_NUM  AS autoTrigNum,ACC_OFF_CONNECT_NUM AS accOffConnNum
+			      FROM ${LastTableName}
+			      WHERE DATE_FORMAT(acct_cycle,'%d') = ${acctCycleDay}  
+			      <if test="virtureId != null and virtureId != '' "> 
+						AND  (VIRTURE_ID = #{virtureId, jdbcType=VARCHAR} OR CUSTOMER_NAME=#{virtureId, jdbcType=VARCHAR})
+		          </if> 
+			      ORDER BY acctYearMonth   
+			      LIMIT 12)
+				) AS a
+			WHERE 
+				1 = 1
+        	<![CDATA[ ORDER BY acctYearMonth DESC  LIMIT  12]]>    	
+        	
+	</select>
+
+	
+		<!-- 根据条件查询自定义列的自定义报表信息列表 -->
+	<select id="selectUserInfoByLastVo" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+			SELECT 
+				*
+			FROM 
+				${tableName}
+			WHERE 
+				DATE_FORMAT(acct_cycle,'%Y-%m-%d') = #{acctCycle,jdbcType=VARCHAR}
+			<if test="province != null and province != '' "> 
+				AND PROVINCE = #{province, jdbcType=VARCHAR} 
+        	</if>  
+        	<if test="city != null and city != '' ">  
+            	AND CITY = #{city, jdbcType=VARCHAR} 
+        	</if> 
+        	<if test="virtureId != null and virtureId != '' "> 
+				AND  (VIRTURE_ID = #{virtureId, jdbcType=VARCHAR} OR CUSTOMER_NAME=#{virtureId, jdbcType=VARCHAR})
+		    </if> 
+        	<![CDATA[ ORDER BY VIRTURE_Id  desc   LIMIT  1]]>    	
+        	
+	</select>
+	
+	
+	<!-- 根据条件查询客户画像的信息列表 add in 2018-11-07-->
+	<select id="selectByVirtureId" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+		<![CDATA[ 
+			SELECT 
+				* 
+			FROM 
+				${tableName}
+			WHERE 
+				VRTURE_ID = #{virtureId,jdbcType=VARCHAR}
+		]]>
+				<if test="province != null and province != '' "> 
+					<![CDATA[ AND PROVINCE = #{province, jdbcType=VARCHAR}  ]]>
+	        	</if>  
+	        	<if test="city != null and city != '' ">  
+	            	<![CDATA[ AND CITY = #{city, jdbcType=VARCHAR}  ]]>
+	        	</if> 
+	        	<if test="usertypes != null and usertypes != '' ">  
+	            	<![CDATA[ AND CUSTOM_STATE_TYPE = #{usertypes, jdbcType=VARCHAR} ]]>
+	        	</if> 
+	    <![CDATA[ 
+			ORDER BY 
+				VRTURE_ID DESC
+		]]>
+	</select>
+	
+	<!-- 根据条件查询客户画像的信息列表 add in 2018-11-18-->
+	<!-- 根据虚拟ID查询用户画像活跃用户的信息-->
+	<select id="selectActiveUseronUserpotraitListByVirtureId" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+	parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+<![CDATA[ 
+SELECT 
+a.LAST_MONTH_INCOME,   
+a.CUSTOMER_NAME,
+a.VIRTURE_ID,
+a.ACC_ACTI_CONNECT_NUM,
+a.ACTI_NUM_RATE, 
+a.LIVE_CONNECT_PROP,
+a.ACCT_ADDUP_SHIPPED_ORDER,
+AVG(b.LAST_MONTH_INCOME) AS RECENT_THREE_MONTH_AVG_INCOME,
+AVG(b.JPO_ACCT_DATA_AMOUNT) AS RECENT_THREE_MONTH_AVG_DATA_AMOUNT
+FROM dm_custom_2018 b,
+(SELECT CUSTOMER_ID,VIRTURE_ID,CUSTOMER_NAME,
+SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,
+SUM(ACC_ACTI_CONNECT_NUM) AS ACC_ACTI_CONNECT_NUM,
+SUM(a.CURRENT_ACTI_NUM)/SUM(a.ACTUAL_CONNECT) AS ACTI_NUM_RATE,
+LIVE_CONNECT_PROP,
+ACCT_ADDUP_SHIPPED_ORDER
+FROM dm_custom_2018  a
+WHERE ACCT_CYCLE=STR_TO_DATE('20180526', '%Y%m%d') 
+AND a.CUSTOM_STATE_TYPE='03'
+]]>
+<if test="province != null and province != '' "> 
+					<![CDATA[ AND PROVINCE = #{province, jdbcType=VARCHAR}  ]]>
+	        	</if>  
+	        	<if test="city != null and city != '' ">  
+	            	<![CDATA[ AND CITY = #{city, jdbcType=VARCHAR}  ]]>
+	        	</if> 
+<![CDATA[
+GROUP BY CUSTOMER_ID,VIRTURE_ID
+ORDER BY SUM(a.LAST_MONTH_INCOME) DESC LIMIT 10) a 
+WHERE a.CUSTOMER_ID=b.CUSTOMER_ID
+AND b.ACCT_CYCLE >= DATE_ADD(STR_TO_DATE('20180526', '%Y%m%d'),INTERVAL -2 MONTH) 
+AND b.ACCT_CYCLE <=STR_TO_DATE('20180526', '%Y%m%d')
+GROUP BY a.CUSTOMER_NAME,a.VIRTURE_ID
+	]]>	
+ 
+</select>
+
+	<!-- 根据虚拟ID查询用户画像高危用户的信息-->
+	<select id="selectHighRisksUseronUserotraitListByVirtureId" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+<![CDATA[ 		
+SELECT a.LAST_MONTH_INCOME,
+a.CUSTOMER_NAME,
+a.VIRTURE_ID,
+a.ACC_ACTI_CONNECT_NUM,
+a.ACTI_NUM_RATE,
+a.LIVE_CONNECT_PROP,
+a.ACCT_ADDUP_SHIPPED_ORDER,
+AVG(b.LAST_MONTH_INCOME) AS RECENT_THREE_MONTH_AVG_INCOME,
+AVG(b.JPO_ACCT_DATA_AMOUNT) AS RECENT_THREE_MONTH_AVG_DATA_AMOUNT
+FROM dm_custom_2018 b,
+(SELECT CUSTOMER_ID,VIRTURE_ID,CUSTOMER_NAME,
+SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,
+SUM(ACC_ACTI_CONNECT_NUM) AS ACC_ACTI_CONNECT_NUM,
+SUM(a.CURRENT_ACTI_NUM)/SUM(a.ACTUAL_CONNECT) AS ACTI_NUM_RATE,
+LIVE_CONNECT_PROP,
+ACCT_ADDUP_SHIPPED_ORDER
+FROM dm_custom_2018  a
+WHERE ACCT_CYCLE=STR_TO_DATE('20180526', '%Y%m%d')
+AND a.CUSTOM_STATE_TYPE='03'
+]]>
+<if test="province != null and province != '' "> 
+					<![CDATA[ AND PROVINCE = #{province, jdbcType=VARCHAR}  ]]>
+	        	</if>  
+	        	<if test="city != null and city != '' ">  
+	            	<![CDATA[ AND CITY = #{city, jdbcType=VARCHAR}  ]]>
+	        	</if> 
+<![CDATA[
+GROUP BY CUSTOMER_ID,VIRTURE_ID
+HAVING SUM(a.JPO_ACCT_BILL_AMOUNT)/SUM(a.CHARG_CONNECT_NUM) >0
+ORDER BY SUM(a.LAST_MONTH_INCOME)  LIMIT 10) a 
+WHERE a.CUSTOMER_ID=b.CUSTOMER_ID
+AND b.ACCT_CYCLE >= DATE_ADD(STR_TO_DATE('20180526', '%Y%m%d'),INTERVAL -2 MONTH) 
+AND b.ACCT_CYCLE <=STR_TO_DATE('20180526', '%Y%m%d')
+GROUP BY a.CUSTOMER_NAME,a.VIRTURE_ID
+]]>
+
+ 		
+	</select>
+	
+	<!-- 根据客户名称查询虚拟ID -->
+<select id="selectUserByCusId" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+<![CDATA[	
+SELECT  
+a.CUSTOMER_NAME,
+a.VIRTURE_ID
+FROM dm_custom_2018 a
+WHERE ACCT_CYCLE=STR_TO_DATE('20180816', '%Y%m%d') 
+AND a.CUSTOM_STATE_TYPE='03'
+]]>
+<if test="customerName != null and customerName != '' "> 
+<![CDATA[AND a.CUSTOMER_NAME LIKE CONCAT(CONCAT('%', #{customerName, jdbcType=VARCHAR}),'%') ]]>
+</if>
+<![CDATA[	
+GROUP BY a.VIRTURE_ID
+]]>
+</select>
+	
+	<!-- 根据信息查询用户详细信息 -->
+	<select id="selectUserByComplexInfo" resultType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo" 
+			parameterType="com.chinauicom.research.iotoperation.uerpotrait.entity.UserPotRaitInfo">
+			<![CDATA[
+SELECT a.LAST_MONTH_INCOME,
+a.CUSTOMER_NAME,
+a.province_name,
+a.VIRTURE_ID,
+a.ACC_ACTI_CONNECT_NUM,
+a.ACTI_NUM_RATE,
+a.LIVE_CONNECT_PROP,
+a.ACCT_ADDUP_SHIPPED_ORDER,
+AVG(b.LAST_MONTH_INCOME),IFNULL(AVG(b.JPO_ACCT_DATA_AMOUNT),0)
+FROM dm_custom_2018 b,
+(SELECT CUSTOMER_ID,VIRTURE_ID,CUSTOMER_NAME,province_name,
+SUM(a.LAST_MONTH_INCOME) AS LAST_MONTH_INCOME,
+SUM(ACC_ACTI_CONNECT_NUM) AS ACC_ACTI_CONNECT_NUM,
+SUM(a.CURRENT_ACTI_NUM)/SUM(a.ACTUAL_CONNECT) AS ACTI_NUM_RATE,
+LIVE_CONNECT_PROP,
+ACCT_ADDUP_SHIPPED_ORDER
+FROM dm_custom_2018  a
+WHERE ACCT_CYCLE=STR_TO_DATE('20180816', '%Y%m%d') 
+AND a.CUSTOM_STATE_TYPE='03'
+]]>
+<if test="customerName != null and customerName != '' "> 
+<![CDATA[AND a.CUSTOMER_NAME LIKE CONCAT(CONCAT('%', #{customerName, jdbcType=VARCHAR}),'%') ]]>
+</if>
+<![CDATA[	
+AND a.VIRTURE_ID=#{virtureId, jdbcType=VARCHAR}) a 
+WHERE a.CUSTOMER_ID=b.CUSTOMER_ID
+AND b.ACCT_CYCLE >= DATE_ADD(STR_TO_DATE('20180816', '%Y%m%d'),INTERVAL -2 MONTH) 
+AND b.ACCT_CYCLE <=STR_TO_DATE('20180816', '%Y%m%d')
+GROUP BY a.CUSTOMER_NAME,a.VIRTURE_ID
+]]>
+</select>	
+	
+	
+	
+	<!-- 按不同维度查询账户数 -->
+	
+	<!--(1-1)============================= selectAccountNumByCustomer PieChart add in 20180503=================================== -->
+	<!-- 按客户维度展示一天的账户数，饼图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型 -->
+	<select id="selectAccountNumByCustomer" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.CUSTOM_STATE_TYPE AS name,COUNT(*) AS value 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.CUSTOM_STATE_TYPE,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(1-2)============================= selectAccountNumByAllCity  BarGraph add in 20180503=================================== -->
+	<!-- 按地域维度展示所有省分的一天的账户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型 -->
+	<select id="selectAccountNumByAllCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`province_name` as name,COUNT(*) AS value,a.`province` as code
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` =#{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.`province`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	<!--(1-3)============================= selectAccountNumByCity BarGraph add in 20180503=================================== -->
+	<!-- 按地域维度展示某个省分所有地市的一天的账户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型 -->
+	<select id="selectAccountNumByCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`city_name` as name,COUNT(*) AS value 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.`city`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(1-4)============================= selectAccountNumByCompany BarGraph add in 20180503=================================== -->
+	<!-- 按地域维度展示某个省分某个地市所有企业的一天的账户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型 -->
+	<select id="selectAccountNumByCompany" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`CUSTOMER_NAME` as name,COUNT(*) AS value 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.`CUSTOMER_ID`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+
+	<!--(1-5)============================= selectAccountNumByDate LineChart add in 20180503=================================== -->
+	<!-- 按时间维度展示最近一月的账户数，折线图展示，不同筛选条件查询，省分、地市、行业、客户类型 -->
+	<select id="selectAccountNumByDate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,COUNT(*) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1 ]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					<![CDATA[AND a.`ACCT_CYCLE` <= (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+						AND a.`ACCT_CYCLE`>=(SELECT DATE_SUB((
+						SELECT b.ACCT_CYCLE
+						FROM dm_custom_2018 b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						), INTERVAL 1 MONTH))  ]]>
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE ]]>
+	</select>
+	
+	<!--(1-6)============================= selectAccountNumByIndustry BarGraph add in 20180503=================================== -->
+	<!-- 按行业维度展示一天的账户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型 -->
+	<select id="selectAccountNumByIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.PRINCIPLE_INDUSTRY AS code,COUNT(*) AS value,a.`PRINCIPLE_INDUSTRY_NAME` AS name
+                  FROM ${tableName} a ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.PRINCIPLE_INDUSTRY
+				  ORDER BY COUNT(*) ASC]]>
+	</select>
+	
+	<!-- 按不同维度查询连接数 -->
+	<!--(2-1)============================= selectConnectNumByCustomer PieChart add in 20180503=================================== -->
+	<!--============================= 按客户维度展示一天的连接数，饼图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=================================== -->
+	<select id="selectConnectNumByCustomer" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.CUSTOM_STATE_TYPE AS name,SUM(a.`ACTUAL_CONNECT`) AS value 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+		<![CDATA[ AND a.CUSTOM_STATE_TYPE = '03' 
+        		  GROUP BY a.CUSTOM_STATE_TYPE,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(2-2)============================= selectConnectNumByAllCity  BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示所有省分的一天的连接数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectConnectNumByAllCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`province_name` as name,SUM(a.`ACTUAL_CONNECT`) AS value,a.`province` as code
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+		<![CDATA[AND a.CUSTOM_STATE_TYPE = '03' 
+         		 GROUP BY a.`province`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	<!--(2-3)============================= selectConnectNumByCity BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分所有地市的一天的连接数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectConnectNumByCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`city_name` as name,SUM(a.`ACTUAL_CONNECT`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+		<![CDATA[	AND a.CUSTOM_STATE_TYPE = '03'
+        			GROUP BY a.`city`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(2-4)============================= selectConnectNumByCompany BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分某个地市所有企业的一天的连接数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectConnectNumByCompany" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`CUSTOMER_NAME` as name,SUM(a.`ACTUAL_CONNECT`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`CUSTOMER_ID`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+
+	<!--(2-5)============================= selectConnectNumByDate LineChart add in 20180503=================================== -->
+	<!--============================= 按时间维度展示最近一月的连接数，折线图展示，不同筛选条件查询，省分、地市、行业、客户类型=================================== -->
+	<select id="selectConnectNumByDate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`ACTUAL_CONNECT`) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					<![CDATA[AND a.`ACCT_CYCLE` <= (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+						AND a.`ACCT_CYCLE`>=(SELECT DATE_SUB((
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						), INTERVAL 1 MONTH))  ]]>
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]>
+	</select>
+	
+	<!--(2-6)============================= selectConnectNumByIndustry BarGraph add in 20180503=================================== -->
+	<!--============================= 按行业维度展示一天的连接数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=============== -->
+	<select id="selectConnectNumByIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.PRINCIPLE_INDUSTRY AS code,SUM(a.`ACTUAL_CONNECT`) AS value,a.`PRINCIPLE_INDUSTRY_NAME` AS name
+                  FROM ${tableName} a ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.PRINCIPLE_INDUSTRY
+				  ORDER BY SUM(a.`ACTUAL_CONNECT`) ASC]]>
+	</select>
+	
+	<!-- 按不同维度查询激活率趋势 -->
+	
+	<!--(3-1)============================= selectActivityTrendByCustomer PieChart add in 20180503=================================== -->
+	<!-- 按客户维度展示一天的激活率，饼图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型 -->
+	<select id="selectActivityTrendByCustomer" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.CUSTOM_STATE_TYPE AS name,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.CUSTOM_STATE_TYPE,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(3-2)============================= selectActivityTrendByAllCity  BarGraph add in 20180503=================================== -->
+	<!-- 按地域维度展示所有省分的一天的激活率，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型 -->
+	<select id="selectActivityTrendByAllCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`province_name` as name,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS value,a.`province` as code
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`province`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	<!--(3-3)============================= selectActivityTrendByCity BarGraph add in 20180503=================================== -->
+	<!-- 按地域维度展示某个省分所有地市的一天的激活率，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型 -->
+	<select id="selectActivityTrendByCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`city_name` as name,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`city`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(3-4)============================= selectActivityTrendByCompany BarGraph add in 20180503=================================== -->
+	<!-- 按地域维度展示某个省分某个地市所有企业的一天的激活率，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型 -->
+	<select id="selectActivityTrendByCompany" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`CUSTOMER_NAME` as name,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS value 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`CUSTOMER_ID`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+
+	<!--(3-5)============================= selectActivityTrendByDate LineChart add in 20180503=================================== -->
+	<!-- 按时间维度展示最近一月的激活率，折线图展示，不同筛选条件查询，省分、地市、行业、客户类型 -->
+	<select id="selectActivityTrendByDate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1 ]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					<![CDATA[AND a.`ACCT_CYCLE` <= (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+						AND a.`ACCT_CYCLE`>=(SELECT DATE_SUB((
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						), INTERVAL 1 MONTH))  ]]>
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]>
+	</select>
+	
+	<!--(3-6)============================= selectActivityTrendByIndustry BarGraph add in 20180503=================================== -->
+	<!-- 按行业维度展示一天的激活率，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型 -->
+	<select id="selectActivityTrendByIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.PRINCIPLE_INDUSTRY AS code,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS value,a.`PRINCIPLE_INDUSTRY_NAME` AS name
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.PRINCIPLE_INDUSTRY
+				  ORDER BY SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 ASC]]>
+	</select>
+	
+	<!-- 按不同维度查询订单订购趋势 -->
+	<!--(4-1)============================= selectOrderNumByCustomer PieChart add in 20180503=================================== -->
+	<!--============================= 按客户维度展示一天的订单趋势，饼图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=================================== -->
+	<select id="selectOrderNumByCustomer" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.CUSTOM_STATE_TYPE AS name,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.CUSTOM_STATE_TYPE,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(4-2)============================= selectOrderNumByAllCity  BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示所有省分的一天的订单趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectOrderNumByAllCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`province_name` as name,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS value,a.`province` as code
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.`province`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	<!--(4-3)============================= selectOrderNumByCity BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分所有地市的一天的订单趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectOrderNumByCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`city_name` as name,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.`city`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(4-4)============================= selectOrderNumByCompany BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分某个地市所有企业的一天的订单趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectOrderNumByCompany" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`CUSTOMER_NAME` as name,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.`CUSTOMER_ID`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+
+	<!--(4-5)============================= selectOrderNumByDate LineChart add in 20180503=================================== -->
+	<!--============================= 按时间维度展示最近一月的订单趋势，折线图展示，不同筛选条件查询，省分、地市、行业、客户类型=================================== -->
+	<select id="selectOrderNumByDate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					<![CDATA[AND a.`ACCT_CYCLE` <= (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+						AND a.`ACCT_CYCLE`>=(SELECT DATE_SUB((
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						), INTERVAL 1 MONTH))  ]]>
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]>
+	</select>
+	
+	<!--(4-6)============================= selectOrderNumByIndustry BarGraph add in 20180503=================================== -->
+	<!--============================= 按行业维度展示一天的订单趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=============== -->
+	<select id="selectOrderNumByIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.PRINCIPLE_INDUSTRY AS code,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS value,a.`PRINCIPLE_INDUSTRY_NAME` AS name
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+        <![CDATA[ GROUP BY a.PRINCIPLE_INDUSTRY
+				  ORDER BY SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) ASC]]>
+	</select>
+	
+	<!-- 按不同维度查询出账收入情况趋势 -->
+	<!--(5-1)============================= selectIncomeByCustomer PieChart add in 20180503=================================== -->
+	<!--============================= 按客户维度展示一天的收入趋势，饼图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=================================== -->
+	<select id="selectIncomeByCustomer" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.CUSTOM_STATE_TYPE AS name,SUM(a.`LAST_MONTH_INCOME`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.CUSTOM_STATE_TYPE,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(5-2)============================= selectIncomeByAllCity  BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示所有省分的一天的收入趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectIncomeByAllCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`province_name` as name,SUM(a.`LAST_MONTH_INCOME`) AS value,a.`province` as code
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`province`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	<!--(5-3)============================= selectIncomeByCity BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分所有地市的一天的收入趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectIncomeByCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`city_name` as name,SUM(a.`LAST_MONTH_INCOME`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`city`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+	
+	<!--(5-4)============================= selectIncomeByCompany BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分某个地市所有企业的一天的收入趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectIncomeByCompany" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.`CUSTOMER_NAME` as name,SUM(a.`LAST_MONTH_INCOME`) AS value
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.`CUSTOMER_ID`,a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE DESC]]>
+	</select>
+
+	<!--(5-5)============================= selectIncomeByDate LineChart add in 20180503=================================== -->
+	<!--============================= 按时间维度展示最近一月的收入趋势，折线图展示，不同筛选条件查询，省分、地市、行业、客户类型=================================== -->
+	<select id="selectIncomeByDate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`LAST_MONTH_INCOME`) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					<![CDATA[AND a.`ACCT_CYCLE` <= (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+						AND a.`ACCT_CYCLE`>=(SELECT DATE_SUB((
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						), INTERVAL 1 MONTH))  ]]>
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]>
+	</select>
+	
+	<!--(5-6)============================= selectIncomeByIndustry BarGraph add in 20180503=================================== -->
+	<!--============================= 按行业维度展示一天的收入趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=============== -->
+	<select id="selectIncomeByIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.PRINCIPLE_INDUSTRY AS code,SUM(a.`LAST_MONTH_INCOME`) AS value,a.`PRINCIPLE_INDUSTRY_NAME` AS name
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.PRINCIPLE_INDUSTRY
+				  ORDER BY SUM(a.`LAST_MONTH_INCOME`) ASC]]>
+	</select>
+	
+	
+	<!--(5-7)============================= selectIncomeByDetailIndustry BarGraph add in 20181021=================================== -->
+	<!--============================= 按行业维度展示一天的收入趋势，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=============== -->
+	<select id="selectIncomeByDetailIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT  C.`INDUSTRY_NAME` AS name,T.JPO_ACCT_BILL_AMOUNT as value
+           FROM (SELECT  SUM(b.JPO_ACCT_BILL_AMOUNT)AS JPO_ACCT_BILL_AMOUNT, a.INDUSTRY_DETAIL_PRODUCT
+           FROM ${tableNameM} b , ${tableName} a]]>
+		          WHERE a.ACCOUNT_ID = b.ACCOUNT_ID
+		           <if test="month != null and month != '' "> 
+					AND b.`ACCT_CYCLE` = #{month}
+        		  </if> 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+					AND a.CUSTOM_STATE_TYPE = '03'
+         <![CDATA[  GROUP BY a.INDUSTRY_MAIN_PRODUCT ) T 
+                    LEFT JOIN IOT_INDUSTRY_STATE_RF C  
+                    ON T.INDUSTRY_DETAIL_PRODUCT = C.INDUSTRY_CODE 
+                    ORDER BY T.JPO_ACCT_BILL_AMOUNT DESC
+             ]]>
+	</select>
+	
+	<!--(6-1)============================= selectTrendGraphByFlag =================================== -->
+	<select id="selectTrendGraphByFlag"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT SUM(a.`ACTUAL_CONNECT`) AS connectNum,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS activityTrend,
+					SUM(a.`LAST_MONTH_INCOME`) AS incomeTrend 
+                  FROM ${tableName} a   ]]>
+                  WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND a.CUSTOM_STATE_TYPE = '03' 
+                 <![CDATA[GROUP BY a.`ACCT_CYCLE`
+                          ORDER BY a.`ACCT_CYCLE` DESC ]]>
+	</select>
+	<!--(6-2)============================= selectCustomerNum =================================== -->
+	<select id="selectCustomerNum" resultType="int">
+		<![CDATA[ SELECT COUNT(*) FROM (SELECT customer_id,COUNT(*) FROM ${tableName} WHERE 1=1  ]]>
+		<if test="monthDay != null and monthDay != '' "> 
+					AND `ACCT_CYCLE` =#{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND `ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+		<![CDATA[ GROUP BY customer_id) a ]]>
+	</select>
+	<!--(6-3)============================= accountNum orderTrend=================================== -->
+	<select id="selectAccountNumOrderTrend"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT COUNT(*) AS accountNum,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS orderTrend 
+                  FROM ${tableName} a   ]]>
+                  WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND a.`ACCT_CYCLE` = (
+						SELECT b.ACCT_CYCLE
+						FROM ${tableName} b 
+						ORDER BY b.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND a.PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND a.CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+                 <![CDATA[GROUP BY a.`ACCT_CYCLE`
+                          ORDER BY a.`ACCT_CYCLE` DESC ]]>
+	</select>
+<!--(6-4)============================= selectChargeConnectRate add in 20181015 =================================== -->
+	 <select id="selectChargeConnectRate"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT a.ACCT_CYCLE AS acctCycle , SUM(b.CHARG_CONNECT_NUM) / SUM(a.ACTUAL_CONNECT) AS chargeConnectRate
+                  FROM ${tableNameM} b , ${tableName} a]]>
+                  WHERE a.ACCOUNT_ID = b.ACCOUNT_ID 
+		       <if test="month != null and month != '' "> 
+					AND b.`ACCT_CYCLE` = #{month}
+        		  </if> 
+                  <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+					AND a.CUSTOM_STATE_TYPE = '03' 
+                 <![CDATA[GROUP BY acctCycle]]>
+	</select>
+	
+
+	<!--(6-5)============================= selectAcctChargeLiveRate add in 20181015 =================================== -->
+		<select id="selectAcctChargeLiveRate"  parameterType="com.chinauicom.research.iotoperation.busAccSnap.entity.BusAccSnapInfo"  
+		resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.HomePgFourTbInfo">
+		<![CDATA[ SELECT a.ACCT_CYCLE AS acctCycle,  SUM(b.ACCT_CHARGE_LIVE_NUM) / SUM(a.ACTUAL_CONNECT)AS acctChargeLiveRate
+                  FROM ${tableNameM} b , ${tableName} a]]>
+                  WHERE a.ACCOUNT_ID = b.ACCOUNT_ID 
+		          <if test="month != null and month != '' "> 
+					AND b.`ACCT_CYCLE` = #{month}
+        		  </if> 
+        		 <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+					AND a.CUSTOM_STATE_TYPE = '03' 
+                 <![CDATA[GROUP BY acctCycle]]>
+	</select>
+
+	<!-- 按不同维度查询客户数 -->
+	<!--(7-1)============================= selectCustomerNumByCustomer PieChart add in 20180503=================================== -->
+	<!--============================= 按客户维度展示一天的客户数，饼图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=================================== -->
+	<select id="selectCustomerNumByCustomer" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT b.CUSTOM_STATE_TYPE AS name,COUNT(*) AS value FROM 
+					(SELECT customer_id,CUSTOM_STATE_TYPE,COUNT(*) FROM ${tableName} WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+					AND `ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND `ACCT_CYCLE` = (
+						SELECT a.ACCT_CYCLE
+						FROM ${tableName} a 
+						ORDER BY a.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+				  <if test="customerType != null and customerType != '' "> 
+					AND CUSTOM_STATE_TYPE = #{customerType} 
+        		  </if> 
+		<![CDATA[ GROUP BY customer_id,CUSTOM_STATE_TYPE) b GROUP BY b.CUSTOM_STATE_TYPE]]>
+	</select>
+	
+	<!--(7-2)============================= selectCustomerNumByAllCity  BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示所有省分的一天的客户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectCustomerNumByAllCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT b.province_name as name,COUNT(*) AS value,b.province as code FROM 
+				(SELECT customer_id,province,province_name,COUNT(*) FROM ${tableName} WHERE 1=1 ]]>
+				<if test="monthDay != null and monthDay != '' "> 
+					AND `ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND `ACCT_CYCLE` = (
+						SELECT a.ACCT_CYCLE
+						FROM ${tableName} a 
+						ORDER BY a.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND CUSTOM_STATE_TYPE = '03'
+		<![CDATA[ GROUP BY customer_id,province) b GROUP BY b.province ]]>
+	</select>
+	<!--(7-3)============================= selectCustomerNumByCity BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分所有地市的一天的客户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectCustomerNumByCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT b.city_name AS name,COUNT(*) AS value FROM 
+					(SELECT customer_id,city,city_name,COUNT(*) FROM ${tableName} WHERE 1=1]]>
+				<if test="monthDay != null and monthDay != '' "> 
+					AND `ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND `ACCT_CYCLE` = (
+						SELECT a.ACCT_CYCLE
+						FROM ${tableName} a 
+						ORDER BY a.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND CUSTOM_STATE_TYPE = '03'
+		<![CDATA[GROUP BY customer_id,city) b GROUP BY b.city]]>
+	</select>
+	
+	<!--(7-4)============================= selectCustomerNumByCompany BarGraph add in 20180503=================================== -->
+	<!--============================= 按地域维度展示某个省分某个地市所有企业的一天的客户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、行业、客户类型=================================== -->
+	<select id="selectCustomerNumByCompany" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT b.CUSTOMER_NAME AS name,COUNT(*) AS value FROM 
+					(SELECT customer_id,CUSTOMER_NAME,COUNT(*) FROM ${tableName} WHERE 1=1]]>
+				<if test="monthDay != null and monthDay != '' "> 
+					AND `ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					AND `ACCT_CYCLE` = (
+						SELECT a.ACCT_CYCLE
+						FROM ${tableName} a 
+						ORDER BY a.ACCT_CYCLE DESC LIMIT 1
+						)
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND CUSTOM_STATE_TYPE = '03' 
+		<![CDATA[GROUP BY customer_id) b GROUP BY b.customer_id]]>
+	</select>
+
+	<!--(7-5)============================= selectCustomerNumByDate LineChart add in 20180503=================================== -->
+	<!--============================= 按时间维度展示最近一月的客户数，折线图展示，不同筛选条件查询，省分、地市、行业、客户类型=================================== -->
+	<select id="selectCustomerNumByDate" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+				  
+		<![CDATA[ SELECT DATE_FORMAT(b.ACCT_CYCLE, '%Y-%m-%d') AS NAME,COUNT(*) AS VALUE FROM 
+					(SELECT customer_id,ACCT_CYCLE,COUNT(*) FROM ${tableName} WHERE 1=1 ]]>
+				  <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND ACCT_CYCLE <= #{monthDay}
+					AND ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  </if> 
+        		  <if test="monthDay != null and monthDay == '' "> 
+					<![CDATA[AND `ACCT_CYCLE` <= (
+						SELECT ACCT_CYCLE
+						FROM ${tableName}
+						ORDER BY ACCT_CYCLE DESC LIMIT 1
+						)
+						AND `ACCT_CYCLE`>=(SELECT DATE_SUB((
+						SELECT ACCT_CYCLE
+						FROM ${tableName} 
+						ORDER BY ACCT_CYCLE DESC LIMIT 1
+						), INTERVAL 1 MONTH))  ]]>
+        		  </if>
+				  <if test="provinceCode != null"><![CDATA[ AND province = #{provinceCode} ]]></if>
+				  <if test="cityCode != null"><![CDATA[ AND city = #{cityCode} ]]></if>
+        		  <if test="industry != null and industry != '' "> 
+					AND PRINCIPLE_INDUSTRY = #{industry} 
+        		  </if>
+					AND CUSTOM_STATE_TYPE = '03'
+
+	 	<![CDATA[ GROUP BY customer_id,ACCT_CYCLE) b GROUP BY b.ACCT_CYCLE ]]>
+	</select>
+	
+	<!--(7-6)============================= selectCustomerNumByIndustry BarGraph add in 20180503=================================== -->
+	<!--============================= 按行业维度展示一天的客户数，柱状图展示，不同筛选条件查询，最新时间或客户选中时间、省分、地市、行业、客户类型=============== -->
+	<select id="selectCustomerNumByIndustry" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		 <![CDATA[ SELECT b.PRINCIPLE_INDUSTRY_NAME AS NAME,COUNT(*) AS VALUE FROM 
+ 			(SELECT a.customer_id,a.PRINCIPLE_INDUSTRY ,COUNT(*) ,a.`PRINCIPLE_INDUSTRY_NAME` 
+        	FROM ${tableName} a	WHERE 1=1 ]]>
+        	  <if test="monthDay != null and monthDay != '' "> 
+				AND a.`ACCT_CYCLE` = #{monthDay}
+       		  </if> 
+       		  <if test="monthDay != null and monthDay == '' "> 
+				AND a.`ACCT_CYCLE` = (
+					SELECT ACCT_CYCLE
+					FROM ${tableName}  
+					ORDER BY ACCT_CYCLE DESC LIMIT 1
+					)
+       		  </if>
+			  <if test="provinceCode != null"><![CDATA[ AND a.province = #{provinceCode} ]]></if>
+			  <if test="cityCode != null"><![CDATA[ AND a.city = #{cityCode} ]]></if>
+       		  <if test="industry != null and industry != '' "> 
+				AND a.PRINCIPLE_INDUSTRY = #{industry} 
+       		  </if>
+				AND a.CUSTOM_STATE_TYPE = '03'
+		<![CDATA[ GROUP BY a.customer_id,a.PRINCIPLE_INDUSTRY) b GROUP BY b.PRINCIPLE_INDUSTRY_NAME
+				ORDER BY COUNT(*) ASC]]>
+				  
+	</select>
+	
+	<!--(8) 查询数据库中最新的日期 -->
+	<select id="getDate" resultType="string" >
+			SELECT ACCT_CYCLE
+			FROM dm_custom_2018  
+			ORDER BY ACCT_CYCLE DESC LIMIT 1
+	</select>
+	<!--(9-1)============================= getConNumActivityTrend add in 20180621=================================== -->
+	<!-- 连接数-激活率-活跃率 -->
+	<select id="getConNumActivityTrend" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.province_name AS NAME,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS VALUE,
+  					SUM(a.LIVE_CONNECT_NUM)/SUM(a.ACTUAL_CONNECT)*100 AS VALUE1,SUM(a.`ACTUAL_CONNECT`)/10000 AS VALUE2 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        		  AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.province_name ORDER BY VALUE2 DESC]]>
+	</select>
+	<!--(9-2)============================= getPlatformBusiness add in 20180621=================================== -->
+	<!-- 平台商机和客户情况 -->
+	<select id="getPlatformBusiness" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[  SELECT * FROM
+ 					(SELECT a.prov_code AS code,COUNT(*) AS value1
+					FROM td_sd_industryinfo a  
+		          WHERE 1=1 GROUP BY a.prov_code) n1 INNER JOIN
+					(SELECT b.province_name AS NAME,CONCAT('0', b.province) AS CODE,COUNT(*) AS VALUE FROM 
+ 					(SELECT a.customer_id,a.province_name,a.province,COUNT(*)
+        			FROM ${tableName} a]]>
+        			WHERE 1=1 
+        		<if test="monthDay != null and monthDay != '' "> 
+				AND a.`ACCT_CYCLE` = #{monthDay}
+				</if>
+		<![CDATA[GROUP BY a.customer_id,a.province_name) b GROUP BY b.province_name) n2 ON n1.code=n2.code]]>
+	</select>
+	
+	<select id="getPlatformBusinessCity" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+	<![CDATA[	  
+SELECT C.CITY_NAME as name,C.CUSTOMER_NUM as value,D.BUSINESSCHANCE_NUMBER as value1
+,C.CUSTOMER_NUM/D.BUSINESSCHANCE_NUMBER AS CVR
+FROM
+(SELECT COUNT(DISTINCT A.CUSTOMER_ID) AS CUSTOMER_NUM,A.CITY_NAME 
+FROM ${tableNameMonth} B , ${tableName} A
+WHERE A.ACCOUNT_ID = B.ACCOUNT_ID 
+AND B.ACCT_CYCLE='${month}' 
+AND A.ACCT_CYCLE= STR_TO_DATE('${monthDay}', '%Y%m%d')
+AND A.CUSTOM_STATE_TYPE = '03'
+AND B.JPO_ACCT_BILL_AMOUNT>0 
+AND a.PROVINCE='${pro}'
+GROUP BY A.CITY_NAME ) C,
+(SELECT B.CITY_NAME,A.BUSINESSCHANCE_NUMBER
+FROM DM_BUSINESSCHANCE A,(SELECT CITY_NAME,PROVINCE_CODE FROM CITY GROUP BY CITY_NAME,PROVINCE_CODE )b
+WHERE ACCT_CYCLE='${monthDay}'
+AND A.PROVINCE_CODE=RIGHT(B.PROVINCE_CODE,2)
+AND a.PROVINCE_CODE='${pro}') D
+WHERE D.CITY_NAME=C.CITY_NAME;
+]]>
+	</select>
+	
+	
+	
+	
+	<!--(9-3)============================= getPlatformIncome add in 20180621=================================== -->
+	<!-- 平台收入分省情况 -->
+	<select id="getPlatformIncome" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT a.province_name AS NAME,SUM(a.LAST_MONTH_INCOME) AS VALUE 
+                  FROM ${tableName} a  ]]>
+		          WHERE 1=1 
+		          <if test="monthDay != null and monthDay != '' "> 
+					AND a.`ACCT_CYCLE` = #{monthDay}
+        		  </if> 
+        <![CDATA[ GROUP BY a.province  ORDER BY VALUE DESC]]>
+	</select>
+	<!--(9-4)============================= getConNum add in 20180621=================================== -->
+	<select id="selectConnectNumLessHalfYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`ACTUAL_CONNECT`) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay} ]]>
+        		  </if>
+        		  AND a.CUSTOM_STATE_TYPE = '03' 
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]>
+	</select>
+	<!-- 全国连接数趋势 按时间分类统计半年的连接数趋势，不跨年使用selectConnectNumByDate，跨年使用此方法-->
+	<select id="getConNumCrossYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[(SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS NAME,SUM(a.`ACTUAL_CONNECT`) AS VALUE 
+                  FROM ${tableName1} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  </if> 
+        		  
+        <![CDATA[ AND a.CUSTOM_STATE_TYPE = '03' GROUP BY a.ACCT_CYCLE ORDER BY a.ACCT_CYCLE) UNION ALL
+					(SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS NAME,SUM(a.`ACTUAL_CONNECT`) AS VALUE 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay} ]]>
+        		  </if> 
+        		  AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE) ]]>
+	</select>
+	<!-- 全国连接数趋势 按时间分类统计半年的连接数趋势，不跨年使用此方法-->
+	<select id="selectConnectNumOneYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<!-- <![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`ACTUAL_CONNECT`) AS value 
+                  FROM ${tableName1} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  </if> 
+        		  AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]> -->
+		<![CDATA[ SELECT CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day) AS NAME,SUM(a.CONNECTIONS) AS VALUE 
+		 			FROM bus_acc_snap a 
+					WHERE 1=1 AND BUS_ACC_YEAR='2018']]>
+			<!-- <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND STR_TO_DATE(CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day), '%Y-%m-%d')<=#{monthDay}
+					AND STR_TO_DATE(CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day), '%Y-%m-%d')>= (SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH))]]>
+		 	</if> --> 
+		 <![CDATA[ GROUP BY a.BUS_ACC_YEAR,bus_acc_month ORDER BY a.BUS_ACC_YEAR,bus_acc_month]]>
+	</select>
+	<!--(9-5)============================= getCustomerNum add in 20180621=================================== -->
+	<select id="selectCustomerNumLessHalfYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(b.ACCT_CYCLE, '%Y-%m-%d') AS NAME,COUNT(*)/10000 AS VALUE FROM 
+					(SELECT customer_id,ACCT_CYCLE,COUNT(*) FROM ${tableName} WHERE 1=1 ]]>
+				  <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND ACCT_CYCLE <= #{monthDay} ]]>
+        		  </if> 
+        		  AND CUSTOM_STATE_TYPE = '03'
+	 	<![CDATA[ GROUP BY customer_id,ACCT_CYCLE) b GROUP BY b.ACCT_CYCLE ]]>
+	</select>
+	<!-- 全国客户数趋势 按时间分类统计半年的客户数，跨年使用此方法-->
+	<select id="getCustomerNumCrossYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ (SELECT DATE_FORMAT(b.ACCT_CYCLE, '%Y-%m-%d') AS NAME,COUNT(*)/10000 AS VALUE FROM 
+					(SELECT customer_id,ACCT_CYCLE,COUNT(*) FROM ${tableName1} WHERE 1=1 ]]>
+				  <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  </if> 
+	 	<![CDATA[ AND CUSTOM_STATE_TYPE = '03' GROUP BY customer_id,ACCT_CYCLE) b GROUP BY b.ACCT_CYCLE) UNION ALL
+	 	 (SELECT DATE_FORMAT(b.ACCT_CYCLE, '%Y-%m-%d') AS NAME,COUNT(*)/10000 AS VALUE FROM 
+					(SELECT customer_id,ACCT_CYCLE,COUNT(*) FROM ${tableName} WHERE 1=1 ]]>
+				  <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND ACCT_CYCLE <= #{monthDay} ]]>
+        		  </if> 
+	 	<![CDATA[ AND CUSTOM_STATE_TYPE = '03' GROUP BY customer_id,ACCT_CYCLE) b GROUP BY b.ACCT_CYCLE) ]]>
+	</select>
+	<!-- 全国客户数趋势 按时间分类统计半年的客户数，不跨年使用此方法-->
+	<select id="selectCustomerNumOneYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<!-- <![CDATA[ SELECT DATE_FORMAT(b.ACCT_CYCLE, '%Y-%m-%d') AS NAME,COUNT(*)/10000 AS VALUE FROM 
+					(SELECT customer_id,ACCT_CYCLE,COUNT(*) FROM ${tableName1} WHERE 1=1 ]]>
+				  <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND ACCT_CYCLE <= #{monthDay}
+					AND ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  </if> 
+	 	<![CDATA[ AND CUSTOM_STATE_TYPE = '03' GROUP BY customer_id,ACCT_CYCLE) b GROUP BY b.ACCT_CYCLE ]]> -->
+	 	
+	 	<![CDATA[ SELECT CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day) AS NAME,SUM(a.company_number) AS VALUE 
+		 			FROM bus_acc_snap a 
+					WHERE 1=1 AND BUS_ACC_YEAR='2018']]>
+				<!-- <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND STR_TO_DATE(CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day), '%Y-%m-%d')<=#{monthDay}
+							AND STR_TO_DATE(CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day), '%Y-%m-%d')>= (SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH))]]>
+        		  </if> --> 
+		<![CDATA[ GROUP BY a.BUS_ACC_YEAR,bus_acc_month ORDER BY a.BUS_ACC_YEAR,bus_acc_month ]]>
+	</select>
+	<!--(9-6)============================= getIncome add in 20180621=================================== -->
+	<select id="selectIncomeLessHalfYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`LAST_MONTH_INCOME`) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay} ]]>
+        		  </if> 
+        		  AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]>
+	</select>
+	<!-- 全国收入趋势 按时间分类统计半年的平台应收，不跨年使用selectIncomeByDate，跨年使用此方法-->
+	<select id="getIncomeCrossYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[(SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS NAME,SUM(a.`LAST_MONTH_INCOME`) AS VALUE 
+                  FROM ${tableName1} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  </if> 
+        		  
+        <![CDATA[AND a.CUSTOM_STATE_TYPE = '03' GROUP BY a.ACCT_CYCLE ORDER BY a.ACCT_CYCLE) UNION ALL
+				(SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS NAME,SUM(a.`LAST_MONTH_INCOME`) AS VALUE 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay} ]]>
+        		  </if> 
+        		  AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE) ]]>
+	</select>
+	<!-- 全国收入趋势 按时间分类统计半年的平台应收，不跨年查询-->
+	<select id="selectIncomeOneYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<!-- <![CDATA[ SELECT DATE_FORMAT(a.ACCT_CYCLE, '%Y-%m-%d') AS name,SUM(a.`LAST_MONTH_INCOME`) AS value 
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE <= #{monthDay}
+					AND a.ACCT_CYCLE >=(SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  </if> 
+        		  AND a.CUSTOM_STATE_TYPE = '03'
+        <![CDATA[ GROUP BY a.ACCT_CYCLE
+				  ORDER BY a.ACCT_CYCLE]]> -->
+				  
+				<![CDATA[ SELECT CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day) AS NAME,SUM(a.total_charge)  AS VALUE 
+				 			FROM bus_acc_snap a 
+							WHERE 1=1 AND BUS_ACC_YEAR='2018']]>
+		          		<!-- <if test="monthDay != null and monthDay != '' "> 
+							<![CDATA[AND STR_TO_DATE(CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day), '%Y-%m-%d')<=#{monthDay}
+									AND STR_TO_DATE(CONCAT(BUS_ACC_YEAR,'-',bus_acc_month,'-',bus_acc_day), '%Y-%m-%d')>= (SELECT DATE_SUB(#{monthDay}, INTERVAL 6 MONTH)) ]]>
+        		  		</if>  -->
+				<![CDATA[ GROUP BY a.BUS_ACC_YEAR,bus_acc_month ORDER BY a.BUS_ACC_YEAR,bus_acc_month ]]>
+	</select>
+	<!--(10-1)============================= getAreaTop10 add in 20180621=================================== -->
+	<!-- 账户数-->
+	<select id="selectAccountNumByArea" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT * FROM (SELECT a.province_name AS NAME,COUNT(*) AS VALUE  
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE = #{monthDay} ]]>
+        		  </if> 
+        <![CDATA[ GROUP BY a.province_name ORDER BY COUNT(*) DESC LIMIT 10) b ORDER BY b.VALUE ASC]]>
+	</select>
+	<!-- 连接数-->
+	<select id="selectConnectNumByArea" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT * FROM (SELECT a.province_name AS NAME,SUM(a.`ACTUAL_CONNECT`) AS VALUE  
+                  FROM ${tableName} a 
+		          WHERE 1=1 AND a.province_name  IS NOT NULL ]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE = #{monthDay} ]]>
+        		  </if> 
+        		  <if test="daPingFlag != null and daPingFlag != '' "> 
+					<![CDATA[AND a.province_name != '江苏']]>
+        		  </if> 
+        <![CDATA[ GROUP BY a.province_name ORDER BY SUM(a.`ACTUAL_CONNECT`) DESC LIMIT 10) b 
+        		  ORDER BY b.VALUE ASC]]>
+	</select>
+	<!-- 激活率-->
+	<select id="selectActivityTrendByArea" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT * FROM (SELECT a.province_name AS NAME,SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 AS VALUE  
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE = #{monthDay} ]]>
+        		  </if> 
+        <![CDATA[ GROUP BY a.province_name ORDER BY SUM(a.`current_acti_num`)/SUM(a.`ACTUAL_CONNECT`)*100 DESC LIMIT 10) b ORDER BY b.VALUE ASC]]>
+	</select>
+	<!-- 订单订购-->
+	<select id="selectOrderByArea" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT * FROM (SELECT a.province_name AS NAME,SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) AS VALUE  
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE = #{monthDay} ]]>
+        		  </if> 
+        <![CDATA[ GROUP BY a.province_name ORDER BY SUM(a.`ACCT_ADDUP_SHIPPED_ORDER`) DESC LIMIT 10) b ORDER BY b.VALUE ASC]]>
+	</select>
+	<!-- 平台应收-->
+	<select id="selectIncomeByArea" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT * FROM (SELECT a.province_name AS NAME,SUM(a.`LAST_MONTH_INCOME`) AS VALUE  
+                  FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE = #{monthDay} ]]>
+        		  </if> 
+        <![CDATA[ GROUP BY a.province_name ORDER BY SUM(a.`LAST_MONTH_INCOME`) DESC LIMIT 10) b ORDER BY b.VALUE ASC]]>
+	</select>
+	<!-- 客户数-->
+	<select id="selectCustomerNumByArea" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+		<![CDATA[ SELECT * FROM (SELECT b.province_name AS NAME,count(*) AS VALUE  
+                  FROM (SELECT customer_id,province_name,COUNT(*) FROM ${tableName} a 
+		          WHERE 1=1]]>
+		          <if test="monthDay != null and monthDay != '' "> 
+					<![CDATA[AND a.ACCT_CYCLE = #{monthDay} ]]>
+        		  </if> 
+        <![CDATA[ GROUP BY customer_id,province) b 
+			GROUP BY b.province_name ORDER BY COUNT(*) DESC LIMIT 10) c ORDER BY c.VALUE ASC]]>
+	</select>
+	<!--(10-2)=============================按省份同比 getYearOnYear add in 20180628=================================== -->
+	<!-- 账户数-->
+	<select id="selectAccountNumYearOnYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT 
+					  (C.ACCOUNT_ID - D.ACCOUNT_ID) / D.ACCOUNT_ID AS VALUE,
+					  C.PROVINCE_NAME AS NAME
+					FROM
+					  (SELECT 
+					    COUNT(0) AS ACCOUNT_ID,
+					    A.PROVINCE_NAME 
+					  FROM
+					    (SELECT 
+					      ACCOUNT_ID,
+					      PROVINCE_NAME
+					    FROM
+					      ${tableName} 
+					    WHERE 1=1 ]]>
+		    		<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND acct_cycle = #{monthDay} ]]>
+        		  	</if> 
+  
+		   <![CDATA[GROUP BY ACCOUNT_ID,
+				      PROVINCE_NAME) A 
+				  GROUP BY A.PROVINCE_NAME 
+				  ORDER BY ACCOUNT_ID) C 
+				  LEFT JOIN 
+				    (SELECT 
+				      COUNT(0) AS ACCOUNT_ID,
+				      A.PROVINCE_NAME 
+				    FROM
+				      (SELECT 
+				        ACCOUNT_ID,
+				        PROVINCE_NAME 
+				      FROM
+				        ${tableName1} 
+				      WHERE 1=1 ]]> 
+		      		<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 YEAR)) ]]>
+        		  	</if> 
+
+		      <![CDATA[GROUP BY ACCOUNT_ID,
+					        PROVINCE_NAME) A 
+					    GROUP BY A.PROVINCE_NAME 
+					    ORDER BY ACCOUNT_ID) D 
+					    ON C.PROVINCE_NAME = D.PROVINCE_NAME 
+					ORDER BY VALUE DESC]]>
+	</select>
+	<!-- 连接数按省同比-->
+	<select id="selectConnectNumYearOnYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.ACTUAL_CONNECT-c.ACTUAL_CONNECT)/c.ACTUAL_CONNECT AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`ACTUAL_CONNECT`) AS ACTUAL_CONNECT,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1  ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = #{monthDay} ]]>
+        		  	</if> 
+		
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACTUAL_CONNECT ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`ACTUAL_CONNECT`) AS ACTUAL_CONNECT,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 YEAR)) ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACTUAL_CONNECT ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+	</select>
+	<!-- 激活率按省同比-->
+	<select id="selectActivityTrendYearOnYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.ACC_ACTI_CONNECT_NUM-c.ACC_ACTI_CONNECT_NUM)/c.ACC_ACTI_CONNECT_NUM AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`ACC_ACTI_CONNECT_NUM`) AS ACC_ACTI_CONNECT_NUM,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1  ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = #{monthDay} ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACC_ACTI_CONNECT_NUM ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`ACC_ACTI_CONNECT_NUM`) AS ACC_ACTI_CONNECT_NUM,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 YEAR)) ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACC_ACTI_CONNECT_NUM ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+	</select>
+	<!-- 订单订购-->
+	<select id="selectOrderNumYearOnYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.ACCT_ADDUP_SHIPPED_ORDER-c.ACCT_ADDUP_SHIPPED_ORDER)/c.ACCT_ADDUP_SHIPPED_ORDER AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`ACCT_ADDUP_SHIPPED_ORDER`) AS ACCT_ADDUP_SHIPPED_ORDER,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = #{monthDay} ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACCT_ADDUP_SHIPPED_ORDER ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`ACCT_ADDUP_SHIPPED_ORDER`) AS ACCT_ADDUP_SHIPPED_ORDER,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1  ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 YEAR)) ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACCT_ADDUP_SHIPPED_ORDER ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+
+	</select>
+	<!-- 平台应收同比-->
+	<select id="selectIncomeYearOnYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.LAST_MONTH_INCOME-c.LAST_MONTH_INCOME)/c.LAST_MONTH_INCOME AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`LAST_MONTH_INCOME`) AS LAST_MONTH_INCOME,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = #{monthDay} ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY LAST_MONTH_INCOME ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`LAST_MONTH_INCOME`) AS LAST_MONTH_INCOME,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.ACCT_CYCLE = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 YEAR)) ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY LAST_MONTH_INCOME ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+
+	</select>
+	<!-- 客户数-->
+	<select id="selectCustomerNumYearOnYear" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+			<![CDATA[ SELECT 
+						  (C.CUSTOMER_ID - D.CUSTOMER_ID) / D.CUSTOMER_ID AS VALUE,
+						  C.PROVINCE_NAME AS NAME
+						FROM
+						  (SELECT 
+						    COUNT(0) AS CUSTOMER_ID,
+						    A.PROVINCE_NAME 
+						  FROM
+						    (SELECT 
+						      CUSTOMER_ID,
+						      PROVINCE_NAME
+						    FROM
+						      ${tableName}
+						    WHERE 1=1 ]]>
+						    <if test="monthDay != null and monthDay != '' "> 
+								<![CDATA[AND ACCT_CYCLE = #{monthDay} ]]>
+			        		</if>
+			  <![CDATA[ GROUP BY CUSTOMER_ID,
+						      PROVINCE_NAME) A 
+						  GROUP BY A.PROVINCE_NAME 
+						  ORDER BY CUSTOMER_ID) C 
+						  LEFT JOIN 
+						    (SELECT 
+						      COUNT(0) AS CUSTOMER_ID,
+						      A.PROVINCE_NAME 
+						    FROM
+						      (SELECT 
+						        CUSTOMER_ID,
+						        PROVINCE_NAME 
+						      FROM
+						        ${tableName1} 
+						      WHERE 1=1 ]]>
+						      <if test="monthDay != null and monthDay != '' "> 
+									<![CDATA[AND ACCT_CYCLE = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 YEAR)) ]]>
+			        		  </if>
+			    <![CDATA[ GROUP BY CUSTOMER_ID,
+						        PROVINCE_NAME) A 
+						    GROUP BY A.PROVINCE_NAME 
+						    ORDER BY CUSTOMER_ID) D 
+						    ON C.PROVINCE_NAME = D.PROVINCE_NAME 
+						ORDER BY VALUE DESC ]]>
+	</select>
+	<!--(10-3)============================= 环比 getMonthOnMonth add in 20180628=================================== -->
+	<!-- 账户数-->
+	<select id="selectAccountNumMonthOnMonth" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT 
+					  (C.ACCOUNT_ID - D.ACCOUNT_ID) / D.ACCOUNT_ID AS VALUE,
+					  C.PROVINCE_NAME AS NAME
+					FROM
+					  (SELECT 
+					    COUNT(0) AS ACCOUNT_ID,
+					    A.PROVINCE_NAME 
+					  FROM
+					    (SELECT 
+					      ACCOUNT_ID,
+					      PROVINCE_NAME 
+					    FROM
+					      ${tableName} 
+					    WHERE 1=1  ]]>
+					    <if test="monthDay != null and monthDay != '' "> 
+							<![CDATA[AND acct_cycle = #{monthDay} ]]>
+        		  		</if>
+		  <![CDATA[ GROUP BY ACCOUNT_ID,
+				      PROVINCE_NAME) A 
+				  GROUP BY A.PROVINCE_NAME 
+				  ORDER BY ACCOUNT_ID) C 
+				  LEFT JOIN 
+				    (SELECT 
+				      COUNT(0) AS ACCOUNT_ID,
+				      A.PROVINCE_NAME 
+				    FROM
+				      (SELECT 
+				        ACCOUNT_ID,
+				        PROVINCE_NAME 
+				      FROM
+				        ${tableName1} 
+				      WHERE 1=1  ]]>
+				      <if test="monthDay != null and monthDay != '' "> 
+							<![CDATA[AND acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH))]]>
+        		  	  </if>
+		    <![CDATA[ GROUP BY ACCOUNT_ID,
+				        PROVINCE_NAME) A 
+				    GROUP BY A.PROVINCE_NAME 
+				    ORDER BY ACCOUNT_ID) D 
+				    ON C.PROVINCE_NAME = D.PROVINCE_NAME 
+				ORDER BY VALUE DESC ]]>
+	</select>
+	<!-- 连接数-->
+	<select id="selectConnectNumMonthOnMonth" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.ACTUAL_CONNECT-c.ACTUAL_CONNECT)/c.ACTUAL_CONNECT AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`ACTUAL_CONNECT`) AS ACTUAL_CONNECT,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = #{monthDay} ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACTUAL_CONNECT ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`ACTUAL_CONNECT`) AS ACTUAL_CONNECT,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACTUAL_CONNECT ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+	</select>
+	<!-- 激活率-->
+	<select id="selectActivityTrendMonthOnMonth" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.ACC_ACTI_CONNECT_NUM-c.ACC_ACTI_CONNECT_NUM)/c.ACC_ACTI_CONNECT_NUM AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`ACC_ACTI_CONNECT_NUM`) AS ACC_ACTI_CONNECT_NUM,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = #{monthDay} ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACC_ACTI_CONNECT_NUM ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`ACC_ACTI_CONNECT_NUM`) AS ACC_ACTI_CONNECT_NUM,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACC_ACTI_CONNECT_NUM ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+
+	</select>
+	<!-- 订单订购-->
+	<select id="selectOrderNumMonthOnMonth" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.ACCT_ADDUP_SHIPPED_ORDER-c.ACCT_ADDUP_SHIPPED_ORDER)/c.ACCT_ADDUP_SHIPPED_ORDER AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`ACCT_ADDUP_SHIPPED_ORDER`) AS ACCT_ADDUP_SHIPPED_ORDER,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1  ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = #{monthDay} ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACCT_ADDUP_SHIPPED_ORDER ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`ACCT_ADDUP_SHIPPED_ORDER`) AS ACCT_ADDUP_SHIPPED_ORDER,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1  ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY ACCT_ADDUP_SHIPPED_ORDER ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+
+	</select>
+	<!-- 平台应收-->
+	<select id="selectIncomeMonthOnMonth" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+        <![CDATA[ SELECT (b.LAST_MONTH_INCOME-c.LAST_MONTH_INCOME)/c.LAST_MONTH_INCOME AS VALUE,b.PROVINCE_NAME AS NAME FROM 
+					(SELECT SUM(A.`LAST_MONTH_INCOME`) AS LAST_MONTH_INCOME,A.PROVINCE_NAME FROM ${tableName} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = #{monthDay} ]]>
+        		  	</if> 
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY LAST_MONTH_INCOME ) b
+					LEFT JOIN 
+					(SELECT SUM(A.`LAST_MONTH_INCOME`) AS LAST_MONTH_INCOME,A.PROVINCE_NAME FROM ${tableName1} A
+					WHERE 1=1 ]]>
+					<if test="monthDay != null and monthDay != '' "> 
+						<![CDATA[AND A.acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH)) ]]>
+        		  	</if>
+		<![CDATA[ GROUP BY A.PROVINCE_NAME 
+					ORDER BY LAST_MONTH_INCOME ) c
+					ON B.PROVINCE_NAME=C.PROVINCE_NAME ORDER BY VALUE DESC ]]>
+	</select>
+	<!-- 客户数-->
+	<select id="selectCustomerNumMonthOnMonth" resultType="com.chinauicom.research.iotoperation.busAccSnap.entity.PieChartInfo">
+			<![CDATA[ SELECT 
+					  (C.CUSTOMER_ID - D.CUSTOMER_ID) / D.CUSTOMER_ID AS VALUE,
+					  C.PROVINCE_NAME AS NAME
+					FROM
+					  (SELECT 
+					    COUNT(0) AS CUSTOMER_ID,
+					    A.PROVINCE_NAME 
+					  FROM
+					    (SELECT 
+					      CUSTOMER_ID,
+					      PROVINCE_NAME 
+					    FROM
+					      ${tableName} 
+					    WHERE 1=1 ]]>
+					    <if test="monthDay != null and monthDay != '' "> 
+							<![CDATA[AND acct_cycle = #{monthDay} ]]>
+		        		</if>
+			  <![CDATA[ GROUP BY CUSTOMER_ID,
+					      PROVINCE_NAME) A 
+					  GROUP BY A.PROVINCE_NAME 
+					  ORDER BY CUSTOMER_ID) C 
+					  LEFT JOIN 
+					    (SELECT 
+					      COUNT(0) AS CUSTOMER_ID,
+					      A.PROVINCE_NAME 
+					    FROM
+					      (SELECT 
+					        CUSTOMER_ID,
+					        PROVINCE_NAME 
+					      FROM
+					        ${tableName1} 
+					      WHERE 1=1 ]]>
+					    <if test="monthDay != null and monthDay != '' "> 
+							<![CDATA[AND acct_cycle = (SELECT DATE_SUB(#{monthDay}, INTERVAL 1 MONTH))]]>
+		        		</if>
+			    <![CDATA[GROUP BY CUSTOMER_ID,
+					        PROVINCE_NAME) A 
+					    GROUP BY A.PROVINCE_NAME 
+					    ORDER BY CUSTOMER_ID) D 
+					    ON C.PROVINCE_NAME = D.PROVINCE_NAME 
+					ORDER BY VALUE DESC ]]>
+	</select>
+</mapper>

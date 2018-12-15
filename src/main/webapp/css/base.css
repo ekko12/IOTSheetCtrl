@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+/*
+  网站全局样式，请勿随意修改
+  作者：张正明
+  时间：2018.08.14
+ */
+
+/*@font-face { 
+  font-family: SourceHanSansCN-Medium;
+  src: url('../font/SourceHanSansCN-Medium.otf');
+} 
+@font-face { 
+  font-family: SourceHanSansCN-Regular;
+  src: url('../font/SourceHanSansCN-Regular.otf');
+} */
+
+body,html{
+     height: 100%;
+     width: 100%;
+}
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr, acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong, sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption, tbody,tfoot,thead,tr,th,td，p,span{
+    align:baseline; 
+    background:transparent;
+    margin: 0; 
+    padding:0;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */  
+     box-sizing:border-box; 
+    list-style-type:none;
+    font:14px SourceHanSansCN-Regular;
+}
+option,input,button,select,textarea{
+    border:0;
+    outline:none;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: none;
+}
+body, td, div,span,a{
+    line-height:1;
+    font:14px/24px sans-serif; 
+    letter-spacing:0; 
+    color:#333;
+    margin:0; 
+    padding:0; 
+    -moz-font-smoothing:antialiased; 
+    -webkit-font-smoothing: antialiased;
+    font-smoothing:antialiased; 
+}
+    blockquote,q{
+    quotes:none;
+}
+    blockquote:before,blockquote:after,q:before,q:after{
+    content:none;
+}
+    :focus{
+    outline:0;
+}
+    ins{
+    text-decoration:none;
+}
+    del{
+    text-decoration:line-through;
+}
+    table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+img{
+    border:0px;
+}
+a{  
+    text-decoration:none; 
+    cursor:pointer; 
+    outline:none; 
+    text-decoration-line: none;
+}
+a, area {
+    outline:none; 
+    blr:expression(this.onFocus=this.blur())
+} 
+a:hover{ 
+    text-decoration:none;
+}
+
+
+
+
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+
+/*  <div id="loader"></div>  loading代码，需将此html内容放入html页面才起作用*/
+
+.no-js #loader { display: none; }
+.js #loader { 
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: #fff url("../img/loader.gif") no-repeat center center;/* 引入loading动画*/
+  background-size: 200px;
+}

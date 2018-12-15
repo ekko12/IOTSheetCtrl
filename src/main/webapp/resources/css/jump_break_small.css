@@ -1,0 +1,56 @@
+
+
+
+/*window share*/
+.bgDiv2 { width:100%; height:100%; position: fixed;top: 0px;left: 0px; z-index:900002;right:0px;background-color: #fff;opacity:.5;filter:progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=25, finishOpacity=75) opacity: 0.2;}
+
+.benpart { float:left; width:97%; padding:5px 0 10px 0; text-align:right;}
+.benpart a { width:110px; text-align:center; padding:0px; margin-left:20px;}
+/*=======================*/
+.small_window{ float:left; width:400px; background:#EAEAEA; border:1px solid #D6D6D6;  position:fixed; left:220px;top:160px; z-index:900003; overflow:hidden; }
+.small_window .title { float:left; width:100%; height:29px; background:url(../images/jump_text_r1.jpg) repeat-x;}
+.small_window .title .ltext { float:left; padding:5px 0 0 10px; font-weight:bold; color:#fff;}
+.small_window .title .rtext { float:right; padding:4px 5px 0 0;}
+.small_window .title .close { width:18px; height:18px; background:url(../images/icon_r3.png) no-repeat -170px -280px; display:inline-block; cursor:pointer }
+.small_window .small_win_tree { float:left; width:380px; padding-bottom:10px; background:#fff;   border:1px solid #E7E7E7; margin:9px; }
+
+.small_win_tree .text1 { float:left; padding:10px 0 0 10px;}
+.small_win_tree .text1 span { margin-right:10px;}
+.small_win_tree .text1 select{ width:60px; margin-left:5px;}
+.small_win_tree .text2 {float:left;width:95%; padding:10px 0 0 0; margin:0 10px; }
+.small_win_tree .text2 table { border:1px solid #ccc; border-bottom:0px;}
+.small_win_tree .text2 table td,.small_win_tree .text2 table th { border-bottom:1px solid #ccc; padding:5px; color:#666}
+.small_win_tree .text2 table th { background:#EBEBEB; font-weight:normal; border-top:1px solid #fff;}
+.small_win_tree .text2 table td { color:#999;}
+.small_win_tree .text2 .checkbox { position:relative; top:2px; margin-right:5px;}
+
+.small_window .small_win_tree2 { float:left; width:380px; background:#fff;   border:1px solid #E7E7E7; margin:9px; }
+.small_win_tree2 .text1 { float:left; padding:10px 0 0 85px;}
+.small_win_tree2 .text1 li { float:left; width:100%; padding:5px 0 5px 0;}
+.small_win_tree2 .text1 li .lilt { float:left;}
+.small_win_tree2 .text1 li .lirt { float:left;}
+.small_win_tree2 .text1 li .lirt .input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; vertical-align:middle; position:relative; top:-3px;}
+.small_win_tree2 .text1 li .lirt .ben { position:relative; top:7px; margin-left:10px;}
+.small_win_tree2 .text1 li .lirt .checkbox { position:relative; top:2px; margin-right:5px;}
+.small_win_tree2 .text1 li .lirt label { cursor:pointer;}
+
+.small_win_tree2 .text2 { float:left; padding:10px 0 0 10px; width:370px; height:160px; overflow:scroll; overflow-x:hidden;}
+.small_win_tree2 .text2 li { float:left; width:100%; padding:5px 0 5px 0;}
+.small_win_tree2 .text2 li .lilt { float:left;}
+.small_win_tree2 .text2 li .lirt { float:left;}
+.small_win_tree2 .text2 li .lirt .input { width:170px; height:23px; border:1px solid #ABABAB; border-right:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5; background:#fff; padding:0 0 0 5px; vertical-align:middle; position:relative; top:-3px;}
+.small_win_tree2 .text2 li .lirt .ben { position:relative; top:7px; margin-left:10px;}
+.small_win_tree2 .text2 li .lirt .checkbox { position:relative; top:2px; margin-right:5px;}
+.small_win_tree2 .text2 li .lirt label { cursor:pointer;}
+/*=======================*/
+
+/*=======================*/
+.small_window2{ float:left; width:258px; background:#EAEAEA; border:1px solid #D6D6D6;  position:fixed; left:220px;top:160px; z-index:900003; overflow:hidden; box-shadow:0px 0px 8px rgba(0, 0, 0, 0.2); }
+.small_window2 .title { float:left; width:100%; height:29px; background:url(../images/jump_text_r1.jpg) repeat-x;}
+.small_window2 .title .ltext { float:left; padding:5px 0 0 10px; font-weight:bold; color:#fff;}
+.small_window2 .title .rtext { float:right; padding:4px 5px 0 0;}
+.small_window2 .title .close { width:18px; height:18px; background:url(../images/icon_r3.png) no-repeat -170px -280px; display:inline-block; cursor:pointer }
+.small_window2 .small_win_text { float:left; width:218px; padding:10px 20px; }
+.small_window2 .text_ac { text-align:center;}
+.small_window2 .benpart { text-align:center;}
+.small_window2 .benpart2 a { padding:0 20px; width:auto}
